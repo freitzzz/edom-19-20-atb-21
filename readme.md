@@ -26,6 +26,7 @@ To generate diagram simple execute "gradle" in a terminal (having the root of th
 
 The repository includes an example of a PlantUML diagram in puml/usecase.puml.
 
+![PlantUML Diagram Example](puml/usecase.png)
 
 
 ## Issues and Commits
@@ -40,7 +41,6 @@ You should also close the issue when the task is finished.
 
 For each deadline/submission of your task/project you should also create a tag in the repository.
 
-![PlantUML Diagram Example](puml/usecase.png)
 
 ## Links
 

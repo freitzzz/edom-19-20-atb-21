@@ -40,7 +40,7 @@ You should also close the issue when the task is finished.
 
 For each deadline/submission of your task/project you should also create a tag in the repository.
 
-[PlantUML Diagram Example](puml/usecase.png)
+![PlantUML Diagram Example](puml/usecase.png)
 
 ## Links
 

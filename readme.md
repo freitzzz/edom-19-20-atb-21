@@ -1,6 +1,6 @@
 # EDOM Repository
 
-The goal of this repository is to serve as a template for the project developed during the EDOM course of the MEI Master Program, edition 2018/19.
+The goal of this repository is to serve as a template for the project developed during the EDOM course of the MEI Master Program, edition 2019/20.
 
 ** Please follow the instructions of the teachers of your course because they will always prevail over what is stated in this readme file. **
 

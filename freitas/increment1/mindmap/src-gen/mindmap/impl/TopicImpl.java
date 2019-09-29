@@ -169,6 +169,7 @@ public class TopicImpl extends MapElementImpl implements Topic {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Topic> getSubtopics() {
 		if (subtopics == null) {
 			subtopics = new EObjectWithInverseResolvingEList<Topic>(Topic.class, this, MindmapPackage.TOPIC__SUBTOPICS,
@@ -182,6 +183,7 @@ public class TopicImpl extends MapElementImpl implements Topic {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Topic getParent() {
 		if (parent != null && parent.eIsProxy()) {
 			InternalEObject oldParent = (InternalEObject) parent;
@@ -228,6 +230,7 @@ public class TopicImpl extends MapElementImpl implements Topic {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setParent(Topic newParent) {
 		if (newParent != parent) {
 			NotificationChain msgs = null;
@@ -249,6 +252,7 @@ public class TopicImpl extends MapElementImpl implements Topic {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getDescription() {
 		return description;
 	}
@@ -258,6 +262,7 @@ public class TopicImpl extends MapElementImpl implements Topic {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDescription(String newDescription) {
 		String oldDescription = description;
 		description = newDescription;
@@ -271,6 +276,7 @@ public class TopicImpl extends MapElementImpl implements Topic {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Date getStart() {
 		return start;
 	}
@@ -280,6 +286,7 @@ public class TopicImpl extends MapElementImpl implements Topic {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setStart(Date newStart) {
 		Date oldStart = start;
 		start = newStart;
@@ -292,6 +299,7 @@ public class TopicImpl extends MapElementImpl implements Topic {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Date getEnd() {
 		return end;
 	}
@@ -301,6 +309,7 @@ public class TopicImpl extends MapElementImpl implements Topic {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEnd(Date newEnd) {
 		Date oldEnd = end;
 		end = newEnd;
@@ -313,6 +322,7 @@ public class TopicImpl extends MapElementImpl implements Topic {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Priority getPriority() {
 		return priority;
 	}
@@ -322,6 +332,7 @@ public class TopicImpl extends MapElementImpl implements Topic {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPriority(Priority newPriority) {
 		Priority oldPriority = priority;
 		priority = newPriority == null ? PRIORITY_EDEFAULT : newPriority;
@@ -347,6 +358,7 @@ public class TopicImpl extends MapElementImpl implements Topic {
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
+	@Override
 	public EList<Topic> allSubtopics() {
 		try {
 			return (EList<Topic>) ALL_SUBTOPICS__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
@@ -527,7 +539,7 @@ public class TopicImpl extends MapElementImpl implements Topic {
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (description: ");
 		result.append(description);
 		result.append(", start: ");

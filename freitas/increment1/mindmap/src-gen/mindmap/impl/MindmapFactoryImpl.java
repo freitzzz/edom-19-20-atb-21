@@ -107,6 +107,7 @@ public class MindmapFactoryImpl extends EFactoryImpl implements MindmapFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Map createMap() {
 		MapImpl map = new MapImpl();
 		return map;
@@ -117,6 +118,7 @@ public class MindmapFactoryImpl extends EFactoryImpl implements MindmapFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Relationship createRelationship() {
 		RelationshipImpl relationship = new RelationshipImpl();
 		return relationship;
@@ -127,6 +129,7 @@ public class MindmapFactoryImpl extends EFactoryImpl implements MindmapFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Topic createTopic() {
 		TopicImpl topic = new TopicImpl();
 		return topic;
@@ -181,6 +184,7 @@ public class MindmapFactoryImpl extends EFactoryImpl implements MindmapFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public MindmapPackage getMindmapPackage() {
 		return (MindmapPackage) getEPackage();
 	}

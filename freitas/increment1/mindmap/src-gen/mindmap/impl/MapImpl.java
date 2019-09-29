@@ -105,6 +105,7 @@ public class MapImpl extends MinimalEObjectImpl.Container implements Map {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getTitle() {
 		return title;
 	}
@@ -114,6 +115,7 @@ public class MapImpl extends MinimalEObjectImpl.Container implements Map {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTitle(String newTitle) {
 		String oldTitle = title;
 		title = newTitle;
@@ -126,6 +128,7 @@ public class MapImpl extends MinimalEObjectImpl.Container implements Map {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<MapElement> getElements() {
 		if (elements == null) {
 			elements = new EObjectContainmentEList<MapElement>(MapElement.class, this, MindmapPackage.MAP__ELEMENTS);
@@ -139,6 +142,7 @@ public class MapImpl extends MinimalEObjectImpl.Container implements Map {
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
+	@Override
 	public EList<Topic> getRootTopics() {
 		return (EList<Topic>) ROOT_TOPICS__ESETTING_DELEGATE.dynamicGet(this, null, 0, true, false);
 	}
@@ -241,7 +245,7 @@ public class MapImpl extends MinimalEObjectImpl.Container implements Map {
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (title: ");
 		result.append(title);
 		result.append(')');

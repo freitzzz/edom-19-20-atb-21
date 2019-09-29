@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="mmap" nsURI="http://www.example.org/mmap" nsPrefix="mmap">
+  <eClassifiers xsi:type="ecore:EClass" name="Map">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
+        eType="#//MapElement" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="created" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Topic" eSuperTypes="#//MapElement">
+    <eOperations name="allSubtopics" upperBound="-1" eType="#//Topic"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="startDate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="endDate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="priority" eType="#//Priority"
+        defaultValueLiteral="LOW"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subtopics" upperBound="-1"
+        eType="#//Topic" eOpposite="#//Topic/parent"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//Topic"
+        eOpposite="#//Topic/subtopics"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MapElement" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Relationship" eSuperTypes="#//MapElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//Type" defaultValueLiteral="DEPENDENCY"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
+        eType="#//Topic"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="#//Topic"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Priority">
+    <eLiterals name="HIGH" value="2"/>
+    <eLiterals name="MEDIUM" value="1"/>
+    <eLiterals name="LOW"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Type">
+    <eLiterals name="DEPENDENCY"/>
+    <eLiterals name="INCLUDE" value="1"/>
+    <eLiterals name="EXTEND" value="2"/>
+  </eClassifiers>
+</ecore:EPackage>

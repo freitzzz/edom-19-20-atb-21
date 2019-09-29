@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mmap:Map xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:mmap="http://www.example.org/mmap" title="AgendaApp">
+  <topic name="Contacts"/>
+  <topic name="Meetings"/>
+</mmap:Map>

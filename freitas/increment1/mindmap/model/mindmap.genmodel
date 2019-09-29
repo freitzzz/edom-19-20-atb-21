@@ -20,8 +20,9 @@
       <genEnumLiterals ecoreEnumLiteral="mindmap.ecore#//Type/EXTEND"/>
     </genEnums>
     <genClasses ecoreClass="mindmap.ecore#//Map">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mindmap.ecore#//Map/title"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mindmap.ecore#//Map/elements"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mindmap.ecore#//Map/rootTopic"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference mindmap.ecore#//Map/rootTopics"/>
     </genClasses>
     <genClasses ecoreClass="mindmap.ecore#//Relationship">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mindmap.ecore#//Relationship/source"/>

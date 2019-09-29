@@ -99,7 +99,7 @@ public class MindmapPackageImpl extends EPackageImpl implements MindmapPackage {
 
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
+	 *
 	 * <p>This method is used to initialize {@link MindmapPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
@@ -114,9 +114,10 @@ public class MindmapPackageImpl extends EPackageImpl implements MindmapPackage {
 			return (MindmapPackage) EPackage.Registry.INSTANCE.getEPackage(MindmapPackage.eNS_URI);
 
 		// Obtain or create and register package
-		MindmapPackageImpl theMindmapPackage = (MindmapPackageImpl) (EPackage.Registry.INSTANCE
-				.get(eNS_URI) instanceof MindmapPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI)
-						: new MindmapPackageImpl());
+		Object registeredMindmapPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+		MindmapPackageImpl theMindmapPackage = registeredMindmapPackage instanceof MindmapPackageImpl
+				? (MindmapPackageImpl) registeredMindmapPackage
+				: new MindmapPackageImpl();
 
 		isInited = true;
 
@@ -128,6 +129,7 @@ public class MindmapPackageImpl extends EPackageImpl implements MindmapPackage {
 
 		// Register package validator
 		EValidator.Registry.INSTANCE.put(theMindmapPackage, new EValidator.Descriptor() {
+			@Override
 			public EValidator getEValidator() {
 				return MindmapValidator.INSTANCE;
 			}
@@ -146,6 +148,7 @@ public class MindmapPackageImpl extends EPackageImpl implements MindmapPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getMap() {
 		return mapEClass;
 	}
@@ -155,6 +158,7 @@ public class MindmapPackageImpl extends EPackageImpl implements MindmapPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getMap_Title() {
 		return (EAttribute) mapEClass.getEStructuralFeatures().get(0);
 	}
@@ -164,6 +168,7 @@ public class MindmapPackageImpl extends EPackageImpl implements MindmapPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getMap_Elements() {
 		return (EReference) mapEClass.getEStructuralFeatures().get(1);
 	}
@@ -173,6 +178,7 @@ public class MindmapPackageImpl extends EPackageImpl implements MindmapPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getMap_RootTopics() {
 		return (EReference) mapEClass.getEStructuralFeatures().get(2);
 	}
@@ -182,6 +188,7 @@ public class MindmapPackageImpl extends EPackageImpl implements MindmapPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getRelationship() {
 		return relationshipEClass;
 	}
@@ -191,6 +198,7 @@ public class MindmapPackageImpl extends EPackageImpl implements MindmapPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRelationship_Source() {
 		return (EReference) relationshipEClass.getEStructuralFeatures().get(0);
 	}
@@ -200,6 +208,7 @@ public class MindmapPackageImpl extends EPackageImpl implements MindmapPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getRelationship_Target() {
 		return (EReference) relationshipEClass.getEStructuralFeatures().get(1);
 	}
@@ -209,6 +218,7 @@ public class MindmapPackageImpl extends EPackageImpl implements MindmapPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getRelationship_Type() {
 		return (EAttribute) relationshipEClass.getEStructuralFeatures().get(2);
 	}
@@ -218,6 +228,7 @@ public class MindmapPackageImpl extends EPackageImpl implements MindmapPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getMapElement() {
 		return mapElementEClass;
 	}
@@ -227,6 +238,7 @@ public class MindmapPackageImpl extends EPackageImpl implements MindmapPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getMapElement_Name() {
 		return (EAttribute) mapElementEClass.getEStructuralFeatures().get(0);
 	}
@@ -236,6 +248,7 @@ public class MindmapPackageImpl extends EPackageImpl implements MindmapPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTopic() {
 		return topicEClass;
 	}
@@ -245,6 +258,7 @@ public class MindmapPackageImpl extends EPackageImpl implements MindmapPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTopic_Subtopics() {
 		return (EReference) topicEClass.getEStructuralFeatures().get(0);
 	}
@@ -254,6 +268,7 @@ public class MindmapPackageImpl extends EPackageImpl implements MindmapPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTopic_Parent() {
 		return (EReference) topicEClass.getEStructuralFeatures().get(1);
 	}
@@ -263,6 +278,7 @@ public class MindmapPackageImpl extends EPackageImpl implements MindmapPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getTopic_Description() {
 		return (EAttribute) topicEClass.getEStructuralFeatures().get(2);
 	}
@@ -272,6 +288,7 @@ public class MindmapPackageImpl extends EPackageImpl implements MindmapPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getTopic_Start() {
 		return (EAttribute) topicEClass.getEStructuralFeatures().get(3);
 	}
@@ -281,6 +298,7 @@ public class MindmapPackageImpl extends EPackageImpl implements MindmapPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getTopic_End() {
 		return (EAttribute) topicEClass.getEStructuralFeatures().get(4);
 	}
@@ -290,6 +308,7 @@ public class MindmapPackageImpl extends EPackageImpl implements MindmapPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getTopic_Priority() {
 		return (EAttribute) topicEClass.getEStructuralFeatures().get(5);
 	}
@@ -299,6 +318,7 @@ public class MindmapPackageImpl extends EPackageImpl implements MindmapPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getTopic__AllSubtopics() {
 		return topicEClass.getEOperations().get(0);
 	}
@@ -308,6 +328,7 @@ public class MindmapPackageImpl extends EPackageImpl implements MindmapPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getPriority() {
 		return priorityEEnum;
 	}
@@ -317,6 +338,7 @@ public class MindmapPackageImpl extends EPackageImpl implements MindmapPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getType() {
 		return typeEEnum;
 	}
@@ -326,6 +348,7 @@ public class MindmapPackageImpl extends EPackageImpl implements MindmapPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public MindmapFactory getMindmapFactory() {
 		return (MindmapFactory) getEFactoryInstance();
 	}

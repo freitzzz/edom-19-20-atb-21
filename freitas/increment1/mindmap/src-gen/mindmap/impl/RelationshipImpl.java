@@ -94,6 +94,7 @@ public class RelationshipImpl extends MapElementImpl implements Relationship {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Topic getSource() {
 		if (source != null && source.eIsProxy()) {
 			InternalEObject oldSource = (InternalEObject) source;
@@ -121,6 +122,7 @@ public class RelationshipImpl extends MapElementImpl implements Relationship {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSource(Topic newSource) {
 		Topic oldSource = source;
 		source = newSource;
@@ -134,6 +136,7 @@ public class RelationshipImpl extends MapElementImpl implements Relationship {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Topic getTarget() {
 		if (target != null && target.eIsProxy()) {
 			InternalEObject oldTarget = (InternalEObject) target;
@@ -161,6 +164,7 @@ public class RelationshipImpl extends MapElementImpl implements Relationship {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTarget(Topic newTarget) {
 		Topic oldTarget = target;
 		target = newTarget;
@@ -174,6 +178,7 @@ public class RelationshipImpl extends MapElementImpl implements Relationship {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Type getType() {
 		return type;
 	}
@@ -183,6 +188,7 @@ public class RelationshipImpl extends MapElementImpl implements Relationship {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setType(Type newType) {
 		Type oldType = type;
 		type = newType == null ? TYPE_EDEFAULT : newType;
@@ -282,7 +288,7 @@ public class RelationshipImpl extends MapElementImpl implements Relationship {
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (type: ");
 		result.append(type);
 		result.append(')');

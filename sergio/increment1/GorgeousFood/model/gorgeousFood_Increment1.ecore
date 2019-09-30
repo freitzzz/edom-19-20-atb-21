@@ -19,12 +19,11 @@
         eOpposite="#//RquirementGroup/children"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Version">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="major" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
-        defaultValueLiteral=""/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="minor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="service" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="version" lowerBound="1"
         eType="#//Requirement" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="major" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Requirement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -38,12 +37,12 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" eType="#//State"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="resolution" eType="#//Resolution"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//Requirement"
-        containment="true" eOpposite="#//Requirement/children"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
-        eType="#//Requirement" eOpposite="#//Requirement/parent"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="dependencies" upperBound="-1"
         eType="#//Requirement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//Requirement" containment="true" eOpposite="#//Requirement/parent"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//Requirement"
+        eOpposite="#//Requirement/children"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="Resolution">
     <eLiterals name="INVALID"/>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="ASCII"?>
+<mindmap:Map xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mindmap="http://www.example.org/mindmap">
+  <elements xsi:type="mindmap:Topic" name="Agenda" subtopics="//@elements.1 //@elements.2"/>
+  <elements xsi:type="mindmap:Topic" name="Contacts" parent="//@elements.0"/>
+  <elements xsi:type="mindmap:Topic" name="Meeting" parent="//@elements.0"/>
+</mindmap:Map>

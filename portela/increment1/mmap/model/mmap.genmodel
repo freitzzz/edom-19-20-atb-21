@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/mmap/src-gen" creationIcons="false" editDirectory="/mmap.edit/src-gen"
+    editorDirectory="/mmap.editor/src-gen" modelPluginID="mmap" modelName="Mmap" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    codeFormatting="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0"
+    copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>mmap.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="Mmap" disposableProviderFactory="true" ecorePackage="mmap.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mmap.ecore#//Priority">
+      <genEnumLiterals ecoreEnumLiteral="mmap.ecore#//Priority/HIGH"/>
+      <genEnumLiterals ecoreEnumLiteral="mmap.ecore#//Priority/MEDIUM"/>
+      <genEnumLiterals ecoreEnumLiteral="mmap.ecore#//Priority/LOW"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mmap.ecore#//Type">
+      <genEnumLiterals ecoreEnumLiteral="mmap.ecore#//Type/DEPENDENCY"/>
+      <genEnumLiterals ecoreEnumLiteral="mmap.ecore#//Type/INCLUDE"/>
+      <genEnumLiterals ecoreEnumLiteral="mmap.ecore#//Type/EXTEND"/>
+    </genEnums>
+    <genClasses ecoreClass="mmap.ecore#//Map">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mmap.ecore#//Map/title"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mmap.ecore#//Map/elements"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mmap.ecore#//Map/created"/>
+    </genClasses>
+    <genClasses ecoreClass="mmap.ecore#//Topic">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mmap.ecore#//Topic/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mmap.ecore#//Topic/start"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mmap.ecore#//Topic/end"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mmap.ecore#//Topic/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mmap.ecore#//Topic/priority"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mmap.ecore#//Topic/subtopics"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mmap.ecore#//Topic/parent"/>
+      <genOperations ecoreOperation="mmap.ecore#//Topic/allSubTopics"/>
+    </genClasses>
+    <genClasses ecoreClass="mmap.ecore#//MapElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mmap.ecore#//MapElement/name"/>
+    </genClasses>
+    <genClasses ecoreClass="mmap.ecore#//Relationship">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mmap.ecore#//Relationship/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mmap.ecore#//Relationship/source"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mmap.ecore#//Relationship/target"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

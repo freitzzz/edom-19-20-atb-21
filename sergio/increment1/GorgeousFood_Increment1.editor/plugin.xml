@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated gorgeousFood_Increment1 -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="gorgeousFood_Increment1.presentation.GorgeousFood_Increment1ModelWizardID"
+            name="%_UI_GorgeousFood_Increment1ModelWizard_label"
+            class="gorgeousFood_Increment1.presentation.GorgeousFood_Increment1ModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/GorgeousFood_Increment1ModelFile.gif">
+         <description>%_UI_GorgeousFood_Increment1ModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated gorgeousFood_Increment1 -->
+      <editor
+            id="gorgeousFood_Increment1.presentation.GorgeousFood_Increment1EditorID"
+            name="%_UI_GorgeousFood_Increment1Editor_label"
+            icon="icons/full/obj16/GorgeousFood_Increment1ModelFile.gif"
+            extensions="gorgeousfood_increment1"
+            class="gorgeousFood_Increment1.presentation.GorgeousFood_Increment1Editor"
+            contributorClass="gorgeousFood_Increment1.presentation.GorgeousFood_Increment1ActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

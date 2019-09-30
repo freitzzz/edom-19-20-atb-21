@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mindmap:Map
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:mindmap="http://www.example.org/mindmap"
+    xsi:schemaLocation="http://www.example.org/mindmap ../model/mindmap.ecore"
+    title="Gorgeous Food Application">
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Unserved Meals"
+      subtopics="//@elements.2 //@elements.1 //@elements.3 //@elements.4 //@elements.5"
+      description="Unserved Meals"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Unexpensive"
+      parent="//@elements.0"
+      description="Unexpensive"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Balanced"
+      parent="//@elements.0"
+      description="Balanced"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Frozen"
+      parent="//@elements.0"
+      description="Frozen"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Elegant"
+      parent="//@elements.0"
+      description="Elegant"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Packaged"
+      subtopics="//@elements.6"
+      parent="//@elements.0"
+      description="Packaged"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Labeled"
+      subtopics="//@elements.10 //@elements.9 //@elements.8 //@elements.7"
+      parent="//@elements.5"
+      description="Labeled"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Expiration Date"
+      parent="//@elements.6"
+      description="Expiration Date"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Production Date"
+      parent="//@elements.6"
+      description="Production Date"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="ID"
+      parent="//@elements.6"
+      description="ID"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Designation"
+      parent="//@elements.6"
+      description="Designation"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Inventory Managed By Software"
+      subtopics="//@elements.12"
+      description="Inventory Managed By Software"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Meal in Inventory"
+      subtopics="//@elements.13 //@elements.14 //@elements.15 //@elements.16 //@elements.17 //@elements.18 //@elements.19 //@elements.20"
+      parent="//@elements.11"
+      description="Meal in Inventory"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Time"
+      parent="//@elements.12"
+      description="Time"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Location"
+      parent="//@elements.12"
+      description="Location"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Allergens"
+      parent="//@elements.12"
+      description="Allergens"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Ingredients"
+      parent="//@elements.12"
+      description="Ingredients"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Nutritional Data"
+      parent="//@elements.12"
+      description="Nutritional Data"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Type"
+      parent="//@elements.12"
+      description="Type"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Designation"
+      parent="//@elements.12"
+      description="Designation"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Type Of User Who Purchased"
+      parent="//@elements.12"
+      description="Type Of User Who Purchased"/>
+</mindmap:Map>

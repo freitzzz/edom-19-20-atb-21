@@ -214,22 +214,13 @@ public interface GorgeousFood_Increment1Package extends EPackage {
 	int VERSION__SERVICE = 1;
 
 	/**
-	 * The feature id for the '<em><b>Version</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VERSION__VERSION = 2;
-
-	/**
 	 * The feature id for the '<em><b>Major</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VERSION__MAJOR = 3;
+	int VERSION__MAJOR = 2;
 
 	/**
 	 * The number of structural features of the '<em>Version</em>' class.
@@ -238,7 +229,7 @@ public interface GorgeousFood_Increment1Package extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VERSION_FEATURE_COUNT = 4;
+	int VERSION_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Version</em>' class.
@@ -377,13 +368,22 @@ public interface GorgeousFood_Increment1Package extends EPackage {
 	int REQUIREMENT__PARENT = 12;
 
 	/**
+	 * The feature id for the '<em><b>Version</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUIREMENT__VERSION = 13;
+
+	/**
 	 * The number of structural features of the '<em>Requirement</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REQUIREMENT_FEATURE_COUNT = 13;
+	int REQUIREMENT_FEATURE_COUNT = 14;
 
 	/**
 	 * The number of operations of the '<em>Requirement</em>' class.
@@ -648,17 +648,6 @@ public interface GorgeousFood_Increment1Package extends EPackage {
 	EAttribute getVersion_Service();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link gorgeousFood_Increment1.Version#getVersion <em>Version</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Version</em>'.
-	 * @see gorgeousFood_Increment1.Version#getVersion()
-	 * @see #getVersion()
-	 * @generated
-	 */
-	EReference getVersion_Version();
-
-	/**
 	 * Returns the meta object for the attribute '{@link gorgeousFood_Increment1.Version#getMajor <em>Major</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -821,6 +810,17 @@ public interface GorgeousFood_Increment1Package extends EPackage {
 	 * @generated
 	 */
 	EReference getRequirement_Parent();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link gorgeousFood_Increment1.Requirement#getVersion <em>Version</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Version</em>'.
+	 * @see gorgeousFood_Increment1.Requirement#getVersion()
+	 * @see #getRequirement()
+	 * @generated
+	 */
+	EReference getRequirement_Version();
 
 	/**
 	 * Returns the meta object for class '{@link gorgeousFood_Increment1.Comment <em>Comment</em>}'.
@@ -1061,14 +1061,6 @@ public interface GorgeousFood_Increment1Package extends EPackage {
 		EAttribute VERSION__SERVICE = eINSTANCE.getVersion_Service();
 
 		/**
-		 * The meta object literal for the '<em><b>Version</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference VERSION__VERSION = eINSTANCE.getVersion_Version();
-
-		/**
 		 * The meta object literal for the '<em><b>Major</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1189,6 +1181,14 @@ public interface GorgeousFood_Increment1Package extends EPackage {
 		 * @generated
 		 */
 		EReference REQUIREMENT__PARENT = eINSTANCE.getRequirement_Parent();
+
+		/**
+		 * The meta object literal for the '<em><b>Version</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REQUIREMENT__VERSION = eINSTANCE.getRequirement_Version();
 
 		/**
 		 * The meta object literal for the '{@link gorgeousFood_Increment1.impl.CommentImpl <em>Comment</em>}' class.

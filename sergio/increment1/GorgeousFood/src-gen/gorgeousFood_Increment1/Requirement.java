@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link gorgeousFood_Increment1.Requirement#getDependencies <em>Dependencies</em>}</li>
  *   <li>{@link gorgeousFood_Increment1.Requirement#getChildren <em>Children</em>}</li>
  *   <li>{@link gorgeousFood_Increment1.Requirement#getParent <em>Parent</em>}</li>
+ *   <li>{@link gorgeousFood_Increment1.Requirement#getVersion <em>Version</em>}</li>
  * </ul>
  *
  * @see gorgeousFood_Increment1.GorgeousFood_Increment1Package#getRequirement()
@@ -308,5 +309,27 @@ public interface Requirement extends EObject {
 	 * @generated
 	 */
 	void setParent(Requirement value);
+
+	/**
+	 * Returns the value of the '<em><b>Version</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Version</em>' containment reference.
+	 * @see #setVersion(Version)
+	 * @see gorgeousFood_Increment1.GorgeousFood_Increment1Package#getRequirement_Version()
+	 * @model containment="true" required="true"
+	 * @generated
+	 */
+	Version getVersion();
+
+	/**
+	 * Sets the value of the '{@link gorgeousFood_Increment1.Requirement#getVersion <em>Version</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Version</em>' containment reference.
+	 * @see #getVersion()
+	 * @generated
+	 */
+	void setVersion(Version value);
 
 } // Requirement

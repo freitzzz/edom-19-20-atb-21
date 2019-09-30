@@ -5,6 +5,7 @@ package gorgeousFood_Increment1.provider;
 import gorgeousFood_Increment1.GorgeousFood_Increment1Factory;
 import gorgeousFood_Increment1.GorgeousFood_Increment1Package;
 import gorgeousFood_Increment1.Requirement;
+import gorgeousFood_Increment1.Version;
 
 import java.util.Collection;
 import java.util.List;
@@ -261,6 +262,7 @@ public class RequirementItemProvider extends ItemProviderAdapter implements IEdi
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(GorgeousFood_Increment1Package.Literals.REQUIREMENT__COMMENT);
 			childrenFeatures.add(GorgeousFood_Increment1Package.Literals.REQUIREMENT__CHILDREN);
+			childrenFeatures.add(GorgeousFood_Increment1Package.Literals.REQUIREMENT__VERSION);
 		}
 		return childrenFeatures;
 	}
@@ -303,13 +305,27 @@ public class RequirementItemProvider extends ItemProviderAdapter implements IEdi
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Requirement) object).getId();
-		return label == null || label.length() == 0 ? getString("_UI_Requirement_type")
-				: getString("_UI_Requirement_type") + " " + label;
+		StringBuilder sb = new StringBuilder();
+		sb.append(((Requirement) object).getId());
+		sb.append(" (");
+		Version version = ((Requirement) object).getVersion();
+		if (version != null) {
+			sb.append(((Requirement) object).getVersion().getMajor());
+			sb.append(".");
+			sb.append(((Requirement) object).getVersion().getMinor());
+			sb.append(".");
+			sb.append(((Requirement) object).getVersion().getService());
+		} else {
+			sb.append("0.0.0");
+		}
+		sb.append(") : ");
+		sb.append(((Requirement) object).getTitle());
+		String label = sb.toString();
+		return label == null || label.length() == 0 ? getString("_UI_Requirement_type") : label;
 	}
 
 	/**
@@ -337,6 +353,7 @@ public class RequirementItemProvider extends ItemProviderAdapter implements IEdi
 			return;
 		case GorgeousFood_Increment1Package.REQUIREMENT__COMMENT:
 		case GorgeousFood_Increment1Package.REQUIREMENT__CHILDREN:
+		case GorgeousFood_Increment1Package.REQUIREMENT__VERSION:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -359,6 +376,9 @@ public class RequirementItemProvider extends ItemProviderAdapter implements IEdi
 
 		newChildDescriptors.add(createChildParameter(GorgeousFood_Increment1Package.Literals.REQUIREMENT__CHILDREN,
 				GorgeousFood_Increment1Factory.eINSTANCE.createRequirement()));
+
+		newChildDescriptors.add(createChildParameter(GorgeousFood_Increment1Package.Literals.REQUIREMENT__VERSION,
+				GorgeousFood_Increment1Factory.eINSTANCE.createVersion()));
 	}
 
 	/**

@@ -15,7 +15,6 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link gorgeousFood_Increment1.Version#getMinor <em>Minor</em>}</li>
  *   <li>{@link gorgeousFood_Increment1.Version#getService <em>Service</em>}</li>
- *   <li>{@link gorgeousFood_Increment1.Version#getVersion <em>Version</em>}</li>
  *   <li>{@link gorgeousFood_Increment1.Version#getMajor <em>Major</em>}</li>
  * </ul>
  *
@@ -67,28 +66,6 @@ public interface Version extends EObject {
 	 * @generated
 	 */
 	void setService(int value);
-
-	/**
-	 * Returns the value of the '<em><b>Version</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Version</em>' containment reference.
-	 * @see #setVersion(Requirement)
-	 * @see gorgeousFood_Increment1.GorgeousFood_Increment1Package#getVersion_Version()
-	 * @model containment="true" required="true"
-	 * @generated
-	 */
-	Requirement getVersion();
-
-	/**
-	 * Sets the value of the '{@link gorgeousFood_Increment1.Version#getVersion <em>Version</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Version</em>' containment reference.
-	 * @see #getVersion()
-	 * @generated
-	 */
-	void setVersion(Requirement value);
 
 	/**
 	 * Returns the value of the '<em><b>Major</b></em>' attribute.

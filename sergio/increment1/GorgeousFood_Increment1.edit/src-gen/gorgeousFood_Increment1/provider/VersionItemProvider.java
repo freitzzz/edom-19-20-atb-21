@@ -2,7 +2,6 @@
  */
 package gorgeousFood_Increment1.provider;
 
-import gorgeousFood_Increment1.GorgeousFood_Increment1Factory;
 import gorgeousFood_Increment1.GorgeousFood_Increment1Package;
 import gorgeousFood_Increment1.Version;
 
@@ -13,9 +12,6 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
-
-import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -112,36 +108,6 @@ public class VersionItemProvider extends ItemProviderAdapter implements IEditing
 	}
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(GorgeousFood_Increment1Package.Literals.VERSION__VERSION);
-		}
-		return childrenFeatures;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
-
-		return super.getChildFeature(object, child);
-	}
-
-	/**
 	 * This returns Version.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -191,9 +157,6 @@ public class VersionItemProvider extends ItemProviderAdapter implements IEditing
 		case GorgeousFood_Increment1Package.VERSION__MAJOR:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
-		case GorgeousFood_Increment1Package.VERSION__VERSION:
-			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -208,9 +171,6 @@ public class VersionItemProvider extends ItemProviderAdapter implements IEditing
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add(createChildParameter(GorgeousFood_Increment1Package.Literals.VERSION__VERSION,
-				GorgeousFood_Increment1Factory.eINSTANCE.createRequirement()));
 	}
 
 	/**

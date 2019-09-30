@@ -10,6 +10,7 @@ import gorgeousFood_Increment1.Resolution;
 import gorgeousFood_Increment1.State;
 import gorgeousFood_Increment1.Type;
 
+import gorgeousFood_Increment1.Version;
 import java.util.Collection;
 import java.util.Date;
 
@@ -51,6 +52,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link gorgeousFood_Increment1.impl.RequirementImpl#getDependencies <em>Dependencies</em>}</li>
  *   <li>{@link gorgeousFood_Increment1.impl.RequirementImpl#getChildren <em>Children</em>}</li>
  *   <li>{@link gorgeousFood_Increment1.impl.RequirementImpl#getParent <em>Parent</em>}</li>
+ *   <li>{@link gorgeousFood_Increment1.impl.RequirementImpl#getVersion <em>Version</em>}</li>
  * </ul>
  *
  * @generated
@@ -265,6 +267,16 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
 	 * @ordered
 	 */
 	protected EList<Requirement> children;
+
+	/**
+	 * The cached value of the '{@link #getVersion() <em>Version</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVersion()
+	 * @generated
+	 * @ordered
+	 */
+	protected Version version;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -597,6 +609,58 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public Version getVersion() {
+		return version;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetVersion(Version newVersion, NotificationChain msgs) {
+		Version oldVersion = version;
+		version = newVersion;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					GorgeousFood_Increment1Package.REQUIREMENT__VERSION, oldVersion, newVersion);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setVersion(Version newVersion) {
+		if (newVersion != version) {
+			NotificationChain msgs = null;
+			if (version != null)
+				msgs = ((InternalEObject) version).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - GorgeousFood_Increment1Package.REQUIREMENT__VERSION, null, msgs);
+			if (newVersion != null)
+				msgs = ((InternalEObject) newVersion).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - GorgeousFood_Increment1Package.REQUIREMENT__VERSION, null, msgs);
+			msgs = basicSetVersion(newVersion, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GorgeousFood_Increment1Package.REQUIREMENT__VERSION,
+					newVersion, newVersion));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -625,6 +689,8 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
 			return ((InternalEList<?>) getChildren()).basicRemove(otherEnd, msgs);
 		case GorgeousFood_Increment1Package.REQUIREMENT__PARENT:
 			return basicSetParent(null, msgs);
+		case GorgeousFood_Increment1Package.REQUIREMENT__VERSION:
+			return basicSetVersion(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -678,6 +744,8 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
 			return getChildren();
 		case GorgeousFood_Increment1Package.REQUIREMENT__PARENT:
 			return getParent();
+		case GorgeousFood_Increment1Package.REQUIREMENT__VERSION:
+			return getVersion();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -733,6 +801,9 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
 		case GorgeousFood_Increment1Package.REQUIREMENT__PARENT:
 			setParent((Requirement) newValue);
 			return;
+		case GorgeousFood_Increment1Package.REQUIREMENT__VERSION:
+			setVersion((Version) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -784,6 +855,9 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
 		case GorgeousFood_Increment1Package.REQUIREMENT__PARENT:
 			setParent((Requirement) null);
 			return;
+		case GorgeousFood_Increment1Package.REQUIREMENT__VERSION:
+			setVersion((Version) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -822,6 +896,8 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
 			return children != null && !children.isEmpty();
 		case GorgeousFood_Increment1Package.REQUIREMENT__PARENT:
 			return getParent() != null;
+		case GorgeousFood_Increment1Package.REQUIREMENT__VERSION:
+			return version != null;
 		}
 		return super.eIsSet(featureID);
 	}

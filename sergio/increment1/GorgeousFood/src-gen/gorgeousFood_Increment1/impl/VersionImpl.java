@@ -3,15 +3,10 @@
 package gorgeousFood_Increment1.impl;
 
 import gorgeousFood_Increment1.GorgeousFood_Increment1Package;
-import gorgeousFood_Increment1.Requirement;
 import gorgeousFood_Increment1.Version;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
@@ -25,7 +20,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <ul>
  *   <li>{@link gorgeousFood_Increment1.impl.VersionImpl#getMinor <em>Minor</em>}</li>
  *   <li>{@link gorgeousFood_Increment1.impl.VersionImpl#getService <em>Service</em>}</li>
- *   <li>{@link gorgeousFood_Increment1.impl.VersionImpl#getVersion <em>Version</em>}</li>
  *   <li>{@link gorgeousFood_Increment1.impl.VersionImpl#getMajor <em>Major</em>}</li>
  * </ul>
  *
@@ -71,16 +65,6 @@ public class VersionImpl extends MinimalEObjectImpl.Container implements Version
 	 * @ordered
 	 */
 	protected int service = SERVICE_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getVersion() <em>Version</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getVersion()
-	 * @generated
-	 * @ordered
-	 */
-	protected Requirement version;
 
 	/**
 	 * The default value of the '{@link #getMajor() <em>Major</em>}' attribute.
@@ -175,58 +159,6 @@ public class VersionImpl extends MinimalEObjectImpl.Container implements Version
 	 * @generated
 	 */
 	@Override
-	public Requirement getVersion() {
-		return version;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetVersion(Requirement newVersion, NotificationChain msgs) {
-		Requirement oldVersion = version;
-		version = newVersion;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					GorgeousFood_Increment1Package.VERSION__VERSION, oldVersion, newVersion);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setVersion(Requirement newVersion) {
-		if (newVersion != version) {
-			NotificationChain msgs = null;
-			if (version != null)
-				msgs = ((InternalEObject) version).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE - GorgeousFood_Increment1Package.VERSION__VERSION, null, msgs);
-			if (newVersion != null)
-				msgs = ((InternalEObject) newVersion).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE - GorgeousFood_Increment1Package.VERSION__VERSION, null, msgs);
-			msgs = basicSetVersion(newVersion, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GorgeousFood_Increment1Package.VERSION__VERSION,
-					newVersion, newVersion));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public int getMajor() {
 		return major;
 	}
@@ -251,28 +183,12 @@ public class VersionImpl extends MinimalEObjectImpl.Container implements Version
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-		case GorgeousFood_Increment1Package.VERSION__VERSION:
-			return basicSetVersion(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case GorgeousFood_Increment1Package.VERSION__MINOR:
 			return getMinor();
 		case GorgeousFood_Increment1Package.VERSION__SERVICE:
 			return getService();
-		case GorgeousFood_Increment1Package.VERSION__VERSION:
-			return getVersion();
 		case GorgeousFood_Increment1Package.VERSION__MAJOR:
 			return getMajor();
 		}
@@ -292,9 +208,6 @@ public class VersionImpl extends MinimalEObjectImpl.Container implements Version
 			return;
 		case GorgeousFood_Increment1Package.VERSION__SERVICE:
 			setService((Integer) newValue);
-			return;
-		case GorgeousFood_Increment1Package.VERSION__VERSION:
-			setVersion((Requirement) newValue);
 			return;
 		case GorgeousFood_Increment1Package.VERSION__MAJOR:
 			setMajor((Integer) newValue);
@@ -317,9 +230,6 @@ public class VersionImpl extends MinimalEObjectImpl.Container implements Version
 		case GorgeousFood_Increment1Package.VERSION__SERVICE:
 			setService(SERVICE_EDEFAULT);
 			return;
-		case GorgeousFood_Increment1Package.VERSION__VERSION:
-			setVersion((Requirement) null);
-			return;
 		case GorgeousFood_Increment1Package.VERSION__MAJOR:
 			setMajor(MAJOR_EDEFAULT);
 			return;
@@ -339,8 +249,6 @@ public class VersionImpl extends MinimalEObjectImpl.Container implements Version
 			return minor != MINOR_EDEFAULT;
 		case GorgeousFood_Increment1Package.VERSION__SERVICE:
 			return service != SERVICE_EDEFAULT;
-		case GorgeousFood_Increment1Package.VERSION__VERSION:
-			return version != null;
 		case GorgeousFood_Increment1Package.VERSION__MAJOR:
 			return major != MAJOR_EDEFAULT;
 		}

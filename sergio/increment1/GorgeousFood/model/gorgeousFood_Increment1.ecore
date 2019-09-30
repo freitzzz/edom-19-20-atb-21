@@ -21,8 +21,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="Version">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="minor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="service" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="version" lowerBound="1"
-        eType="#//Requirement" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="major" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Requirement">
@@ -43,6 +41,8 @@
         eType="#//Requirement" containment="true" eOpposite="#//Requirement/parent"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//Requirement"
         eOpposite="#//Requirement/children"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="version" lowerBound="1"
+        eType="#//Version" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="Resolution">
     <eLiterals name="INVALID"/>

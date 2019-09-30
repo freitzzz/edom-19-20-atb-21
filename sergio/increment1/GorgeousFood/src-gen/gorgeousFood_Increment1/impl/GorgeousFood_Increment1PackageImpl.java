@@ -293,18 +293,8 @@ public class GorgeousFood_Increment1PackageImpl extends EPackageImpl implements 
 	 * @generated
 	 */
 	@Override
-	public EReference getVersion_Version() {
-		return (EReference) versionEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EAttribute getVersion_Major() {
-		return (EAttribute) versionEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) versionEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -453,6 +443,16 @@ public class GorgeousFood_Increment1PackageImpl extends EPackageImpl implements 
 	 * @generated
 	 */
 	@Override
+	public EReference getRequirement_Version() {
+		return (EReference) requirementEClass.getEStructuralFeatures().get(13);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getComment() {
 		return commentEClass;
 	}
@@ -592,7 +592,6 @@ public class GorgeousFood_Increment1PackageImpl extends EPackageImpl implements 
 		versionEClass = createEClass(VERSION);
 		createEAttribute(versionEClass, VERSION__MINOR);
 		createEAttribute(versionEClass, VERSION__SERVICE);
-		createEReference(versionEClass, VERSION__VERSION);
 		createEAttribute(versionEClass, VERSION__MAJOR);
 
 		requirementEClass = createEClass(REQUIREMENT);
@@ -609,6 +608,7 @@ public class GorgeousFood_Increment1PackageImpl extends EPackageImpl implements 
 		createEReference(requirementEClass, REQUIREMENT__DEPENDENCIES);
 		createEReference(requirementEClass, REQUIREMENT__CHILDREN);
 		createEReference(requirementEClass, REQUIREMENT__PARENT);
+		createEReference(requirementEClass, REQUIREMENT__VERSION);
 
 		commentEClass = createEClass(COMMENT);
 		createEAttribute(commentEClass, COMMENT__SUBJECT);
@@ -686,9 +686,6 @@ public class GorgeousFood_Increment1PackageImpl extends EPackageImpl implements 
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getVersion_Service(), ecorePackage.getEInt(), "service", null, 0, 1, Version.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getVersion_Version(), this.getRequirement(), null, "version", null, 1, 1, Version.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getVersion_Major(), ecorePackage.getEInt(), "major", null, 0, 1, Version.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -725,6 +722,9 @@ public class GorgeousFood_Increment1PackageImpl extends EPackageImpl implements 
 		initEReference(getRequirement_Parent(), this.getRequirement(), this.getRequirement_Children(), "parent", null,
 				0, 1, Requirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRequirement_Version(), this.getVersion(), null, "version", null, 1, 1, Requirement.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(commentEClass, Comment.class, "Comment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getComment_Subject(), ecorePackage.getEString(), "subject", null, 0, 1, Comment.class,

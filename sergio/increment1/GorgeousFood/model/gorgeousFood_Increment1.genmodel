@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/GorgeousFood_Increment1/src-gen" creationIcons="false"
+    editDirectory="/GorgeousFood_Increment1.edit/src-gen" editorDirectory="/GorgeousFood_Increment1.editor/src-gen"
+    modelPluginID="GorgeousFood_Increment1" modelName="GorgeousFood_Increment1" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    codeFormatting="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0"
+    copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>gorgeousFood_Increment1.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="GorgeousFood_Increment1" disposableProviderFactory="true" ecorePackage="gorgeousFood_Increment1.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="gorgeousFood_Increment1.ecore#//Resolution">
+      <genEnumLiterals ecoreEnumLiteral="gorgeousFood_Increment1.ecore#//Resolution/INVALID"/>
+      <genEnumLiterals ecoreEnumLiteral="gorgeousFood_Increment1.ecore#//Resolution/ACCEPTED"/>
+      <genEnumLiterals ecoreEnumLiteral="gorgeousFood_Increment1.ecore#//Resolution/IMPLEMENTED"/>
+      <genEnumLiterals ecoreEnumLiteral="gorgeousFood_Increment1.ecore#//Resolution/LATER"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="gorgeousFood_Increment1.ecore#//Priority">
+      <genEnumLiterals ecoreEnumLiteral="gorgeousFood_Increment1.ecore#//Priority/HIGH"/>
+      <genEnumLiterals ecoreEnumLiteral="gorgeousFood_Increment1.ecore#//Priority/MEDIUM"/>
+      <genEnumLiterals ecoreEnumLiteral="gorgeousFood_Increment1.ecore#//Priority/LOW"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="gorgeousFood_Increment1.ecore#//Type">
+      <genEnumLiterals ecoreEnumLiteral="gorgeousFood_Increment1.ecore#//Type/FUNCTIONAL"/>
+      <genEnumLiterals ecoreEnumLiteral="gorgeousFood_Increment1.ecore#//Type/NONFUNCTIONAL"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="gorgeousFood_Increment1.ecore#//State">
+      <genEnumLiterals ecoreEnumLiteral="gorgeousFood_Increment1.ecore#//State/NEW"/>
+      <genEnumLiterals ecoreEnumLiteral="gorgeousFood_Increment1.ecore#//State/REVIEWED"/>
+      <genEnumLiterals ecoreEnumLiteral="gorgeousFood_Increment1.ecore#//State/APPROVED"/>
+      <genEnumLiterals ecoreEnumLiteral="gorgeousFood_Increment1.ecore#//State/RESOLVED"/>
+    </genEnums>
+    <genClasses ecoreClass="gorgeousFood_Increment1.ecore#//Model">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gorgeousFood_Increment1.ecore#//Model/title"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gorgeousFood_Increment1.ecore#//Model/groups"/>
+    </genClasses>
+    <genClasses ecoreClass="gorgeousFood_Increment1.ecore#//RquirementGroup">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gorgeousFood_Increment1.ecore#//RquirementGroup/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gorgeousFood_Increment1.ecore#//RquirementGroup/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gorgeousFood_Increment1.ecore#//RquirementGroup/id"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gorgeousFood_Increment1.ecore#//RquirementGroup/requirements"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gorgeousFood_Increment1.ecore#//RquirementGroup/children"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference gorgeousFood_Increment1.ecore#//RquirementGroup/parent"/>
+    </genClasses>
+    <genClasses ecoreClass="gorgeousFood_Increment1.ecore#//Version">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gorgeousFood_Increment1.ecore#//Version/major"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gorgeousFood_Increment1.ecore#//Version/minor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gorgeousFood_Increment1.ecore#//Version/service"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gorgeousFood_Increment1.ecore#//Version/version"/>
+    </genClasses>
+    <genClasses ecoreClass="gorgeousFood_Increment1.ecore#//Requirement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gorgeousFood_Increment1.ecore#//Requirement/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gorgeousFood_Increment1.ecore#//Requirement/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gorgeousFood_Increment1.ecore#//Requirement/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gorgeousFood_Increment1.ecore#//Requirement/comment"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gorgeousFood_Increment1.ecore#//Requirement/priority"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gorgeousFood_Increment1.ecore#//Requirement/author"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gorgeousFood_Increment1.ecore#//Requirement/created"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gorgeousFood_Increment1.ecore#//Requirement/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gorgeousFood_Increment1.ecore#//Requirement/state"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gorgeousFood_Increment1.ecore#//Requirement/resolution"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gorgeousFood_Increment1.ecore#//Requirement/parent"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference gorgeousFood_Increment1.ecore#//Requirement/children"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference gorgeousFood_Increment1.ecore#//Requirement/dependencies"/>
+    </genClasses>
+    <genClasses ecoreClass="gorgeousFood_Increment1.ecore#//Comment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gorgeousFood_Increment1.ecore#//Comment/subject"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gorgeousFood_Increment1.ecore#//Comment/body"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gorgeousFood_Increment1.ecore#//Comment/author"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gorgeousFood_Increment1.ecore#//Comment/created"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gorgeousFood_Increment1.ecore#//Comment/children"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

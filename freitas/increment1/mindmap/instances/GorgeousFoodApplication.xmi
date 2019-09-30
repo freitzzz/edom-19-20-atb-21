@@ -8,9 +8,9 @@
     title="Gorgeous Food Application">
   <elements
       xsi:type="mindmap:Topic"
-      name="Unserved Meals"
+      name="Unserved Meal"
       subtopics="//@elements.2 //@elements.1 //@elements.3 //@elements.4 //@elements.5"
-      description="Unserved Meals"/>
+      description="Unserved Meal"/>
   <elements
       xsi:type="mindmap:Topic"
       name="Unexpensive"
@@ -71,9 +71,15 @@
   <elements
       xsi:type="mindmap:Topic"
       name="Meal in Inventory"
-      subtopics="//@elements.13 //@elements.14 //@elements.15 //@elements.16 //@elements.17 //@elements.18 //@elements.19 //@elements.20"
+      subtopics="//@elements.14 //@elements.15 //@elements.16 //@elements.17 //@elements.18 //@elements.19 //@elements.20 //@elements.21"
       parent="//@elements.11"
       description="Meal in Inventory"/>
+  <elements
+      xsi:type="mindmap:Relationship"
+      name="Meal in Inventory is a Unserved Meal"
+      source="//@elements.12"
+      target="//@elements.0"
+      type="EXTEND"/>
   <elements
       xsi:type="mindmap:Topic"
       name="Time"

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mindmap:Map
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:mindmap="http://www.example.org/mindmap"
+    xsi:schemaLocation="http://www.example.org/mindmap ../model/mindmap.ecore"
+    title="Gorgeous Food">
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Unserved Meals"
+      subtopics="//@elements.3 //@elements.2 //@elements.1 //@elements.4 //@elements.5"
+      description=""/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Frozen"
+      parent="//@elements.0"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Unexpensive"
+      parent="//@elements.0"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Balanced"
+      parent="//@elements.0"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Elegant"
+      parent="//@elements.0"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Packaged"
+      subtopics="//@elements.6"
+      parent="//@elements.0"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Labeled"
+      subtopics="//@elements.7 //@elements.8 //@elements.9 //@elements.10"
+      parent="//@elements.5"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Expiration Dates"
+      parent="//@elements.6"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Production"
+      parent="//@elements.6"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Identifier"
+      parent="//@elements.6"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Designation"
+      parent="//@elements.6"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Inventory managed by software"
+      subtopics="//@elements.12"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Meal in Inventory"
+      subtopics="//@elements.13 //@elements.14 //@elements.15 //@elements.16 //@elements.17 //@elements.18 //@elements.19 //@elements.20"
+      parent="//@elements.11"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Type of user who purchased"
+      parent="//@elements.12"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Designation"
+      parent="//@elements.12"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Type"
+      parent="//@elements.12"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Nutritional data"
+      parent="//@elements.12"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Ingredients"
+      parent="//@elements.12"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Allergens"
+      parent="//@elements.12"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Location"
+      parent="//@elements.12"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Timestamp"
+      parent="//@elements.12"/>
+</mindmap:Map>

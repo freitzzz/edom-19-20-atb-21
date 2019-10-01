@@ -26,6 +26,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import requirements.Requirement;
 import requirements.RequirementsFactory;
 import requirements.RequirementsPackage;
+import requirements.Version;
 
 /**
  * This is the item provider adapter for a {@link requirements.Requirement} object.
@@ -287,13 +288,32 @@ public class RequirementItemProvider extends ItemProviderAdapter implements IEdi
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Requirement) object).getId();
-		return label == null || label.length() == 0 ? getString("_UI_Requirement_type")
-				: getString("_UI_Requirement_type") + " " + label;
+		Requirement requirement = (Requirement)object;
+		String title = requirement.getTitle();
+		String id = requirement.getId();
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append(id);
+		sb.append(" (");
+		Version version = requirement.getVersion();
+		if (version != null){
+			sb.append(version.getMajor());
+			sb.append(".");
+			sb.append(version.getMinor());
+			sb.append(".");
+			sb.append(version.getService());
+		} else {
+			sb.append("0.0.0");
+		}
+		sb.append(") : ");
+		
+		sb.append(title);
+		String label = sb.toString();
+		return label;
 	}
 
 	/**

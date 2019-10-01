@@ -104,14 +104,14 @@ public interface GorgeousFood_Increment1Package extends EPackage {
 	int MODEL_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link gorgeousFood_Increment1.impl.RquirementGroupImpl <em>Rquirement Group</em>}' class.
+	 * The meta object id for the '{@link gorgeousFood_Increment1.impl.RequirementGroupImpl <em>Requirement Group</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see gorgeousFood_Increment1.impl.RquirementGroupImpl
-	 * @see gorgeousFood_Increment1.impl.GorgeousFood_Increment1PackageImpl#getRquirementGroup()
+	 * @see gorgeousFood_Increment1.impl.RequirementGroupImpl
+	 * @see gorgeousFood_Increment1.impl.GorgeousFood_Increment1PackageImpl#getRequirementGroup()
 	 * @generated
 	 */
-	int RQUIREMENT_GROUP = 1;
+	int REQUIREMENT_GROUP = 1;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -120,7 +120,7 @@ public interface GorgeousFood_Increment1Package extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RQUIREMENT_GROUP__NAME = 0;
+	int REQUIREMENT_GROUP__NAME = 0;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -129,7 +129,7 @@ public interface GorgeousFood_Increment1Package extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RQUIREMENT_GROUP__DESCRIPTION = 1;
+	int REQUIREMENT_GROUP__DESCRIPTION = 1;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -138,7 +138,7 @@ public interface GorgeousFood_Increment1Package extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RQUIREMENT_GROUP__ID = 2;
+	int REQUIREMENT_GROUP__ID = 2;
 
 	/**
 	 * The feature id for the '<em><b>Requirements</b></em>' containment reference list.
@@ -147,7 +147,7 @@ public interface GorgeousFood_Increment1Package extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RQUIREMENT_GROUP__REQUIREMENTS = 3;
+	int REQUIREMENT_GROUP__REQUIREMENTS = 3;
 
 	/**
 	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
@@ -156,7 +156,7 @@ public interface GorgeousFood_Increment1Package extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RQUIREMENT_GROUP__CHILDREN = 4;
+	int REQUIREMENT_GROUP__CHILDREN = 4;
 
 	/**
 	 * The feature id for the '<em><b>Parent</b></em>' container reference.
@@ -165,25 +165,25 @@ public interface GorgeousFood_Increment1Package extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RQUIREMENT_GROUP__PARENT = 5;
+	int REQUIREMENT_GROUP__PARENT = 5;
 
 	/**
-	 * The number of structural features of the '<em>Rquirement Group</em>' class.
+	 * The number of structural features of the '<em>Requirement Group</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RQUIREMENT_GROUP_FEATURE_COUNT = 6;
+	int REQUIREMENT_GROUP_FEATURE_COUNT = 6;
 
 	/**
-	 * The number of operations of the '<em>Rquirement Group</em>' class.
+	 * The number of operations of the '<em>Requirement Group</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RQUIREMENT_GROUP_OPERATION_COUNT = 0;
+	int REQUIREMENT_GROUP_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link gorgeousFood_Increment1.impl.VersionImpl <em>Version</em>}' class.
@@ -540,80 +540,80 @@ public interface GorgeousFood_Increment1Package extends EPackage {
 	EReference getModel_Groups();
 
 	/**
-	 * Returns the meta object for class '{@link gorgeousFood_Increment1.RquirementGroup <em>Rquirement Group</em>}'.
+	 * Returns the meta object for class '{@link gorgeousFood_Increment1.RequirementGroup <em>Requirement Group</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Rquirement Group</em>'.
-	 * @see gorgeousFood_Increment1.RquirementGroup
+	 * @return the meta object for class '<em>Requirement Group</em>'.
+	 * @see gorgeousFood_Increment1.RequirementGroup
 	 * @generated
 	 */
-	EClass getRquirementGroup();
+	EClass getRequirementGroup();
 
 	/**
-	 * Returns the meta object for the attribute '{@link gorgeousFood_Increment1.RquirementGroup#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link gorgeousFood_Increment1.RequirementGroup#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see gorgeousFood_Increment1.RquirementGroup#getName()
-	 * @see #getRquirementGroup()
+	 * @see gorgeousFood_Increment1.RequirementGroup#getName()
+	 * @see #getRequirementGroup()
 	 * @generated
 	 */
-	EAttribute getRquirementGroup_Name();
+	EAttribute getRequirementGroup_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link gorgeousFood_Increment1.RquirementGroup#getDescription <em>Description</em>}'.
+	 * Returns the meta object for the attribute '{@link gorgeousFood_Increment1.RequirementGroup#getDescription <em>Description</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Description</em>'.
-	 * @see gorgeousFood_Increment1.RquirementGroup#getDescription()
-	 * @see #getRquirementGroup()
+	 * @see gorgeousFood_Increment1.RequirementGroup#getDescription()
+	 * @see #getRequirementGroup()
 	 * @generated
 	 */
-	EAttribute getRquirementGroup_Description();
+	EAttribute getRequirementGroup_Description();
 
 	/**
-	 * Returns the meta object for the attribute '{@link gorgeousFood_Increment1.RquirementGroup#getId <em>Id</em>}'.
+	 * Returns the meta object for the attribute '{@link gorgeousFood_Increment1.RequirementGroup#getId <em>Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Id</em>'.
-	 * @see gorgeousFood_Increment1.RquirementGroup#getId()
-	 * @see #getRquirementGroup()
+	 * @see gorgeousFood_Increment1.RequirementGroup#getId()
+	 * @see #getRequirementGroup()
 	 * @generated
 	 */
-	EAttribute getRquirementGroup_Id();
+	EAttribute getRequirementGroup_Id();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link gorgeousFood_Increment1.RquirementGroup#getRequirements <em>Requirements</em>}'.
+	 * Returns the meta object for the containment reference list '{@link gorgeousFood_Increment1.RequirementGroup#getRequirements <em>Requirements</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Requirements</em>'.
-	 * @see gorgeousFood_Increment1.RquirementGroup#getRequirements()
-	 * @see #getRquirementGroup()
+	 * @see gorgeousFood_Increment1.RequirementGroup#getRequirements()
+	 * @see #getRequirementGroup()
 	 * @generated
 	 */
-	EReference getRquirementGroup_Requirements();
+	EReference getRequirementGroup_Requirements();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link gorgeousFood_Increment1.RquirementGroup#getChildren <em>Children</em>}'.
+	 * Returns the meta object for the containment reference list '{@link gorgeousFood_Increment1.RequirementGroup#getChildren <em>Children</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Children</em>'.
-	 * @see gorgeousFood_Increment1.RquirementGroup#getChildren()
-	 * @see #getRquirementGroup()
+	 * @see gorgeousFood_Increment1.RequirementGroup#getChildren()
+	 * @see #getRequirementGroup()
 	 * @generated
 	 */
-	EReference getRquirementGroup_Children();
+	EReference getRequirementGroup_Children();
 
 	/**
-	 * Returns the meta object for the container reference '{@link gorgeousFood_Increment1.RquirementGroup#getParent <em>Parent</em>}'.
+	 * Returns the meta object for the container reference '{@link gorgeousFood_Increment1.RequirementGroup#getParent <em>Parent</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the container reference '<em>Parent</em>'.
-	 * @see gorgeousFood_Increment1.RquirementGroup#getParent()
-	 * @see #getRquirementGroup()
+	 * @see gorgeousFood_Increment1.RequirementGroup#getParent()
+	 * @see #getRequirementGroup()
 	 * @generated
 	 */
-	EReference getRquirementGroup_Parent();
+	EReference getRequirementGroup_Parent();
 
 	/**
 	 * Returns the meta object for class '{@link gorgeousFood_Increment1.Version <em>Version</em>}'.
@@ -977,14 +977,14 @@ public interface GorgeousFood_Increment1Package extends EPackage {
 		EReference MODEL__GROUPS = eINSTANCE.getModel_Groups();
 
 		/**
-		 * The meta object literal for the '{@link gorgeousFood_Increment1.impl.RquirementGroupImpl <em>Rquirement Group</em>}' class.
+		 * The meta object literal for the '{@link gorgeousFood_Increment1.impl.RequirementGroupImpl <em>Requirement Group</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see gorgeousFood_Increment1.impl.RquirementGroupImpl
-		 * @see gorgeousFood_Increment1.impl.GorgeousFood_Increment1PackageImpl#getRquirementGroup()
+		 * @see gorgeousFood_Increment1.impl.RequirementGroupImpl
+		 * @see gorgeousFood_Increment1.impl.GorgeousFood_Increment1PackageImpl#getRequirementGroup()
 		 * @generated
 		 */
-		EClass RQUIREMENT_GROUP = eINSTANCE.getRquirementGroup();
+		EClass REQUIREMENT_GROUP = eINSTANCE.getRequirementGroup();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -992,7 +992,7 @@ public interface GorgeousFood_Increment1Package extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute RQUIREMENT_GROUP__NAME = eINSTANCE.getRquirementGroup_Name();
+		EAttribute REQUIREMENT_GROUP__NAME = eINSTANCE.getRequirementGroup_Name();
 
 		/**
 		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
@@ -1000,7 +1000,7 @@ public interface GorgeousFood_Increment1Package extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute RQUIREMENT_GROUP__DESCRIPTION = eINSTANCE.getRquirementGroup_Description();
+		EAttribute REQUIREMENT_GROUP__DESCRIPTION = eINSTANCE.getRequirementGroup_Description();
 
 		/**
 		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
@@ -1008,7 +1008,7 @@ public interface GorgeousFood_Increment1Package extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute RQUIREMENT_GROUP__ID = eINSTANCE.getRquirementGroup_Id();
+		EAttribute REQUIREMENT_GROUP__ID = eINSTANCE.getRequirementGroup_Id();
 
 		/**
 		 * The meta object literal for the '<em><b>Requirements</b></em>' containment reference list feature.
@@ -1016,7 +1016,7 @@ public interface GorgeousFood_Increment1Package extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference RQUIREMENT_GROUP__REQUIREMENTS = eINSTANCE.getRquirementGroup_Requirements();
+		EReference REQUIREMENT_GROUP__REQUIREMENTS = eINSTANCE.getRequirementGroup_Requirements();
 
 		/**
 		 * The meta object literal for the '<em><b>Children</b></em>' containment reference list feature.
@@ -1024,7 +1024,7 @@ public interface GorgeousFood_Increment1Package extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference RQUIREMENT_GROUP__CHILDREN = eINSTANCE.getRquirementGroup_Children();
+		EReference REQUIREMENT_GROUP__CHILDREN = eINSTANCE.getRequirementGroup_Children();
 
 		/**
 		 * The meta object literal for the '<em><b>Parent</b></em>' container reference feature.
@@ -1032,7 +1032,7 @@ public interface GorgeousFood_Increment1Package extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference RQUIREMENT_GROUP__PARENT = eINSTANCE.getRquirementGroup_Parent();
+		EReference REQUIREMENT_GROUP__PARENT = eINSTANCE.getRequirementGroup_Parent();
 
 		/**
 		 * The meta object literal for the '{@link gorgeousFood_Increment1.impl.VersionImpl <em>Version</em>}' class.

@@ -48,7 +48,7 @@ public interface Model extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Groups</b></em>' containment reference list.
-	 * The list contents are of type {@link gorgeousFood_Increment1.RquirementGroup}.
+	 * The list contents are of type {@link gorgeousFood_Increment1.RequirementGroup}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Groups</em>' containment reference list.
@@ -56,6 +56,6 @@ public interface Model extends EObject {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<RquirementGroup> getGroups();
+	EList<RequirementGroup> getGroups();
 
 } // Model

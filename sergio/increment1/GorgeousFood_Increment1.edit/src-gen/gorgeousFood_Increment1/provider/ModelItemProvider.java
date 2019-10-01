@@ -174,7 +174,7 @@ public class ModelItemProvider extends ItemProviderAdapter implements IEditingDo
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(GorgeousFood_Increment1Package.Literals.MODEL__GROUPS,
-				GorgeousFood_Increment1Factory.eINSTANCE.createRquirementGroup()));
+				GorgeousFood_Increment1Factory.eINSTANCE.createRequirementGroup()));
 	}
 
 	/**

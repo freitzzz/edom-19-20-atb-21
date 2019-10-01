@@ -31,13 +31,13 @@ public interface GorgeousFood_Increment1Factory extends EFactory {
 	Model createModel();
 
 	/**
-	 * Returns a new object of class '<em>Rquirement Group</em>'.
+	 * Returns a new object of class '<em>Requirement Group</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Rquirement Group</em>'.
+	 * @return a new object of class '<em>Requirement Group</em>'.
 	 * @generated
 	 */
-	RquirementGroup createRquirementGroup();
+	RequirementGroup createRequirementGroup();
 
 	/**
 	 * Returns a new object of class '<em>Version</em>'.

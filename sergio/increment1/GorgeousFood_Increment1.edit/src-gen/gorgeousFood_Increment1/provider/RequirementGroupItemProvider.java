@@ -4,7 +4,7 @@ package gorgeousFood_Increment1.provider;
 
 import gorgeousFood_Increment1.GorgeousFood_Increment1Factory;
 import gorgeousFood_Increment1.GorgeousFood_Increment1Package;
-import gorgeousFood_Increment1.RquirementGroup;
+import gorgeousFood_Increment1.RequirementGroup;
 
 import java.util.Collection;
 import java.util.List;
@@ -28,12 +28,12 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link gorgeousFood_Increment1.RquirementGroup} object.
+ * This is the item provider adapter for a {@link gorgeousFood_Increment1.RequirementGroup} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class RquirementGroupItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
+public class RequirementGroupItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
 		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -41,7 +41,7 @@ public class RquirementGroupItemProvider extends ItemProviderAdapter implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public RquirementGroupItemProvider(AdapterFactory adapterFactory) {
+	public RequirementGroupItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -73,10 +73,10 @@ public class RquirementGroupItemProvider extends ItemProviderAdapter implements 
 	protected void addNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add(createItemPropertyDescriptor(
 				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-				getString("_UI_RquirementGroup_name_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_RquirementGroup_name_feature",
-						"_UI_RquirementGroup_type"),
-				GorgeousFood_Increment1Package.Literals.RQUIREMENT_GROUP__NAME, true, false, false,
+				getString("_UI_RequirementGroup_name_feature"),
+				getString("_UI_PropertyDescriptor_description", "_UI_RequirementGroup_name_feature",
+						"_UI_RequirementGroup_type"),
+				GorgeousFood_Increment1Package.Literals.REQUIREMENT_GROUP__NAME, true, false, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -89,10 +89,10 @@ public class RquirementGroupItemProvider extends ItemProviderAdapter implements 
 	protected void addDescriptionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_RquirementGroup_description_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_RquirementGroup_description_feature",
-								"_UI_RquirementGroup_type"),
-						GorgeousFood_Increment1Package.Literals.RQUIREMENT_GROUP__DESCRIPTION, true, false, false,
+						getResourceLocator(), getString("_UI_RequirementGroup_description_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_RequirementGroup_description_feature",
+								"_UI_RequirementGroup_type"),
+						GorgeousFood_Increment1Package.Literals.REQUIREMENT_GROUP__DESCRIPTION, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -105,10 +105,10 @@ public class RquirementGroupItemProvider extends ItemProviderAdapter implements 
 	protected void addIdPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add(createItemPropertyDescriptor(
 				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-				getString("_UI_RquirementGroup_id_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_RquirementGroup_id_feature",
-						"_UI_RquirementGroup_type"),
-				GorgeousFood_Increment1Package.Literals.RQUIREMENT_GROUP__ID, true, false, false,
+				getString("_UI_RequirementGroup_id_feature"),
+				getString("_UI_PropertyDescriptor_description", "_UI_RequirementGroup_id_feature",
+						"_UI_RequirementGroup_type"),
+				GorgeousFood_Increment1Package.Literals.REQUIREMENT_GROUP__ID, true, false, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -121,10 +121,11 @@ public class RquirementGroupItemProvider extends ItemProviderAdapter implements 
 	protected void addParentPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add(createItemPropertyDescriptor(
 				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-				getString("_UI_RquirementGroup_parent_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_RquirementGroup_parent_feature",
-						"_UI_RquirementGroup_type"),
-				GorgeousFood_Increment1Package.Literals.RQUIREMENT_GROUP__PARENT, true, false, true, null, null, null));
+				getString("_UI_RequirementGroup_parent_feature"),
+				getString("_UI_PropertyDescriptor_description", "_UI_RequirementGroup_parent_feature",
+						"_UI_RequirementGroup_type"),
+				GorgeousFood_Increment1Package.Literals.REQUIREMENT_GROUP__PARENT, true, false, true, null, null,
+				null));
 	}
 
 	/**
@@ -139,8 +140,8 @@ public class RquirementGroupItemProvider extends ItemProviderAdapter implements 
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(GorgeousFood_Increment1Package.Literals.RQUIREMENT_GROUP__REQUIREMENTS);
-			childrenFeatures.add(GorgeousFood_Increment1Package.Literals.RQUIREMENT_GROUP__CHILDREN);
+			childrenFeatures.add(GorgeousFood_Increment1Package.Literals.REQUIREMENT_GROUP__REQUIREMENTS);
+			childrenFeatures.add(GorgeousFood_Increment1Package.Literals.REQUIREMENT_GROUP__CHILDREN);
 		}
 		return childrenFeatures;
 	}
@@ -159,14 +160,14 @@ public class RquirementGroupItemProvider extends ItemProviderAdapter implements 
 	}
 
 	/**
-	 * This returns RquirementGroup.gif.
+	 * This returns RequirementGroup.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/RquirementGroup"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/RequirementGroup"));
 	}
 
 	/**
@@ -187,9 +188,9 @@ public class RquirementGroupItemProvider extends ItemProviderAdapter implements 
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((RquirementGroup) object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_RquirementGroup_type")
-				: getString("_UI_RquirementGroup_type") + " " + label;
+		String label = ((RequirementGroup) object).getName();
+		return label == null || label.length() == 0 ? getString("_UI_RequirementGroup_type")
+				: getString("_UI_RequirementGroup_type") + " " + label;
 	}
 
 	/**
@@ -203,14 +204,14 @@ public class RquirementGroupItemProvider extends ItemProviderAdapter implements 
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(RquirementGroup.class)) {
-		case GorgeousFood_Increment1Package.RQUIREMENT_GROUP__NAME:
-		case GorgeousFood_Increment1Package.RQUIREMENT_GROUP__DESCRIPTION:
-		case GorgeousFood_Increment1Package.RQUIREMENT_GROUP__ID:
+		switch (notification.getFeatureID(RequirementGroup.class)) {
+		case GorgeousFood_Increment1Package.REQUIREMENT_GROUP__NAME:
+		case GorgeousFood_Increment1Package.REQUIREMENT_GROUP__DESCRIPTION:
+		case GorgeousFood_Increment1Package.REQUIREMENT_GROUP__ID:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
-		case GorgeousFood_Increment1Package.RQUIREMENT_GROUP__REQUIREMENTS:
-		case GorgeousFood_Increment1Package.RQUIREMENT_GROUP__CHILDREN:
+		case GorgeousFood_Increment1Package.REQUIREMENT_GROUP__REQUIREMENTS:
+		case GorgeousFood_Increment1Package.REQUIREMENT_GROUP__CHILDREN:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -229,11 +230,12 @@ public class RquirementGroupItemProvider extends ItemProviderAdapter implements 
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors
-				.add(createChildParameter(GorgeousFood_Increment1Package.Literals.RQUIREMENT_GROUP__REQUIREMENTS,
+				.add(createChildParameter(GorgeousFood_Increment1Package.Literals.REQUIREMENT_GROUP__REQUIREMENTS,
 						GorgeousFood_Increment1Factory.eINSTANCE.createRequirement()));
 
-		newChildDescriptors.add(createChildParameter(GorgeousFood_Increment1Package.Literals.RQUIREMENT_GROUP__CHILDREN,
-				GorgeousFood_Increment1Factory.eINSTANCE.createRquirementGroup()));
+		newChildDescriptors
+				.add(createChildParameter(GorgeousFood_Increment1Package.Literals.REQUIREMENT_GROUP__CHILDREN,
+						GorgeousFood_Increment1Factory.eINSTANCE.createRequirementGroup()));
 	}
 
 	/**

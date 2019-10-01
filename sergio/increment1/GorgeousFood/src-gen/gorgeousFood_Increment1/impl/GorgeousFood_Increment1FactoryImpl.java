@@ -59,8 +59,8 @@ public class GorgeousFood_Increment1FactoryImpl extends EFactoryImpl implements 
 		switch (eClass.getClassifierID()) {
 		case GorgeousFood_Increment1Package.MODEL:
 			return createModel();
-		case GorgeousFood_Increment1Package.RQUIREMENT_GROUP:
-			return createRquirementGroup();
+		case GorgeousFood_Increment1Package.REQUIREMENT_GROUP:
+			return createRequirementGroup();
 		case GorgeousFood_Increment1Package.VERSION:
 			return createVersion();
 		case GorgeousFood_Increment1Package.REQUIREMENT:
@@ -131,9 +131,9 @@ public class GorgeousFood_Increment1FactoryImpl extends EFactoryImpl implements 
 	 * @generated
 	 */
 	@Override
-	public RquirementGroup createRquirementGroup() {
-		RquirementGroupImpl rquirementGroup = new RquirementGroupImpl();
-		return rquirementGroup;
+	public RequirementGroup createRequirementGroup() {
+		RequirementGroupImpl requirementGroup = new RequirementGroupImpl();
+		return requirementGroup;
 	}
 
 	/**

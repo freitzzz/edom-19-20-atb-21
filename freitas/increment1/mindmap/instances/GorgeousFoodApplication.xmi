@@ -10,70 +10,96 @@
       xsi:type="mindmap:Topic"
       name="Unserved Meal"
       subtopics="//@elements.2 //@elements.1 //@elements.3 //@elements.4 //@elements.5"
-      description="Unserved Meal"/>
+      description="Unserved Meal"
+      start="2019-10-01T00:00:00.000+0100"
+      end="2019-10-02T00:00:00.000+0100"/>
   <elements
       xsi:type="mindmap:Topic"
       name="Unexpensive"
       parent="//@elements.0"
-      description="Unexpensive"/>
+      description="Unexpensive"
+      start="2019-10-01T00:00:00.000+0100"
+      end="2019-10-02T00:00:00.000+0100"/>
   <elements
       xsi:type="mindmap:Topic"
       name="Balanced"
       parent="//@elements.0"
-      description="Balanced"/>
+      description="Balanced"
+      start="2019-10-01T00:00:00.000+0100"
+      end="2019-10-02T00:00:00.000+0100"/>
   <elements
       xsi:type="mindmap:Topic"
       name="Frozen"
       parent="//@elements.0"
-      description="Frozen"/>
+      description="Frozen"
+      start="2019-10-01T00:00:00.000+0100"
+      end="2019-10-02T00:00:00.000+0100"/>
   <elements
       xsi:type="mindmap:Topic"
       name="Elegant"
       parent="//@elements.0"
-      description="Elegant"/>
+      description="Elegant"
+      start="2019-10-01T00:00:00.000+0100"
+      end="2019-10-02T00:00:00.000+0100"/>
   <elements
       xsi:type="mindmap:Topic"
       name="Packaged"
       subtopics="//@elements.6"
       parent="//@elements.0"
-      description="Packaged"/>
+      description="Packaged"
+      start="2019-10-01T00:00:00.000+0100"
+      end="2019-10-02T00:00:00.000+0100"/>
   <elements
       xsi:type="mindmap:Topic"
       name="Labeled"
       subtopics="//@elements.10 //@elements.9 //@elements.8 //@elements.7"
       parent="//@elements.5"
-      description="Labeled"/>
+      description="Labeled"
+      start="2019-10-01T00:00:00.000+0100"
+      end="2019-10-02T00:00:00.000+0100"/>
   <elements
       xsi:type="mindmap:Topic"
       name="Expiration Date"
       parent="//@elements.6"
-      description="Expiration Date"/>
+      description="Expiration Date"
+      start="2019-10-01T00:00:00.000+0100"
+      end="2019-10-02T00:00:00.000+0100"/>
   <elements
       xsi:type="mindmap:Topic"
       name="Production Date"
       parent="//@elements.6"
-      description="Production Date"/>
+      description="Production Date"
+      start="2019-10-01T00:00:00.000+0100"
+      end="2019-10-02T00:00:00.000+0100"/>
   <elements
       xsi:type="mindmap:Topic"
       name="ID"
       parent="//@elements.6"
-      description="ID"/>
+      description="ID"
+      start="2019-10-01T00:00:00.000+0100"
+      end="2019-10-02T00:00:00.000+0100"/>
   <elements
       xsi:type="mindmap:Topic"
       name="Designation"
       parent="//@elements.6"
-      description="Designation"/>
+      description="Designation"
+      start="2019-10-01T00:00:00.000+0100"
+      end="2019-10-02T00:00:00.000+0100"/>
   <elements
       xsi:type="mindmap:Topic"
       name="Inventory Managed By Software"
       subtopics="//@elements.12"
-      description="Inventory Managed By Software"/>
+      description="Inventory Managed By Software"
+      start="2019-10-01T00:00:00.000+0100"
+      end="2019-10-02T00:00:00.000+0100"/>
   <elements
       xsi:type="mindmap:Topic"
       name="Meal in Inventory"
       subtopics="//@elements.14 //@elements.15 //@elements.16 //@elements.17 //@elements.18 //@elements.19 //@elements.20 //@elements.21"
       parent="//@elements.11"
-      description="Meal in Inventory"/>
+      description="Meal in Inventory"
+      start="2019-10-01T00:00:00.000+0100"
+      end="2019-10-02T00:00:00.000+0100"/>
   <elements
       xsi:type="mindmap:Relationship"
       name="Meal in Inventory is a Unserved Meal"
@@ -84,40 +110,56 @@
       xsi:type="mindmap:Topic"
       name="Time"
       parent="//@elements.12"
-      description="Time"/>
+      description="Time"
+      start="2019-10-01T00:00:00.000+0100"
+      end="2019-10-02T00:00:00.000+0100"/>
   <elements
       xsi:type="mindmap:Topic"
       name="Location"
       parent="//@elements.12"
-      description="Location"/>
+      description="Location"
+      start="2019-10-01T00:00:00.000+0100"
+      end="2019-10-02T00:00:00.000+0100"/>
   <elements
       xsi:type="mindmap:Topic"
       name="Allergens"
       parent="//@elements.12"
-      description="Allergens"/>
+      description="Allergens"
+      start="2019-10-01T00:00:00.000+0100"
+      end="2019-10-02T00:00:00.000+0100"/>
   <elements
       xsi:type="mindmap:Topic"
       name="Ingredients"
       parent="//@elements.12"
-      description="Ingredients"/>
+      description="Ingredients"
+      start="2019-10-01T00:00:00.000+0100"
+      end="2019-10-02T00:00:00.000+0100"/>
   <elements
       xsi:type="mindmap:Topic"
       name="Nutritional Data"
       parent="//@elements.12"
-      description="Nutritional Data"/>
+      description="Nutritional Data"
+      start="2019-10-01T00:00:00.000+0100"
+      end="2019-10-02T00:00:00.000+0100"/>
   <elements
       xsi:type="mindmap:Topic"
       name="Type"
       parent="//@elements.12"
-      description="Type"/>
+      description="Type"
+      start="2019-10-01T00:00:00.000+0100"
+      end="2019-10-02T00:00:00.000+0100"/>
   <elements
       xsi:type="mindmap:Topic"
       name="Designation"
       parent="//@elements.12"
-      description="Designation"/>
+      description="Designation"
+      start="2019-10-01T00:00:00.000+0100"
+      end="2019-10-02T00:00:00.000+0100"/>
   <elements
       xsi:type="mindmap:Topic"
       name="Type Of User Who Purchased"
       parent="//@elements.12"
-      description="Type Of User Who Purchased"/>
+      description="Type Of User Who Purchased"
+      start="2019-10-01T00:00:00.000+0100"
+      end="2019-10-02T00:00:00.000+0100"/>
 </mindmap:Map>

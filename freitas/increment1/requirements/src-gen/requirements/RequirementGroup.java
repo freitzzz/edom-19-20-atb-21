@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link requirements.RequirementGroup#getRequirement <em>Requirement</em>}</li>
+ *   <li>{@link requirements.RequirementGroup#getRequirements <em>Requirements</em>}</li>
  *   <li>{@link requirements.RequirementGroup#getName <em>Name</em>}</li>
  *   <li>{@link requirements.RequirementGroup#getDescription <em>Description</em>}</li>
  *   <li>{@link requirements.RequirementGroup#getId <em>Id</em>}</li>
@@ -28,6 +28,18 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface RequirementGroup extends EObject {
+	/**
+	 * Returns the value of the '<em><b>Requirements</b></em>' containment reference list.
+	 * The list contents are of type {@link requirements.Requirement}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Requirements</em>' containment reference list.
+	 * @see requirements.RequirementsPackage#getRequirementGroup_Requirements()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Requirement> getRequirements();
+
 	/**
 	 * Returns the value of the '<em><b>Parent</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link requirements.RequirementGroup#getChildren <em>Children</em>}'.
@@ -65,18 +77,6 @@ public interface RequirementGroup extends EObject {
 	 * @generated
 	 */
 	EList<RequirementGroup> getChildren();
-
-	/**
-	 * Returns the value of the '<em><b>Requirement</b></em>' containment reference list.
-	 * The list contents are of type {@link requirements.Requirement}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Requirement</em>' containment reference list.
-	 * @see requirements.RequirementsPackage#getRequirementGroup_Requirement()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<Requirement> getRequirement();
 
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.

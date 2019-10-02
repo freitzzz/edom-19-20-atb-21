@@ -123,7 +123,7 @@ public class RequirementGroupItemProvider extends ItemProviderAdapter implements
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(RequirementsPackage.Literals.REQUIREMENT_GROUP__REQUIREMENT);
+			childrenFeatures.add(RequirementsPackage.Literals.REQUIREMENT_GROUP__REQUIREMENTS);
 			childrenFeatures.add(RequirementsPackage.Literals.REQUIREMENT_GROUP__CHILDREN);
 			childrenFeatures.add(RequirementsPackage.Literals.REQUIREMENT_GROUP__PARENT);
 		}
@@ -194,7 +194,7 @@ public class RequirementGroupItemProvider extends ItemProviderAdapter implements
 		case RequirementsPackage.REQUIREMENT_GROUP__ID:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
-		case RequirementsPackage.REQUIREMENT_GROUP__REQUIREMENT:
+		case RequirementsPackage.REQUIREMENT_GROUP__REQUIREMENTS:
 		case RequirementsPackage.REQUIREMENT_GROUP__CHILDREN:
 		case RequirementsPackage.REQUIREMENT_GROUP__PARENT:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
@@ -214,7 +214,7 @@ public class RequirementGroupItemProvider extends ItemProviderAdapter implements
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(RequirementsPackage.Literals.REQUIREMENT_GROUP__REQUIREMENT,
+		newChildDescriptors.add(createChildParameter(RequirementsPackage.Literals.REQUIREMENT_GROUP__REQUIREMENTS,
 				RequirementsFactory.eINSTANCE.createRequirement()));
 
 		newChildDescriptors.add(createChildParameter(RequirementsPackage.Literals.REQUIREMENT_GROUP__CHILDREN,

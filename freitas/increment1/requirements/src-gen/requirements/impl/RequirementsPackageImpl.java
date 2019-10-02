@@ -322,6 +322,16 @@ public class RequirementsPackageImpl extends EPackageImpl implements Requirement
 	 * @generated
 	 */
 	@Override
+	public EReference getRequirementGroup_Requirements() {
+		return (EReference) requirementGroupEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EReference getRequirementGroup_Parent() {
 		return (EReference) requirementGroupEClass.getEStructuralFeatures().get(5);
 	}
@@ -334,16 +344,6 @@ public class RequirementsPackageImpl extends EPackageImpl implements Requirement
 	@Override
 	public EReference getRequirementGroup_Children() {
 		return (EReference) requirementGroupEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getRequirementGroup_Requirement() {
-		return (EReference) requirementGroupEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -593,7 +593,7 @@ public class RequirementsPackageImpl extends EPackageImpl implements Requirement
 		createEReference(requirementEClass, REQUIREMENT__PARENT);
 
 		requirementGroupEClass = createEClass(REQUIREMENT_GROUP);
-		createEReference(requirementGroupEClass, REQUIREMENT_GROUP__REQUIREMENT);
+		createEReference(requirementGroupEClass, REQUIREMENT_GROUP__REQUIREMENTS);
 		createEAttribute(requirementGroupEClass, REQUIREMENT_GROUP__NAME);
 		createEAttribute(requirementGroupEClass, REQUIREMENT_GROUP__DESCRIPTION);
 		createEAttribute(requirementGroupEClass, REQUIREMENT_GROUP__ID);
@@ -694,7 +694,7 @@ public class RequirementsPackageImpl extends EPackageImpl implements Requirement
 
 		initEClass(requirementGroupEClass, RequirementGroup.class, "RequirementGroup", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getRequirementGroup_Requirement(), this.getRequirement(), null, "requirement", null, 0, -1,
+		initEReference(getRequirementGroup_Requirements(), this.getRequirement(), null, "requirements", null, 0, -1,
 				RequirementGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRequirementGroup_Name(), ecorePackage.getEString(), "name", null, 0, 1,

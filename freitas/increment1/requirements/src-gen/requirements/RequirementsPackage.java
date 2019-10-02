@@ -222,13 +222,13 @@ public interface RequirementsPackage extends EPackage {
 	int REQUIREMENT_GROUP = 1;
 
 	/**
-	 * The feature id for the '<em><b>Requirement</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Requirements</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REQUIREMENT_GROUP__REQUIREMENT = 0;
+	int REQUIREMENT_GROUP__REQUIREMENTS = 0;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -682,6 +682,17 @@ public interface RequirementsPackage extends EPackage {
 	EClass getRequirementGroup();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link requirements.RequirementGroup#getRequirements <em>Requirements</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Requirements</em>'.
+	 * @see requirements.RequirementGroup#getRequirements()
+	 * @see #getRequirementGroup()
+	 * @generated
+	 */
+	EReference getRequirementGroup_Requirements();
+
+	/**
 	 * Returns the meta object for the container reference '{@link requirements.RequirementGroup#getParent <em>Parent</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -702,17 +713,6 @@ public interface RequirementsPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getRequirementGroup_Children();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link requirements.RequirementGroup#getRequirement <em>Requirement</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Requirement</em>'.
-	 * @see requirements.RequirementGroup#getRequirement()
-	 * @see #getRequirementGroup()
-	 * @generated
-	 */
-	EReference getRequirementGroup_Requirement();
 
 	/**
 	 * Returns the meta object for the attribute '{@link requirements.RequirementGroup#getName <em>Name</em>}'.
@@ -1083,6 +1083,14 @@ public interface RequirementsPackage extends EPackage {
 		EClass REQUIREMENT_GROUP = eINSTANCE.getRequirementGroup();
 
 		/**
+		 * The meta object literal for the '<em><b>Requirements</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REQUIREMENT_GROUP__REQUIREMENTS = eINSTANCE.getRequirementGroup_Requirements();
+
+		/**
 		 * The meta object literal for the '<em><b>Parent</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1097,14 +1105,6 @@ public interface RequirementsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference REQUIREMENT_GROUP__CHILDREN = eINSTANCE.getRequirementGroup_Children();
-
-		/**
-		 * The meta object literal for the '<em><b>Requirement</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference REQUIREMENT_GROUP__REQUIREMENT = eINSTANCE.getRequirementGroup_Requirement();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.

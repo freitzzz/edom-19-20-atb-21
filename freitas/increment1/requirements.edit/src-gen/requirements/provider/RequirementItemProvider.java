@@ -292,15 +292,15 @@ public class RequirementItemProvider extends ItemProviderAdapter implements IEdi
 	 */
 	@Override
 	public String getText(Object object) {
-		Requirement requirement = (Requirement)object;
+		Requirement requirement = (Requirement) object;
 		String title = requirement.getTitle();
 		String id = requirement.getId();
-		
+
 		StringBuilder sb = new StringBuilder();
 		sb.append(id);
 		sb.append(" (");
 		Version version = requirement.getVersion();
-		if (version != null){
+		if (version != null) {
 			sb.append(version.getMajor());
 			sb.append(".");
 			sb.append(version.getMinor());
@@ -310,7 +310,7 @@ public class RequirementItemProvider extends ItemProviderAdapter implements IEdi
 			sb.append("0.0.0");
 		}
 		sb.append(") : ");
-		
+
 		sb.append(title);
 		String label = sb.toString();
 		return label;

@@ -32,7 +32,7 @@ import requirements.RequirementsPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link requirements.impl.RequirementGroupImpl#getRequirement <em>Requirement</em>}</li>
+ *   <li>{@link requirements.impl.RequirementGroupImpl#getRequirements <em>Requirements</em>}</li>
  *   <li>{@link requirements.impl.RequirementGroupImpl#getName <em>Name</em>}</li>
  *   <li>{@link requirements.impl.RequirementGroupImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link requirements.impl.RequirementGroupImpl#getId <em>Id</em>}</li>
@@ -44,14 +44,14 @@ import requirements.RequirementsPackage;
  */
 public class RequirementGroupImpl extends MinimalEObjectImpl.Container implements RequirementGroup {
 	/**
-	 * The cached value of the '{@link #getRequirement() <em>Requirement</em>}' containment reference list.
+	 * The cached value of the '{@link #getRequirements() <em>Requirements</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRequirement()
+	 * @see #getRequirements()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Requirement> requirement;
+	protected EList<Requirement> requirements;
 
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -148,6 +148,20 @@ public class RequirementGroupImpl extends MinimalEObjectImpl.Container implement
 	 * @generated
 	 */
 	@Override
+	public EList<Requirement> getRequirements() {
+		if (requirements == null) {
+			requirements = new EObjectContainmentEList<Requirement>(Requirement.class, this,
+					RequirementsPackage.REQUIREMENT_GROUP__REQUIREMENTS);
+		}
+		return requirements;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public RequirementGroup getParent() {
 		if (eContainerFeatureID() != RequirementsPackage.REQUIREMENT_GROUP__PARENT)
 			return null;
@@ -220,20 +234,6 @@ public class RequirementGroupImpl extends MinimalEObjectImpl.Container implement
 					RequirementsPackage.REQUIREMENT_GROUP__CHILDREN, RequirementsPackage.REQUIREMENT_GROUP__PARENT);
 		}
 		return children;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EList<Requirement> getRequirement() {
-		if (requirement == null) {
-			requirement = new EObjectContainmentEList<Requirement>(Requirement.class, this,
-					RequirementsPackage.REQUIREMENT_GROUP__REQUIREMENT);
-		}
-		return requirement;
 	}
 
 	/**
@@ -316,8 +316,8 @@ public class RequirementGroupImpl extends MinimalEObjectImpl.Container implement
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case RequirementsPackage.REQUIREMENT_GROUP__REQUIREMENT:
-			return ((InternalEList<?>) getRequirement()).basicRemove(otherEnd, msgs);
+		case RequirementsPackage.REQUIREMENT_GROUP__REQUIREMENTS:
+			return ((InternalEList<?>) getRequirements()).basicRemove(otherEnd, msgs);
 		case RequirementsPackage.REQUIREMENT_GROUP__CHILDREN:
 			return ((InternalEList<?>) getChildren()).basicRemove(otherEnd, msgs);
 		case RequirementsPackage.REQUIREMENT_GROUP__PARENT:
@@ -349,8 +349,8 @@ public class RequirementGroupImpl extends MinimalEObjectImpl.Container implement
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case RequirementsPackage.REQUIREMENT_GROUP__REQUIREMENT:
-			return getRequirement();
+		case RequirementsPackage.REQUIREMENT_GROUP__REQUIREMENTS:
+			return getRequirements();
 		case RequirementsPackage.REQUIREMENT_GROUP__NAME:
 			return getName();
 		case RequirementsPackage.REQUIREMENT_GROUP__DESCRIPTION:
@@ -374,9 +374,9 @@ public class RequirementGroupImpl extends MinimalEObjectImpl.Container implement
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case RequirementsPackage.REQUIREMENT_GROUP__REQUIREMENT:
-			getRequirement().clear();
-			getRequirement().addAll((Collection<? extends Requirement>) newValue);
+		case RequirementsPackage.REQUIREMENT_GROUP__REQUIREMENTS:
+			getRequirements().clear();
+			getRequirements().addAll((Collection<? extends Requirement>) newValue);
 			return;
 		case RequirementsPackage.REQUIREMENT_GROUP__NAME:
 			setName((String) newValue);
@@ -406,8 +406,8 @@ public class RequirementGroupImpl extends MinimalEObjectImpl.Container implement
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case RequirementsPackage.REQUIREMENT_GROUP__REQUIREMENT:
-			getRequirement().clear();
+		case RequirementsPackage.REQUIREMENT_GROUP__REQUIREMENTS:
+			getRequirements().clear();
 			return;
 		case RequirementsPackage.REQUIREMENT_GROUP__NAME:
 			setName(NAME_EDEFAULT);
@@ -436,8 +436,8 @@ public class RequirementGroupImpl extends MinimalEObjectImpl.Container implement
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case RequirementsPackage.REQUIREMENT_GROUP__REQUIREMENT:
-			return requirement != null && !requirement.isEmpty();
+		case RequirementsPackage.REQUIREMENT_GROUP__REQUIREMENTS:
+			return requirements != null && !requirements.isEmpty();
 		case RequirementsPackage.REQUIREMENT_GROUP__NAME:
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case RequirementsPackage.REQUIREMENT_GROUP__DESCRIPTION:

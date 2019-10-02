@@ -28,6 +28,7 @@ import gorgeousFood_Increment1.GorgeousFood_Increment1Factory;
 import gorgeousFood_Increment1.Model;
 import gorgeousFood_Increment1.Requirement;
 import gorgeousFood_Increment1.RequirementGroup;
+import gorgeousFood_Increment1.Version;
 import gorgeousFood_Increment1.impl.RequirementImpl;
 
 public class CreateInstance {
@@ -85,12 +86,18 @@ public class CreateInstance {
 		reqGroup1.setName("Unserved meals");
 		reqGroup1.setDescription("Unserved meals requirements");
 		
+		Version version = factory.createVersion();
+		version.setMajor(1);
+		version.setMinor(0);
+		version.setService(0);
+		
 		// Create requirement add meal to inventory
 		Requirement requirement1 = factory.createRequirement();
 		requirement1.setTitle("Add meal to inventory");
 		requirement1.setDescription("Adds unserved meal to software inventory");
 		requirement1.setAuthor("Sérgio Ferreira");
-		requirement1.setCreated(new Date(1570051175));
+		requirement1.setCreated(new Date(1570053040460L));
+		requirement1.setVersion(version);
 		
 		reqGroup1.getRequirements().add(requirement1);
 		model.getGroups().add(reqGroup1);
@@ -100,26 +107,42 @@ public class CreateInstance {
 		reqGroup2.setName("Meals to serve");
 		reqGroup2.setDescription("Meals to serve requirements");
 		
+		Version version2 = factory.createVersion();
+		version2.setMajor(1);
+		version2.setMinor(0);
+		version2.setService(0);
+		
 		// Create requirement list all meals
 		Requirement requirement2 = factory.createRequirement();
 		requirement2.setTitle("List all meals");
 		requirement2.setDescription("List all meals of the inventory");
 		requirement2.setAuthor("Sérgio Ferreira");
-		requirement2.setCreated(new Date(1570051175));
+		requirement2.setCreated(new Date(1570053040460L));
+		requirement2.setVersion(version2);
 		
+		Version version3 = factory.createVersion();
+		version3.setMajor(1);
+		version3.setMinor(0);
+		version3.setService(0);
 		// Create requirement list meal
 		Requirement requirement3 = factory.createRequirement();
 		requirement3.setTitle("List a meal");
 		requirement3.setDescription("List a specific meal and all its specificities");
 		requirement3.setAuthor("Sérgio Ferreira");
-		requirement3.setCreated(new Date(1570051175));
+		requirement3.setCreated(new Date(1570053040460L));
+		requirement3.setVersion(version3);
 		
+		Version version4 = factory.createVersion();
+		version4.setMajor(1);
+		version4.setMinor(0);
+		version4.setService(0);
 		// Create requirement pay meal
 		Requirement requirement4 = factory.createRequirement();
-		requirement4.setTitle("Pay a meal");
+		requirement4.setTitle("Pay meal");
 		requirement4.setDescription("Pay a meal");
 		requirement4.setAuthor("Sérgio Ferreira");
-		requirement4.setCreated(new Date(1570051175));
+		requirement4.setCreated(new Date(1570053040460L));
+		requirement4.setVersion(version4);
 
 		reqGroup2.getRequirements().add(requirement2);
 		reqGroup2.getRequirements().add(requirement3);
@@ -142,6 +165,11 @@ public class CreateInstance {
         }
         else {
         	System.out.println(" Everything seems fine :-)");
+        }
+        
+        if (diag.getChildren().size() > 0) {
+        	System.out.println("OCL validation failed");
+        	System.exit(0);
         }
         
         // Obtain a new resource set

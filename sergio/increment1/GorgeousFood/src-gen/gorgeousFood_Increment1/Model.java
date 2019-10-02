@@ -20,7 +20,8 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see gorgeousFood_Increment1.GorgeousFood_Increment1Package#getModel()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='mustHaveTitle titleMustHaveAtLeastFiveChars'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot mustHaveTitle='not title.oclIsUndefined()' titleMustHaveAtLeastFiveChars='title.size() &gt;= 5'"
  * @generated
  */
 public interface Model extends EObject {

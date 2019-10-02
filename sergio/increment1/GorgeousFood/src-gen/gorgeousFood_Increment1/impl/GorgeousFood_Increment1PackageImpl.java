@@ -8,8 +8,8 @@ import gorgeousFood_Increment1.GorgeousFood_Increment1Package;
 import gorgeousFood_Increment1.Model;
 import gorgeousFood_Increment1.Priority;
 import gorgeousFood_Increment1.Requirement;
+import gorgeousFood_Increment1.RequirementGroup;
 import gorgeousFood_Increment1.Resolution;
-import gorgeousFood_Increment1.RquirementGroup;
 import gorgeousFood_Increment1.State;
 import gorgeousFood_Increment1.Type;
 import gorgeousFood_Increment1.Version;
@@ -41,7 +41,7 @@ public class GorgeousFood_Increment1PackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass rquirementGroupEClass = null;
+	private EClass requirementGroupEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -193,8 +193,8 @@ public class GorgeousFood_Increment1PackageImpl extends EPackageImpl implements 
 	 * @generated
 	 */
 	@Override
-	public EClass getRquirementGroup() {
-		return rquirementGroupEClass;
+	public EClass getRequirementGroup() {
+		return requirementGroupEClass;
 	}
 
 	/**
@@ -203,8 +203,8 @@ public class GorgeousFood_Increment1PackageImpl extends EPackageImpl implements 
 	 * @generated
 	 */
 	@Override
-	public EAttribute getRquirementGroup_Name() {
-		return (EAttribute) rquirementGroupEClass.getEStructuralFeatures().get(0);
+	public EAttribute getRequirementGroup_Name() {
+		return (EAttribute) requirementGroupEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -213,8 +213,8 @@ public class GorgeousFood_Increment1PackageImpl extends EPackageImpl implements 
 	 * @generated
 	 */
 	@Override
-	public EAttribute getRquirementGroup_Description() {
-		return (EAttribute) rquirementGroupEClass.getEStructuralFeatures().get(1);
+	public EAttribute getRequirementGroup_Description() {
+		return (EAttribute) requirementGroupEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -223,8 +223,8 @@ public class GorgeousFood_Increment1PackageImpl extends EPackageImpl implements 
 	 * @generated
 	 */
 	@Override
-	public EAttribute getRquirementGroup_Id() {
-		return (EAttribute) rquirementGroupEClass.getEStructuralFeatures().get(2);
+	public EAttribute getRequirementGroup_Id() {
+		return (EAttribute) requirementGroupEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -233,8 +233,8 @@ public class GorgeousFood_Increment1PackageImpl extends EPackageImpl implements 
 	 * @generated
 	 */
 	@Override
-	public EReference getRquirementGroup_Requirements() {
-		return (EReference) rquirementGroupEClass.getEStructuralFeatures().get(3);
+	public EReference getRequirementGroup_Requirements() {
+		return (EReference) requirementGroupEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -243,8 +243,8 @@ public class GorgeousFood_Increment1PackageImpl extends EPackageImpl implements 
 	 * @generated
 	 */
 	@Override
-	public EReference getRquirementGroup_Children() {
-		return (EReference) rquirementGroupEClass.getEStructuralFeatures().get(4);
+	public EReference getRequirementGroup_Children() {
+		return (EReference) requirementGroupEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -253,8 +253,8 @@ public class GorgeousFood_Increment1PackageImpl extends EPackageImpl implements 
 	 * @generated
 	 */
 	@Override
-	public EReference getRquirementGroup_Parent() {
-		return (EReference) rquirementGroupEClass.getEStructuralFeatures().get(5);
+	public EReference getRequirementGroup_Parent() {
+		return (EReference) requirementGroupEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -581,13 +581,13 @@ public class GorgeousFood_Increment1PackageImpl extends EPackageImpl implements 
 		createEAttribute(modelEClass, MODEL__TITLE);
 		createEReference(modelEClass, MODEL__GROUPS);
 
-		rquirementGroupEClass = createEClass(RQUIREMENT_GROUP);
-		createEAttribute(rquirementGroupEClass, RQUIREMENT_GROUP__NAME);
-		createEAttribute(rquirementGroupEClass, RQUIREMENT_GROUP__DESCRIPTION);
-		createEAttribute(rquirementGroupEClass, RQUIREMENT_GROUP__ID);
-		createEReference(rquirementGroupEClass, RQUIREMENT_GROUP__REQUIREMENTS);
-		createEReference(rquirementGroupEClass, RQUIREMENT_GROUP__CHILDREN);
-		createEReference(rquirementGroupEClass, RQUIREMENT_GROUP__PARENT);
+		requirementGroupEClass = createEClass(REQUIREMENT_GROUP);
+		createEAttribute(requirementGroupEClass, REQUIREMENT_GROUP__NAME);
+		createEAttribute(requirementGroupEClass, REQUIREMENT_GROUP__DESCRIPTION);
+		createEAttribute(requirementGroupEClass, REQUIREMENT_GROUP__ID);
+		createEReference(requirementGroupEClass, REQUIREMENT_GROUP__REQUIREMENTS);
+		createEReference(requirementGroupEClass, REQUIREMENT_GROUP__CHILDREN);
+		createEReference(requirementGroupEClass, REQUIREMENT_GROUP__PARENT);
 
 		versionEClass = createEClass(VERSION);
 		createEAttribute(versionEClass, VERSION__MINOR);
@@ -658,27 +658,28 @@ public class GorgeousFood_Increment1PackageImpl extends EPackageImpl implements 
 		initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getModel_Title(), ecorePackage.getEString(), "title", null, 0, 1, Model.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getModel_Groups(), this.getRquirementGroup(), null, "groups", null, 0, -1, Model.class,
+		initEReference(getModel_Groups(), this.getRequirementGroup(), null, "groups", null, 0, -1, Model.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(rquirementGroupEClass, RquirementGroup.class, "RquirementGroup", !IS_ABSTRACT, !IS_INTERFACE,
+		initEClass(requirementGroupEClass, RequirementGroup.class, "RequirementGroup", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getRquirementGroup_Name(), ecorePackage.getEString(), "name", null, 0, 1, RquirementGroup.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRquirementGroup_Description(), ecorePackage.getEString(), "description", null, 0, 1,
-				RquirementGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+		initEAttribute(getRequirementGroup_Name(), ecorePackage.getEString(), "name", null, 0, 1,
+				RequirementGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRquirementGroup_Id(), ecorePackage.getEString(), "id", null, 0, 1, RquirementGroup.class,
+		initEAttribute(getRequirementGroup_Description(), ecorePackage.getEString(), "description", null, 0, 1,
+				RequirementGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRequirementGroup_Id(), ecorePackage.getEString(), "id", null, 0, 1, RequirementGroup.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRquirementGroup_Requirements(), this.getRequirement(), null, "requirements", null, 0, -1,
-				RquirementGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+		initEReference(getRequirementGroup_Requirements(), this.getRequirement(), null, "requirements", null, 0, -1,
+				RequirementGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRquirementGroup_Children(), this.getRquirementGroup(), this.getRquirementGroup_Parent(),
-				"children", null, 0, -1, RquirementGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+		initEReference(getRequirementGroup_Children(), this.getRequirementGroup(), this.getRequirementGroup_Parent(),
+				"children", null, 0, -1, RequirementGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
 				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRquirementGroup_Parent(), this.getRquirementGroup(), this.getRquirementGroup_Children(),
-				"parent", null, 0, 1, RquirementGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+		initEReference(getRequirementGroup_Parent(), this.getRequirementGroup(), this.getRequirementGroup_Children(),
+				"parent", null, 0, 1, RequirementGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
 				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(versionEClass, Version.class, "Version", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

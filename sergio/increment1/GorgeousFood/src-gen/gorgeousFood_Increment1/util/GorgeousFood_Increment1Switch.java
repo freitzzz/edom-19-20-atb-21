@@ -73,9 +73,9 @@ public class GorgeousFood_Increment1Switch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case GorgeousFood_Increment1Package.RQUIREMENT_GROUP: {
-			RquirementGroup rquirementGroup = (RquirementGroup) theEObject;
-			T result = caseRquirementGroup(rquirementGroup);
+		case GorgeousFood_Increment1Package.REQUIREMENT_GROUP: {
+			RequirementGroup requirementGroup = (RequirementGroup) theEObject;
+			T result = caseRequirementGroup(requirementGroup);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -122,17 +122,17 @@ public class GorgeousFood_Increment1Switch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Rquirement Group</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Requirement Group</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Rquirement Group</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Requirement Group</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseRquirementGroup(RquirementGroup object) {
+	public T caseRequirementGroup(RequirementGroup object) {
 		return null;
 	}
 

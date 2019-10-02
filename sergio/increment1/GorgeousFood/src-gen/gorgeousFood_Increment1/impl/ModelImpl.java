@@ -4,8 +4,7 @@ package gorgeousFood_Increment1.impl;
 
 import gorgeousFood_Increment1.GorgeousFood_Increment1Package;
 import gorgeousFood_Increment1.Model;
-import gorgeousFood_Increment1.RquirementGroup;
-
+import gorgeousFood_Increment1.RequirementGroup;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -65,7 +64,7 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<RquirementGroup> groups;
+	protected EList<RequirementGroup> groups;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -116,9 +115,9 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model {
 	 * @generated
 	 */
 	@Override
-	public EList<RquirementGroup> getGroups() {
+	public EList<RequirementGroup> getGroups() {
 		if (groups == null) {
-			groups = new EObjectContainmentEList<RquirementGroup>(RquirementGroup.class, this,
+			groups = new EObjectContainmentEList<RequirementGroup>(RequirementGroup.class, this,
 					GorgeousFood_Increment1Package.MODEL__GROUPS);
 		}
 		return groups;
@@ -168,7 +167,7 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model {
 			return;
 		case GorgeousFood_Increment1Package.MODEL__GROUPS:
 			getGroups().clear();
-			getGroups().addAll((Collection<? extends RquirementGroup>) newValue);
+			getGroups().addAll((Collection<? extends RequirementGroup>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);

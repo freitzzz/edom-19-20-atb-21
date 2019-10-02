@@ -34,13 +34,13 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gorgeousFood_Increment1.ecore#//Model/title"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gorgeousFood_Increment1.ecore#//Model/groups"/>
     </genClasses>
-    <genClasses ecoreClass="gorgeousFood_Increment1.ecore#//RquirementGroup">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gorgeousFood_Increment1.ecore#//RquirementGroup/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gorgeousFood_Increment1.ecore#//RquirementGroup/description"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gorgeousFood_Increment1.ecore#//RquirementGroup/id"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gorgeousFood_Increment1.ecore#//RquirementGroup/requirements"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gorgeousFood_Increment1.ecore#//RquirementGroup/children"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference gorgeousFood_Increment1.ecore#//RquirementGroup/parent"/>
+    <genClasses ecoreClass="gorgeousFood_Increment1.ecore#//RequirementGroup">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gorgeousFood_Increment1.ecore#//RequirementGroup/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gorgeousFood_Increment1.ecore#//RequirementGroup/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gorgeousFood_Increment1.ecore#//RequirementGroup/id"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gorgeousFood_Increment1.ecore#//RequirementGroup/requirements"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gorgeousFood_Increment1.ecore#//RequirementGroup/children"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference gorgeousFood_Increment1.ecore#//RequirementGroup/parent"/>
     </genClasses>
     <genClasses ecoreClass="gorgeousFood_Increment1.ecore#//Version">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gorgeousFood_Increment1.ecore#//Version/minor"/>

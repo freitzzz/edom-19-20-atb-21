@@ -96,26 +96,26 @@ public class GorgeousFood_Increment1ItemProviderAdapterFactory extends GorgeousF
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link gorgeousFood_Increment1.RquirementGroup} instances.
+	 * This keeps track of the one adapter used for all {@link gorgeousFood_Increment1.RequirementGroup} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected RquirementGroupItemProvider rquirementGroupItemProvider;
+	protected RequirementGroupItemProvider requirementGroupItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link gorgeousFood_Increment1.RquirementGroup}.
+	 * This creates an adapter for a {@link gorgeousFood_Increment1.RequirementGroup}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createRquirementGroupAdapter() {
-		if (rquirementGroupItemProvider == null) {
-			rquirementGroupItemProvider = new RquirementGroupItemProvider(this);
+	public Adapter createRequirementGroupAdapter() {
+		if (requirementGroupItemProvider == null) {
+			requirementGroupItemProvider = new RequirementGroupItemProvider(this);
 		}
 
-		return rquirementGroupItemProvider;
+		return requirementGroupItemProvider;
 	}
 
 	/**
@@ -294,8 +294,8 @@ public class GorgeousFood_Increment1ItemProviderAdapterFactory extends GorgeousF
 	public void dispose() {
 		if (modelItemProvider != null)
 			modelItemProvider.dispose();
-		if (rquirementGroupItemProvider != null)
-			rquirementGroupItemProvider.dispose();
+		if (requirementGroupItemProvider != null)
+			requirementGroupItemProvider.dispose();
 		if (versionItemProvider != null)
 			versionItemProvider.dispose();
 		if (requirementItemProvider != null)

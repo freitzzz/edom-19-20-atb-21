@@ -4,7 +4,7 @@ package gorgeousFood_Increment1.impl;
 
 import gorgeousFood_Increment1.GorgeousFood_Increment1Package;
 import gorgeousFood_Increment1.Requirement;
-import gorgeousFood_Increment1.RquirementGroup;
+import gorgeousFood_Increment1.RequirementGroup;
 
 import java.util.Collection;
 
@@ -26,23 +26,23 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Rquirement Group</b></em>'.
+ * An implementation of the model object '<em><b>Requirement Group</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link gorgeousFood_Increment1.impl.RquirementGroupImpl#getName <em>Name</em>}</li>
- *   <li>{@link gorgeousFood_Increment1.impl.RquirementGroupImpl#getDescription <em>Description</em>}</li>
- *   <li>{@link gorgeousFood_Increment1.impl.RquirementGroupImpl#getId <em>Id</em>}</li>
- *   <li>{@link gorgeousFood_Increment1.impl.RquirementGroupImpl#getRequirements <em>Requirements</em>}</li>
- *   <li>{@link gorgeousFood_Increment1.impl.RquirementGroupImpl#getChildren <em>Children</em>}</li>
- *   <li>{@link gorgeousFood_Increment1.impl.RquirementGroupImpl#getParent <em>Parent</em>}</li>
+ *   <li>{@link gorgeousFood_Increment1.impl.RequirementGroupImpl#getName <em>Name</em>}</li>
+ *   <li>{@link gorgeousFood_Increment1.impl.RequirementGroupImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link gorgeousFood_Increment1.impl.RequirementGroupImpl#getId <em>Id</em>}</li>
+ *   <li>{@link gorgeousFood_Increment1.impl.RequirementGroupImpl#getRequirements <em>Requirements</em>}</li>
+ *   <li>{@link gorgeousFood_Increment1.impl.RequirementGroupImpl#getChildren <em>Children</em>}</li>
+ *   <li>{@link gorgeousFood_Increment1.impl.RequirementGroupImpl#getParent <em>Parent</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class RquirementGroupImpl extends MinimalEObjectImpl.Container implements RquirementGroup {
+public class RequirementGroupImpl extends MinimalEObjectImpl.Container implements RequirementGroup {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -121,14 +121,14 @@ public class RquirementGroupImpl extends MinimalEObjectImpl.Container implements
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<RquirementGroup> children;
+	protected EList<RequirementGroup> children;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected RquirementGroupImpl() {
+	protected RequirementGroupImpl() {
 		super();
 	}
 
@@ -139,7 +139,7 @@ public class RquirementGroupImpl extends MinimalEObjectImpl.Container implements
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return GorgeousFood_Increment1Package.Literals.RQUIREMENT_GROUP;
+		return GorgeousFood_Increment1Package.Literals.REQUIREMENT_GROUP;
 	}
 
 	/**
@@ -162,8 +162,8 @@ public class RquirementGroupImpl extends MinimalEObjectImpl.Container implements
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GorgeousFood_Increment1Package.RQUIREMENT_GROUP__NAME,
-					oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					GorgeousFood_Increment1Package.REQUIREMENT_GROUP__NAME, oldName, name));
 	}
 
 	/**
@@ -187,7 +187,7 @@ public class RquirementGroupImpl extends MinimalEObjectImpl.Container implements
 		description = newDescription;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					GorgeousFood_Increment1Package.RQUIREMENT_GROUP__DESCRIPTION, oldDescription, description));
+					GorgeousFood_Increment1Package.REQUIREMENT_GROUP__DESCRIPTION, oldDescription, description));
 	}
 
 	/**
@@ -210,7 +210,7 @@ public class RquirementGroupImpl extends MinimalEObjectImpl.Container implements
 		String oldId = id;
 		id = newId;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GorgeousFood_Increment1Package.RQUIREMENT_GROUP__ID,
+			eNotify(new ENotificationImpl(this, Notification.SET, GorgeousFood_Increment1Package.REQUIREMENT_GROUP__ID,
 					oldId, id));
 	}
 
@@ -223,7 +223,7 @@ public class RquirementGroupImpl extends MinimalEObjectImpl.Container implements
 	public EList<Requirement> getRequirements() {
 		if (requirements == null) {
 			requirements = new EObjectContainmentEList<Requirement>(Requirement.class, this,
-					GorgeousFood_Increment1Package.RQUIREMENT_GROUP__REQUIREMENTS);
+					GorgeousFood_Increment1Package.REQUIREMENT_GROUP__REQUIREMENTS);
 		}
 		return requirements;
 	}
@@ -234,11 +234,11 @@ public class RquirementGroupImpl extends MinimalEObjectImpl.Container implements
 	 * @generated
 	 */
 	@Override
-	public EList<RquirementGroup> getChildren() {
+	public EList<RequirementGroup> getChildren() {
 		if (children == null) {
-			children = new EObjectContainmentWithInverseEList<RquirementGroup>(RquirementGroup.class, this,
-					GorgeousFood_Increment1Package.RQUIREMENT_GROUP__CHILDREN,
-					GorgeousFood_Increment1Package.RQUIREMENT_GROUP__PARENT);
+			children = new EObjectContainmentWithInverseEList<RequirementGroup>(RequirementGroup.class, this,
+					GorgeousFood_Increment1Package.REQUIREMENT_GROUP__CHILDREN,
+					GorgeousFood_Increment1Package.REQUIREMENT_GROUP__PARENT);
 		}
 		return children;
 	}
@@ -249,10 +249,10 @@ public class RquirementGroupImpl extends MinimalEObjectImpl.Container implements
 	 * @generated
 	 */
 	@Override
-	public RquirementGroup getParent() {
-		if (eContainerFeatureID() != GorgeousFood_Increment1Package.RQUIREMENT_GROUP__PARENT)
+	public RequirementGroup getParent() {
+		if (eContainerFeatureID() != GorgeousFood_Increment1Package.REQUIREMENT_GROUP__PARENT)
 			return null;
-		return (RquirementGroup) eInternalContainer();
+		return (RequirementGroup) eInternalContainer();
 	}
 
 	/**
@@ -260,8 +260,8 @@ public class RquirementGroupImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetParent(RquirementGroup newParent, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject) newParent, GorgeousFood_Increment1Package.RQUIREMENT_GROUP__PARENT,
+	public NotificationChain basicSetParent(RequirementGroup newParent, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newParent, GorgeousFood_Increment1Package.REQUIREMENT_GROUP__PARENT,
 				msgs);
 		return msgs;
 	}
@@ -272,9 +272,9 @@ public class RquirementGroupImpl extends MinimalEObjectImpl.Container implements
 	 * @generated
 	 */
 	@Override
-	public void setParent(RquirementGroup newParent) {
+	public void setParent(RequirementGroup newParent) {
 		if (newParent != eInternalContainer()
-				|| (eContainerFeatureID() != GorgeousFood_Increment1Package.RQUIREMENT_GROUP__PARENT
+				|| (eContainerFeatureID() != GorgeousFood_Increment1Package.REQUIREMENT_GROUP__PARENT
 						&& newParent != null)) {
 			if (EcoreUtil.isAncestor(this, newParent))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
@@ -283,13 +283,13 @@ public class RquirementGroupImpl extends MinimalEObjectImpl.Container implements
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newParent != null)
 				msgs = ((InternalEObject) newParent).eInverseAdd(this,
-						GorgeousFood_Increment1Package.RQUIREMENT_GROUP__CHILDREN, RquirementGroup.class, msgs);
+						GorgeousFood_Increment1Package.REQUIREMENT_GROUP__CHILDREN, RequirementGroup.class, msgs);
 			msgs = basicSetParent(newParent, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					GorgeousFood_Increment1Package.RQUIREMENT_GROUP__PARENT, newParent, newParent));
+					GorgeousFood_Increment1Package.REQUIREMENT_GROUP__PARENT, newParent, newParent));
 	}
 
 	/**
@@ -301,12 +301,12 @@ public class RquirementGroupImpl extends MinimalEObjectImpl.Container implements
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case GorgeousFood_Increment1Package.RQUIREMENT_GROUP__CHILDREN:
+		case GorgeousFood_Increment1Package.REQUIREMENT_GROUP__CHILDREN:
 			return ((InternalEList<InternalEObject>) (InternalEList<?>) getChildren()).basicAdd(otherEnd, msgs);
-		case GorgeousFood_Increment1Package.RQUIREMENT_GROUP__PARENT:
+		case GorgeousFood_Increment1Package.REQUIREMENT_GROUP__PARENT:
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
-			return basicSetParent((RquirementGroup) otherEnd, msgs);
+			return basicSetParent((RequirementGroup) otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -319,11 +319,11 @@ public class RquirementGroupImpl extends MinimalEObjectImpl.Container implements
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case GorgeousFood_Increment1Package.RQUIREMENT_GROUP__REQUIREMENTS:
+		case GorgeousFood_Increment1Package.REQUIREMENT_GROUP__REQUIREMENTS:
 			return ((InternalEList<?>) getRequirements()).basicRemove(otherEnd, msgs);
-		case GorgeousFood_Increment1Package.RQUIREMENT_GROUP__CHILDREN:
+		case GorgeousFood_Increment1Package.REQUIREMENT_GROUP__CHILDREN:
 			return ((InternalEList<?>) getChildren()).basicRemove(otherEnd, msgs);
-		case GorgeousFood_Increment1Package.RQUIREMENT_GROUP__PARENT:
+		case GorgeousFood_Increment1Package.REQUIREMENT_GROUP__PARENT:
 			return basicSetParent(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -337,9 +337,9 @@ public class RquirementGroupImpl extends MinimalEObjectImpl.Container implements
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
-		case GorgeousFood_Increment1Package.RQUIREMENT_GROUP__PARENT:
-			return eInternalContainer().eInverseRemove(this, GorgeousFood_Increment1Package.RQUIREMENT_GROUP__CHILDREN,
-					RquirementGroup.class, msgs);
+		case GorgeousFood_Increment1Package.REQUIREMENT_GROUP__PARENT:
+			return eInternalContainer().eInverseRemove(this, GorgeousFood_Increment1Package.REQUIREMENT_GROUP__CHILDREN,
+					RequirementGroup.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
@@ -352,17 +352,17 @@ public class RquirementGroupImpl extends MinimalEObjectImpl.Container implements
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case GorgeousFood_Increment1Package.RQUIREMENT_GROUP__NAME:
+		case GorgeousFood_Increment1Package.REQUIREMENT_GROUP__NAME:
 			return getName();
-		case GorgeousFood_Increment1Package.RQUIREMENT_GROUP__DESCRIPTION:
+		case GorgeousFood_Increment1Package.REQUIREMENT_GROUP__DESCRIPTION:
 			return getDescription();
-		case GorgeousFood_Increment1Package.RQUIREMENT_GROUP__ID:
+		case GorgeousFood_Increment1Package.REQUIREMENT_GROUP__ID:
 			return getId();
-		case GorgeousFood_Increment1Package.RQUIREMENT_GROUP__REQUIREMENTS:
+		case GorgeousFood_Increment1Package.REQUIREMENT_GROUP__REQUIREMENTS:
 			return getRequirements();
-		case GorgeousFood_Increment1Package.RQUIREMENT_GROUP__CHILDREN:
+		case GorgeousFood_Increment1Package.REQUIREMENT_GROUP__CHILDREN:
 			return getChildren();
-		case GorgeousFood_Increment1Package.RQUIREMENT_GROUP__PARENT:
+		case GorgeousFood_Increment1Package.REQUIREMENT_GROUP__PARENT:
 			return getParent();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -377,25 +377,25 @@ public class RquirementGroupImpl extends MinimalEObjectImpl.Container implements
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case GorgeousFood_Increment1Package.RQUIREMENT_GROUP__NAME:
+		case GorgeousFood_Increment1Package.REQUIREMENT_GROUP__NAME:
 			setName((String) newValue);
 			return;
-		case GorgeousFood_Increment1Package.RQUIREMENT_GROUP__DESCRIPTION:
+		case GorgeousFood_Increment1Package.REQUIREMENT_GROUP__DESCRIPTION:
 			setDescription((String) newValue);
 			return;
-		case GorgeousFood_Increment1Package.RQUIREMENT_GROUP__ID:
+		case GorgeousFood_Increment1Package.REQUIREMENT_GROUP__ID:
 			setId((String) newValue);
 			return;
-		case GorgeousFood_Increment1Package.RQUIREMENT_GROUP__REQUIREMENTS:
+		case GorgeousFood_Increment1Package.REQUIREMENT_GROUP__REQUIREMENTS:
 			getRequirements().clear();
 			getRequirements().addAll((Collection<? extends Requirement>) newValue);
 			return;
-		case GorgeousFood_Increment1Package.RQUIREMENT_GROUP__CHILDREN:
+		case GorgeousFood_Increment1Package.REQUIREMENT_GROUP__CHILDREN:
 			getChildren().clear();
-			getChildren().addAll((Collection<? extends RquirementGroup>) newValue);
+			getChildren().addAll((Collection<? extends RequirementGroup>) newValue);
 			return;
-		case GorgeousFood_Increment1Package.RQUIREMENT_GROUP__PARENT:
-			setParent((RquirementGroup) newValue);
+		case GorgeousFood_Increment1Package.REQUIREMENT_GROUP__PARENT:
+			setParent((RequirementGroup) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -409,23 +409,23 @@ public class RquirementGroupImpl extends MinimalEObjectImpl.Container implements
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case GorgeousFood_Increment1Package.RQUIREMENT_GROUP__NAME:
+		case GorgeousFood_Increment1Package.REQUIREMENT_GROUP__NAME:
 			setName(NAME_EDEFAULT);
 			return;
-		case GorgeousFood_Increment1Package.RQUIREMENT_GROUP__DESCRIPTION:
+		case GorgeousFood_Increment1Package.REQUIREMENT_GROUP__DESCRIPTION:
 			setDescription(DESCRIPTION_EDEFAULT);
 			return;
-		case GorgeousFood_Increment1Package.RQUIREMENT_GROUP__ID:
+		case GorgeousFood_Increment1Package.REQUIREMENT_GROUP__ID:
 			setId(ID_EDEFAULT);
 			return;
-		case GorgeousFood_Increment1Package.RQUIREMENT_GROUP__REQUIREMENTS:
+		case GorgeousFood_Increment1Package.REQUIREMENT_GROUP__REQUIREMENTS:
 			getRequirements().clear();
 			return;
-		case GorgeousFood_Increment1Package.RQUIREMENT_GROUP__CHILDREN:
+		case GorgeousFood_Increment1Package.REQUIREMENT_GROUP__CHILDREN:
 			getChildren().clear();
 			return;
-		case GorgeousFood_Increment1Package.RQUIREMENT_GROUP__PARENT:
-			setParent((RquirementGroup) null);
+		case GorgeousFood_Increment1Package.REQUIREMENT_GROUP__PARENT:
+			setParent((RequirementGroup) null);
 			return;
 		}
 		super.eUnset(featureID);
@@ -439,17 +439,17 @@ public class RquirementGroupImpl extends MinimalEObjectImpl.Container implements
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case GorgeousFood_Increment1Package.RQUIREMENT_GROUP__NAME:
+		case GorgeousFood_Increment1Package.REQUIREMENT_GROUP__NAME:
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-		case GorgeousFood_Increment1Package.RQUIREMENT_GROUP__DESCRIPTION:
+		case GorgeousFood_Increment1Package.REQUIREMENT_GROUP__DESCRIPTION:
 			return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
-		case GorgeousFood_Increment1Package.RQUIREMENT_GROUP__ID:
+		case GorgeousFood_Increment1Package.REQUIREMENT_GROUP__ID:
 			return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
-		case GorgeousFood_Increment1Package.RQUIREMENT_GROUP__REQUIREMENTS:
+		case GorgeousFood_Increment1Package.REQUIREMENT_GROUP__REQUIREMENTS:
 			return requirements != null && !requirements.isEmpty();
-		case GorgeousFood_Increment1Package.RQUIREMENT_GROUP__CHILDREN:
+		case GorgeousFood_Increment1Package.REQUIREMENT_GROUP__CHILDREN:
 			return children != null && !children.isEmpty();
-		case GorgeousFood_Increment1Package.RQUIREMENT_GROUP__PARENT:
+		case GorgeousFood_Increment1Package.REQUIREMENT_GROUP__PARENT:
 			return getParent() != null;
 		}
 		return super.eIsSet(featureID);
@@ -476,4 +476,4 @@ public class RquirementGroupImpl extends MinimalEObjectImpl.Container implements
 		return result.toString();
 	}
 
-} //RquirementGroupImpl
+} //RequirementGroupImpl

@@ -72,8 +72,8 @@ public class GorgeousFood_Increment1AdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseRquirementGroup(RquirementGroup object) {
-			return createRquirementGroupAdapter();
+		public Adapter caseRequirementGroup(RequirementGroup object) {
+			return createRequirementGroupAdapter();
 		}
 
 		@Override
@@ -125,16 +125,16 @@ public class GorgeousFood_Increment1AdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link gorgeousFood_Increment1.RquirementGroup <em>Rquirement Group</em>}'.
+	 * Creates a new adapter for an object of class '{@link gorgeousFood_Increment1.RequirementGroup <em>Requirement Group</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see gorgeousFood_Increment1.RquirementGroup
+	 * @see gorgeousFood_Increment1.RequirementGroup
 	 * @generated
 	 */
-	public Adapter createRquirementGroupAdapter() {
+	public Adapter createRequirementGroupAdapter() {
 		return null;
 	}
 

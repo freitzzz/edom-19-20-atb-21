@@ -47,7 +47,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference requirements.ecore#//Requirement/parent"/>
     </genClasses>
     <genClasses ecoreClass="requirements.ecore#//RequirementGroup">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference requirements.ecore#//RequirementGroup/requirement"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference requirements.ecore#//RequirementGroup/requirements"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute requirements.ecore#//RequirementGroup/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute requirements.ecore#//RequirementGroup/description"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute requirements.ecore#//RequirementGroup/id"/>

@@ -108,18 +108,21 @@
     <target name="GenerateRequirementsPUMLUsingCircles">
         <java classname="requirements.GenerateRequirementsPUMLUsingCircles" failonerror="true" fork="yes">
             <arg value="${instancePath}"/>
+            <arg value="${generatedPath}"/>
             <classpath refid="run.GenerateRequirementsPUMLUsingCircles.classpath"/>
         </java>
     </target>
     <target name="GenerateRequirementsPUMLUsingCirclesWithGorgeousFoodApplicationInstance">
         <java classname="requirements.GenerateRequirementsPUMLUsingCircles" failonerror="true" fork="yes">
             <arg line="instances/GorgeousFoodApplication.xmi"/>
+            <arg line="instances/saved.requirements.puml"/>
             <classpath refid="run.GenerateRequirementsPUMLUsingCirclesWithGorgeousFoodApplicationInstance.classpath"/>
         </java>
     </target>
     <target name="GenerateRequirementsPUMLUsingCirclesWithSavedRequirementsInstance">
         <java classname="requirements.GenerateRequirementsPUMLUsingCircles" failonerror="true" fork="yes">
             <arg line="instances/saved.requirements.xmi"/>
+            <arg line="instances/saved.requirements.puml"/>
             <classpath refid="run.GenerateRequirementsPUMLUsingCirclesWithSavedRequirementsInstance.classpath"/>
         </java>
     </target>

@@ -15,18 +15,22 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
 //This class will generate a PlantUML file with the representation of a requirements instance using circles
-//The requirements instance should be defined in the following file: instances/GorgeousFoodApplication.xmi
-//The generated PlantUML file is defined as the following file: instances/gorgeous_food_application_requirements.puml
-//The generator takes in account spaces found in identifiers and uses wraps them with quotes
+//The requirements instance file path should be defined as the first argument
+//The generated PlantUML file path should be defined as the second argument
+//The generator takes in account spaces found in identifiers and wraps them with quotes
 public class GenerateRequirementsPUMLUsingCircles {
 
 	public static void main(String[] args) {
 		String requirementsInstancePath = args[0];
+		String generatedPUMLPath = args[1];
+		
 		File requirementsInstanceAsFile = new File(requirementsInstancePath);
-		loadModel(requirementsInstanceAsFile);
+		File generatedPUMLAsFile = new File(generatedPUMLPath);
+		
+		loadModel(requirementsInstanceAsFile, generatedPUMLAsFile);
 	}
 
-	public static void loadModel(File requirementsInstanceAsFile) {
+	public static void loadModel(File requirementsInstanceAsFile, File generatedPUMLAsFile) {
 		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("xmi", new XMIResourceFactoryImpl());
 
 		// Initialize the model
@@ -49,7 +53,7 @@ public class GenerateRequirementsPUMLUsingCircles {
 			
 			//-----
 			// Generate a plantuml file that represents the mind map diagram
-			FileWriter w = new FileWriter("instances/gorgeous_food_application_requirements.puml");
+			FileWriter w = new FileWriter(generatedPUMLAsFile);
 	        writer = new PrintWriter(w);
 	        
 	        writer.println("@startuml");

@@ -24,11 +24,13 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RequirementGroup">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="mustHaveName mustHaveDescription"/>
+      <details key="constraints" value="mustHaveName nameMustHaveAtLeastFiveChars mustHaveDescription descriptionMustHaveAtLeastTenChars"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
       <details key="mustHaveName" value="not name.oclIsUndefined()"/>
+      <details key="nameMustHaveAtLeastFiveChars" value="name.size() >= 5"/>
       <details key="mustHaveDescription" value="not description.oclIsUndefined()"/>
+      <details key="descriptionMustHaveAtLeastTenChars" value="description.size() > 5"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -41,6 +43,14 @@
         eOpposite="#//RequirementGroup/children"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Version">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="mustHaveMinor mustHaveService mustHaveMajor"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="mustHaveMinor" value="not minor.oclIsUndefined()"/>
+      <details key="mustHaveService" value="not service.oclIsUndefined()"/>
+      <details key="mustHaveMajor" value="not major.oclIsUndefined()"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="minor" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="service" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -48,11 +58,12 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Requirement">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="mustHaveTitle mustHaveDescription"/>
+      <details key="constraints" value="mustHaveTitle mustHaveDescription mustHaveCreateDate"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
       <details key="mustHaveTitle" value="not title.oclIsUndefined()"/>
       <details key="mustHaveDescription" value="not description.oclIsUndefined()"/>
+      <details key="mustHaveCreateDate" value="not created.oclIsUndefined()"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

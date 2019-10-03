@@ -809,9 +809,12 @@ public class GorgeousFood_Increment1PackageImpl extends EPackageImpl implements 
 						"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot" });
 		addAnnotation(modelEClass, source,
 				new String[] { "constraints", "mustHaveTitle titleMustHaveAtLeastFiveChars" });
-		addAnnotation(requirementGroupEClass, source,
-				new String[] { "constraints", "mustHaveName mustHaveDescription" });
-		addAnnotation(requirementEClass, source, new String[] { "constraints", "mustHaveTitle mustHaveDescription" });
+		addAnnotation(requirementGroupEClass, source, new String[] { "constraints",
+				"mustHaveName nameMustHaveAtLeastFiveChars mustHaveDescription descriptionMustHaveAtLeastTenChars" });
+		addAnnotation(versionEClass, source,
+				new String[] { "constraints", "mustHaveMinor mustHaveService mustHaveMajor" });
+		addAnnotation(requirementEClass, source,
+				new String[] { "constraints", "mustHaveTitle mustHaveDescription mustHaveCreateDate" });
 		addAnnotation(commentEClass, source,
 				new String[] { "constraints", "mustHaveSubject mustHaveBody mustHaveAuthor" });
 	}
@@ -826,10 +829,15 @@ public class GorgeousFood_Increment1PackageImpl extends EPackageImpl implements 
 		String source = "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot";
 		addAnnotation(modelEClass, source, new String[] { "mustHaveTitle", "not title.oclIsUndefined()",
 				"titleMustHaveAtLeastFiveChars", "title.size() >= 5" });
-		addAnnotation(requirementGroupEClass, source, new String[] { "mustHaveName", "not name.oclIsUndefined()",
-				"mustHaveDescription", "not description.oclIsUndefined()" });
-		addAnnotation(requirementEClass, source, new String[] { "mustHaveTitle", "not title.oclIsUndefined()",
-				"mustHaveDescription", "not description.oclIsUndefined()" });
+		addAnnotation(requirementGroupEClass, source,
+				new String[] { "mustHaveName", "not name.oclIsUndefined()", "nameMustHaveAtLeastFiveChars",
+						"name.size() >= 5", "mustHaveDescription", "not description.oclIsUndefined()",
+						"descriptionMustHaveAtLeastTenChars", "description.size() > 5" });
+		addAnnotation(versionEClass, source, new String[] { "mustHaveMinor", "not minor.oclIsUndefined()",
+				"mustHaveService", "not service.oclIsUndefined()", "mustHaveMajor", "not major.oclIsUndefined()" });
+		addAnnotation(requirementEClass, source,
+				new String[] { "mustHaveTitle", "not title.oclIsUndefined()", "mustHaveDescription",
+						"not description.oclIsUndefined()", "mustHaveCreateDate", "not created.oclIsUndefined()" });
 		addAnnotation(commentEClass, source, new String[] { "mustHaveSubject", "not subject.oclIsUndefined()",
 				"mustHaveBody", "not body.oclIsUndefined()", "mustHaveAuthor", "not author.oclIsUndefined()" });
 	}

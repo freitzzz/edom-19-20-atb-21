@@ -19,7 +19,8 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see gorgeousFood_Increment1.GorgeousFood_Increment1Package#getVersion()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='mustHaveMinor mustHaveService mustHaveMajor'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot mustHaveMinor='not minor.oclIsUndefined()' mustHaveService='not service.oclIsUndefined()' mustHaveMajor='not major.oclIsUndefined()'"
  * @generated
  */
 public interface Version extends EObject {

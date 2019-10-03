@@ -34,8 +34,8 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see gorgeousFood_Increment1.GorgeousFood_Increment1Package#getRequirement()
- * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='mustHaveTitle mustHaveDescription'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot mustHaveTitle='not title.oclIsUndefined()' mustHaveDescription='not description.oclIsUndefined()'"
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='mustHaveTitle mustHaveDescription mustHaveCreateDate'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot mustHaveTitle='not title.oclIsUndefined()' mustHaveDescription='not description.oclIsUndefined()' mustHaveCreateDate='not created.oclIsUndefined()'"
  * @generated
  */
 public interface Requirement extends EObject {

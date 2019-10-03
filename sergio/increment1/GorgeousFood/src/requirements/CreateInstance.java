@@ -164,7 +164,7 @@ public class CreateInstance {
         	}
         }
         else {
-        	System.out.println(" Everything seems fine :-)");
+        	System.out.println("Requirements model is valid!");
         }
         
         if (diag.getChildren().size() > 0) {

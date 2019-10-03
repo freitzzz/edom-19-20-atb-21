@@ -52,11 +52,13 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RequirementGroup">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="MustHaveDescription DescriptionLengthMustBeGreaterOrEqualThanTen CannotHaveSubRequirementsGroupWithSameName"/>
+      <details key="constraints" value="MustHaveDescription DescriptionLengthMustBeGreaterOrEqualThanTen MustHaveName NameLengthMustBeGreaterOrEqualThanTen CannotHaveSubRequirementsGroupWithSameName"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
       <details key="MustHaveDescription" value="not description.oclIsUndefined()"/>
       <details key="DescriptionLengthMustBeGreaterOrEqualThanTen" value="description.size() >= 10"/>
+      <details key="MustHaveName" value="not name.oclIsUndefined()"/>
+      <details key="NameLengthMustBeGreaterOrEqualThanTen" value="name.size() >= 5"/>
       <details key="CannotHaveSubRequirementsGroupWithSameName" value="not parent.name.equalsIgnoreCase(name)"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="requirements" upperBound="-1"

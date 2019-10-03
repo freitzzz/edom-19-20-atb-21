@@ -9,17 +9,17 @@ In this folder you should add **all** artifacts developed for the project increm
 ### Model
 
 * Title
-  * Must exist
-  - Must have least 5 characters
+    * Must exist
+    * Must have least 5 characters
 
 ### RequirementGroup
 
 - Name
-  - Must exist
-  - Must have at least 5 characters
+    - Must exist
+    - Must have at least 5 characters
 - Description
-  - Must exist
-  - Must have at least 10 characters
+    - Must exist
+    - Must have at least 10 characters
 
 ### Requirement
 

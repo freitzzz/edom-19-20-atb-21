@@ -8,8 +8,8 @@ In this folder you should add **all** artifacts developed for the project increm
 
 ### Model
 
-- Title
-  - Must exist
+* Title
+  * Must exist
   - Must have least 5 characters
 
 ### RequirementGroup

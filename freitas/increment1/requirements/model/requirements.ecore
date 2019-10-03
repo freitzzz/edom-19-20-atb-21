@@ -1,7 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="requirements" nsURI="http://www.example.org/requirements" nsPrefix="requirements">
+  <eAnnotations source="http://www.eclipse.org/OCL/Import">
+    <details key="ecore" value="http://www.eclipse.org/emf/2002/Ecore"/>
+  </eAnnotations>
+  <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+    <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+  </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="Requirement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="MustHaveTitle TitleLengthMustBeGreaterOrEqualThanFive MustHaveDescription DescriptionLengthMustBeGreaterOrEqualThanTen StateCannotBeResolvedIfResolutionIsInvalid StateCannotBeApprovedIfResolutionIsInvalid StateCannotBeReviewedIfResolutionIsInvalid MustHaveCreationDate MustHaveAuthor AuthorLengthMustBeGreaterOrEqualThanThree"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="MustHaveTitle" value="not title.oclIsUndefined()"/>
+      <details key="TitleLengthMustBeGreaterOrEqualThanFive" value="title.size() >= 5"/>
+      <details key="MustHaveDescription" value="not description.oclIsUndefined()"/>
+      <details key="DescriptionLengthMustBeGreaterOrEqualThanTen" value="description.size() >= 10"/>
+      <details key="StateCannotBeResolvedIfResolutionIsInvalid" value="if resolution = 'INVALID' then &#xA;&#x9;&#x9;&#x9;&#x9;state &lt;> 'RESOLVED'&#xA;&#x9;&#x9;&#x9; else &#xA;&#x9;&#x9;&#x9; &#x9;true&#xA;&#x9;&#x9;&#x9; endif "/>
+      <details key="StateCannotBeApprovedIfResolutionIsInvalid" value="if resolution = 'INVALID' then &#xA;&#x9;&#x9;&#x9;&#x9;state &lt;> 'APPROVED'&#xA;&#x9;&#x9;&#x9; else &#xA;&#x9;&#x9;&#x9; &#x9;true&#xA;&#x9;&#x9;&#x9; endif "/>
+      <details key="StateCannotBeReviewedIfResolutionIsInvalid" value="if resolution = 'INVALID' then &#xA;&#x9;&#x9;&#x9;&#x9;state &lt;> 'REVIEWED'&#xA;&#x9;&#x9;&#x9; else &#xA;&#x9;&#x9;&#x9; &#x9;true&#xA;&#x9;&#x9;&#x9; endif "/>
+      <details key="MustHaveCreationDate" value="not created.oclIsUndefined()"/>
+      <details key="MustHaveAuthor" value="not author.oclIsUndefined()"/>
+      <details key="AuthorLengthMustBeGreaterOrEqualThanThree" value="author.size() >= 3"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="version" lowerBound="1"
         eType="#//Version" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="comments" upperBound="-1"
@@ -28,6 +51,14 @@
         eOpposite="#//Requirement/children"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RequirementGroup">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="MustHaveDescription DescriptionLengthMustBeGreaterOrEqualThanTen CannotHaveSubRequirementsGroupWithSameName"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="MustHaveDescription" value="not description.oclIsUndefined()"/>
+      <details key="DescriptionLengthMustBeGreaterOrEqualThanTen" value="description.size() >= 10"/>
+      <details key="CannotHaveSubRequirementsGroupWithSameName" value="not parent.name.equalsIgnoreCase(name)"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="requirements" upperBound="-1"
         eType="#//Requirement" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -39,16 +70,44 @@
         eOpposite="#//RequirementGroup/children"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Model">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="MustHaveTitle TitleLengthMustBeGreaterOrEqualThanFive"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="MustHaveTitle" value="not title.oclIsUndefined()"/>
+      <details key="TitleLengthMustBeGreaterOrEqualThanFive" value="title.size() >= 5"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="groups" upperBound="-1"
         eType="#//RequirementGroup" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Version">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="major" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="service" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="MajorCannotBeLowerThanZero MinorCannotBeLowerThanZero ServiceCannotBeLowerThanZero"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="MajorCannotBeLowerThanZero" value="major >= 0"/>
+      <details key="MinorCannotBeLowerThanZero" value="minor >= 0"/>
+      <details key="ServiceCannotBeLowerThanZero" value="service >= 0"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="major" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minor" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="service" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Comment">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="MustHaveAuthor AuthorLengthMustBeGreaterOrEqualThanThree MustHaveBody BodyLengthMustBeGreaterOrEqualThanFifteen MustHaveSubject SubjectLengthMustBeGreaterOrEqualThanTen MustHaveCreationDate"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="MustHaveAuthor" value="not author.oclIsUndefined()"/>
+      <details key="AuthorLengthMustBeGreaterOrEqualThanThree" value="author.size() >= 3"/>
+      <details key="MustHaveBody" value="not body.oclIsUndefined()"/>
+      <details key="BodyLengthMustBeGreaterOrEqualThanFifteen" value="body.size() >= 15"/>
+      <details key="MustHaveSubject" value="not subject.oclIsUndefined()"/>
+      <details key="SubjectLengthMustBeGreaterOrEqualThanTen" value="subject.size() >= 10"/>
+      <details key="MustHaveCreationDate" value="not created.oclIsUndefined()"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
         eType="#//Comment" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="subject" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

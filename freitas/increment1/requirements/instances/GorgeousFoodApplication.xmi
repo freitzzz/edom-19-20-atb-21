@@ -28,13 +28,6 @@
             service="1"/>
       </requirements>
       <requirements
-          title="Show Meal Designation"
-          description="The software should be able to show a meal designation."
-          id="0">
-        <version
-            service="1"/>
-      </requirements>
-      <requirements
           title="Show Meal Nutritional Data"
           description="The software should be able to show a meal nutritional data."
           id="0">

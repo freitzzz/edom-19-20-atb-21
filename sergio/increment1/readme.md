@@ -8,9 +8,9 @@ In this folder you should add **all** artifacts developed for the project increm
 
 ### Model
 
-* Title
-    * Must exist
-    * Must have least 5 characters
+- Title
+    - Must exist
+    - Must have least 5 characters
 
 ### RequirementGroup
 
@@ -24,13 +24,13 @@ In this folder you should add **all** artifacts developed for the project increm
 ### Requirement
 
 - Title
-  - Must exist
-  - Must have at least 5 characters
+    - Must exist
+    - Must have at least 5 characters
 - Description
-  - Must exist
-  - Must have at least 10 characters
+    - Must exist
+    - Must have at least 10 characters
 - Created
-  - Must exist
+    - Must exist
 
 ### Version
 
@@ -39,12 +39,12 @@ All attributes need to be defined
 ### Comment
 
 - Subject
-  - Must exist
-  - Must have at least 5 characters
+    - Must exist
+    - Must have at least 5 characters
 - Body
-  - Must exit
-  - Must have at least 5 characters
+    - Must exit
+    - Must have at least 5 characters
 - Author
-  - Must exist
+    - Must exist
 - Created
-  - Must exist
+    - Must exist

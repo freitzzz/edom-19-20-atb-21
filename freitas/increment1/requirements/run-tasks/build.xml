@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. --><project basedir="../" default="build" name="requirements">
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="../../../../../../eclipsemt/eclipse/"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="10"/>
+    <property name="source" value="10"/>
+    <path id="Plug-in Dependencies.libraryclasspath">
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.emf.ecore_2.19.0.v20190822-1451.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.emf.common_2.16.0.v20190625-1131.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.core.runtime_3.16.0.v20190823-1314.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.osgi_3.15.0.v20190830-1434.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.osgi.compatibility.state_1.1.600.v20190814-1451.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.equinox.common_3.10.500.v20190815-1535.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.core.jobs_3.10.500.v20190620-1426.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.equinox.registry_3.8.500.v20190714-1850.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.equinox.preferences_3.7.500.v20190815-1535.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.core.contenttype_3.7.400.v20190624-1144.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.equinox.app_1.4.300.v20190815-1535.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.emf.ecore.xmi_2.16.0.v20190528-0725.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.ocl.xtext.oclinecore_1.9.0.v20190910-0937.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.ocl.xtext.essentialocl_1.9.0.v20190910-0937.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.ocl.xtext.base_1.9.0.v20190910-0937.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.ocl.pivot_1.9.0.v20190910-0937.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.jdt.annotation_2.2.300.v20190328-1431.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.emf.edit_2.15.0.v20190528-0725.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.emf.ecore.change_2.14.0.v20190528-0725.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.ocl.common_1.8.400.v20190910-0937.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.xtext_2.19.0.v20190902-0737.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.antlr.runtime_3.2.0.v201101311130.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/com.google.inject_3.0.0.v201605172100.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.emf.mwe.core_1.5.0.201906111547.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.apache.commons.cli_1.2.0.v201404270220.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.emf.mwe2.runtime_2.11.0.201906111547.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.emf.mwe.utils_1.5.0.201906111547.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.xtext.util_2.19.0.v20190902-0737.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/com.google.guava_27.1.0.v20190517-1946.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/javax.inject_1.0.0.v20091030.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.apache.log4j_1.2.15.v201012070815.jar"/>
+    </path>
+    <path id="requirements.classpath">
+        <pathelement location="bin"/>
+        <path refid="Plug-in Dependencies.libraryclasspath"/>
+    </path>
+    <path id="run.GenerateRequirementsPUMLUsingCircles.classpath">
+        <path refid="requirements.classpath"/>
+        <path refid="Plug-in Dependencies.libraryclasspath"/>
+    </path>
+    <path id="run.GenerateRequirementsPUMLUsingCirclesWithGorgeousFoodApplicationInstance.classpath">
+        <path refid="requirements.classpath"/>
+        <path refid="Plug-in Dependencies.libraryclasspath"/>
+    </path>
+    <path id="run.GenerateRequirementsPUMLUsingCirclesWithSavedRequirementsInstance.classpath">
+        <path refid="requirements.classpath"/>
+        <path refid="Plug-in Dependencies.libraryclasspath"/>
+    </path>
+    <path id="run.SaveRequirementsModel.classpath">
+        <path refid="requirements.classpath"/>
+        <path refid="Plug-in Dependencies.libraryclasspath"/>
+    </path>
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src-gen">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src-gen"/>
+            <src path="src"/>
+            <classpath refid="requirements.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+    <target name="GenerateRequirementsPUMLUsingCircles">
+        <java classname="requirements.GenerateRequirementsPUMLUsingCircles" failonerror="true" fork="yes">
+            <arg value="${instancePath}"/>
+            <classpath refid="run.GenerateRequirementsPUMLUsingCircles.classpath"/>
+        </java>
+    </target>
+    <target name="GenerateRequirementsPUMLUsingCirclesWithGorgeousFoodApplicationInstance">
+        <java classname="requirements.GenerateRequirementsPUMLUsingCircles" failonerror="true" fork="yes">
+            <arg line="instances/GorgeousFoodApplication.xmi"/>
+            <classpath refid="run.GenerateRequirementsPUMLUsingCirclesWithGorgeousFoodApplicationInstance.classpath"/>
+        </java>
+    </target>
+    <target name="GenerateRequirementsPUMLUsingCirclesWithSavedRequirementsInstance">
+        <java classname="requirements.GenerateRequirementsPUMLUsingCircles" failonerror="true" fork="yes">
+            <arg line="instances/saved.requirements.xmi"/>
+            <classpath refid="run.GenerateRequirementsPUMLUsingCirclesWithSavedRequirementsInstance.classpath"/>
+        </java>
+    </target>
+    <target name="SaveRequirementsModel">
+        <java classname="requirements.SaveModel" failonerror="true" fork="yes">
+            <arg value="${instancePath}"/>
+            <classpath refid="run.SaveRequirementsModel.classpath"/>
+        </java>
+    </target>
+</project>

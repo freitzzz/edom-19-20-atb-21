@@ -30,7 +30,7 @@ public interface Version extends EObject {
 	 * @return the value of the '<em>Minor</em>' attribute.
 	 * @see #setMinor(int)
 	 * @see gorgeousFood_Increment1.GorgeousFood_Increment1Package#getVersion_Minor()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	int getMinor();
@@ -52,7 +52,7 @@ public interface Version extends EObject {
 	 * @return the value of the '<em>Service</em>' attribute.
 	 * @see #setService(int)
 	 * @see gorgeousFood_Increment1.GorgeousFood_Increment1Package#getVersion_Service()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	int getService();
@@ -74,7 +74,7 @@ public interface Version extends EObject {
 	 * @return the value of the '<em>Major</em>' attribute.
 	 * @see #setMajor(int)
 	 * @see gorgeousFood_Increment1.GorgeousFood_Increment1Package#getVersion_Major()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	int getMajor();

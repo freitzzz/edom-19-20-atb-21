@@ -24,7 +24,8 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see gorgeousFood_Increment1.GorgeousFood_Increment1Package#getRequirementGroup()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='mustHaveName mustHaveDescription'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot mustHaveName='not name.oclIsUndefined()' mustHaveDescription='not description.oclIsUndefined()'"
  * @generated
  */
 public interface RequirementGroup extends EObject {

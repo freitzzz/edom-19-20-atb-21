@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mindmap:Map
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:mindmap="http://www.example.org/mindmap"
+    xsi:schemaLocation="http://www.example.org/mindmap ../model/mindmap.ecore"
+    title="Gorgeous Food">
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Unserved Meal"
+      subtopics="//@elements.4 //@elements.2 //@elements.3 //@elements.6 //@elements.10 //@elements.11"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Hotel School"
+      subtopics="//@elements.1"
+      parent="//@elements.1"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Production Date"
+      parent="//@elements.0"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Expiration Date"
+      parent="//@elements.0"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Identification Number"
+      parent="//@elements.0"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Meal Designation"
+      subtopics="//@elements.12 //@elements.13 //@elements.14 //@elements.15"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Meal Type"
+      subtopics="//@elements.7 //@elements.8 //@elements.9"
+      parent="//@elements.0"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Soup"
+      parent="//@elements.6"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Main Course"
+      parent="//@elements.6"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Dessert"
+      parent="//@elements.6"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Nutritional Data"
+      parent="//@elements.0"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Ingredients"
+      parent="//@elements.0"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Styled Green Soup"
+      parent="//@elements.5"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Portuguese Fish and Fries"
+      parent="//@elements.5"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Stone Soup"
+      parent="//@elements.5"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Jewish Sausage with Divine Vegetable"
+      parent="//@elements.5"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Cream of the Porto Sky"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="User"
+      subtopics="//@elements.18 //@elements.19"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Student"
+      parent="//@elements.17"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Other"
+      parent="//@elements.17"/>
+</mindmap:Map>

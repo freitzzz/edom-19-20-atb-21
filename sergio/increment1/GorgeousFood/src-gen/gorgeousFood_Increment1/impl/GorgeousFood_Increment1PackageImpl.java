@@ -14,12 +14,14 @@ import gorgeousFood_Increment1.State;
 import gorgeousFood_Increment1.Type;
 import gorgeousFood_Increment1.Version;
 
+import gorgeousFood_Increment1.util.GorgeousFood_Increment1Validator;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
+import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
@@ -148,6 +150,14 @@ public class GorgeousFood_Increment1PackageImpl extends EPackageImpl implements 
 
 		// Initialize created meta-data
 		theGorgeousFood_Increment1Package.initializePackageContents();
+
+		// Register package validator
+		EValidator.Registry.INSTANCE.put(theGorgeousFood_Increment1Package, new EValidator.Descriptor() {
+			@Override
+			public EValidator getEValidator() {
+				return GorgeousFood_Increment1Validator.INSTANCE;
+			}
+		});
 
 		// Mark meta-data to indicate it can't be changed
 		theGorgeousFood_Increment1Package.freeze();
@@ -683,11 +693,11 @@ public class GorgeousFood_Increment1PackageImpl extends EPackageImpl implements 
 				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(versionEClass, Version.class, "Version", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getVersion_Minor(), ecorePackage.getEInt(), "minor", null, 0, 1, Version.class, !IS_TRANSIENT,
+		initEAttribute(getVersion_Minor(), ecorePackage.getEInt(), "minor", null, 1, 1, Version.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getVersion_Service(), ecorePackage.getEInt(), "service", null, 0, 1, Version.class,
+		initEAttribute(getVersion_Service(), ecorePackage.getEInt(), "service", null, 1, 1, Version.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getVersion_Major(), ecorePackage.getEInt(), "major", null, 0, 1, Version.class, !IS_TRANSIENT,
+		initEAttribute(getVersion_Major(), ecorePackage.getEInt(), "major", null, 1, 1, Version.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(requirementEClass, Requirement.class, "Requirement", !IS_ABSTRACT, !IS_INTERFACE,
@@ -764,6 +774,64 @@ public class GorgeousFood_Increment1PackageImpl extends EPackageImpl implements 
 
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// http://www.eclipse.org/OCL/Import
+		createImportAnnotations();
+		// http://www.eclipse.org/emf/2002/Ecore
+		createEcoreAnnotations();
+		// http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot
+		createPivotAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/OCL/Import</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createImportAnnotations() {
+		String source = "http://www.eclipse.org/OCL/Import";
+		addAnnotation(this, source, new String[] { "ecore", "http://www.eclipse.org/emf/2002/Ecore" });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createEcoreAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/Ecore";
+		addAnnotation(this, source,
+				new String[] { "invocationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+						"settingDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "validationDelegates",
+						"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot" });
+		addAnnotation(modelEClass, source,
+				new String[] { "constraints", "mustHaveTitle titleMustHaveAtLeastFiveChars" });
+		addAnnotation(requirementGroupEClass, source,
+				new String[] { "constraints", "mustHaveName mustHaveDescription" });
+		addAnnotation(requirementEClass, source, new String[] { "constraints", "mustHaveTitle mustHaveDescription" });
+		addAnnotation(commentEClass, source,
+				new String[] { "constraints", "mustHaveSubject mustHaveBody mustHaveAuthor" });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createPivotAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot";
+		addAnnotation(modelEClass, source, new String[] { "mustHaveTitle", "not title.oclIsUndefined()",
+				"titleMustHaveAtLeastFiveChars", "title.size() >= 5" });
+		addAnnotation(requirementGroupEClass, source, new String[] { "mustHaveName", "not name.oclIsUndefined()",
+				"mustHaveDescription", "not description.oclIsUndefined()" });
+		addAnnotation(requirementEClass, source, new String[] { "mustHaveTitle", "not title.oclIsUndefined()",
+				"mustHaveDescription", "not description.oclIsUndefined()" });
+		addAnnotation(commentEClass, source, new String[] { "mustHaveSubject", "not subject.oclIsUndefined()",
+				"mustHaveBody", "not body.oclIsUndefined()", "mustHaveAuthor", "not author.oclIsUndefined()" });
 	}
 
 } //GorgeousFood_Increment1PackageImpl

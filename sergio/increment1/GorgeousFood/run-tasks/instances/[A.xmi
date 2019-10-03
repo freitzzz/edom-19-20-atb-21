@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ASCII"?>
+<gorgeousFood_Increment1:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:gorgeousFood_Increment1="http://www.example.org/gorgeousFood_Increment1" title="">
+  <groups name="Unserved meals" description="Unserved meals requirements">
+    <requirements title="Add meal to inventory" description="Adds unserved meal to software inventory" author="S&#xe9;rgio Ferreira" created="2019-10-02T22:50:40.460+0100">
+      <version major="1"/>
+    </requirements>
+  </groups>
+  <groups name="Meals to serve" description="Meals to serve requirements">
+    <requirements title="List all meals" description="List all meals of the inventory" author="S&#xe9;rgio Ferreira" created="2019-10-02T22:50:40.460+0100">
+      <version major="1"/>
+    </requirements>
+    <requirements title="List a meal" description="List a specific meal and all its specificities" author="S&#xe9;rgio Ferreira" created="2019-10-02T22:50:40.460+0100">
+      <version major="1"/>
+    </requirements>
+    <requirements title="Pay meal" description="Pay a meal" author="S&#xe9;rgio Ferreira" created="2019-10-02T22:50:40.460+0100">
+      <version major="1"/>
+    </requirements>
+  </groups>
+</gorgeousFood_Increment1:Model>

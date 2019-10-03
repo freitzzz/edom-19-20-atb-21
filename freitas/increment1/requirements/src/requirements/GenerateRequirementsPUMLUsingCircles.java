@@ -54,8 +54,6 @@ public class GenerateRequirementsPUMLUsingCircles {
 	        
 	        writer.println("@startuml");
 	        
-	        // TODO: Implement puml generation
-	        
 	        writer.println("digraph GFA {");
 	        
 	        writer.println(modelToPUML(loadedModel));
@@ -163,9 +161,9 @@ public class GenerateRequirementsPUMLUsingCircles {
 			
 		}else {
 			
-			String versionString = "Version 0.0.0";
+			String versionString = quoteString("Version 0.0.0");
 			
-			builder.append(quoteString(versionString)).append('\n');
+			builder.append(versionString).append('\n');
 			
 			builder.append(quoteString(requirement.getTitle())).append(" -> ").append(versionString).append('\n');
 			

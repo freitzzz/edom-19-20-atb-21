@@ -20,7 +20,8 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see requirements.RequirementsPackage#getModel()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='MustHaveTitle TitleLengthMustBeGreaterOrEqualThanThree'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot MustHaveTitle='not title.oclIsUndefined()' TitleLengthMustBeGreaterOrEqualThanThree='title.size() &gt;= 3'"
  * @generated
  */
 public interface Model extends EObject {

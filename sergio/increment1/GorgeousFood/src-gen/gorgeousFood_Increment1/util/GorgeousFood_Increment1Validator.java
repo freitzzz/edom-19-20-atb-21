@@ -208,7 +208,12 @@ public class GorgeousFood_Increment1Validator extends EObjectValidator {
 		if (result || diagnostics != null)
 			result &= validateRequirementGroup_mustHaveName(requirementGroup, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validateRequirementGroup_nameMustHaveAtLeastFiveChars(requirementGroup, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateRequirementGroup_mustHaveDescription(requirementGroup, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateRequirementGroup_descriptionMustHaveAtLeastTenChars(requirementGroup, diagnostics,
+					context);
 		return result;
 	}
 
@@ -234,6 +239,28 @@ public class GorgeousFood_Increment1Validator extends EObjectValidator {
 	}
 
 	/**
+	 * The cached validation expression for the nameMustHaveAtLeastFiveChars constraint of '<em>Requirement Group</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String REQUIREMENT_GROUP__NAME_MUST_HAVE_AT_LEAST_FIVE_CHARS__EEXPRESSION = "name.size() >= 5";
+
+	/**
+	 * Validates the nameMustHaveAtLeastFiveChars constraint of '<em>Requirement Group</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateRequirementGroup_nameMustHaveAtLeastFiveChars(RequirementGroup requirementGroup,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate(GorgeousFood_Increment1Package.Literals.REQUIREMENT_GROUP, requirementGroup, diagnostics,
+				context, "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "nameMustHaveAtLeastFiveChars",
+				REQUIREMENT_GROUP__NAME_MUST_HAVE_AT_LEAST_FIVE_CHARS__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE,
+				0);
+	}
+
+	/**
 	 * The cached validation expression for the mustHaveDescription constraint of '<em>Requirement Group</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -252,6 +279,28 @@ public class GorgeousFood_Increment1Validator extends EObjectValidator {
 		return validate(GorgeousFood_Increment1Package.Literals.REQUIREMENT_GROUP, requirementGroup, diagnostics,
 				context, "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "mustHaveDescription",
 				REQUIREMENT_GROUP__MUST_HAVE_DESCRIPTION__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
+	}
+
+	/**
+	 * The cached validation expression for the descriptionMustHaveAtLeastTenChars constraint of '<em>Requirement Group</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String REQUIREMENT_GROUP__DESCRIPTION_MUST_HAVE_AT_LEAST_TEN_CHARS__EEXPRESSION = "description.size() > 5";
+
+	/**
+	 * Validates the descriptionMustHaveAtLeastTenChars constraint of '<em>Requirement Group</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateRequirementGroup_descriptionMustHaveAtLeastTenChars(RequirementGroup requirementGroup,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate(GorgeousFood_Increment1Package.Literals.REQUIREMENT_GROUP, requirementGroup, diagnostics,
+				context, "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "descriptionMustHaveAtLeastTenChars",
+				REQUIREMENT_GROUP__DESCRIPTION_MUST_HAVE_AT_LEAST_TEN_CHARS__EEXPRESSION, Diagnostic.ERROR,
+				DIAGNOSTIC_SOURCE, 0);
 	}
 
 	/**
@@ -290,7 +339,16 @@ public class GorgeousFood_Increment1Validator extends EObjectValidator {
 		if (result || diagnostics != null)
 			result &= validateRequirement_mustHaveTitle(requirement, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validateRequirement_titleMustHaveAtLeastFiveChars(requirement, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateRequirement_mustHaveDescription(requirement, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateRequirement_descriptionMustHaveAtLeastTenChars(requirement, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateRequirement_mustHaveCreateDate(requirement, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateRequirement_commentsCreateDateMustBeAfterRequirementCreateDate(requirement, diagnostics,
+					context);
 		return result;
 	}
 
@@ -316,6 +374,27 @@ public class GorgeousFood_Increment1Validator extends EObjectValidator {
 	}
 
 	/**
+	 * The cached validation expression for the titleMustHaveAtLeastFiveChars constraint of '<em>Requirement</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String REQUIREMENT__TITLE_MUST_HAVE_AT_LEAST_FIVE_CHARS__EEXPRESSION = "title.size() >= 5";
+
+	/**
+	 * Validates the titleMustHaveAtLeastFiveChars constraint of '<em>Requirement</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateRequirement_titleMustHaveAtLeastFiveChars(Requirement requirement,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate(GorgeousFood_Increment1Package.Literals.REQUIREMENT, requirement, diagnostics, context,
+				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "titleMustHaveAtLeastFiveChars",
+				REQUIREMENT__TITLE_MUST_HAVE_AT_LEAST_FIVE_CHARS__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
+	}
+
+	/**
 	 * The cached validation expression for the mustHaveDescription constraint of '<em>Requirement</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -334,6 +413,71 @@ public class GorgeousFood_Increment1Validator extends EObjectValidator {
 		return validate(GorgeousFood_Increment1Package.Literals.REQUIREMENT, requirement, diagnostics, context,
 				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "mustHaveDescription",
 				REQUIREMENT__MUST_HAVE_DESCRIPTION__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
+	}
+
+	/**
+	 * The cached validation expression for the descriptionMustHaveAtLeastTenChars constraint of '<em>Requirement</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String REQUIREMENT__DESCRIPTION_MUST_HAVE_AT_LEAST_TEN_CHARS__EEXPRESSION = "description.size() >= 10";
+
+	/**
+	 * Validates the descriptionMustHaveAtLeastTenChars constraint of '<em>Requirement</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateRequirement_descriptionMustHaveAtLeastTenChars(Requirement requirement,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate(GorgeousFood_Increment1Package.Literals.REQUIREMENT, requirement, diagnostics, context,
+				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "descriptionMustHaveAtLeastTenChars",
+				REQUIREMENT__DESCRIPTION_MUST_HAVE_AT_LEAST_TEN_CHARS__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE,
+				0);
+	}
+
+	/**
+	 * The cached validation expression for the mustHaveCreateDate constraint of '<em>Requirement</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String REQUIREMENT__MUST_HAVE_CREATE_DATE__EEXPRESSION = "not created.oclIsUndefined()";
+
+	/**
+	 * Validates the mustHaveCreateDate constraint of '<em>Requirement</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateRequirement_mustHaveCreateDate(Requirement requirement, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return validate(GorgeousFood_Increment1Package.Literals.REQUIREMENT, requirement, diagnostics, context,
+				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "mustHaveCreateDate",
+				REQUIREMENT__MUST_HAVE_CREATE_DATE__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
+	}
+
+	/**
+	 * The cached validation expression for the commentsCreateDateMustBeAfterRequirementCreateDate constraint of '<em>Requirement</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String REQUIREMENT__COMMENTS_CREATE_DATE_MUST_BE_AFTER_REQUIREMENT_CREATE_DATE__EEXPRESSION = "self.comment->forAll(comment | comment.created >= self.created)";
+
+	/**
+	 * Validates the commentsCreateDateMustBeAfterRequirementCreateDate constraint of '<em>Requirement</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateRequirement_commentsCreateDateMustBeAfterRequirementCreateDate(Requirement requirement,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate(GorgeousFood_Increment1Package.Literals.REQUIREMENT, requirement, diagnostics, context,
+				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "commentsCreateDateMustBeAfterRequirementCreateDate",
+				REQUIREMENT__COMMENTS_CREATE_DATE_MUST_BE_AFTER_REQUIREMENT_CREATE_DATE__EEXPRESSION, Diagnostic.ERROR,
+				DIAGNOSTIC_SOURCE, 0);
 	}
 
 	/**
@@ -362,9 +506,15 @@ public class GorgeousFood_Increment1Validator extends EObjectValidator {
 		if (result || diagnostics != null)
 			result &= validateComment_mustHaveSubject(comment, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validateComment_subjectMustHaveAtLeastFiveChars(comment, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateComment_mustHaveBody(comment, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validateComment_bodyMustHaveAtLeastFiveChars(comment, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateComment_mustHaveAuthor(comment, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateComment_mustHaveCreatedDate(comment, diagnostics, context);
 		return result;
 	}
 
@@ -390,6 +540,27 @@ public class GorgeousFood_Increment1Validator extends EObjectValidator {
 	}
 
 	/**
+	 * The cached validation expression for the subjectMustHaveAtLeastFiveChars constraint of '<em>Comment</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String COMMENT__SUBJECT_MUST_HAVE_AT_LEAST_FIVE_CHARS__EEXPRESSION = "subject.size() >= 5";
+
+	/**
+	 * Validates the subjectMustHaveAtLeastFiveChars constraint of '<em>Comment</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateComment_subjectMustHaveAtLeastFiveChars(Comment comment, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return validate(GorgeousFood_Increment1Package.Literals.COMMENT, comment, diagnostics, context,
+				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "subjectMustHaveAtLeastFiveChars",
+				COMMENT__SUBJECT_MUST_HAVE_AT_LEAST_FIVE_CHARS__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
+	}
+
+	/**
 	 * The cached validation expression for the mustHaveBody constraint of '<em>Comment</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -411,6 +582,27 @@ public class GorgeousFood_Increment1Validator extends EObjectValidator {
 	}
 
 	/**
+	 * The cached validation expression for the bodyMustHaveAtLeastFiveChars constraint of '<em>Comment</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String COMMENT__BODY_MUST_HAVE_AT_LEAST_FIVE_CHARS__EEXPRESSION = "body.size() >= 5";
+
+	/**
+	 * Validates the bodyMustHaveAtLeastFiveChars constraint of '<em>Comment</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateComment_bodyMustHaveAtLeastFiveChars(Comment comment, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return validate(GorgeousFood_Increment1Package.Literals.COMMENT, comment, diagnostics, context,
+				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "bodyMustHaveAtLeastFiveChars",
+				COMMENT__BODY_MUST_HAVE_AT_LEAST_FIVE_CHARS__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
+	}
+
+	/**
 	 * The cached validation expression for the mustHaveAuthor constraint of '<em>Comment</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -429,6 +621,27 @@ public class GorgeousFood_Increment1Validator extends EObjectValidator {
 		return validate(GorgeousFood_Increment1Package.Literals.COMMENT, comment, diagnostics, context,
 				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "mustHaveAuthor",
 				COMMENT__MUST_HAVE_AUTHOR__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
+	}
+
+	/**
+	 * The cached validation expression for the mustHaveCreatedDate constraint of '<em>Comment</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String COMMENT__MUST_HAVE_CREATED_DATE__EEXPRESSION = "not created.oclIsUndefined()";
+
+	/**
+	 * Validates the mustHaveCreatedDate constraint of '<em>Comment</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateComment_mustHaveCreatedDate(Comment comment, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return validate(GorgeousFood_Increment1Package.Literals.COMMENT, comment, diagnostics, context,
+				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "mustHaveCreatedDate",
+				COMMENT__MUST_HAVE_CREATED_DATE__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
 	}
 
 	/**

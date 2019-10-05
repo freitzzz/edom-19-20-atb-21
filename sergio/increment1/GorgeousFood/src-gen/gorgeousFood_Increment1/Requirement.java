@@ -34,8 +34,8 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see gorgeousFood_Increment1.GorgeousFood_Increment1Package#getRequirement()
- * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='mustHaveTitle mustHaveDescription'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot mustHaveTitle='not title.oclIsUndefined()' mustHaveDescription='not description.oclIsUndefined()'"
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='mustHaveTitle titleMustHaveAtLeastFiveChars mustHaveDescription descriptionMustHaveAtLeastTenChars mustHaveCreateDate commentsCreateDateMustBeAfterRequirementCreateDate'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot mustHaveTitle='not title.oclIsUndefined()' titleMustHaveAtLeastFiveChars='title.size() &gt;= 5' mustHaveDescription='not description.oclIsUndefined()' descriptionMustHaveAtLeastTenChars='description.size() &gt;= 10' mustHaveCreateDate='not created.oclIsUndefined()' commentsCreateDateMustBeAfterRequirementCreateDate='self.comment-&gt;forAll(comment | comment.created &gt;= self.created)'"
  * @generated
  */
 public interface Requirement extends EObject {

@@ -25,8 +25,8 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see gorgeousFood_Increment1.GorgeousFood_Increment1Package#getComment()
- * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='mustHaveSubject mustHaveBody mustHaveAuthor'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot mustHaveSubject='not subject.oclIsUndefined()' mustHaveBody='not body.oclIsUndefined()' mustHaveAuthor='not author.oclIsUndefined()'"
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='mustHaveSubject subjectMustHaveAtLeastFiveChars mustHaveBody bodyMustHaveAtLeastFiveChars mustHaveAuthor mustHaveCreatedDate'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot mustHaveSubject='not subject.oclIsUndefined()' subjectMustHaveAtLeastFiveChars='subject.size() &gt;= 5' mustHaveBody='not body.oclIsUndefined()' bodyMustHaveAtLeastFiveChars='body.size() &gt;= 5' mustHaveAuthor='not author.oclIsUndefined()' mustHaveCreatedDate='not created.oclIsUndefined()'"
  * @generated
  */
 public interface Comment extends EObject {

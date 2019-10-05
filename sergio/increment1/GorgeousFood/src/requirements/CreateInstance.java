@@ -3,7 +3,6 @@ package requirements;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Scanner;
 
@@ -24,12 +23,12 @@ import org.eclipse.ocl.pivot.internal.delegate.OCLInvocationDelegateFactory;
 import org.eclipse.ocl.pivot.internal.delegate.OCLValidationDelegateFactory;
 import org.eclipse.ocl.pivot.model.OCLstdlib;
 
+import gorgeousFood_Increment1.Comment;
 import gorgeousFood_Increment1.GorgeousFood_Increment1Factory;
 import gorgeousFood_Increment1.Model;
 import gorgeousFood_Increment1.Requirement;
 import gorgeousFood_Increment1.RequirementGroup;
 import gorgeousFood_Increment1.Version;
-import gorgeousFood_Increment1.impl.RequirementImpl;
 
 public class CreateInstance {
 	public static void main(String[] args) {
@@ -127,10 +126,18 @@ public class CreateInstance {
 		// Create requirement list meal
 		Requirement requirement3 = factory.createRequirement();
 		requirement3.setTitle("List a meal");
-		requirement3.setDescription("List a specific meal and all its specificities");
+		requirement3.setDescription("List a specific meal");
 		requirement3.setAuthor("Sérgio Ferreira");
 		requirement3.setCreated(new Date(1570053040460L));
 		requirement3.setVersion(version3);
+		
+		Comment comment = factory.createComment();
+		comment.setAuthor("Sergio Ferreira");
+		comment.setBody("All the specificities of the meal should be lsited");
+		comment.setSubject("Comment");
+		comment.setCreated(new Date(1570053040460L));
+
+		requirement3.getComment().add(comment);
 		
 		Version version4 = factory.createVersion();
 		version4.setMajor(1);
@@ -164,11 +171,11 @@ public class CreateInstance {
         	}
         }
         else {
-        	System.out.println(" Everything seems fine :-)");
+        	System.out.println("Requirements model is valid!");
         }
         
         if (diag.getChildren().size() > 0) {
-        	System.out.println("OCL validation failed");
+        	System.out.println("OCL validation failed. Exiting...");
         	System.exit(0);
         }
         

@@ -31,6 +31,8 @@ In this folder you should add **all** artifacts developed for the project increm
     - Must have at least 10 characters
 - Created
     - Must exist
+- Comments
+    - All comments date creation date must be on the same day or after requirement creation date
 
 ### Comment
 
@@ -44,4 +46,3 @@ In this folder you should add **all** artifacts developed for the project increm
     - Must exist
 - Created
     - Must exist
-    - Created date must be >= than requirement date

@@ -811,12 +811,10 @@ public class GorgeousFood_Increment1PackageImpl extends EPackageImpl implements 
 				new String[] { "constraints", "mustHaveTitle titleMustHaveAtLeastFiveChars" });
 		addAnnotation(requirementGroupEClass, source, new String[] { "constraints",
 				"mustHaveName nameMustHaveAtLeastFiveChars mustHaveDescription descriptionMustHaveAtLeastTenChars" });
-		addAnnotation(versionEClass, source,
-				new String[] { "constraints", "mustHaveMinor mustHaveService mustHaveMajor" });
-		addAnnotation(requirementEClass, source,
-				new String[] { "constraints", "mustHaveTitle mustHaveDescription mustHaveCreateDate" });
-		addAnnotation(commentEClass, source,
-				new String[] { "constraints", "mustHaveSubject mustHaveBody mustHaveAuthor" });
+		addAnnotation(requirementEClass, source, new String[] { "constraints",
+				"mustHaveTitle titleMustHaveAtLeastFiveChars mustHaveDescription descriptionMustHaveAtLeastTenChars mustHaveCreateDate commentsCreateDateMustBeAfterRequirementCreateDate" });
+		addAnnotation(commentEClass, source, new String[] { "constraints",
+				"mustHaveSubject subjectMustHaveAtLeastFiveChars mustHaveBody bodyMustHaveAtLeastFiveChars mustHaveAuthor mustHaveCreatedDate" });
 	}
 
 	/**
@@ -833,13 +831,17 @@ public class GorgeousFood_Increment1PackageImpl extends EPackageImpl implements 
 				new String[] { "mustHaveName", "not name.oclIsUndefined()", "nameMustHaveAtLeastFiveChars",
 						"name.size() >= 5", "mustHaveDescription", "not description.oclIsUndefined()",
 						"descriptionMustHaveAtLeastTenChars", "description.size() > 5" });
-		addAnnotation(versionEClass, source, new String[] { "mustHaveMinor", "not minor.oclIsUndefined()",
-				"mustHaveService", "not service.oclIsUndefined()", "mustHaveMajor", "not major.oclIsUndefined()" });
 		addAnnotation(requirementEClass, source,
-				new String[] { "mustHaveTitle", "not title.oclIsUndefined()", "mustHaveDescription",
-						"not description.oclIsUndefined()", "mustHaveCreateDate", "not created.oclIsUndefined()" });
-		addAnnotation(commentEClass, source, new String[] { "mustHaveSubject", "not subject.oclIsUndefined()",
-				"mustHaveBody", "not body.oclIsUndefined()", "mustHaveAuthor", "not author.oclIsUndefined()" });
+				new String[] { "mustHaveTitle", "not title.oclIsUndefined()", "titleMustHaveAtLeastFiveChars",
+						"title.size() >= 5", "mustHaveDescription", "not description.oclIsUndefined()",
+						"descriptionMustHaveAtLeastTenChars", "description.size() >= 10", "mustHaveCreateDate",
+						"not created.oclIsUndefined()", "commentsCreateDateMustBeAfterRequirementCreateDate",
+						"self.comment->forAll(comment | comment.created >= self.created)" });
+		addAnnotation(commentEClass, source,
+				new String[] { "mustHaveSubject", "not subject.oclIsUndefined()", "subjectMustHaveAtLeastFiveChars",
+						"subject.size() >= 5", "mustHaveBody", "not body.oclIsUndefined()",
+						"bodyMustHaveAtLeastFiveChars", "body.size() >= 5", "mustHaveAuthor",
+						"not author.oclIsUndefined()", "mustHaveCreatedDate", "not created.oclIsUndefined()" });
 	}
 
 } //GorgeousFood_Increment1PackageImpl

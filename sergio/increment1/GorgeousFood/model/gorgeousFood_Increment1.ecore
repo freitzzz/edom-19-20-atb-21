@@ -43,14 +43,6 @@
         eOpposite="#//RequirementGroup/children"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Version">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="mustHaveMinor mustHaveService mustHaveMajor"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="mustHaveMinor" value="not minor.oclIsUndefined()"/>
-      <details key="mustHaveService" value="not service.oclIsUndefined()"/>
-      <details key="mustHaveMajor" value="not major.oclIsUndefined()"/>
-    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="minor" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="service" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -58,12 +50,15 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Requirement">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="mustHaveTitle mustHaveDescription mustHaveCreateDate"/>
+      <details key="constraints" value="mustHaveTitle titleMustHaveAtLeastFiveChars mustHaveDescription descriptionMustHaveAtLeastTenChars mustHaveCreateDate commentsCreateDateMustBeAfterRequirementCreateDate"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
       <details key="mustHaveTitle" value="not title.oclIsUndefined()"/>
+      <details key="titleMustHaveAtLeastFiveChars" value="title.size() >= 5"/>
       <details key="mustHaveDescription" value="not description.oclIsUndefined()"/>
+      <details key="descriptionMustHaveAtLeastTenChars" value="description.size() >= 10"/>
       <details key="mustHaveCreateDate" value="not created.oclIsUndefined()"/>
+      <details key="commentsCreateDateMustBeAfterRequirementCreateDate" value="self.comment->forAll(comment | comment.created >= self.created)"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -108,12 +103,15 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Comment">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="mustHaveSubject mustHaveBody mustHaveAuthor"/>
+      <details key="constraints" value="mustHaveSubject subjectMustHaveAtLeastFiveChars mustHaveBody bodyMustHaveAtLeastFiveChars mustHaveAuthor mustHaveCreatedDate"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
       <details key="mustHaveSubject" value="not subject.oclIsUndefined()"/>
+      <details key="subjectMustHaveAtLeastFiveChars" value="subject.size() >= 5"/>
       <details key="mustHaveBody" value="not body.oclIsUndefined()"/>
+      <details key="bodyMustHaveAtLeastFiveChars" value="body.size() >= 5"/>
       <details key="mustHaveAuthor" value="not author.oclIsUndefined()"/>
+      <details key="mustHaveCreatedDate" value="not created.oclIsUndefined()"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="subject" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="body" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

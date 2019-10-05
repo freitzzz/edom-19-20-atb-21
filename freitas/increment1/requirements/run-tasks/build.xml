@@ -62,6 +62,10 @@
         <path refid="requirements.classpath"/>
         <path refid="Plug-in Dependencies.libraryclasspath"/>
     </path>
+    <path id="run.GenerateRequirementsPUMLUsingObjectDiagram.classpath">
+        <path refid="requirements.classpath"/>
+        <path refid="Plug-in Dependencies.libraryclasspath"/>
+    </path>
     <target name="init">
         <mkdir dir="bin"/>
         <copy includeemptydirs="false" todir="bin">
@@ -110,6 +114,13 @@
             <arg value="${instancePath}"/>
             <arg value="${generatedPath}"/>
             <classpath refid="run.GenerateRequirementsPUMLUsingCircles.classpath"/>
+        </java>
+    </target>
+    <target name="GenerateRequirementsPUMLUsingObjectDiagram">
+        <java classname="requirements.GenerateRequirementsPUMLUsingObjectDiagram" failonerror="true" fork="yes">
+            <arg value="${instancePath}"/>
+            <arg value="${generatedPath}"/>
+            <classpath refid="run.GenerateRequirementsPUMLUsingObjectDiagram.classpath"/>
         </java>
     </target>
     <target name="GenerateRequirementsPUMLUsingCirclesWithGorgeousFoodApplicationInstance">

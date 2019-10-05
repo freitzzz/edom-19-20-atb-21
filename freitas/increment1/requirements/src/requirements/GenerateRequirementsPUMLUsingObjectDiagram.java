@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
-//This class will generate a PlantUML file with the representation of a requirements instance as a object diagram
+//This class will generate a PlantUML file with the representation of a requirements instance as an object diagram
 //The requirements instance file path should be defined as the first argument
 //The generated PlantUML file path should be defined as the second argument
 //The generator takes in account spaces found in identifiers and wraps them with quotes
@@ -52,6 +52,7 @@ public class GenerateRequirementsPUMLUsingObjectDiagram {
 			System.out.println(root.toString());
 			
 			FileWriter w = new FileWriter(generatedPUMLAsFile);
+			
 	        writer = new PrintWriter(w);
 	        
 	        writer.println("@startuml");
@@ -102,7 +103,7 @@ public class GenerateRequirementsPUMLUsingObjectDiagram {
 		
 		builder.append(plantUMLObject(group.getName())).append('\n');
 		
-		//builder.append(plantUMLField("obj"+Long.valueOf(group.getName().hashCode()), "description", group.getDescription())).append('\n');
+		builder.append(plantUMLField("obj"+Long.valueOf(group.getName().hashCode()), "description", group.getDescription())).append('\n');
 		
 		builder.append(plantUMLField("obj"+Long.valueOf(group.getName().hashCode()), "id", group.getId())).append('\n');
 		
@@ -149,22 +150,6 @@ public class GenerateRequirementsPUMLUsingObjectDiagram {
 		
 		StringBuilder builder = new StringBuilder();
 		
-		builder.append(plantUMLObject(requirement.getTitle())).append('\n');
-		
-		builder.append(plantUMLField("obj"+Long.valueOf(requirement.getTitle().hashCode()), "created", requirement.getCreated())).append('\n');
-		
-		builder.append(plantUMLField("obj"+Long.valueOf(requirement.getTitle().hashCode()), "id", requirement.getId())).append('\n');
-		
-		//builder.append(plantUMLField("obj"+Long.valueOf(requirement.getTitle().hashCode()), "description", requirement.getDescription())).append('\n');
-		
-		builder.append(plantUMLField("obj"+Long.valueOf(requirement.getTitle().hashCode()), "author", requirement.getAuthor())).append('\n');
-		
-		builder.append(plantUMLField("obj"+Long.valueOf(requirement.getTitle().hashCode()), "priority", requirement.getPriority())).append('\n');
-		
-		builder.append(plantUMLField("obj"+Long.valueOf(requirement.getTitle().hashCode()), "state", requirement.getState())).append('\n');
-		
-		builder.append(plantUMLField("obj"+Long.valueOf(requirement.getTitle().hashCode()), "type", requirement.getType())).append('\n');
-		
 		Version version = requirement.getVersion();
 		
 		if(version == null) {
@@ -180,9 +165,23 @@ public class GenerateRequirementsPUMLUsingObjectDiagram {
 		
 		String versionString = quoteString("Version " + version.getMajor() + "." + version.getMinor() + "." + version.getService());
 		
-		builder.append("object ").append(versionString).append(" as ").append("obj").append(Long.valueOf(version.hashCode())).append('\n');
+		builder.append(plantUMLObject(requirement.getTitle())).append('\n');
 		
-		builder.append("obj").append(requirement.getTitle().hashCode()).append(" .. ").append("obj").append(version.hashCode()).append('\n');
+		builder.append(plantUMLField("obj"+Long.valueOf(requirement.getTitle().hashCode()), "created", requirement.getCreated())).append('\n');
+		
+		builder.append(plantUMLField("obj"+Long.valueOf(requirement.getTitle().hashCode()), "id", requirement.getId())).append('\n');
+		
+		builder.append(plantUMLField("obj"+Long.valueOf(requirement.getTitle().hashCode()), "description", requirement.getDescription())).append('\n');
+		
+		builder.append(plantUMLField("obj"+Long.valueOf(requirement.getTitle().hashCode()), "author", requirement.getAuthor())).append('\n');
+		
+		builder.append(plantUMLField("obj"+Long.valueOf(requirement.getTitle().hashCode()), "priority", requirement.getPriority())).append('\n');
+		
+		builder.append(plantUMLField("obj"+Long.valueOf(requirement.getTitle().hashCode()), "state", requirement.getState())).append('\n');
+		
+		builder.append(plantUMLField("obj"+Long.valueOf(requirement.getTitle().hashCode()), "type", requirement.getType())).append('\n');
+		
+		builder.append(plantUMLField("obj"+Long.valueOf(requirement.getTitle().hashCode()), "version", versionString)).append('\n');
 		
 		List<Requirement> subRequirements = requirement.getChildren();
 		
@@ -232,7 +231,7 @@ public class GenerateRequirementsPUMLUsingObjectDiagram {
 			
 			for(Comment c: comments) {
 				
-				builder.append("obj").append(requirement.getTitle().hashCode()).append(" .. ").append('"').append(Long.valueOf(c.hashCode())).append('"').append('\n');
+				builder.append("obj").append(requirement.getTitle().hashCode()).append(" .. ").append("obj").append(Long.valueOf(c.hashCode())).append('\n');
 				
 			}
 			
@@ -246,7 +245,7 @@ public class GenerateRequirementsPUMLUsingObjectDiagram {
 		
 		StringBuilder builder = new StringBuilder();
 		
-		builder.append("note ").append(comment.getBody()).append(" as ").append("obj").append(Long.valueOf(comment.hashCode())).append('\n');
+		builder.append("note ").append(quoteString(comment.getBody())).append(" as ").append("obj").append(Long.valueOf(comment.hashCode())).append('\n');
 		
 		List<Comment> comments = comment.getChildren();
 		
@@ -273,6 +272,28 @@ public class GenerateRequirementsPUMLUsingObjectDiagram {
 	// Quotes a string (e.g. quoteString("abc") -> "abc"
 	private static String quoteString(String stringToQuote) {
 		return new StringBuilder().append('"').append(stringToQuote).append('"').toString();
+	}
+	
+	private static String breakStringInLines(String string, int maxCharacters) {
+		
+		StringBuilder builder = new StringBuilder();
+		
+		if(string.length() > maxCharacters) {
+			String firstPartOfBreakedString = string.substring(0, maxCharacters - 1);
+			
+			String secondPartOfBreakedString = string.substring(maxCharacters-1);
+			
+			builder
+			.append(firstPartOfBreakedString)
+			.append('\\')
+			.append('\n')
+			.append(breakStringInLines(secondPartOfBreakedString, maxCharacters));
+		}else {
+			builder.append(string);
+		}
+		
+		return builder.toString();
+		
 	}
 	
 	private static String plantUMLObject(String objectName) {

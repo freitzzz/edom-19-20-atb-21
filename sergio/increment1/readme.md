@@ -32,10 +32,6 @@ In this folder you should add **all** artifacts developed for the project increm
 - Created
     - Must exist
 
-### Version
-
-All attributes need to be defined
-
 ### Comment
 
 - Subject
@@ -48,3 +44,4 @@ All attributes need to be defined
     - Must exist
 - Created
     - Must exist
+    - Created date must be >= than requirement date

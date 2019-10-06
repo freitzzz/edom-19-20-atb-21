@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -31,7 +32,13 @@ public class GenerateRequirementsDiagram {
 		
 		ResourceSet resSet = new ResourceSetImpl();
 		
-		Resource resource = resSet.getResource(URI.createURI("/home/filipe/Desktop/faculdade/edom/edom-19-20-atb-21/sergio/increment1/GorgeousFood/src/requirements/requirements.xmi"), true);
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Please enter the requirements file name:");
+		
+		String fileName = scanner.nextLine();
+		scanner.close();
+		
+		Resource resource = resSet.getResource(URI.createURI(fileName), true);
 		resource.load(Collections.EMPTY_MAP);
 		
 		EObject root = resource.getContents().get(0);
@@ -76,10 +83,9 @@ public class GenerateRequirementsDiagram {
 	private static void generateRequirementObject(List<Requirement> requirements, PrintWriter writer) {
 		for (Requirement requirement: requirements) {
 			String reqPlantUmlId = "req_" + requirement.getId();
-			writer.println("class \"Requirement " + requirement.getId() + "\" as " + reqPlantUmlId + "{");
+			writer.println("class \"Requirement " + requirement.getTitle() + "\" as " + reqPlantUmlId + "{");
 			writer.println("Author: " + requirement.getAuthor());
 			writer.println("Creation date: " + requirement.getCreated());
-			writer.println("Title: " + requirement.getTitle());
 			writer.println("Description: " + requirement.getDescription());
 			writer.println("Priority: " + requirement.getPriority());
 			writer.println("Resolution: " + requirement.getResolution());
@@ -145,8 +151,8 @@ public class GenerateRequirementsDiagram {
 			
 			startFile(writer);
 			generateModelObject(modelInstance, writer);
-			
 			endFile(writer);
+			System.out.println("File saved successfully");
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {

@@ -1,16 +1,13 @@
 # EDOM - Project Increment 1
 
-In this folder you should add **all** artifacts developed for the project increment 1.
-
-**Note:** If for some reason you need to bypass these guidelines please ask for directions with your teacher and **always** state the exceptions in your commits and issues in bitbucket.
-
 ## List of validations to the requirements metamodel
 
 ### Model
 
-- Title
-    - Must exist
-    - Must have least 5 characters
+|  Validation                            |  Justification                                                                      |
+|----------------------------------------|-------------------------------------------------------------------------------------|
+|  Title must exist                      |   A model should have a title identify it among its peers                           |
+|  Title must have at least 5 characters | In order to have a readable title for a model it should be at least five characters |
 
 ### RequirementGroup
 - Id

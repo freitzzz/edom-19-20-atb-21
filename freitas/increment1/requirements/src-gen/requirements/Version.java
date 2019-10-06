@@ -19,7 +19,8 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see requirements.RequirementsPackage#getVersion()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='MajorCannotBeLowerThanZero MinorCannotBeLowerThanZero ServiceCannotBeLowerThanZero'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot MajorCannotBeLowerThanZero='major &gt;= 0' MinorCannotBeLowerThanZero='minor &gt;= 0' ServiceCannotBeLowerThanZero='service &gt;= 0'"
  * @generated
  */
 public interface Version extends EObject {
@@ -30,7 +31,7 @@ public interface Version extends EObject {
 	 * @return the value of the '<em>Major</em>' attribute.
 	 * @see #setMajor(int)
 	 * @see requirements.RequirementsPackage#getVersion_Major()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	int getMajor();
@@ -52,7 +53,7 @@ public interface Version extends EObject {
 	 * @return the value of the '<em>Minor</em>' attribute.
 	 * @see #setMinor(int)
 	 * @see requirements.RequirementsPackage#getVersion_Minor()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	int getMinor();
@@ -74,7 +75,7 @@ public interface Version extends EObject {
 	 * @return the value of the '<em>Service</em>' attribute.
 	 * @see #setService(int)
 	 * @see requirements.RequirementsPackage#getVersion_Service()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	int getService();

@@ -24,7 +24,8 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see requirements.RequirementsPackage#getRequirementGroup()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='MustHaveDescription DescriptionLengthMustBeGreaterOrEqualThanTen MustHaveName NameLengthMustBeGreaterOrEqualThanTen CannotHaveSubRequirementsGroupWithSameName'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot MustHaveDescription='not description.oclIsUndefined()' DescriptionLengthMustBeGreaterOrEqualThanTen='description.size() &gt;= 10' MustHaveName='not name.oclIsUndefined()' NameLengthMustBeGreaterOrEqualThanTen='name.size() &gt;= 5' CannotHaveSubRequirementsGroupWithSameName='\n\t\tif not parent.oclIsUndefined()\n\t\tthen \n\t\t\tnot parent.name.equalsIgnoreCase(name)\n\t\telse \n\t\t\ttrue\n\t\tendif'"
  * @generated
  */
 public interface RequirementGroup extends EObject {

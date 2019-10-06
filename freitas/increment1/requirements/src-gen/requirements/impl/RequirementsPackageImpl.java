@@ -8,6 +8,7 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
+import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import requirements.Comment;
@@ -21,6 +22,7 @@ import requirements.Resolution;
 import requirements.State;
 import requirements.Type;
 import requirements.Version;
+import requirements.util.RequirementsValidator;
 
 /**
  * <!-- begin-user-doc -->
@@ -147,6 +149,14 @@ public class RequirementsPackageImpl extends EPackageImpl implements Requirement
 
 		// Initialize created meta-data
 		theRequirementsPackage.initializePackageContents();
+
+		// Register package validator
+		EValidator.Registry.INSTANCE.put(theRequirementsPackage, new EValidator.Descriptor() {
+			@Override
+			public EValidator getEValidator() {
+				return RequirementsValidator.INSTANCE;
+			}
+		});
 
 		// Mark meta-data to indicate it can't be changed
 		theRequirementsPackage.freeze();
@@ -720,11 +730,11 @@ public class RequirementsPackageImpl extends EPackageImpl implements Requirement
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(versionEClass, Version.class, "Version", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getVersion_Major(), ecorePackage.getEInt(), "major", null, 0, 1, Version.class, !IS_TRANSIENT,
+		initEAttribute(getVersion_Major(), ecorePackage.getEInt(), "major", null, 1, 1, Version.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getVersion_Minor(), ecorePackage.getEInt(), "minor", null, 0, 1, Version.class, !IS_TRANSIENT,
+		initEAttribute(getVersion_Minor(), ecorePackage.getEInt(), "minor", null, 1, 1, Version.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getVersion_Service(), ecorePackage.getEInt(), "service", null, 0, 1, Version.class,
+		initEAttribute(getVersion_Service(), ecorePackage.getEInt(), "service", null, 1, 1, Version.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(commentEClass, Comment.class, "Comment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -764,6 +774,86 @@ public class RequirementsPackageImpl extends EPackageImpl implements Requirement
 
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// http://www.eclipse.org/OCL/Import
+		createImportAnnotations();
+		// http://www.eclipse.org/emf/2002/Ecore
+		createEcoreAnnotations();
+		// http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot
+		createPivotAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/OCL/Import</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createImportAnnotations() {
+		String source = "http://www.eclipse.org/OCL/Import";
+		addAnnotation(this, source, new String[] { "ecore", "http://www.eclipse.org/emf/2002/Ecore" });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createEcoreAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/Ecore";
+		addAnnotation(this, source,
+				new String[] { "invocationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+						"settingDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "validationDelegates",
+						"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot" });
+		addAnnotation(requirementEClass, source, new String[] { "constraints",
+				"MustHaveTitle TitleLengthMustBeGreaterOrEqualThanFive MustHaveDescription DescriptionLengthMustBeGreaterOrEqualThanTen StateCannotBeResolvedIfResolutionIsInvalid StateCannotBeApprovedIfResolutionIsInvalid StateCannotBeReviewedIfResolutionIsInvalid MustHaveCreationDate MustHaveAuthor AuthorLengthMustBeGreaterOrEqualThanThree" });
+		addAnnotation(requirementGroupEClass, source, new String[] { "constraints",
+				"MustHaveDescription DescriptionLengthMustBeGreaterOrEqualThanTen MustHaveName NameLengthMustBeGreaterOrEqualThanTen CannotHaveSubRequirementsGroupWithSameName" });
+		addAnnotation(modelEClass, source,
+				new String[] { "constraints", "MustHaveTitle TitleLengthMustBeGreaterOrEqualThanThree" });
+		addAnnotation(versionEClass, source, new String[] { "constraints",
+				"MajorCannotBeLowerThanZero MinorCannotBeLowerThanZero ServiceCannotBeLowerThanZero" });
+		addAnnotation(commentEClass, source, new String[] { "constraints",
+				"MustHaveAuthor AuthorLengthMustBeGreaterOrEqualThanThree MustHaveBody BodyLengthMustBeGreaterOrEqualThanFifteen MustHaveSubject SubjectLengthMustBeGreaterOrEqualThanTen MustHaveCreationDate" });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createPivotAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot";
+		addAnnotation(requirementEClass, source, new String[] { "MustHaveTitle", "not title.oclIsUndefined()",
+				"TitleLengthMustBeGreaterOrEqualThanFive", "title.size() >= 5", "MustHaveDescription",
+				"not description.oclIsUndefined()", "DescriptionLengthMustBeGreaterOrEqualThanTen",
+				"description.size() >= 10", "StateCannotBeResolvedIfResolutionIsInvalid",
+				"if resolution = \'INVALID\' then \n\t\t\t\tstate <> \'RESOLVED\'\n\t\t\t else \n\t\t\t \ttrue\n\t\t\t endif ",
+				"StateCannotBeApprovedIfResolutionIsInvalid",
+				"if resolution = \'INVALID\' then \n\t\t\t\tstate <> \'APPROVED\'\n\t\t\t else \n\t\t\t \ttrue\n\t\t\t endif ",
+				"StateCannotBeReviewedIfResolutionIsInvalid",
+				"if resolution = \'INVALID\' then \n\t\t\t\tstate <> \'REVIEWED\'\n\t\t\t else \n\t\t\t \ttrue\n\t\t\t endif ",
+				"MustHaveCreationDate", "not created.oclIsUndefined()", "MustHaveAuthor", "not author.oclIsUndefined()",
+				"AuthorLengthMustBeGreaterOrEqualThanThree", "author.size() >= 3" });
+		addAnnotation(requirementGroupEClass, source, new String[] { "MustHaveDescription",
+				"not description.oclIsUndefined()", "DescriptionLengthMustBeGreaterOrEqualThanTen",
+				"description.size() >= 10", "MustHaveName", "not name.oclIsUndefined()",
+				"NameLengthMustBeGreaterOrEqualThanTen", "name.size() >= 5",
+				"CannotHaveSubRequirementsGroupWithSameName",
+				"\n\t\tif not parent.oclIsUndefined()\n\t\tthen \n\t\t\tnot parent.name.equalsIgnoreCase(name)\n\t\telse \n\t\t\ttrue\n\t\tendif" });
+		addAnnotation(modelEClass, source, new String[] { "MustHaveTitle", "not title.oclIsUndefined()",
+				"TitleLengthMustBeGreaterOrEqualThanThree", "title.size() >= 3" });
+		addAnnotation(versionEClass, source, new String[] { "MajorCannotBeLowerThanZero", "major >= 0",
+				"MinorCannotBeLowerThanZero", "minor >= 0", "ServiceCannotBeLowerThanZero", "service >= 0" });
+		addAnnotation(commentEClass, source,
+				new String[] { "MustHaveAuthor", "not author.oclIsUndefined()",
+						"AuthorLengthMustBeGreaterOrEqualThanThree", "author.size() >= 3", "MustHaveBody",
+						"not body.oclIsUndefined()", "BodyLengthMustBeGreaterOrEqualThanFifteen", "body.size() >= 15",
+						"MustHaveSubject", "not subject.oclIsUndefined()", "SubjectLengthMustBeGreaterOrEqualThanTen",
+						"subject.size() >= 10", "MustHaveCreationDate", "not created.oclIsUndefined()" });
 	}
 
 } //RequirementsPackageImpl

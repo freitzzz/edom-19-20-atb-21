@@ -25,7 +25,8 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see requirements.RequirementsPackage#getComment()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='MustHaveAuthor AuthorLengthMustBeGreaterOrEqualThanThree MustHaveBody BodyLengthMustBeGreaterOrEqualThanFifteen MustHaveSubject SubjectLengthMustBeGreaterOrEqualThanTen MustHaveCreationDate'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot MustHaveAuthor='not author.oclIsUndefined()' AuthorLengthMustBeGreaterOrEqualThanThree='author.size() &gt;= 3' MustHaveBody='not body.oclIsUndefined()' BodyLengthMustBeGreaterOrEqualThanFifteen='body.size() &gt;= 15' MustHaveSubject='not subject.oclIsUndefined()' SubjectLengthMustBeGreaterOrEqualThanTen='subject.size() &gt;= 10' MustHaveCreationDate='not created.oclIsUndefined()'"
  * @generated
  */
 public interface Comment extends EObject {

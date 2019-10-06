@@ -34,7 +34,8 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see requirements.RequirementsPackage#getRequirement()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='MustHaveTitle TitleLengthMustBeGreaterOrEqualThanFive MustHaveDescription DescriptionLengthMustBeGreaterOrEqualThanTen StateCannotBeResolvedIfResolutionIsInvalid StateCannotBeApprovedIfResolutionIsInvalid StateCannotBeReviewedIfResolutionIsInvalid MustHaveCreationDate MustHaveAuthor AuthorLengthMustBeGreaterOrEqualThanThree'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot MustHaveTitle='not title.oclIsUndefined()' TitleLengthMustBeGreaterOrEqualThanFive='title.size() &gt;= 5' MustHaveDescription='not description.oclIsUndefined()' DescriptionLengthMustBeGreaterOrEqualThanTen='description.size() &gt;= 10' StateCannotBeResolvedIfResolutionIsInvalid='if resolution = \'INVALID\' then \n\t\t\t\tstate &lt;&gt; \'RESOLVED\'\n\t\t\t else \n\t\t\t \ttrue\n\t\t\t endif ' StateCannotBeApprovedIfResolutionIsInvalid='if resolution = \'INVALID\' then \n\t\t\t\tstate &lt;&gt; \'APPROVED\'\n\t\t\t else \n\t\t\t \ttrue\n\t\t\t endif ' StateCannotBeReviewedIfResolutionIsInvalid='if resolution = \'INVALID\' then \n\t\t\t\tstate &lt;&gt; \'REVIEWED\'\n\t\t\t else \n\t\t\t \ttrue\n\t\t\t endif ' MustHaveCreationDate='not created.oclIsUndefined()' MustHaveAuthor='not author.oclIsUndefined()' AuthorLengthMustBeGreaterOrEqualThanThree='author.size() &gt;= 3'"
  * @generated
  */
 public interface Requirement extends EObject {

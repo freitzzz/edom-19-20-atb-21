@@ -2,8 +2,10 @@ package requirements;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 import org.eclipse.emf.common.util.Diagnostic;
@@ -30,10 +32,10 @@ public class SaveModel {
 
 	// Example of how to use the EMF library
 	public static void main(String[] args) {
-		
+
 		String requirementsInstancePath = args[0];
 		File requirementsInstanceAsFile = new File(requirementsInstancePath);
-		
+
 		saveModel(requirementsInstanceAsFile);
 	}
 
@@ -57,7 +59,7 @@ public class SaveModel {
 	}
 
 	public static void saveModel(File instanceToSave) {
-		
+
 		// Initialize OCL support
 		initOCL();
 
@@ -243,6 +245,10 @@ public class SaveModel {
 				"The software should be able to save a meal that is served to students and non students. A meal is identified by its designation, has a type, nutritional data, list of ingredients, can also contain allergens, has a cost-price and is available at a specific location. Once a meal is saved it is only available for the next 24 hours in the specified location.");
 		saveMealRequirement.setId("0");
 		saveMealRequirement.setVersion(saveMealRequirementVersion);
+		saveMealRequirement.setAuthor("EDOM");
+		saveMealRequirement.setCreated(new Date(System.currentTimeMillis()));
+
+		saveMealRequirement.setAuthor("EDOM");
 
 		Requirement showMealDesignationRequirement = factory.createRequirement();
 
@@ -250,6 +256,8 @@ public class SaveModel {
 		showMealDesignationRequirement.setDescription("The software should be able to show a meal designation.");
 		showMealDesignationRequirement.setId("0");
 		showMealDesignationRequirement.setVersion(showMealDesignationRequirementVersion);
+		showMealDesignationRequirement.setAuthor("EDOM");
+		showMealDesignationRequirement.setCreated(new Date(System.currentTimeMillis()));
 
 		Requirement showMealNutritionalDataRequirement = factory.createRequirement();
 
@@ -258,6 +266,8 @@ public class SaveModel {
 				.setDescription("The software should be able to show a meal nutritional data.");
 		showMealNutritionalDataRequirement.setId("0");
 		showMealNutritionalDataRequirement.setVersion(showMealNutritionalDataRequirementVersion);
+		showMealNutritionalDataRequirement.setAuthor("EDOM");
+		showMealNutritionalDataRequirement.setCreated(new Date(System.currentTimeMillis()));
 
 		Requirement showMealTypeRequirement = factory.createRequirement();
 
@@ -265,6 +275,8 @@ public class SaveModel {
 		showMealTypeRequirement.setDescription("The software should be able to show a meal type.");
 		showMealTypeRequirement.setId("0");
 		showMealTypeRequirement.setVersion(showMealTypeRequirementVersion);
+		showMealTypeRequirement.setAuthor("EDOM");
+		showMealTypeRequirement.setCreated(new Date(System.currentTimeMillis()));
 
 		Requirement showMealLocationRequirement = factory.createRequirement();
 
@@ -273,6 +285,8 @@ public class SaveModel {
 				.setDescription("The software should be able to show the location in which a meal is available.");
 		showMealLocationRequirement.setId("0");
 		showMealLocationRequirement.setVersion(showMealLocationRequirementVersion);
+		showMealLocationRequirement.setAuthor("EDOM");
+		showMealLocationRequirement.setCreated(new Date(System.currentTimeMillis()));
 
 		Requirement showMealPriceRequirement = factory.createRequirement();
 
@@ -280,6 +294,8 @@ public class SaveModel {
 		showMealPriceRequirement.setDescription("The software should be able to show the price of a meal.");
 		showMealPriceRequirement.setId("0");
 		showMealPriceRequirement.setVersion(showMealPriceRequirementVersion);
+		showMealPriceRequirement.setAuthor("EDOM");
+		showMealPriceRequirement.setCreated(new Date(System.currentTimeMillis()));
 
 		Requirement listMealIngredientsRequirement = factory.createRequirement();
 
@@ -287,6 +303,8 @@ public class SaveModel {
 		listMealIngredientsRequirement.setDescription("The software should be able to list the ingredients of a meal.");
 		listMealIngredientsRequirement.setId("0");
 		listMealIngredientsRequirement.setVersion(listMealIngredientsRequirementVersion);
+		listMealIngredientsRequirement.setAuthor("EDOM");
+		listMealIngredientsRequirement.setCreated(new Date(System.currentTimeMillis()));
 
 		Requirement listMealAllergensRequirement = factory.createRequirement();
 
@@ -295,6 +313,8 @@ public class SaveModel {
 				.setDescription("The software should be able to list the allergens of a meal if existent.");
 		listMealAllergensRequirement.setId("0");
 		listMealAllergensRequirement.setVersion(listMealAllergensRequirementVersion);
+		listMealAllergensRequirement.setAuthor("EDOM");
+		listMealAllergensRequirement.setCreated(new Date(System.currentTimeMillis()));
 
 		Requirement checkMealAvailabilityRequirement = factory.createRequirement();
 
@@ -303,6 +323,8 @@ public class SaveModel {
 				"The software should be able to check if a meal is available. A meal is only available in a period of 24 hours and at a specific location.");
 		checkMealAvailabilityRequirement.setId("0");
 		checkMealAvailabilityRequirement.setVersion(checkMealAvailabilityRequirementVersion);
+		checkMealAvailabilityRequirement.setAuthor("EDOM");
+		checkMealAvailabilityRequirement.setCreated(new Date(System.currentTimeMillis()));
 
 		Requirement payMealRequirement = factory.createRequirement();
 
@@ -311,6 +333,8 @@ public class SaveModel {
 				"The software should be able handle a meal payment. The type of user that is paying for the meal should be recorded. It should not be possible to pay for an unavailable meal or a meal that is unavailable at the payment location.");
 		payMealRequirement.setId("0");
 		payMealRequirement.setVersion(payMealRequirementVersion);
+		payMealRequirement.setAuthor("EDOM");
+		payMealRequirement.setCreated(new Date(System.currentTimeMillis()));
 
 		List<Requirement> manageMealsRequirements = new ArrayList<Requirement>();
 
@@ -348,6 +372,8 @@ public class SaveModel {
 				"The software should be able to save an unserved meal that will be packaged in the latter. It is identified by an identification number, has a production and expiration date and a designation of the meal. An unserved meal also has a state, and once saved its state is set to frozen.");
 		saveUnservedMealRequirement.setId("0");
 		saveUnservedMealRequirement.setVersion(saveUnservedMealRequirementVersion);
+		saveUnservedMealRequirement.setAuthor("EDOM");
+		saveUnservedMealRequirement.setCreated(new Date(System.currentTimeMillis()));
 
 		Requirement showUnservedMealIdentificationNumberRequirement = factory.createRequirement();
 
@@ -357,6 +383,8 @@ public class SaveModel {
 		showUnservedMealIdentificationNumberRequirement.setId("0");
 		showUnservedMealIdentificationNumberRequirement
 				.setVersion(showUnservedMealIdentificationNumberRequirementVersion);
+		showUnservedMealIdentificationNumberRequirement.setAuthor("EDOM");
+		showUnservedMealIdentificationNumberRequirement.setCreated(new Date(System.currentTimeMillis()));
 
 		Requirement showUnservedMealDesignationRequirement = factory.createRequirement();
 
@@ -365,6 +393,8 @@ public class SaveModel {
 				.setDescription("The software should be able to show an unserved meal designation.");
 		showUnservedMealDesignationRequirement.setId("0");
 		showUnservedMealDesignationRequirement.setVersion(showUnservedMealDesignationRequirementVersion);
+		showUnservedMealDesignationRequirement.setAuthor("EDOM");
+		showUnservedMealDesignationRequirement.setCreated(new Date(System.currentTimeMillis()));
 
 		Requirement showUnservedMealProductionDateRequirement = factory.createRequirement();
 
@@ -373,6 +403,8 @@ public class SaveModel {
 				.setDescription("The software should be able to show an unserved meal production date.");
 		showUnservedMealProductionDateRequirement.setId("0");
 		showUnservedMealProductionDateRequirement.setVersion(showUnservedMealProductionDateRequirementVersion);
+		showUnservedMealProductionDateRequirement.setAuthor("EDOM");
+		showUnservedMealProductionDateRequirement.setCreated(new Date(System.currentTimeMillis()));
 
 		Requirement showUnservedMealExpirationDateRequirement = factory.createRequirement();
 
@@ -381,6 +413,8 @@ public class SaveModel {
 				.setDescription("The software should be able to show an unserved meal expiration date.");
 		showUnservedMealExpirationDateRequirement.setId("0");
 		showUnservedMealExpirationDateRequirement.setVersion(showUnservedMealExpirationDateRequirementVersion);
+		showUnservedMealExpirationDateRequirement.setAuthor("EDOM");
+		showUnservedMealExpirationDateRequirement.setCreated(new Date(System.currentTimeMillis()));
 
 		Requirement showUnservedMealStateRequirement = factory.createRequirement();
 
@@ -388,6 +422,8 @@ public class SaveModel {
 		showUnservedMealStateRequirement.setDescription("The software should be able to show an unserved meal state.");
 		showUnservedMealStateRequirement.setId("0");
 		showUnservedMealStateRequirement.setVersion(showUnservedMealStateRequirementVersion);
+		showUnservedMealStateRequirement.setAuthor("EDOM");
+		showUnservedMealStateRequirement.setCreated(new Date(System.currentTimeMillis()));
 
 		List<Requirement> manageUnservedMealsRequirements = new ArrayList<Requirement>();
 

@@ -43,3 +43,7 @@
 | Body must have at least 5 characters    | Body must be at least five characters to be meaningful                                                                                          |
 | Author must exist                       | Author must exist so anyone who wants to discuss a comment to a requirement knows who he/she should talk to                                     |
 | Created Date must exist                 | Created date must exist to know if the comment is recent or not. Perhaps a comment which was made before a business change is not valid anymore |
+
+## Diagram of the created instance
+
+![](diagram.png)

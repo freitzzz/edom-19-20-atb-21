@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
+import gorgeousFood_Increment1.Comment;
 import gorgeousFood_Increment1.Model;
 import gorgeousFood_Increment1.Requirement;
 import gorgeousFood_Increment1.RequirementGroup;
@@ -49,10 +50,33 @@ public class GenerateRequirementsDiagram {
 		writer.println("@enduml");
 	}
 	
-	private static void generateRequirementObject(List<Requirement> requirements, PrintWriter writer, int reqGroupIndex) {
-		int index = 0;
+	private static String buildCommentString(Comment comment) {
+		return buildCommentString(comment, 0);
+	}
+	
+	private static String buildCommentString(Comment comment, int index) {
+		String initialTab = "";
+		if (index > 0) {
+			for (int i=0; i < index; i++) {
+				initialTab = initialTab + "\\t";
+			}
+		}
+		
+		String commentString = initialTab + comment.getSubject() + " by " + comment.getAuthor() + " on " + comment.getCreated() 
+			+ ": " + comment.getBody() + "\\n";
+		
+		String stringToReturn = "";
+		List<Comment> commentChildren = comment.getChildren();
+		for (Comment c: commentChildren) {
+			stringToReturn = stringToReturn + buildCommentString(c, index + 1);
+		}
+		return commentString + stringToReturn;
+	}
+	
+	private static void generateRequirementObject(List<Requirement> requirements, PrintWriter writer) {
 		for (Requirement requirement: requirements) {
-			writer.println("class \"Requirement " + requirement.getId() + "\" as req_" + reqGroupIndex + index + "{");
+			String reqPlantUmlId = "req_" + requirement.getId();
+			writer.println("class \"Requirement " + requirement.getId() + "\" as " + reqPlantUmlId + "{");
 			writer.println("Author: " + requirement.getAuthor());
 			writer.println("Creation date: " + requirement.getCreated());
 			writer.println("Title: " + requirement.getTitle());
@@ -60,24 +84,49 @@ public class GenerateRequirementsDiagram {
 			writer.println("Priority: " + requirement.getPriority());
 			writer.println("Resolution: " + requirement.getResolution());
 			writer.println("Type: " + requirement.getType());
+			gorgeousFood_Increment1.Version version = requirement.getVersion();
+			if (version != null) {
+				writer.println("Version: " + version.getMajor() + "." + version.getMinor() + "." + version.getService());
+			}
 			writer.println("}");
-			index++;
+			
+			if (requirement.getComment().size() > 0) {
+				for (Comment c: requirement.getComment()) {
+					writer.println("note top of " + reqPlantUmlId + ": " + buildCommentString(c));
+				}
+			}
+			
+			if (requirement.getChildren().size() > 0) {
+				generateRequirementObject(requirement.getChildren(), writer);
+			}
+			
+			for (Requirement reqChildren: requirement.getChildren()) {
+				writer.println(reqPlantUmlId + " *-- " + "req_" + reqChildren.getId());
+			}
+			
+			for (Requirement reqDependency: requirement.getDependencies()) {
+				writer.println(reqPlantUmlId + " ..> " + "req_" + reqDependency.getId());
+			}
 		}
 	}
 	
 	private static void generateRequirementsGroupObject(List<RequirementGroup> requirementsGroup, PrintWriter writer) {
-		int index = 0;
 		for (RequirementGroup reqGroup: requirementsGroup) {
-			writer.println("rectangle \"" + reqGroup.getName() + ": " + reqGroup.getDescription() + "\" as rectangle"+index+"{");
-			generateRequirementObject(reqGroup.getRequirements(), writer, index);
-			writer.println("}");
-			index++;
+			generateRequirementGroupObject(reqGroup, writer);
 		}
 		
 		for (int i=0; i < requirementsGroup.size(); i++) {
-			writer.println("model->" + "rectangle" + i);
+			writer.println("model->" + "rectangle" + requirementsGroup.get(i).getId());
 		}
-		
+	}
+	
+	private static void generateRequirementGroupObject(RequirementGroup reqGroup, PrintWriter writer) {
+		writer.println("rectangle \"" + reqGroup.getName() + ": " + reqGroup.getDescription() + "\" as rectangle"+reqGroup.getId()+"{");
+		generateRequirementObject(reqGroup.getRequirements(), writer);
+		for (RequirementGroup child: reqGroup.getChildren()) {
+			generateRequirementGroupObject(child, writer);
+		}
+		writer.println("}");
 	}
 	
 	private static void generateModelObject(Model model, PrintWriter writer) {

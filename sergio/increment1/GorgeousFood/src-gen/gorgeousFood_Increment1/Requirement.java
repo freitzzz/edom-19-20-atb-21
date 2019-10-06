@@ -34,8 +34,8 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see gorgeousFood_Increment1.GorgeousFood_Increment1Package#getRequirement()
- * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='mustHaveTitle titleMustHaveAtLeastFiveChars mustHaveDescription descriptionMustHaveAtLeastTenChars mustHaveCreateDate commentsCreateDateMustBeAfterRequirementCreateDate'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot mustHaveTitle='not title.oclIsUndefined()' titleMustHaveAtLeastFiveChars='title.size() &gt;= 5' mustHaveDescription='not description.oclIsUndefined()' descriptionMustHaveAtLeastTenChars='description.size() &gt;= 10' mustHaveCreateDate='not created.oclIsUndefined()' commentsCreateDateMustBeAfterRequirementCreateDate='self.comment-&gt;forAll(comment | comment.created &gt;= self.created)'"
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='mustHaveId idMustBeUnique mustHaveTitle titleMustHaveAtLeastFiveChars mustHaveDescription descriptionMustHaveAtLeastTenChars mustHaveCreateDate commentsCreateDateMustBeAfterRequirementCreateDate'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot mustHaveId='not id.oclIsUndefined()' idMustBeUnique='Requirement.allInstances()-&gt;isUnique(id)' mustHaveTitle='not title.oclIsUndefined()' titleMustHaveAtLeastFiveChars='title.size() &gt;= 5' mustHaveDescription='not description.oclIsUndefined()' descriptionMustHaveAtLeastTenChars='description.size() &gt;= 10' mustHaveCreateDate='not created.oclIsUndefined()' commentsCreateDateMustBeAfterRequirementCreateDate='self.comment-&gt;forAll(comment | comment.created &gt;= self.created)'"
  * @generated
  */
 public interface Requirement extends EObject {
@@ -196,7 +196,7 @@ public interface Requirement extends EObject {
 	 * @return the value of the '<em>Id</em>' attribute.
 	 * @see #setId(String)
 	 * @see gorgeousFood_Increment1.GorgeousFood_Increment1Package#getRequirement_Id()
-	 * @model
+	 * @model id="true"
 	 * @generated
 	 */
 	String getId();

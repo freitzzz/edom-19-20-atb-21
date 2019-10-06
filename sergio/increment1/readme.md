@@ -13,7 +13,9 @@ In this folder you should add **all** artifacts developed for the project increm
     - Must have least 5 characters
 
 ### RequirementGroup
-
+- Id
+    - Must exist
+    - Must be unique
 - Name
     - Must exist
     - Must have at least 5 characters
@@ -22,7 +24,9 @@ In this folder you should add **all** artifacts developed for the project increm
     - Must have at least 10 characters
 
 ### Requirement
-
+- Id
+    - Must exist
+    - Must be unique
 - Title
     - Must exist
     - Must have at least 5 characters
@@ -33,6 +37,9 @@ In this folder you should add **all** artifacts developed for the project increm
     - Must exist
 - Comments
     - All comments date creation date must be on the same day or after requirement creation date
+- State and resolution
+    - Cannot have invalid resolution with approved state
+    - Cannot have invalid resolution with resolved state
 
 ### Comment
 

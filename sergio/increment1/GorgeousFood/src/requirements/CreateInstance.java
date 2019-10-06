@@ -82,6 +82,7 @@ public class CreateInstance {
 		
 		// Unserved meals requirement group
 		RequirementGroup reqGroup1 = factory.createRequirementGroup();
+		reqGroup1.setId("req_group_1");
 		reqGroup1.setName("Unserved meals");
 		reqGroup1.setDescription("Unserved meals requirements");
 		
@@ -97,12 +98,14 @@ public class CreateInstance {
 		requirement1.setAuthor("Sérgio Ferreira");
 		requirement1.setCreated(new Date(1570053040460L));
 		requirement1.setVersion(version);
+		requirement1.setId("req_1");
 		
 		reqGroup1.getRequirements().add(requirement1);
 		model.getGroups().add(reqGroup1);
 		
 		// Meals requirement group
 		RequirementGroup reqGroup2 = factory.createRequirementGroup();
+		reqGroup2.setId("req_group_2");
 		reqGroup2.setName("Meals to serve");
 		reqGroup2.setDescription("Meals to serve requirements");
 		
@@ -118,11 +121,13 @@ public class CreateInstance {
 		requirement2.setAuthor("Sérgio Ferreira");
 		requirement2.setCreated(new Date(1570053040460L));
 		requirement2.setVersion(version2);
+		requirement2.setId("req_2");
 		
 		Version version3 = factory.createVersion();
 		version3.setMajor(1);
 		version3.setMinor(0);
 		version3.setService(0);
+
 		// Create requirement list meal
 		Requirement requirement3 = factory.createRequirement();
 		requirement3.setTitle("List a meal");
@@ -130,6 +135,7 @@ public class CreateInstance {
 		requirement3.setAuthor("Sérgio Ferreira");
 		requirement3.setCreated(new Date(1570053040460L));
 		requirement3.setVersion(version3);
+		requirement3.setId("req_3");
 		
 		Comment comment = factory.createComment();
 		comment.setAuthor("Sergio Ferreira");
@@ -150,6 +156,7 @@ public class CreateInstance {
 		requirement4.setAuthor("Sérgio Ferreira");
 		requirement4.setCreated(new Date(1570053040460L));
 		requirement4.setVersion(version4);
+		requirement4.setId("req_4");
 
 		reqGroup2.getRequirements().add(requirement2);
 		reqGroup2.getRequirements().add(requirement3);

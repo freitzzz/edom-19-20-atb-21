@@ -44,6 +44,14 @@
 | Author must exist                       | Author must exist so anyone who wants to discuss a comment to a requirement knows who he/she should talk to                                     |
 | Created Date must exist                 | Created date must exist to know if the comment is recent or not. Perhaps a comment which was made before a business change is not valid anymore |
 
-## Diagram of the created instance
+## Diagram of the created requirement instance
 
 ![](diagram.png)
+
+## Alternative diagram of the created requirement instance
+
+## Analyze possible problems in the coding of the generation of the diagram
+
+This coding is hard coded. It is writing to a text file the plant UML specification. This makes the code much less readable
+and if at any time there is an update on the plant UML API that invalidates any kind of syntax the generation code might break.
+This can be solved by creating a facade for the plant UML artifacts and separating that facade to a different project.

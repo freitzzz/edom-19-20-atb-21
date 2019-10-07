@@ -124,6 +124,7 @@ public class CreateInstance {
 		requirement2.setCreated(new Date(1570053040460L));
 		requirement2.setVersion(version2);
 		requirement2.setId("req_2");
+		reqGroup2.getRequirements().add(requirement2);
 		
 		Version version3 = factory.createVersion();
 		version3.setMajor(1);
@@ -138,8 +139,9 @@ public class CreateInstance {
 		requirement3.setCreated(new Date(1570053040460L));
 		requirement3.setVersion(version3);
 		requirement3.setId("req_3");
+		requirement3.setParent(requirement2);
 		
-		requirement2.getChildren().add(requirement3);
+		reqGroup2.getRequirements().add(requirement3);
 		
 		Comment comment = factory.createComment();
 		comment.setAuthor("Sergio Ferreira");
@@ -178,8 +180,6 @@ public class CreateInstance {
 		
 		requirement4.getComment().add(comment1);
 
-		reqGroup2.getRequirements().add(requirement3);
-		reqGroup2.getRequirements().add(requirement2);
 		reqGroup2.getRequirements().add(requirement4);
 		model.getGroups().add(reqGroup2);
 		

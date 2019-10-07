@@ -145,7 +145,7 @@ public class GenerateRequirementsDiagram {
 		PrintWriter writer = null;
 		try {
 			Model modelInstance = getRequirementsModelInstance();
-			FileWriter w = new FileWriter("/home/filipe/Desktop/faculdade/edom/edom-19-20-atb-21/sergio/increment1/GorgeousFood/src/requirements/plant.puml");
+			FileWriter w = new FileWriter("plant.uml");
 
 			writer = new PrintWriter(w);
 			

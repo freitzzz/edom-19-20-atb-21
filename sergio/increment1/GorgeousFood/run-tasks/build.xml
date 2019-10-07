@@ -90,4 +90,9 @@
             <classpath refid="GorgeousFood_Increment1.classpath"/>
         </java>
     </target>
+	<target name="GenerateDiagram" depends="build">
+        <java classname="requirements.GenerateRequirementsDiagram" failonerror="true" fork="yes">
+            <classpath refid="GorgeousFood_Increment1.classpath"/>
+        </java>
+    </target>
 </project>

@@ -141,7 +141,7 @@ public class CreateInstance {
 		requirement3.setId("req_3");
 		requirement3.setParent(requirement2);
 		
-		reqGroup2.getRequirements().add(requirement3);
+		//reqGroup2.getRequirements().add(requirement3);
 		
 		Comment comment = factory.createComment();
 		comment.setAuthor("Sergio Ferreira");

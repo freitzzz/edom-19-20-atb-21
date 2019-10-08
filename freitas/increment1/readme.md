@@ -80,5 +80,44 @@ Even though this representation displays all requirements models, it lacks suppo
 In order to improve the lack of comprehension in requirements metamodel, an alternative diagram representation was implemented using an [*object diagram*](http://plantuml.com/object-diagram) as seen in **Figure 2**.
 
 ![FIGURE_2](requirements/instances/puml_images/object_diagram_with_descriptions.svg)
+<center><i>Figure 2 - Gorgeous Food Application requirements visualization using object diagram</i></center>
 
 In this representation it is now possible to identify each model property as models are now UML objects. Also, the recognition of requirements models is now more clear as the initials of each model are explicit in object headers.
+
+## Possible Problems on the Coding of Diagrams Generation
+
+The generation of *mindmap* and *requirements* metamodels is done by transforming a model instance into a PlantUML file which contains the diagram syntax. This transformation is done using a **Java** program that enables the use of EMF libraries and follows a set of steps as seen below:
+
+1. Create a [*resource set*](http://download.eclipse.org/modeling/emf/emf/javadoc/2.5.0/org/eclipse/emf/ecore/resource/ResourceSet.html) of the model instance to retrieve the model
+2. Create a string containing the diagram PlantUML syntax by reading model values
+3. Write the string to a file
+
+**Step 1** requires the use of resource sets which is an in-memory representation of a metamodel. As seen in **Code Snippet 1**,to create this resource set, it is necessary to indicate the framework which resource factory is to be used to read the model instance. The generator uses a factory of instances that are represented using the **XMI** notation, which files extension are identified by `.xmi`. If the model instance being transformed is not a XMI document or does not comply with the file extension, an exception is thrown and the program is terminated.
+
+After the creation of the resource set it is necessary to load the model and retrieve it as an *EObject* and to parse the object as a metamodel model object. The program always parses the object as the metamodel *root model*. For example in the mindmap generator, it parses the object as a *Map* model and in the requirements generator it parses as a *Model* model. This parse is only successful if the root of the model instance is in fact the metamodel root model. If not an exception is thrown and the program is terminated.
+
+In **Step 2**, it is expected that the model instance complies with the metamodel validations which are implemented in OCL. If not it is possible that an exception is thrown as the program tries to read values from *null* models.
+
+
+```
+Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("xmi", new XMIResourceFactoryImpl());
+
+// Initialize the model
+RequirementsPackage.eINSTANCE.eClass();
+
+// Obtain a new resource set
+ResourceSet resSet = new ResourceSetImpl();
+
+Resource resource = resSet.getResource(URI.createURI(requirementsInstanceAsFile.getAbsolutePath()), true);
+
+// now load the content.
+PrintWriter writer=null;
+try {
+  resource.load(Collections.EMPTY_MAP);
+
+  EObject root = resource.getContents().get(0);
+  Model loadedModel=(Model)root;
+
+  ...
+```
+<center><i>Code Snippet 1 - Retrieving the root model of a requirements model instance</i></center>

@@ -681,7 +681,7 @@ public class GorgeousFood_Increment1PackageImpl extends EPackageImpl implements 
 				RequirementGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRequirementGroup_Id(), ecorePackage.getEString(), "id", null, 0, 1, RequirementGroup.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRequirementGroup_Requirements(), this.getRequirement(), null, "requirements", null, 0, -1,
 				RequirementGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -719,7 +719,7 @@ public class GorgeousFood_Increment1PackageImpl extends EPackageImpl implements 
 		initEAttribute(getRequirement_Created(), ecorePackage.getEDate(), "created", null, 0, 1, Requirement.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRequirement_Id(), ecorePackage.getEString(), "id", null, 0, 1, Requirement.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRequirement_State(), this.getState(), "state", null, 0, 1, Requirement.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRequirement_Resolution(), this.getResolution(), "resolution", null, 0, 1, Requirement.class,
@@ -810,9 +810,9 @@ public class GorgeousFood_Increment1PackageImpl extends EPackageImpl implements 
 		addAnnotation(modelEClass, source,
 				new String[] { "constraints", "mustHaveTitle titleMustHaveAtLeastFiveChars" });
 		addAnnotation(requirementGroupEClass, source, new String[] { "constraints",
-				"mustHaveName nameMustHaveAtLeastFiveChars mustHaveDescription descriptionMustHaveAtLeastTenChars" });
+				"mustHaveId idMustBeUnique mustHaveName nameMustHaveAtLeastFiveChars mustHaveDescription descriptionMustHaveAtLeastTenChars" });
 		addAnnotation(requirementEClass, source, new String[] { "constraints",
-				"mustHaveTitle titleMustHaveAtLeastFiveChars mustHaveDescription descriptionMustHaveAtLeastTenChars mustHaveCreateDate commentsCreateDateMustBeAfterRequirementCreateDate" });
+				"mustHaveId idMustBeUnique mustHaveTitle titleMustHaveAtLeastFiveChars mustHaveDescription descriptionMustHaveAtLeastTenChars mustHaveCreateDate commentsCreateDateMustBeAfterRequirementCreateDate" });
 		addAnnotation(commentEClass, source, new String[] { "constraints",
 				"mustHaveSubject subjectMustHaveAtLeastFiveChars mustHaveBody bodyMustHaveAtLeastFiveChars mustHaveAuthor mustHaveCreatedDate" });
 	}
@@ -827,15 +827,17 @@ public class GorgeousFood_Increment1PackageImpl extends EPackageImpl implements 
 		String source = "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot";
 		addAnnotation(modelEClass, source, new String[] { "mustHaveTitle", "not title.oclIsUndefined()",
 				"titleMustHaveAtLeastFiveChars", "title.size() >= 5" });
-		addAnnotation(requirementGroupEClass, source,
-				new String[] { "mustHaveName", "not name.oclIsUndefined()", "nameMustHaveAtLeastFiveChars",
-						"name.size() >= 5", "mustHaveDescription", "not description.oclIsUndefined()",
-						"descriptionMustHaveAtLeastTenChars", "description.size() > 5" });
+		addAnnotation(requirementGroupEClass, source, new String[] { "mustHaveId", "not id.oclIsUndefined()",
+				"idMustBeUnique", "RequirementGroup.allInstances()->isUnique(id)", "mustHaveName",
+				"not name.oclIsUndefined()", "nameMustHaveAtLeastFiveChars", "name.size() >= 5", "mustHaveDescription",
+				"not description.oclIsUndefined()", "descriptionMustHaveAtLeastTenChars", "description.size() > 5" });
 		addAnnotation(requirementEClass, source,
-				new String[] { "mustHaveTitle", "not title.oclIsUndefined()", "titleMustHaveAtLeastFiveChars",
-						"title.size() >= 5", "mustHaveDescription", "not description.oclIsUndefined()",
-						"descriptionMustHaveAtLeastTenChars", "description.size() >= 10", "mustHaveCreateDate",
-						"not created.oclIsUndefined()", "commentsCreateDateMustBeAfterRequirementCreateDate",
+				new String[] { "mustHaveId", "not id.oclIsUndefined()", "idMustBeUnique",
+						"Requirement.allInstances()->isUnique(id)", "mustHaveTitle", "not title.oclIsUndefined()",
+						"titleMustHaveAtLeastFiveChars", "title.size() >= 5", "mustHaveDescription",
+						"not description.oclIsUndefined()", "descriptionMustHaveAtLeastTenChars",
+						"description.size() >= 10", "mustHaveCreateDate", "not created.oclIsUndefined()",
+						"commentsCreateDateMustBeAfterRequirementCreateDate",
 						"self.comment->forAll(comment | comment.created >= self.created)" });
 		addAnnotation(commentEClass, source,
 				new String[] { "mustHaveSubject", "not subject.oclIsUndefined()", "subjectMustHaveAtLeastFiveChars",

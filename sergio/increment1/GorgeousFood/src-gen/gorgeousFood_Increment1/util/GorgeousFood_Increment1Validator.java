@@ -206,6 +206,10 @@ public class GorgeousFood_Increment1Validator extends EObjectValidator {
 		if (result || diagnostics != null)
 			result &= validate_EveryMapEntryUnique(requirementGroup, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validateRequirementGroup_mustHaveId(requirementGroup, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateRequirementGroup_idMustBeUnique(requirementGroup, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateRequirementGroup_mustHaveName(requirementGroup, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRequirementGroup_nameMustHaveAtLeastFiveChars(requirementGroup, diagnostics, context);
@@ -215,6 +219,48 @@ public class GorgeousFood_Increment1Validator extends EObjectValidator {
 			result &= validateRequirementGroup_descriptionMustHaveAtLeastTenChars(requirementGroup, diagnostics,
 					context);
 		return result;
+	}
+
+	/**
+	 * The cached validation expression for the mustHaveId constraint of '<em>Requirement Group</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String REQUIREMENT_GROUP__MUST_HAVE_ID__EEXPRESSION = "not id.oclIsUndefined()";
+
+	/**
+	 * Validates the mustHaveId constraint of '<em>Requirement Group</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateRequirementGroup_mustHaveId(RequirementGroup requirementGroup, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return validate(GorgeousFood_Increment1Package.Literals.REQUIREMENT_GROUP, requirementGroup, diagnostics,
+				context, "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "mustHaveId",
+				REQUIREMENT_GROUP__MUST_HAVE_ID__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
+	}
+
+	/**
+	 * The cached validation expression for the idMustBeUnique constraint of '<em>Requirement Group</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String REQUIREMENT_GROUP__ID_MUST_BE_UNIQUE__EEXPRESSION = "RequirementGroup.allInstances()->isUnique(id)";
+
+	/**
+	 * Validates the idMustBeUnique constraint of '<em>Requirement Group</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateRequirementGroup_idMustBeUnique(RequirementGroup requirementGroup,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate(GorgeousFood_Increment1Package.Literals.REQUIREMENT_GROUP, requirementGroup, diagnostics,
+				context, "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "idMustBeUnique",
+				REQUIREMENT_GROUP__ID_MUST_BE_UNIQUE__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
 	}
 
 	/**
@@ -337,6 +383,10 @@ public class GorgeousFood_Increment1Validator extends EObjectValidator {
 		if (result || diagnostics != null)
 			result &= validate_EveryMapEntryUnique(requirement, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validateRequirement_mustHaveId(requirement, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateRequirement_idMustBeUnique(requirement, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateRequirement_mustHaveTitle(requirement, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRequirement_titleMustHaveAtLeastFiveChars(requirement, diagnostics, context);
@@ -350,6 +400,48 @@ public class GorgeousFood_Increment1Validator extends EObjectValidator {
 			result &= validateRequirement_commentsCreateDateMustBeAfterRequirementCreateDate(requirement, diagnostics,
 					context);
 		return result;
+	}
+
+	/**
+	 * The cached validation expression for the mustHaveId constraint of '<em>Requirement</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String REQUIREMENT__MUST_HAVE_ID__EEXPRESSION = "not id.oclIsUndefined()";
+
+	/**
+	 * Validates the mustHaveId constraint of '<em>Requirement</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateRequirement_mustHaveId(Requirement requirement, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return validate(GorgeousFood_Increment1Package.Literals.REQUIREMENT, requirement, diagnostics, context,
+				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "mustHaveId", REQUIREMENT__MUST_HAVE_ID__EEXPRESSION,
+				Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
+	}
+
+	/**
+	 * The cached validation expression for the idMustBeUnique constraint of '<em>Requirement</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String REQUIREMENT__ID_MUST_BE_UNIQUE__EEXPRESSION = "Requirement.allInstances()->isUnique(id)";
+
+	/**
+	 * Validates the idMustBeUnique constraint of '<em>Requirement</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateRequirement_idMustBeUnique(Requirement requirement, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return validate(GorgeousFood_Increment1Package.Literals.REQUIREMENT, requirement, diagnostics, context,
+				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "idMustBeUnique",
+				REQUIREMENT__ID_MUST_BE_UNIQUE__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
 	}
 
 	/**

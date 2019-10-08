@@ -28,6 +28,8 @@ import gorgeousFood_Increment1.GorgeousFood_Increment1Factory;
 import gorgeousFood_Increment1.Model;
 import gorgeousFood_Increment1.Requirement;
 import gorgeousFood_Increment1.RequirementGroup;
+import gorgeousFood_Increment1.Resolution;
+import gorgeousFood_Increment1.State;
 import gorgeousFood_Increment1.Version;
 
 public class CreateInstance {
@@ -82,6 +84,7 @@ public class CreateInstance {
 		
 		// Unserved meals requirement group
 		RequirementGroup reqGroup1 = factory.createRequirementGroup();
+		reqGroup1.setId("req_group_1");
 		reqGroup1.setName("Unserved meals");
 		reqGroup1.setDescription("Unserved meals requirements");
 		
@@ -97,15 +100,17 @@ public class CreateInstance {
 		requirement1.setAuthor("Sérgio Ferreira");
 		requirement1.setCreated(new Date(1570053040460L));
 		requirement1.setVersion(version);
+		requirement1.setId("req_1");
 		
 		reqGroup1.getRequirements().add(requirement1);
 		model.getGroups().add(reqGroup1);
 		
 		// Meals requirement group
 		RequirementGroup reqGroup2 = factory.createRequirementGroup();
+		reqGroup2.setId("req_group_2");
 		reqGroup2.setName("Meals to serve");
 		reqGroup2.setDescription("Meals to serve requirements");
-		
+			
 		Version version2 = factory.createVersion();
 		version2.setMajor(1);
 		version2.setMinor(0);
@@ -118,11 +123,14 @@ public class CreateInstance {
 		requirement2.setAuthor("Sérgio Ferreira");
 		requirement2.setCreated(new Date(1570053040460L));
 		requirement2.setVersion(version2);
+		requirement2.setId("req_2");
+		reqGroup2.getRequirements().add(requirement2);
 		
 		Version version3 = factory.createVersion();
 		version3.setMajor(1);
 		version3.setMinor(0);
 		version3.setService(0);
+		
 		// Create requirement list meal
 		Requirement requirement3 = factory.createRequirement();
 		requirement3.setTitle("List a meal");
@@ -130,13 +138,25 @@ public class CreateInstance {
 		requirement3.setAuthor("Sérgio Ferreira");
 		requirement3.setCreated(new Date(1570053040460L));
 		requirement3.setVersion(version3);
+		requirement3.setId("req_3");
+		requirement3.setParent(requirement2);
+		
+		//reqGroup2.getRequirements().add(requirement3);
 		
 		Comment comment = factory.createComment();
 		comment.setAuthor("Sergio Ferreira");
-		comment.setBody("All the specificities of the meal should be lsited");
+		comment.setBody("All the specificities of the meal should be listed");
 		comment.setSubject("Comment");
 		comment.setCreated(new Date(1570053040460L));
-
+		
+		Comment comment2 = factory.createComment();
+		comment2.setAuthor("Antonio");
+		comment2.setBody("Do not forget to include the meal nutritional data");
+		comment2.setSubject("Comment");
+		comment2.setCreated(new Date(1570053040460L));
+		
+		comment.getChildren().add(comment2);
+		
 		requirement3.getComment().add(comment);
 		
 		Version version4 = factory.createVersion();
@@ -150,11 +170,56 @@ public class CreateInstance {
 		requirement4.setAuthor("Sérgio Ferreira");
 		requirement4.setCreated(new Date(1570053040460L));
 		requirement4.setVersion(version4);
+		requirement4.setId("req_4");
+		
+		Comment comment1 = factory.createComment();
+		comment1.setAuthor("Sergio");
+		comment1.setBody("The user who purchased the meal should be recorded");
+		comment1.setSubject("Requirement specificity");
+		comment1.setCreated(new Date(1570053040460L));
+		
+		requirement4.getComment().add(comment1);
 
-		reqGroup2.getRequirements().add(requirement2);
-		reqGroup2.getRequirements().add(requirement3);
 		reqGroup2.getRequirements().add(requirement4);
 		model.getGroups().add(reqGroup2);
+		
+		RequirementGroup reqGroup3 = factory.createRequirementGroup();
+		reqGroup3.setId("reqgroup3");
+		reqGroup3.setName("Gorgeous Food location");
+		reqGroup3.setDescription("Location helpers for Gorgeous Food");
+		
+		Version version5 = factory.createVersion();
+		version5.setMajor(1);
+		version5.setMinor(0);
+		version5.setService(0);
+		
+		Requirement requirement5 = factory.createRequirement();
+		requirement5.setTitle("Set Gorgeous Food location");
+		requirement5.setDescription("Set the gorgeous food location for the next 24 hours");
+		requirement5.setAuthor("Sérgio Ferreira");
+		requirement5.setCreated(new Date(1570053040460L));
+		requirement5.setVersion(version5);
+		requirement5.setId("req_5");
+
+		Version version6 = factory.createVersion();
+		version6.setMajor(1);
+		version6.setMinor(0);
+		version6.setService(0);
+		
+		Requirement requirement6 = factory.createRequirement();
+		requirement6.setTitle("List Gorgeous Food location");
+		requirement6.setDescription("List Gorgeous Food current location");
+		requirement6.setAuthor("Sérgio Ferreira");
+		requirement6.setCreated(new Date(1570053040460L));
+		requirement6.setVersion(version6);
+		requirement6.setId("req_6");
+		
+		requirement6.getDependencies().add(requirement5);
+		
+		reqGroup3.getRequirements().add(requirement5);
+		reqGroup3.getRequirements().add(requirement6);
+		
+		model.getGroups().add(reqGroup3);
 
 		// Add a call to validation...
         // See: https://stackoverflow.com/questions/8594212/how-to-programmatically-trigger-validation-of-emf-model
@@ -191,6 +256,7 @@ public class CreateInstance {
         // now save the content.
         try {
             resource.save(Collections.EMPTY_MAP);
+            System.out.println("File saved succesfully in instances/" + filename + ".xmi");
         } catch (IOException e) {
         	System.out.println("There was an error while saving the instance");
         } 

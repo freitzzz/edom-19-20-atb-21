@@ -24,8 +24,8 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see gorgeousFood_Increment1.GorgeousFood_Increment1Package#getRequirementGroup()
- * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='mustHaveName nameMustHaveAtLeastFiveChars mustHaveDescription descriptionMustHaveAtLeastTenChars'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot mustHaveName='not name.oclIsUndefined()' nameMustHaveAtLeastFiveChars='name.size() &gt;= 5' mustHaveDescription='not description.oclIsUndefined()' descriptionMustHaveAtLeastTenChars='description.size() &gt; 5'"
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='mustHaveId idMustBeUnique mustHaveName nameMustHaveAtLeastFiveChars mustHaveDescription descriptionMustHaveAtLeastTenChars'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot mustHaveId='not id.oclIsUndefined()' idMustBeUnique='RequirementGroup.allInstances()-&gt;isUnique(id)' mustHaveName='not name.oclIsUndefined()' nameMustHaveAtLeastFiveChars='name.size() &gt;= 5' mustHaveDescription='not description.oclIsUndefined()' descriptionMustHaveAtLeastTenChars='description.size() &gt; 5'"
  * @generated
  */
 public interface RequirementGroup extends EObject {
@@ -80,7 +80,7 @@ public interface RequirementGroup extends EObject {
 	 * @return the value of the '<em>Id</em>' attribute.
 	 * @see #setId(String)
 	 * @see gorgeousFood_Increment1.GorgeousFood_Increment1Package#getRequirementGroup_Id()
-	 * @model
+	 * @model id="true"
 	 * @generated
 	 */
 	String getId();

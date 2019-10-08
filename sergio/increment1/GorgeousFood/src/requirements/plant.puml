@@ -1,0 +1,73 @@
+@startuml
+allow_mixing
+skinparam rectangle {
+roundCorner 25
+}
+artifact "Gorgeous Food" as model
+rectangle "Unserved meals: Unserved meals requirements" as rectanglereq_group_1{
+class "Requirement Add meal to inventory" as req_req_1{
+Author: Sérgio Ferreira
+Creation date: Wed Oct 02 22:50:40 WEST 2019
+Description: Adds unserved meal to software inventory
+Priority: HIGH
+Resolution: INVALID
+Type: FUNCTIONAL
+Version: 1.0.0
+}
+}
+rectangle "Meals to serve: Meals to serve requirements" as rectanglereq_group_2{
+class "Requirement List a meal" as req_req_3{
+Author: Sérgio Ferreira
+Creation date: Wed Oct 02 22:50:40 WEST 2019
+Description: List a specific meal
+Priority: HIGH
+Resolution: INVALID
+Type: FUNCTIONAL
+Version: 1.0.0
+}
+note top of req_req_3: Comment by Sergio Ferreira on Wed Oct 02 22:50:40 WEST 2019: All the specificities of the meal should be listed\n\tComment by Antonio on Wed Oct 02 22:50:40 WEST 2019: Do not forget to include the meal nutritional data\n
+class "Requirement List all meals" as req_req_2{
+Author: Sérgio Ferreira
+Creation date: Wed Oct 02 22:50:40 WEST 2019
+Description: List all meals of the inventory
+Priority: HIGH
+Resolution: INVALID
+Type: FUNCTIONAL
+Version: 1.0.0
+}
+class "Requirement Pay meal" as req_req_4{
+Author: Sérgio Ferreira
+Creation date: Wed Oct 02 22:50:40 WEST 2019
+Description: Pay a meal
+Priority: HIGH
+Resolution: INVALID
+Type: FUNCTIONAL
+Version: 1.0.0
+}
+note top of req_req_4: Requirement specificity by Sergio on Wed Oct 02 22:50:40 WEST 2019: The user who purchased the meal should be recorded\n
+}
+rectangle "Gorgeous Food location: Location helpers for Gorgeous Food" as rectanglereqgroup3{
+class "Requirement Set Gorgeous Food location" as req_req_5{
+Author: Sérgio Ferreira
+Creation date: Wed Oct 02 22:50:40 WEST 2019
+Description: Set the gorgeous food location for the next 24 hours
+Priority: HIGH
+Resolution: INVALID
+Type: FUNCTIONAL
+Version: 1.0.0
+}
+class "Requirement List Gorgeous Food location" as req_req_6{
+Author: Sérgio Ferreira
+Creation date: Wed Oct 02 22:50:40 WEST 2019
+Description: List Gorgeous Food current location
+Priority: HIGH
+Resolution: INVALID
+Type: FUNCTIONAL
+Version: 1.0.0
+}
+req_req_6 ..> req_req_5
+}
+model->rectanglereq_group_1
+model->rectanglereq_group_2
+model->rectanglereqgroup3
+@enduml

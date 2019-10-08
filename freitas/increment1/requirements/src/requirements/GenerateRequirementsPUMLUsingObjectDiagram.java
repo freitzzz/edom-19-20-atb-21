@@ -74,7 +74,9 @@ public class GenerateRequirementsPUMLUsingObjectDiagram {
 	private static String modelToPUML(Model model) {
 		StringBuilder builder = new StringBuilder();
 		
-		builder.append(plantUMLObject(model.getTitle())).append('\n');
+		String modelTitle = "(M) " + model.getTitle();
+		
+		builder.append(plantUMLObject(modelTitle)).append('\n');
 		
 		List<RequirementGroup> groups = model.getGroups();
 		
@@ -88,11 +90,20 @@ public class GenerateRequirementsPUMLUsingObjectDiagram {
 			
 			for(RequirementGroup g: groups) {
 			
-				builder.append("obj").append(model.getTitle().hashCode()).append(" .. ").append("obj").append(g.getName().hashCode()).append('\n');
+				builder.append("obj").append(modelTitle.hashCode()).append(" .. ").append("obj").append(("(RG) " + g.getName()).hashCode()).append('\n');
 			
 			}
 			
 		}
+		
+		String legend = "legend right\n" + 
+				"|= |= Type |\n" + 
+				"| M|Model|\n" + 
+				"| R|Requirement|\n" + 
+				"| RG|Requirement Group |\n" + 
+				"endlegend";
+		
+		builder.append(legend).append('\n');
 		
 		return builder.toString().replaceAll("obj-", "obj_");
 	}
@@ -101,11 +112,13 @@ public class GenerateRequirementsPUMLUsingObjectDiagram {
 		
 		StringBuilder builder = new StringBuilder();
 		
-		builder.append(plantUMLObject(group.getName())).append('\n');
+		String groupName = "(RG) " + group.getName();
+
+		builder.append(plantUMLObject(groupName)).append('\n');
 		
-		builder.append(plantUMLField("obj"+Long.valueOf(group.getName().hashCode()), "description", group.getDescription())).append('\n');
+		builder.append(plantUMLField("obj"+Long.valueOf(groupName.hashCode()), "description", breakStringInLines(group.getDescription(), 40))).append('\n');
 		
-		builder.append(plantUMLField("obj"+Long.valueOf(group.getName().hashCode()), "id", group.getId())).append('\n');
+		builder.append(plantUMLField("obj"+Long.valueOf(groupName.hashCode()), "id", breakStringInLines(group.getId(), 40))).append('\n');
 		
 		List<Requirement> requirements = group.getRequirements();
 		
@@ -119,7 +132,7 @@ public class GenerateRequirementsPUMLUsingObjectDiagram {
 			
 			for(Requirement r: requirements) {
 				
-				builder.append("obj").append(group.getName().hashCode()).append(" .. ").append("obj").append(r.getTitle().hashCode()).append('\n');
+				builder.append("obj").append(groupName.hashCode()).append(" .. ").append("obj").append(("(R) " + r.getTitle()).hashCode()).append('\n');
 				
 			}
 			
@@ -137,7 +150,7 @@ public class GenerateRequirementsPUMLUsingObjectDiagram {
 			
 			for(RequirementGroup rg: subGroups) {
 				
-				builder.append("obj").append(group.getName().hashCode()).append(" .. ").append("obj").append(rg.getName().hashCode()).append('\n');
+				builder.append("obj").append(groupName.hashCode()).append(" .. ").append("obj").append(("(RG) " + rg.getName()).hashCode()).append('\n');
 				
 			}
 			
@@ -152,6 +165,8 @@ public class GenerateRequirementsPUMLUsingObjectDiagram {
 		
 		Version version = requirement.getVersion();
 		
+		String requirementTitle = "(R) " + requirement.getTitle();
+
 		if(version == null) {
 			
 			version = RequirementsFactory.eINSTANCE.createVersion();
@@ -164,24 +179,24 @@ public class GenerateRequirementsPUMLUsingObjectDiagram {
 		}
 		
 		String versionString = quoteString("Version " + version.getMajor() + "." + version.getMinor() + "." + version.getService());
+
+		builder.append(plantUMLObject(requirementTitle)).append('\n');
 		
-		builder.append(plantUMLObject(requirement.getTitle())).append('\n');
+		builder.append(plantUMLField("obj"+Long.valueOf(requirementTitle.hashCode()), "created", requirement.getCreated())).append('\n');
 		
-		builder.append(plantUMLField("obj"+Long.valueOf(requirement.getTitle().hashCode()), "created", requirement.getCreated())).append('\n');
+		builder.append(plantUMLField("obj"+Long.valueOf(requirementTitle.hashCode()), "id", breakStringInLines(requirement.getId(), 40))).append('\n');
 		
-		builder.append(plantUMLField("obj"+Long.valueOf(requirement.getTitle().hashCode()), "id", requirement.getId())).append('\n');
+		builder.append(plantUMLField("obj"+Long.valueOf(requirementTitle.hashCode()), "description", breakStringInLines(requirement.getDescription(), 40))).append('\n');
 		
-		builder.append(plantUMLField("obj"+Long.valueOf(requirement.getTitle().hashCode()), "description", requirement.getDescription())).append('\n');
+		builder.append(plantUMLField("obj"+Long.valueOf(requirementTitle.hashCode()), "author", breakStringInLines(requirement.getAuthor(), 40))).append('\n');
 		
-		builder.append(plantUMLField("obj"+Long.valueOf(requirement.getTitle().hashCode()), "author", requirement.getAuthor())).append('\n');
+		builder.append(plantUMLField("obj"+Long.valueOf(requirementTitle.hashCode()), "priority", requirement.getPriority())).append('\n');
 		
-		builder.append(plantUMLField("obj"+Long.valueOf(requirement.getTitle().hashCode()), "priority", requirement.getPriority())).append('\n');
+		builder.append(plantUMLField("obj"+Long.valueOf(requirementTitle.hashCode()), "state", requirement.getState())).append('\n');
 		
-		builder.append(plantUMLField("obj"+Long.valueOf(requirement.getTitle().hashCode()), "state", requirement.getState())).append('\n');
+		builder.append(plantUMLField("obj"+Long.valueOf(requirementTitle.hashCode()), "type", requirement.getType())).append('\n');
 		
-		builder.append(plantUMLField("obj"+Long.valueOf(requirement.getTitle().hashCode()), "type", requirement.getType())).append('\n');
-		
-		builder.append(plantUMLField("obj"+Long.valueOf(requirement.getTitle().hashCode()), "version", versionString)).append('\n');
+		builder.append(plantUMLField("obj"+Long.valueOf(requirementTitle.hashCode()), "version", versionString)).append('\n');
 		
 		List<Requirement> subRequirements = requirement.getChildren();
 		
@@ -195,7 +210,7 @@ public class GenerateRequirementsPUMLUsingObjectDiagram {
 			
 			for(Requirement r: subRequirements) {
 				
-				builder.append(quoteString(requirement.getTitle())).append(" .. ").append(quoteString(r.getTitle())).append('\n');
+				builder.append(quoteString(requirementTitle)).append(" .. ").append(quoteString("(R) " + r.getTitle())).append('\n');
 				
 			}
 			
@@ -213,7 +228,7 @@ public class GenerateRequirementsPUMLUsingObjectDiagram {
 			
 			for(Requirement r: dependencies) {
 				
-				builder.append("obj").append(requirement.getTitle().hashCode()).append(" .. ").append("obj").append(r.getTitle().hashCode()).append('\n');
+				builder.append("obj").append(requirementTitle.hashCode()).append(" .. ").append("obj").append(("(R) " + r.getTitle()).hashCode()).append('\n');
 				
 			}
 			
@@ -231,7 +246,7 @@ public class GenerateRequirementsPUMLUsingObjectDiagram {
 			
 			for(Comment c: comments) {
 				
-				builder.append("obj").append(requirement.getTitle().hashCode()).append(" .. ").append("obj").append(Long.valueOf(c.hashCode())).append('\n');
+				builder.append("obj").append(requirementTitle.hashCode()).append(" .. ").append("obj").append(Long.valueOf(c.hashCode())).append('\n');
 				
 			}
 			
@@ -285,8 +300,7 @@ public class GenerateRequirementsPUMLUsingObjectDiagram {
 			
 			builder
 			.append(firstPartOfBreakedString)
-			.append('\\')
-			.append('\n')
+			.append("\\n")
 			.append(breakStringInLines(secondPartOfBreakedString, maxCharacters));
 		}else {
 			builder.append(string);

@@ -65,3 +65,20 @@ For this metamodel, the following validations were proposed and implemented usin
 |Subject length must be greater or equal than ten (10)|This validation is imposed in order to promote better identification of comments|
 |Must have a creation date|A comment requires a creation date to be established|
 |||
+
+## Representations for Requirements Diagram
+
+For the requirements metamodel two possible diagram representations using *[Plant UML](http://plantuml.com/)* were studied and implemented.
+
+The first representation is very similar to the one used to represent the mindmap metamodel, which uses **Graphviz**. This representation represents each model using circles, and connects each one of the models using an arrow, as seen in **Figure 1**.
+
+![FIGURE_1](requirements/instances/puml_images/circles.svg)
+<center><i>Figure 1 - Gorgeous Food Application requirements visualization using Graphviz</i></center>
+
+Even though this representation displays all requirements models, it lacks support in differentiating models and their properties. For example, an individual which does not know anything about the *Gorgeous Food Application* wouldn't properly recognize that *Manage Meals* and *Manage Unserved Meals* were two different **requirement groups**. This recognition is also affected due to models properties not being represented in the diagram.
+
+In order to improve the lack of comprehension in requirements metamodel, an alternative diagram representation was implemented using an [*object diagram*](http://plantuml.com/object-diagram) as seen in **Figure 2**.
+
+![FIGURE_2](requirements/instances/puml_images/object_diagram_with_descriptions.svg)
+
+In this representation it is now possible to identify each model property as models are now UML objects. Also, the recognition of requirements models is now more clear as the initials of each model are explicit in object headers.

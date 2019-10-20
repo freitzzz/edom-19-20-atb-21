@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mindmap:Map
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:mindmap="http://www.example.org/mindmap"
+    xsi:schemaLocation="http://www.example.org/mindmap ../model/mindmap.ecore"
+    title="AgendaApp">
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Contacts"
+      description=""
+      start="2018-10-01T00:00:00.000+0100"
+      end="2019-10-01T00:00:00.000+0100"/>
+  <elements
+      xsi:type="mindmap:Topic"
+      name="Meetings"/>
+</mindmap:Map>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<requirements:Model
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:requirements="http://www.example.org/requirements"
+    xsi:schemaLocation="http://www.example.org/requirements requirements.ecore"
+    title="GorgeousFood Requirements">
+  <groups name="RG1"
+      id="id1">
+    <requirements
+        title="Sell meal"
+        created="2019-10-20T00:00:00.000+0100"
+        id="id1">
+      <version/>
+      <comments
+          subject="Comment Subject"
+          body="Comment Body"
+          author="João"
+          created="2019-10-20T00:00:00.000+0100"/>
+    </requirements>
+  </groups>
+  <groups name="RG2"
+      id="id2"/>
+</requirements:Model>

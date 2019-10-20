@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated mmap -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="pt.isep.edom.mmap.presentation.MmapModelWizardID"
+            name="%_UI_MmapModelWizard_label"
+            class="pt.isep.edom.mmap.presentation.MmapModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/MmapModelFile.gif">
+         <description>%_UI_MmapModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated mmap -->
+      <editor
+            id="pt.isep.edom.mmap.presentation.MmapEditorID"
+            name="%_UI_MmapEditor_label"
+            icon="icons/full/obj16/MmapModelFile.gif"
+            extensions="mmap"
+            class="pt.isep.edom.mmap.presentation.MmapEditor"
+            contributorClass="pt.isep.edom.mmap.presentation.MmapActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

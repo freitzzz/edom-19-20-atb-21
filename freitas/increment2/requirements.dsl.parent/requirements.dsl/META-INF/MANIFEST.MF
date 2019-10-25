@@ -9,5 +9,19 @@ Bundle-ActivationPolicy: lazy
 Require-Bundle: requirements,
  org.eclipse.xtext,
  org.eclipse.xtext.xbase,
- org.eclipse.equinox.common;bundle-version="3.5.0"
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
+ org.eclipse.xtext.util,
+ org.eclipse.xtend.lib;bundle-version="2.14.0",
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: requirements.dsl.validation,
+ requirements.dsl.services,
+ requirements.dsl.parser.antlr.internal,
+ requirements.dsl.formatting2,
+ requirements.dsl.scoping,
+ requirements.dsl.generator,
+ requirements.dsl.serializer,
+ requirements.dsl.parser.antlr,
+ requirements.dsl
+Import-Package: org.apache.log4j

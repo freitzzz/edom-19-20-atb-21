@@ -4,7 +4,7 @@
     modelDirectory="/requirements/src-gen" creationIcons="false" editDirectory="/requirements.edit/src-gen"
     editorDirectory="/requirements.editor/src-gen" modelPluginID="requirements" modelName="Requirements"
     rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" codeFormatting="true"
-    importerID="org.eclipse.emf.importer.ecore" complianceLevel="10.0" copyrightFields="false"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
     operationReflection="true" importOrganizing="true">
   <foreignModel>requirements.ecore</foreignModel>
   <testsDirectory xsi:nil="true"/>

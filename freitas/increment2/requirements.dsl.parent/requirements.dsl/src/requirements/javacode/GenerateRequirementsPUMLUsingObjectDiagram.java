@@ -1,4 +1,4 @@
-package requirements.code;
+package requirements.javacode;
 
 import java.io.File;
 import java.io.FileWriter;

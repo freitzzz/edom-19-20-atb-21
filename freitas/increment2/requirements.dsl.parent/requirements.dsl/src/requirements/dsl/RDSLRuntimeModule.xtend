@@ -3,9 +3,17 @@
  */
 package requirements.dsl
 
+import org.eclipse.xtext.conversion.IValueConverterService
+import requirements.dsl.converter.RDSLValueConverter
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 class RDSLRuntimeModule extends AbstractRDSLRuntimeModule {
+	
+	override
+    public Class<? extends IValueConverterService> bindIValueConverterService() {
+    	// return null
+        return RDSLValueConverter 
+    }
 }

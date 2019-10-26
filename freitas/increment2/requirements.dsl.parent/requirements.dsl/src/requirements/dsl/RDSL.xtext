@@ -74,7 +74,7 @@ enum Priority returns Priority:
 				HIGH = 'HIGH' | MEDIUM = 'MEDIUM' | LOW = 'LOW';
 
 EDate returns ecore::EDate:
-	'EDate' /* TODO: implement this rule and an appropriate IValueConverter */;
+	EString /* TODO: implement this rule and an appropriate IValueConverter */;
 
 enum State returns State:
 				NEW = 'NEW' | REVIEWED = 'REVIEWED' | APPROVED = 'APPROVED' | RESOLVED = 'RESOLVED';

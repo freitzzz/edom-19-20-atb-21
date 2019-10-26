@@ -7,6 +7,7 @@
 			<accessrule kind="accessible" pattern="org/eclipse/emf/**"/>
 			<accessrule kind="accessible" pattern="com/google/**"/>
 			<accessrule kind="accessible" pattern="org/antlr/**"/>
+			<accessrule kind="accessible" pattern="org/eclipse/ocl/**"/>
 		</accessrules>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>

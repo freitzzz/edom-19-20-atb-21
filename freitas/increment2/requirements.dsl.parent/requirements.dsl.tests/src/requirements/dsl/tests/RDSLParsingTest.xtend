@@ -21,7 +21,9 @@ class RDSLParsingTest {
 	@Test
 	def void loadModel() {
 		val result = parseHelper.parse('''
-			Hello Xtext!
+			Model{
+				title Incremento2
+			}
 		''')
 		Assertions.assertNotNull(result)
 		val errors = result.eResource.errors

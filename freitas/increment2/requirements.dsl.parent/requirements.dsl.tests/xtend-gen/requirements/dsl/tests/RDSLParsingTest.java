@@ -29,7 +29,12 @@ public class RDSLParsingTest {
   public void loadModel() {
     try {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("Hello Xtext!");
+      _builder.append("Model{");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("title Incremento2");
+      _builder.newLine();
+      _builder.append("}");
       _builder.newLine();
       final Model result = this.parseHelper.parse(_builder);
       Assertions.assertNotNull(result);

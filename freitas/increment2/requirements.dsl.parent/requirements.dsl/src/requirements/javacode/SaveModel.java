@@ -14,7 +14,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.Diagnostician;
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.ocl.common.OCLConstants;
 import org.eclipse.ocl.pivot.internal.delegate.OCLDelegateDomain;
 import org.eclipse.ocl.pivot.internal.delegate.OCLInvocationDelegateFactory;
@@ -71,9 +70,6 @@ public class SaveModel {
 		Injector injector = new RDSLStandaloneSetup().createInjectorAndDoEMFRegistration();
 		
 		XtextResourceSet resSet = injector.getInstance(XtextResourceSet.class);
-		
-		// Associate the "requirements" extension with the XMI resource format
-		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("xmi", new XMIResourceFactoryImpl());
 
 		// Initialize the model
 		RequirementsPackage.eINSTANCE.eClass();
@@ -95,7 +91,7 @@ public class SaveModel {
 		// See:
 		// https://mattsch.com/2012/05/31/how-to-use-ocl-when-running-emf-standalone/
 		// See: https://wiki.eclipse.org/OCL/OCLinEcore
-		System.out.println("Diagnostic:");
+		System.out.println("Diagnsostic:");
 		Diagnostic diag = Diagnostician.INSTANCE.validate(myModel);
 		if (diag.getSeverity() != Diagnostic.OK) {
 			System.out.println(diag.getMessage());

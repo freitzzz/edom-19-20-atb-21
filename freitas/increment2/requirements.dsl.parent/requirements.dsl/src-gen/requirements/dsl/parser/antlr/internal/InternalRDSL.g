@@ -1197,10 +1197,15 @@ ruleEDate returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
 @after {
 	leaveRule();
 }:
-	kw='EDate'
 	{
-		$current.merge(kw);
-		newLeafNode(kw, grammarAccess.getEDateAccess().getEDateKeyword());
+		newCompositeNode(grammarAccess.getEDateAccess().getEStringParserRuleCall());
+	}
+	this_EString_0=ruleEString
+	{
+		$current.merge(this_EString_0);
+	}
+	{
+		afterParserOrEnumRuleCall();
 	}
 ;
 

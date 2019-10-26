@@ -807,14 +807,14 @@ public class RDSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	public class EDateElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "requirements.dsl.RDSL.EDate");
-		private final Keyword cEDateKeyword = (Keyword)rule.eContents().get(1);
+		private final RuleCall cEStringParserRuleCall = (RuleCall)rule.eContents().get(1);
 		
 		//EDate ecore::EDate:
-		//	'EDate' /* TODO: implement this rule and an appropriate IValueConverter */;
+		//	EString /* TODO: implement this rule and an appropriate IValueConverter */;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'EDate'
-		public Keyword getEDateKeyword() { return cEDateKeyword; }
+		//EString
+		public RuleCall getEStringParserRuleCall() { return cEStringParserRuleCall; }
 	}
 	public class EIntElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "requirements.dsl.RDSL.EInt");
@@ -1153,7 +1153,7 @@ public class RDSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//EDate ecore::EDate:
-	//	'EDate' /* TODO: implement this rule and an appropriate IValueConverter */;
+	//	EString /* TODO: implement this rule and an appropriate IValueConverter */;
 	public EDateElements getEDateAccess() {
 		return pEDate;
 	}

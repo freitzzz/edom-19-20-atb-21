@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalRDSLParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'Model'", "'{'", "'title'", "'groups'", "','", "'}'", "'RequirementGroup'", "'description'", "'id'", "'requirements'", "'children'", "'Requirement'", "'type'", "'priority'", "'author'", "'created'", "'state'", "'resolution'", "'dependencies'", "'('", "')'", "'version'", "'comments'", "'Version'", "'major'", "'minor'", "'service'", "'Comment'", "'subject'", "'body'", "'EDate'", "'-'", "'FUNCTIONAL'", "'NONFUNCTIONAL'", "'HIGH'", "'MEDIUM'", "'LOW'", "'NEW'", "'REVIEWED'", "'APPROVED'", "'RESOLVED'", "'INVALID'", "'ACCEPTED'", "'IMPLEMENTED'", "'LATER'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'Model'", "'{'", "'title'", "'groups'", "','", "'}'", "'RequirementGroup'", "'description'", "'id'", "'requirements'", "'children'", "'Requirement'", "'type'", "'priority'", "'author'", "'created'", "'state'", "'resolution'", "'dependencies'", "'('", "')'", "'version'", "'comments'", "'Version'", "'major'", "'minor'", "'service'", "'Comment'", "'subject'", "'body'", "'-'", "'FUNCTIONAL'", "'NONFUNCTIONAL'", "'HIGH'", "'MEDIUM'", "'LOW'", "'NEW'", "'REVIEWED'", "'APPROVED'", "'RESOLVED'", "'INVALID'", "'ACCEPTED'", "'IMPLEMENTED'", "'LATER'"
     };
     public static final int T__50=50;
     public static final int T__19=19;
@@ -31,7 +31,6 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
     public static final int T__17=17;
     public static final int T__18=18;
     public static final int T__11=11;
-    public static final int T__55=55;
     public static final int T__12=12;
     public static final int T__13=13;
     public static final int T__14=14;
@@ -1396,7 +1395,7 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // InternalRDSL.g:592:4: otherlv_12= 'created' ( (lv_created_13_0= ruleEDate ) )
                     {
-                    otherlv_12=(Token)match(input,26,FOLLOW_23); 
+                    otherlv_12=(Token)match(input,26,FOLLOW_5); 
 
                     				newLeafNode(otherlv_12, grammarAccess.getRequirementAccess().getCreatedKeyword_7_0());
                     			
@@ -1409,7 +1408,7 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
 
                     						newCompositeNode(grammarAccess.getRequirementAccess().getCreatedEDateParserRuleCall_7_1_0());
                     					
-                    pushFollow(FOLLOW_24);
+                    pushFollow(FOLLOW_23);
                     lv_created_13_0=ruleEDate();
 
                     state._fsp--;
@@ -1461,7 +1460,7 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
 
                     						newCompositeNode(grammarAccess.getRequirementAccess().getIdEStringParserRuleCall_8_1_0());
                     					
-                    pushFollow(FOLLOW_25);
+                    pushFollow(FOLLOW_24);
                     lv_id_15_0=ruleEString();
 
                     state._fsp--;
@@ -1500,7 +1499,7 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // InternalRDSL.g:642:4: otherlv_16= 'state' ( (lv_state_17_0= ruleState ) )
                     {
-                    otherlv_16=(Token)match(input,27,FOLLOW_26); 
+                    otherlv_16=(Token)match(input,27,FOLLOW_25); 
 
                     				newLeafNode(otherlv_16, grammarAccess.getRequirementAccess().getStateKeyword_9_0());
                     			
@@ -1513,7 +1512,7 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
 
                     						newCompositeNode(grammarAccess.getRequirementAccess().getStateStateEnumRuleCall_9_1_0());
                     					
-                    pushFollow(FOLLOW_27);
+                    pushFollow(FOLLOW_26);
                     lv_state_17_0=ruleState();
 
                     state._fsp--;
@@ -1552,7 +1551,7 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // InternalRDSL.g:667:4: otherlv_18= 'resolution' ( (lv_resolution_19_0= ruleResolution ) )
                     {
-                    otherlv_18=(Token)match(input,28,FOLLOW_28); 
+                    otherlv_18=(Token)match(input,28,FOLLOW_27); 
 
                     				newLeafNode(otherlv_18, grammarAccess.getRequirementAccess().getResolutionKeyword_10_0());
                     			
@@ -1565,7 +1564,7 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
 
                     						newCompositeNode(grammarAccess.getRequirementAccess().getResolutionResolutionEnumRuleCall_10_1_0());
                     					
-                    pushFollow(FOLLOW_29);
+                    pushFollow(FOLLOW_28);
                     lv_resolution_19_0=ruleResolution();
 
                     state._fsp--;
@@ -1604,7 +1603,7 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // InternalRDSL.g:692:4: otherlv_20= 'dependencies' otherlv_21= '(' ( ( ruleEString ) ) (otherlv_23= ',' ( ( ruleEString ) ) )* otherlv_25= ')'
                     {
-                    otherlv_20=(Token)match(input,29,FOLLOW_30); 
+                    otherlv_20=(Token)match(input,29,FOLLOW_29); 
 
                     				newLeafNode(otherlv_20, grammarAccess.getRequirementAccess().getDependenciesKeyword_11_0());
                     			
@@ -1626,7 +1625,7 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
 
                     						newCompositeNode(grammarAccess.getRequirementAccess().getDependenciesRequirementCrossReference_11_2_0());
                     					
-                    pushFollow(FOLLOW_31);
+                    pushFollow(FOLLOW_30);
                     ruleEString();
 
                     state._fsp--;
@@ -1673,7 +1672,7 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
 
                     	    							newCompositeNode(grammarAccess.getRequirementAccess().getDependenciesRequirementCrossReference_11_3_1_0());
                     	    						
-                    	    pushFollow(FOLLOW_31);
+                    	    pushFollow(FOLLOW_30);
                     	    ruleEString();
 
                     	    state._fsp--;
@@ -1696,7 +1695,7 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
                         }
                     } while (true);
 
-                    otherlv_25=(Token)match(input,31,FOLLOW_32); 
+                    otherlv_25=(Token)match(input,31,FOLLOW_31); 
 
                     				newLeafNode(otherlv_25, grammarAccess.getRequirementAccess().getRightParenthesisKeyword_11_4());
                     			
@@ -1706,7 +1705,7 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_26=(Token)match(input,32,FOLLOW_33); 
+            otherlv_26=(Token)match(input,32,FOLLOW_32); 
 
             			newLeafNode(otherlv_26, grammarAccess.getRequirementAccess().getVersionKeyword_12());
             		
@@ -1719,7 +1718,7 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
 
             					newCompositeNode(grammarAccess.getRequirementAccess().getVersionVersionParserRuleCall_13_0());
             				
-            pushFollow(FOLLOW_34);
+            pushFollow(FOLLOW_33);
             lv_version_27_0=ruleVersion();
 
             state._fsp--;
@@ -1756,7 +1755,7 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
 
                     				newLeafNode(otherlv_28, grammarAccess.getRequirementAccess().getCommentsKeyword_14_0());
                     			
-                    otherlv_29=(Token)match(input,12,FOLLOW_35); 
+                    otherlv_29=(Token)match(input,12,FOLLOW_34); 
 
                     				newLeafNode(otherlv_29, grammarAccess.getRequirementAccess().getLeftCurlyBracketKeyword_14_1());
                     			
@@ -1806,7 +1805,7 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
                     	case 1 :
                     	    // InternalRDSL.g:795:5: otherlv_31= ',' ( (lv_comments_32_0= ruleComment ) )
                     	    {
-                    	    otherlv_31=(Token)match(input,15,FOLLOW_35); 
+                    	    otherlv_31=(Token)match(input,15,FOLLOW_34); 
 
                     	    					newLeafNode(otherlv_31, grammarAccess.getRequirementAccess().getCommaKeyword_14_3_0());
                     	    				
@@ -2073,11 +2072,11 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_0, grammarAccess.getVersionAccess().getVersionKeyword_0());
             		
-            otherlv_1=(Token)match(input,12,FOLLOW_36); 
+            otherlv_1=(Token)match(input,12,FOLLOW_35); 
 
             			newLeafNode(otherlv_1, grammarAccess.getVersionAccess().getLeftCurlyBracketKeyword_1());
             		
-            otherlv_2=(Token)match(input,35,FOLLOW_37); 
+            otherlv_2=(Token)match(input,35,FOLLOW_36); 
 
             			newLeafNode(otherlv_2, grammarAccess.getVersionAccess().getMajorKeyword_2());
             		
@@ -2090,7 +2089,7 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
 
             					newCompositeNode(grammarAccess.getVersionAccess().getMajorEIntParserRuleCall_3_0());
             				
-            pushFollow(FOLLOW_38);
+            pushFollow(FOLLOW_37);
             lv_major_3_0=ruleEInt();
 
             state._fsp--;
@@ -2112,7 +2111,7 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,36,FOLLOW_37); 
+            otherlv_4=(Token)match(input,36,FOLLOW_36); 
 
             			newLeafNode(otherlv_4, grammarAccess.getVersionAccess().getMinorKeyword_4());
             		
@@ -2125,7 +2124,7 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
 
             					newCompositeNode(grammarAccess.getVersionAccess().getMinorEIntParserRuleCall_5_0());
             				
-            pushFollow(FOLLOW_39);
+            pushFollow(FOLLOW_38);
             lv_minor_5_0=ruleEInt();
 
             state._fsp--;
@@ -2147,7 +2146,7 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_6=(Token)match(input,37,FOLLOW_37); 
+            otherlv_6=(Token)match(input,37,FOLLOW_36); 
 
             			newLeafNode(otherlv_6, grammarAccess.getVersionAccess().getServiceKeyword_6());
             		
@@ -2298,7 +2297,7 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_1, grammarAccess.getCommentAccess().getCommentKeyword_1());
             		
-            otherlv_2=(Token)match(input,12,FOLLOW_40); 
+            otherlv_2=(Token)match(input,12,FOLLOW_39); 
 
             			newLeafNode(otherlv_2, grammarAccess.getCommentAccess().getLeftCurlyBracketKeyword_2());
             		
@@ -2326,7 +2325,7 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
 
                     						newCompositeNode(grammarAccess.getCommentAccess().getSubjectEStringParserRuleCall_3_1_0());
                     					
-                    pushFollow(FOLLOW_41);
+                    pushFollow(FOLLOW_40);
                     lv_subject_4_0=ruleEString();
 
                     state._fsp--;
@@ -2378,7 +2377,7 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
 
                     						newCompositeNode(grammarAccess.getCommentAccess().getBodyEStringParserRuleCall_4_1_0());
                     					
-                    pushFollow(FOLLOW_42);
+                    pushFollow(FOLLOW_41);
                     lv_body_6_0=ruleEString();
 
                     state._fsp--;
@@ -2430,7 +2429,7 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
 
                     						newCompositeNode(grammarAccess.getCommentAccess().getAuthorEStringParserRuleCall_5_1_0());
                     					
-                    pushFollow(FOLLOW_43);
+                    pushFollow(FOLLOW_42);
                     lv_author_8_0=ruleEString();
 
                     state._fsp--;
@@ -2469,7 +2468,7 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // InternalRDSL.g:1096:4: otherlv_9= 'created' ( (lv_created_10_0= ruleEDate ) )
                     {
-                    otherlv_9=(Token)match(input,26,FOLLOW_23); 
+                    otherlv_9=(Token)match(input,26,FOLLOW_5); 
 
                     				newLeafNode(otherlv_9, grammarAccess.getCommentAccess().getCreatedKeyword_6_0());
                     			
@@ -2525,7 +2524,7 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
 
                     				newLeafNode(otherlv_11, grammarAccess.getCommentAccess().getChildrenKeyword_7_0());
                     			
-                    otherlv_12=(Token)match(input,12,FOLLOW_35); 
+                    otherlv_12=(Token)match(input,12,FOLLOW_34); 
 
                     				newLeafNode(otherlv_12, grammarAccess.getCommentAccess().getLeftCurlyBracketKeyword_7_1());
                     			
@@ -2575,7 +2574,7 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
                     	case 1 :
                     	    // InternalRDSL.g:1149:5: otherlv_14= ',' ( (lv_children_15_0= ruleComment ) )
                     	    {
-                    	    otherlv_14=(Token)match(input,15,FOLLOW_35); 
+                    	    otherlv_14=(Token)match(input,15,FOLLOW_34); 
 
                     	    					newLeafNode(otherlv_14, grammarAccess.getCommentAccess().getCommaKeyword_7_3_0());
                     	    				
@@ -2692,23 +2691,33 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEDate"
-    // InternalRDSL.g:1193:1: ruleEDate returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : kw= 'EDate' ;
+    // InternalRDSL.g:1193:1: ruleEDate returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_EString_0= ruleEString ;
     public final AntlrDatatypeRuleToken ruleEDate() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
-        Token kw=null;
+        AntlrDatatypeRuleToken this_EString_0 = null;
+
 
 
         	enterRule();
 
         try {
-            // InternalRDSL.g:1199:2: (kw= 'EDate' )
-            // InternalRDSL.g:1200:2: kw= 'EDate'
+            // InternalRDSL.g:1199:2: (this_EString_0= ruleEString )
+            // InternalRDSL.g:1200:2: this_EString_0= ruleEString
             {
-            kw=(Token)match(input,41,FOLLOW_2); 
 
-            		current.merge(kw);
-            		newLeafNode(kw, grammarAccess.getEDateAccess().getEDateKeyword());
+            		newCompositeNode(grammarAccess.getEDateAccess().getEStringParserRuleCall());
+            	
+            pushFollow(FOLLOW_2);
+            this_EString_0=ruleEString();
+
+            state._fsp--;
+
+
+            		current.merge(this_EString_0);
+            	
+
+            		afterParserOrEnumRuleCall();
             	
 
             }
@@ -2730,7 +2739,7 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleEInt"
-    // InternalRDSL.g:1208:1: entryRuleEInt returns [String current=null] : iv_ruleEInt= ruleEInt EOF ;
+    // InternalRDSL.g:1213:1: entryRuleEInt returns [String current=null] : iv_ruleEInt= ruleEInt EOF ;
     public final String entryRuleEInt() throws RecognitionException {
         String current = null;
 
@@ -2738,8 +2747,8 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalRDSL.g:1208:44: (iv_ruleEInt= ruleEInt EOF )
-            // InternalRDSL.g:1209:2: iv_ruleEInt= ruleEInt EOF
+            // InternalRDSL.g:1213:44: (iv_ruleEInt= ruleEInt EOF )
+            // InternalRDSL.g:1214:2: iv_ruleEInt= ruleEInt EOF
             {
              newCompositeNode(grammarAccess.getEIntRule()); 
             pushFollow(FOLLOW_1);
@@ -2766,7 +2775,7 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEInt"
-    // InternalRDSL.g:1215:1: ruleEInt returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : ( (kw= '-' )? this_INT_1= RULE_INT ) ;
+    // InternalRDSL.g:1220:1: ruleEInt returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : ( (kw= '-' )? this_INT_1= RULE_INT ) ;
     public final AntlrDatatypeRuleToken ruleEInt() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -2777,24 +2786,24 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalRDSL.g:1221:2: ( ( (kw= '-' )? this_INT_1= RULE_INT ) )
-            // InternalRDSL.g:1222:2: ( (kw= '-' )? this_INT_1= RULE_INT )
+            // InternalRDSL.g:1226:2: ( ( (kw= '-' )? this_INT_1= RULE_INT ) )
+            // InternalRDSL.g:1227:2: ( (kw= '-' )? this_INT_1= RULE_INT )
             {
-            // InternalRDSL.g:1222:2: ( (kw= '-' )? this_INT_1= RULE_INT )
-            // InternalRDSL.g:1223:3: (kw= '-' )? this_INT_1= RULE_INT
+            // InternalRDSL.g:1227:2: ( (kw= '-' )? this_INT_1= RULE_INT )
+            // InternalRDSL.g:1228:3: (kw= '-' )? this_INT_1= RULE_INT
             {
-            // InternalRDSL.g:1223:3: (kw= '-' )?
+            // InternalRDSL.g:1228:3: (kw= '-' )?
             int alt32=2;
             int LA32_0 = input.LA(1);
 
-            if ( (LA32_0==42) ) {
+            if ( (LA32_0==41) ) {
                 alt32=1;
             }
             switch (alt32) {
                 case 1 :
-                    // InternalRDSL.g:1224:4: kw= '-'
+                    // InternalRDSL.g:1229:4: kw= '-'
                     {
-                    kw=(Token)match(input,42,FOLLOW_44); 
+                    kw=(Token)match(input,41,FOLLOW_43); 
 
                     				current.merge(kw);
                     				newLeafNode(kw, grammarAccess.getEIntAccess().getHyphenMinusKeyword_0());
@@ -2835,7 +2844,7 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleType"
-    // InternalRDSL.g:1241:1: ruleType returns [Enumerator current=null] : ( (enumLiteral_0= 'FUNCTIONAL' ) | (enumLiteral_1= 'NONFUNCTIONAL' ) ) ;
+    // InternalRDSL.g:1246:1: ruleType returns [Enumerator current=null] : ( (enumLiteral_0= 'FUNCTIONAL' ) | (enumLiteral_1= 'NONFUNCTIONAL' ) ) ;
     public final Enumerator ruleType() throws RecognitionException {
         Enumerator current = null;
 
@@ -2846,17 +2855,17 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalRDSL.g:1247:2: ( ( (enumLiteral_0= 'FUNCTIONAL' ) | (enumLiteral_1= 'NONFUNCTIONAL' ) ) )
-            // InternalRDSL.g:1248:2: ( (enumLiteral_0= 'FUNCTIONAL' ) | (enumLiteral_1= 'NONFUNCTIONAL' ) )
+            // InternalRDSL.g:1252:2: ( ( (enumLiteral_0= 'FUNCTIONAL' ) | (enumLiteral_1= 'NONFUNCTIONAL' ) ) )
+            // InternalRDSL.g:1253:2: ( (enumLiteral_0= 'FUNCTIONAL' ) | (enumLiteral_1= 'NONFUNCTIONAL' ) )
             {
-            // InternalRDSL.g:1248:2: ( (enumLiteral_0= 'FUNCTIONAL' ) | (enumLiteral_1= 'NONFUNCTIONAL' ) )
+            // InternalRDSL.g:1253:2: ( (enumLiteral_0= 'FUNCTIONAL' ) | (enumLiteral_1= 'NONFUNCTIONAL' ) )
             int alt33=2;
             int LA33_0 = input.LA(1);
 
-            if ( (LA33_0==43) ) {
+            if ( (LA33_0==42) ) {
                 alt33=1;
             }
-            else if ( (LA33_0==44) ) {
+            else if ( (LA33_0==43) ) {
                 alt33=2;
             }
             else {
@@ -2867,12 +2876,12 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
             }
             switch (alt33) {
                 case 1 :
-                    // InternalRDSL.g:1249:3: (enumLiteral_0= 'FUNCTIONAL' )
+                    // InternalRDSL.g:1254:3: (enumLiteral_0= 'FUNCTIONAL' )
                     {
-                    // InternalRDSL.g:1249:3: (enumLiteral_0= 'FUNCTIONAL' )
-                    // InternalRDSL.g:1250:4: enumLiteral_0= 'FUNCTIONAL'
+                    // InternalRDSL.g:1254:3: (enumLiteral_0= 'FUNCTIONAL' )
+                    // InternalRDSL.g:1255:4: enumLiteral_0= 'FUNCTIONAL'
                     {
-                    enumLiteral_0=(Token)match(input,43,FOLLOW_2); 
+                    enumLiteral_0=(Token)match(input,42,FOLLOW_2); 
 
                     				current = grammarAccess.getTypeAccess().getFUNCTIONALEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_0, grammarAccess.getTypeAccess().getFUNCTIONALEnumLiteralDeclaration_0());
@@ -2884,12 +2893,12 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalRDSL.g:1257:3: (enumLiteral_1= 'NONFUNCTIONAL' )
+                    // InternalRDSL.g:1262:3: (enumLiteral_1= 'NONFUNCTIONAL' )
                     {
-                    // InternalRDSL.g:1257:3: (enumLiteral_1= 'NONFUNCTIONAL' )
-                    // InternalRDSL.g:1258:4: enumLiteral_1= 'NONFUNCTIONAL'
+                    // InternalRDSL.g:1262:3: (enumLiteral_1= 'NONFUNCTIONAL' )
+                    // InternalRDSL.g:1263:4: enumLiteral_1= 'NONFUNCTIONAL'
                     {
-                    enumLiteral_1=(Token)match(input,44,FOLLOW_2); 
+                    enumLiteral_1=(Token)match(input,43,FOLLOW_2); 
 
                     				current = grammarAccess.getTypeAccess().getNONFUNCTIONALEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_1, grammarAccess.getTypeAccess().getNONFUNCTIONALEnumLiteralDeclaration_1());
@@ -2923,7 +2932,7 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePriority"
-    // InternalRDSL.g:1268:1: rulePriority returns [Enumerator current=null] : ( (enumLiteral_0= 'HIGH' ) | (enumLiteral_1= 'MEDIUM' ) | (enumLiteral_2= 'LOW' ) ) ;
+    // InternalRDSL.g:1273:1: rulePriority returns [Enumerator current=null] : ( (enumLiteral_0= 'HIGH' ) | (enumLiteral_1= 'MEDIUM' ) | (enumLiteral_2= 'LOW' ) ) ;
     public final Enumerator rulePriority() throws RecognitionException {
         Enumerator current = null;
 
@@ -2935,23 +2944,23 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalRDSL.g:1274:2: ( ( (enumLiteral_0= 'HIGH' ) | (enumLiteral_1= 'MEDIUM' ) | (enumLiteral_2= 'LOW' ) ) )
-            // InternalRDSL.g:1275:2: ( (enumLiteral_0= 'HIGH' ) | (enumLiteral_1= 'MEDIUM' ) | (enumLiteral_2= 'LOW' ) )
+            // InternalRDSL.g:1279:2: ( ( (enumLiteral_0= 'HIGH' ) | (enumLiteral_1= 'MEDIUM' ) | (enumLiteral_2= 'LOW' ) ) )
+            // InternalRDSL.g:1280:2: ( (enumLiteral_0= 'HIGH' ) | (enumLiteral_1= 'MEDIUM' ) | (enumLiteral_2= 'LOW' ) )
             {
-            // InternalRDSL.g:1275:2: ( (enumLiteral_0= 'HIGH' ) | (enumLiteral_1= 'MEDIUM' ) | (enumLiteral_2= 'LOW' ) )
+            // InternalRDSL.g:1280:2: ( (enumLiteral_0= 'HIGH' ) | (enumLiteral_1= 'MEDIUM' ) | (enumLiteral_2= 'LOW' ) )
             int alt34=3;
             switch ( input.LA(1) ) {
-            case 45:
+            case 44:
                 {
                 alt34=1;
                 }
                 break;
-            case 46:
+            case 45:
                 {
                 alt34=2;
                 }
                 break;
-            case 47:
+            case 46:
                 {
                 alt34=3;
                 }
@@ -2965,12 +2974,12 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
 
             switch (alt34) {
                 case 1 :
-                    // InternalRDSL.g:1276:3: (enumLiteral_0= 'HIGH' )
+                    // InternalRDSL.g:1281:3: (enumLiteral_0= 'HIGH' )
                     {
-                    // InternalRDSL.g:1276:3: (enumLiteral_0= 'HIGH' )
-                    // InternalRDSL.g:1277:4: enumLiteral_0= 'HIGH'
+                    // InternalRDSL.g:1281:3: (enumLiteral_0= 'HIGH' )
+                    // InternalRDSL.g:1282:4: enumLiteral_0= 'HIGH'
                     {
-                    enumLiteral_0=(Token)match(input,45,FOLLOW_2); 
+                    enumLiteral_0=(Token)match(input,44,FOLLOW_2); 
 
                     				current = grammarAccess.getPriorityAccess().getHIGHEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_0, grammarAccess.getPriorityAccess().getHIGHEnumLiteralDeclaration_0());
@@ -2982,12 +2991,12 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalRDSL.g:1284:3: (enumLiteral_1= 'MEDIUM' )
+                    // InternalRDSL.g:1289:3: (enumLiteral_1= 'MEDIUM' )
                     {
-                    // InternalRDSL.g:1284:3: (enumLiteral_1= 'MEDIUM' )
-                    // InternalRDSL.g:1285:4: enumLiteral_1= 'MEDIUM'
+                    // InternalRDSL.g:1289:3: (enumLiteral_1= 'MEDIUM' )
+                    // InternalRDSL.g:1290:4: enumLiteral_1= 'MEDIUM'
                     {
-                    enumLiteral_1=(Token)match(input,46,FOLLOW_2); 
+                    enumLiteral_1=(Token)match(input,45,FOLLOW_2); 
 
                     				current = grammarAccess.getPriorityAccess().getMEDIUMEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_1, grammarAccess.getPriorityAccess().getMEDIUMEnumLiteralDeclaration_1());
@@ -2999,12 +3008,12 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalRDSL.g:1292:3: (enumLiteral_2= 'LOW' )
+                    // InternalRDSL.g:1297:3: (enumLiteral_2= 'LOW' )
                     {
-                    // InternalRDSL.g:1292:3: (enumLiteral_2= 'LOW' )
-                    // InternalRDSL.g:1293:4: enumLiteral_2= 'LOW'
+                    // InternalRDSL.g:1297:3: (enumLiteral_2= 'LOW' )
+                    // InternalRDSL.g:1298:4: enumLiteral_2= 'LOW'
                     {
-                    enumLiteral_2=(Token)match(input,47,FOLLOW_2); 
+                    enumLiteral_2=(Token)match(input,46,FOLLOW_2); 
 
                     				current = grammarAccess.getPriorityAccess().getLOWEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_2, grammarAccess.getPriorityAccess().getLOWEnumLiteralDeclaration_2());
@@ -3038,7 +3047,7 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleState"
-    // InternalRDSL.g:1303:1: ruleState returns [Enumerator current=null] : ( (enumLiteral_0= 'NEW' ) | (enumLiteral_1= 'REVIEWED' ) | (enumLiteral_2= 'APPROVED' ) | (enumLiteral_3= 'RESOLVED' ) ) ;
+    // InternalRDSL.g:1308:1: ruleState returns [Enumerator current=null] : ( (enumLiteral_0= 'NEW' ) | (enumLiteral_1= 'REVIEWED' ) | (enumLiteral_2= 'APPROVED' ) | (enumLiteral_3= 'RESOLVED' ) ) ;
     public final Enumerator ruleState() throws RecognitionException {
         Enumerator current = null;
 
@@ -3051,28 +3060,28 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalRDSL.g:1309:2: ( ( (enumLiteral_0= 'NEW' ) | (enumLiteral_1= 'REVIEWED' ) | (enumLiteral_2= 'APPROVED' ) | (enumLiteral_3= 'RESOLVED' ) ) )
-            // InternalRDSL.g:1310:2: ( (enumLiteral_0= 'NEW' ) | (enumLiteral_1= 'REVIEWED' ) | (enumLiteral_2= 'APPROVED' ) | (enumLiteral_3= 'RESOLVED' ) )
+            // InternalRDSL.g:1314:2: ( ( (enumLiteral_0= 'NEW' ) | (enumLiteral_1= 'REVIEWED' ) | (enumLiteral_2= 'APPROVED' ) | (enumLiteral_3= 'RESOLVED' ) ) )
+            // InternalRDSL.g:1315:2: ( (enumLiteral_0= 'NEW' ) | (enumLiteral_1= 'REVIEWED' ) | (enumLiteral_2= 'APPROVED' ) | (enumLiteral_3= 'RESOLVED' ) )
             {
-            // InternalRDSL.g:1310:2: ( (enumLiteral_0= 'NEW' ) | (enumLiteral_1= 'REVIEWED' ) | (enumLiteral_2= 'APPROVED' ) | (enumLiteral_3= 'RESOLVED' ) )
+            // InternalRDSL.g:1315:2: ( (enumLiteral_0= 'NEW' ) | (enumLiteral_1= 'REVIEWED' ) | (enumLiteral_2= 'APPROVED' ) | (enumLiteral_3= 'RESOLVED' ) )
             int alt35=4;
             switch ( input.LA(1) ) {
-            case 48:
+            case 47:
                 {
                 alt35=1;
                 }
                 break;
-            case 49:
+            case 48:
                 {
                 alt35=2;
                 }
                 break;
-            case 50:
+            case 49:
                 {
                 alt35=3;
                 }
                 break;
-            case 51:
+            case 50:
                 {
                 alt35=4;
                 }
@@ -3086,12 +3095,12 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
 
             switch (alt35) {
                 case 1 :
-                    // InternalRDSL.g:1311:3: (enumLiteral_0= 'NEW' )
+                    // InternalRDSL.g:1316:3: (enumLiteral_0= 'NEW' )
                     {
-                    // InternalRDSL.g:1311:3: (enumLiteral_0= 'NEW' )
-                    // InternalRDSL.g:1312:4: enumLiteral_0= 'NEW'
+                    // InternalRDSL.g:1316:3: (enumLiteral_0= 'NEW' )
+                    // InternalRDSL.g:1317:4: enumLiteral_0= 'NEW'
                     {
-                    enumLiteral_0=(Token)match(input,48,FOLLOW_2); 
+                    enumLiteral_0=(Token)match(input,47,FOLLOW_2); 
 
                     				current = grammarAccess.getStateAccess().getNEWEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_0, grammarAccess.getStateAccess().getNEWEnumLiteralDeclaration_0());
@@ -3103,12 +3112,12 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalRDSL.g:1319:3: (enumLiteral_1= 'REVIEWED' )
+                    // InternalRDSL.g:1324:3: (enumLiteral_1= 'REVIEWED' )
                     {
-                    // InternalRDSL.g:1319:3: (enumLiteral_1= 'REVIEWED' )
-                    // InternalRDSL.g:1320:4: enumLiteral_1= 'REVIEWED'
+                    // InternalRDSL.g:1324:3: (enumLiteral_1= 'REVIEWED' )
+                    // InternalRDSL.g:1325:4: enumLiteral_1= 'REVIEWED'
                     {
-                    enumLiteral_1=(Token)match(input,49,FOLLOW_2); 
+                    enumLiteral_1=(Token)match(input,48,FOLLOW_2); 
 
                     				current = grammarAccess.getStateAccess().getREVIEWEDEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_1, grammarAccess.getStateAccess().getREVIEWEDEnumLiteralDeclaration_1());
@@ -3120,12 +3129,12 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalRDSL.g:1327:3: (enumLiteral_2= 'APPROVED' )
+                    // InternalRDSL.g:1332:3: (enumLiteral_2= 'APPROVED' )
                     {
-                    // InternalRDSL.g:1327:3: (enumLiteral_2= 'APPROVED' )
-                    // InternalRDSL.g:1328:4: enumLiteral_2= 'APPROVED'
+                    // InternalRDSL.g:1332:3: (enumLiteral_2= 'APPROVED' )
+                    // InternalRDSL.g:1333:4: enumLiteral_2= 'APPROVED'
                     {
-                    enumLiteral_2=(Token)match(input,50,FOLLOW_2); 
+                    enumLiteral_2=(Token)match(input,49,FOLLOW_2); 
 
                     				current = grammarAccess.getStateAccess().getAPPROVEDEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_2, grammarAccess.getStateAccess().getAPPROVEDEnumLiteralDeclaration_2());
@@ -3137,12 +3146,12 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalRDSL.g:1335:3: (enumLiteral_3= 'RESOLVED' )
+                    // InternalRDSL.g:1340:3: (enumLiteral_3= 'RESOLVED' )
                     {
-                    // InternalRDSL.g:1335:3: (enumLiteral_3= 'RESOLVED' )
-                    // InternalRDSL.g:1336:4: enumLiteral_3= 'RESOLVED'
+                    // InternalRDSL.g:1340:3: (enumLiteral_3= 'RESOLVED' )
+                    // InternalRDSL.g:1341:4: enumLiteral_3= 'RESOLVED'
                     {
-                    enumLiteral_3=(Token)match(input,51,FOLLOW_2); 
+                    enumLiteral_3=(Token)match(input,50,FOLLOW_2); 
 
                     				current = grammarAccess.getStateAccess().getRESOLVEDEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_3, grammarAccess.getStateAccess().getRESOLVEDEnumLiteralDeclaration_3());
@@ -3176,7 +3185,7 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleResolution"
-    // InternalRDSL.g:1346:1: ruleResolution returns [Enumerator current=null] : ( (enumLiteral_0= 'INVALID' ) | (enumLiteral_1= 'ACCEPTED' ) | (enumLiteral_2= 'IMPLEMENTED' ) | (enumLiteral_3= 'LATER' ) ) ;
+    // InternalRDSL.g:1351:1: ruleResolution returns [Enumerator current=null] : ( (enumLiteral_0= 'INVALID' ) | (enumLiteral_1= 'ACCEPTED' ) | (enumLiteral_2= 'IMPLEMENTED' ) | (enumLiteral_3= 'LATER' ) ) ;
     public final Enumerator ruleResolution() throws RecognitionException {
         Enumerator current = null;
 
@@ -3189,28 +3198,28 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalRDSL.g:1352:2: ( ( (enumLiteral_0= 'INVALID' ) | (enumLiteral_1= 'ACCEPTED' ) | (enumLiteral_2= 'IMPLEMENTED' ) | (enumLiteral_3= 'LATER' ) ) )
-            // InternalRDSL.g:1353:2: ( (enumLiteral_0= 'INVALID' ) | (enumLiteral_1= 'ACCEPTED' ) | (enumLiteral_2= 'IMPLEMENTED' ) | (enumLiteral_3= 'LATER' ) )
+            // InternalRDSL.g:1357:2: ( ( (enumLiteral_0= 'INVALID' ) | (enumLiteral_1= 'ACCEPTED' ) | (enumLiteral_2= 'IMPLEMENTED' ) | (enumLiteral_3= 'LATER' ) ) )
+            // InternalRDSL.g:1358:2: ( (enumLiteral_0= 'INVALID' ) | (enumLiteral_1= 'ACCEPTED' ) | (enumLiteral_2= 'IMPLEMENTED' ) | (enumLiteral_3= 'LATER' ) )
             {
-            // InternalRDSL.g:1353:2: ( (enumLiteral_0= 'INVALID' ) | (enumLiteral_1= 'ACCEPTED' ) | (enumLiteral_2= 'IMPLEMENTED' ) | (enumLiteral_3= 'LATER' ) )
+            // InternalRDSL.g:1358:2: ( (enumLiteral_0= 'INVALID' ) | (enumLiteral_1= 'ACCEPTED' ) | (enumLiteral_2= 'IMPLEMENTED' ) | (enumLiteral_3= 'LATER' ) )
             int alt36=4;
             switch ( input.LA(1) ) {
-            case 52:
+            case 51:
                 {
                 alt36=1;
                 }
                 break;
-            case 53:
+            case 52:
                 {
                 alt36=2;
                 }
                 break;
-            case 54:
+            case 53:
                 {
                 alt36=3;
                 }
                 break;
-            case 55:
+            case 54:
                 {
                 alt36=4;
                 }
@@ -3224,12 +3233,12 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
 
             switch (alt36) {
                 case 1 :
-                    // InternalRDSL.g:1354:3: (enumLiteral_0= 'INVALID' )
+                    // InternalRDSL.g:1359:3: (enumLiteral_0= 'INVALID' )
                     {
-                    // InternalRDSL.g:1354:3: (enumLiteral_0= 'INVALID' )
-                    // InternalRDSL.g:1355:4: enumLiteral_0= 'INVALID'
+                    // InternalRDSL.g:1359:3: (enumLiteral_0= 'INVALID' )
+                    // InternalRDSL.g:1360:4: enumLiteral_0= 'INVALID'
                     {
-                    enumLiteral_0=(Token)match(input,52,FOLLOW_2); 
+                    enumLiteral_0=(Token)match(input,51,FOLLOW_2); 
 
                     				current = grammarAccess.getResolutionAccess().getINVALIDEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_0, grammarAccess.getResolutionAccess().getINVALIDEnumLiteralDeclaration_0());
@@ -3241,12 +3250,12 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalRDSL.g:1362:3: (enumLiteral_1= 'ACCEPTED' )
+                    // InternalRDSL.g:1367:3: (enumLiteral_1= 'ACCEPTED' )
                     {
-                    // InternalRDSL.g:1362:3: (enumLiteral_1= 'ACCEPTED' )
-                    // InternalRDSL.g:1363:4: enumLiteral_1= 'ACCEPTED'
+                    // InternalRDSL.g:1367:3: (enumLiteral_1= 'ACCEPTED' )
+                    // InternalRDSL.g:1368:4: enumLiteral_1= 'ACCEPTED'
                     {
-                    enumLiteral_1=(Token)match(input,53,FOLLOW_2); 
+                    enumLiteral_1=(Token)match(input,52,FOLLOW_2); 
 
                     				current = grammarAccess.getResolutionAccess().getACCEPTEDEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_1, grammarAccess.getResolutionAccess().getACCEPTEDEnumLiteralDeclaration_1());
@@ -3258,12 +3267,12 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalRDSL.g:1370:3: (enumLiteral_2= 'IMPLEMENTED' )
+                    // InternalRDSL.g:1375:3: (enumLiteral_2= 'IMPLEMENTED' )
                     {
-                    // InternalRDSL.g:1370:3: (enumLiteral_2= 'IMPLEMENTED' )
-                    // InternalRDSL.g:1371:4: enumLiteral_2= 'IMPLEMENTED'
+                    // InternalRDSL.g:1375:3: (enumLiteral_2= 'IMPLEMENTED' )
+                    // InternalRDSL.g:1376:4: enumLiteral_2= 'IMPLEMENTED'
                     {
-                    enumLiteral_2=(Token)match(input,54,FOLLOW_2); 
+                    enumLiteral_2=(Token)match(input,53,FOLLOW_2); 
 
                     				current = grammarAccess.getResolutionAccess().getIMPLEMENTEDEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_2, grammarAccess.getResolutionAccess().getIMPLEMENTEDEnumLiteralDeclaration_2());
@@ -3275,12 +3284,12 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalRDSL.g:1378:3: (enumLiteral_3= 'LATER' )
+                    // InternalRDSL.g:1383:3: (enumLiteral_3= 'LATER' )
                     {
-                    // InternalRDSL.g:1378:3: (enumLiteral_3= 'LATER' )
-                    // InternalRDSL.g:1379:4: enumLiteral_3= 'LATER'
+                    // InternalRDSL.g:1383:3: (enumLiteral_3= 'LATER' )
+                    // InternalRDSL.g:1384:4: enumLiteral_3= 'LATER'
                     {
-                    enumLiteral_3=(Token)match(input,55,FOLLOW_2); 
+                    enumLiteral_3=(Token)match(input,54,FOLLOW_2); 
 
                     				current = grammarAccess.getResolutionAccess().getLATEREnumLiteralDeclaration_3().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_3, grammarAccess.getResolutionAccess().getLATEREnumLiteralDeclaration_3());
@@ -3334,32 +3343,31 @@ public class InternalRDSLParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x000000013F8C2000L});
     public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x000000013F8C0000L});
     public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x000000013F880000L});
-    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000180000000000L});
+    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x00000C0000000000L});
     public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x000000013F080000L});
-    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000E00000000000L});
+    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000700000000000L});
     public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x000000013E080000L});
     public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x000000013C080000L});
-    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000020000000000L});
-    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0000000138080000L});
-    public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000000138000000L});
-    public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x000F000000000000L});
-    public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x0000000130000000L});
-    public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x00F0000000000000L});
-    public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x0000000120000000L});
-    public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x0000000040000000L});
-    public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x0000000080008000L});
-    public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x0000000100000000L});
-    public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x0000000200210000L});
-    public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x0000004000000000L});
-    public static final BitSet FOLLOW_36 = new BitSet(new long[]{0x0000000800000000L});
-    public static final BitSet FOLLOW_37 = new BitSet(new long[]{0x0000040000000040L});
-    public static final BitSet FOLLOW_38 = new BitSet(new long[]{0x0000001000000000L});
-    public static final BitSet FOLLOW_39 = new BitSet(new long[]{0x0000002000000000L});
-    public static final BitSet FOLLOW_40 = new BitSet(new long[]{0x0000018006210000L});
-    public static final BitSet FOLLOW_41 = new BitSet(new long[]{0x0000010006210000L});
-    public static final BitSet FOLLOW_42 = new BitSet(new long[]{0x0000000006210000L});
-    public static final BitSet FOLLOW_43 = new BitSet(new long[]{0x0000000004210000L});
-    public static final BitSet FOLLOW_44 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000000138080000L});
+    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0000000138000000L});
+    public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0007800000000000L});
+    public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0000000130000000L});
+    public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x0078000000000000L});
+    public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x0000000120000000L});
+    public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x0000000040000000L});
+    public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x0000000080008000L});
+    public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x0000000100000000L});
+    public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x0000000200210000L});
+    public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x0000004000000000L});
+    public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x0000000800000000L});
+    public static final BitSet FOLLOW_36 = new BitSet(new long[]{0x0000020000000040L});
+    public static final BitSet FOLLOW_37 = new BitSet(new long[]{0x0000001000000000L});
+    public static final BitSet FOLLOW_38 = new BitSet(new long[]{0x0000002000000000L});
+    public static final BitSet FOLLOW_39 = new BitSet(new long[]{0x0000018006210000L});
+    public static final BitSet FOLLOW_40 = new BitSet(new long[]{0x0000010006210000L});
+    public static final BitSet FOLLOW_41 = new BitSet(new long[]{0x0000000006210000L});
+    public static final BitSet FOLLOW_42 = new BitSet(new long[]{0x0000000004210000L});
+    public static final BitSet FOLLOW_43 = new BitSet(new long[]{0x0000000000000040L});
 
 }

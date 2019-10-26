@@ -215,9 +215,9 @@ ruleEDate
 	}
 	:
 	(
-		{ before(grammarAccess.getEDateAccess().getEDateKeyword()); }
-		'EDate'
-		{ after(grammarAccess.getEDateAccess().getEDateKeyword()); }
+		{ before(grammarAccess.getEDateAccess().getEStringParserRuleCall()); }
+		ruleEString
+		{ after(grammarAccess.getEDateAccess().getEStringParserRuleCall()); }
 	)
 ;
 finally {

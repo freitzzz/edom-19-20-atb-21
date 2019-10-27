@@ -15,6 +15,7 @@ import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import requirements.Model;
+import requirements.Requirement;
 import requirements.RequirementGroup;
 import requirements.dsl.services.RDSLGrammarAccess;
 
@@ -86,12 +87,109 @@ public class RDSLFormatter extends AbstractFormatter2 {
     }
   }
   
+  /**
+   * We want our RequirementGroup to be formatted in the following format:
+   * 
+   * RequirentGroup {
+   * 	name ...
+   * 	description ...
+   *  id ...
+   *  parent ...
+   *  requirements {...}
+   *  children {...}
+   * }
+   */
+  protected void _format(final RequirementGroup requirementGroup, @Extension final IFormattableDocument document) {
+    final ISemanticRegion requirement_group_keyword = this.textRegionExtensions.regionFor(requirementGroup).keyword(this._rDSLGrammarAccess.getRequirementGroupAccess().getRequirementGroupKeyword_1());
+    final ISemanticRegion description_keyword = this.textRegionExtensions.regionFor(requirementGroup).keyword(this._rDSLGrammarAccess.getRequirementGroupAccess().getDescriptionKeyword_4_0());
+    final ISemanticRegion id_keyword = this.textRegionExtensions.regionFor(requirementGroup).keyword(this._rDSLGrammarAccess.getRequirementGroupAccess().getIdKeyword_5_0());
+    final ISemanticRegion requirements_keyword = this.textRegionExtensions.regionFor(requirementGroup).keyword(this._rDSLGrammarAccess.getRequirementGroupAccess().getRequirementsKeyword_6_0());
+    final ISemanticRegion children_keyword = this.textRegionExtensions.regionFor(requirementGroup).keyword(this._rDSLGrammarAccess.getRequirementGroupAccess().getChildrenKeyword_7_0());
+    final ISemanticRegion open_bracket_keyword = this.textRegionExtensions.regionFor(requirementGroup).keyword(this._rDSLGrammarAccess.getRequirementGroupAccess().getLeftCurlyBracketKeyword_6_1());
+    final ISemanticRegion close_bracket_keyword = this.textRegionExtensions.regionFor(requirementGroup).keyword(this._rDSLGrammarAccess.getRequirementGroupAccess().getRightCurlyBracketKeyword_6_4());
+    final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
+      it.setSpace(" ");
+    };
+    document.append(requirement_group_keyword, _function);
+    final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    document.prepend(description_keyword, _function_1);
+    final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
+      it.setSpace(" ");
+    };
+    document.append(description_keyword, _function_2);
+    final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    document.prepend(id_keyword, _function_3);
+    final Procedure1<IHiddenRegionFormatter> _function_4 = (IHiddenRegionFormatter it) -> {
+      it.setSpace(" ");
+    };
+    document.append(id_keyword, _function_4);
+    final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    document.prepend(requirements_keyword, _function_5);
+    final Procedure1<IHiddenRegionFormatter> _function_6 = (IHiddenRegionFormatter it) -> {
+      it.setSpace(" ");
+    };
+    document.append(requirements_keyword, _function_6);
+    final Procedure1<IHiddenRegionFormatter> _function_7 = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    document.prepend(children_keyword, _function_7);
+    final Procedure1<IHiddenRegionFormatter> _function_8 = (IHiddenRegionFormatter it) -> {
+      it.setSpace(" ");
+    };
+    document.append(children_keyword, _function_8);
+    final Procedure1<IHiddenRegionFormatter> _function_9 = (IHiddenRegionFormatter it) -> {
+      it.indent();
+    };
+    document.<ISemanticRegion, ISemanticRegion>interior(open_bracket_keyword, close_bracket_keyword, _function_9);
+    final Procedure1<IHiddenRegionFormatter> _function_10 = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    document.append(open_bracket_keyword, _function_10);
+    EList<Requirement> _requirements = requirementGroup.getRequirements();
+    for (final Requirement requirement : _requirements) {
+      {
+        document.<Requirement>format(requirement);
+        final Procedure1<IHiddenRegionFormatter> _function_11 = (IHiddenRegionFormatter it) -> {
+          it.newLine();
+        };
+        document.<Requirement>append(requirement, _function_11);
+      }
+    }
+    final Procedure1<IHiddenRegionFormatter> _function_11 = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    document.append(open_bracket_keyword, _function_11);
+    EList<RequirementGroup> _children = requirementGroup.getChildren();
+    for (final RequirementGroup _requirementGroup : _children) {
+      {
+        document.<RequirementGroup>format(_requirementGroup);
+        final Procedure1<IHiddenRegionFormatter> _function_12 = (IHiddenRegionFormatter it) -> {
+          it.newLine();
+        };
+        document.<RequirementGroup>append(_requirementGroup, _function_12);
+      }
+    }
+    final Procedure1<IHiddenRegionFormatter> _function_12 = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    document.prepend(close_bracket_keyword, _function_12);
+  }
+  
   public void format(final Object model, final IFormattableDocument document) {
     if (model instanceof XtextResource) {
       _format((XtextResource)model, document);
       return;
     } else if (model instanceof Model) {
       _format((Model)model, document);
+      return;
+    } else if (model instanceof RequirementGroup) {
+      _format((RequirementGroup)model, document);
       return;
     } else if (model instanceof EObject) {
       _format((EObject)model, document);

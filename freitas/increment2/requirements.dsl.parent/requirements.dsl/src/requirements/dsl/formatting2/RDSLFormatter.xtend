@@ -67,5 +67,87 @@ class RDSLFormatter extends AbstractFormatter2 {
 		}
 	}
 	
+	/**
+	 * We want our RequirementGroup to be formatted in the following format: 
+	 * 
+	 * RequirentGroup {
+	 * 	name ...
+	 * 	description ...
+	 *  id ...
+	 *  parent ...
+	 *  requirements {...}
+	 *  children {...} 
+	 * }
+	 */
+	
+	def dispatch void format(RequirementGroup requirementGroup, extension IFormattableDocument document) {
+		
+		val requirement_group_keyword = requirementGroup.regionFor.keyword(requirementGroupAccess.requirementGroupKeyword_1)
+		
+		val description_keyword = requirementGroup.regionFor.keyword(requirementGroupAccess.descriptionKeyword_4_0)
+		
+		val id_keyword = requirementGroup.regionFor.keyword(requirementGroupAccess.idKeyword_5_0)
+		
+		val requirements_keyword = requirementGroup.regionFor.keyword(requirementGroupAccess.requirementsKeyword_6_0)
+		
+		val children_keyword = requirementGroup.regionFor.keyword(requirementGroupAccess.childrenKeyword_7_0)
+		
+		val open_bracket_keyword = requirementGroup.regionFor.keyword(requirementGroupAccess.leftCurlyBracketKeyword_6_1)
+		
+		val close_bracket_keyword = requirementGroup.regionFor.keyword(requirementGroupAccess.rightCurlyBracketKeyword_6_4)
+		
+		
+		// space after requirement group keyword
+		requirement_group_keyword.append[space = " "]
+		
+		
+		// new line before description keyword
+		description_keyword.prepend[newLine]
+		
+		// space after description keyword
+		description_keyword.append[space = " "]
+		
+		
+		// new line before id keyword
+		id_keyword.prepend[newLine]
+		
+		// space after id keyword
+		id_keyword.append[space = " "]
+		
+		
+		// new line before requirements keyword
+		requirements_keyword.prepend[newLine]
+		
+		// space after requirements keyword
+		requirements_keyword.append[space = " "]
+		
+		// new line before children keyword
+		children_keyword.prepend[newLine]
+		
+		// space after children keyword
+		children_keyword.append[space = " "]
+		
+		interior(open_bracket_keyword, close_bracket_keyword)[indent]
+		
+		// new line before first requirement
+		open_bracket_keyword.append[newLine]
+		
+		// TODO: format HiddenRegions around keywords, attributes, cross references, etc. 
+		for (requirement : requirementGroup.requirements) {
+			requirement.format
+			requirement.append[newLine]
+		}
+		
+		// new line before first children requirement group
+		open_bracket_keyword.append[newLine]
+		
+		for (_requirementGroup : requirementGroup.children) {
+			_requirementGroup.format
+			_requirementGroup.append[newLine]
+		}
+		
+		close_bracket_keyword.prepend[newLine]
+	}
+		
 	
 }

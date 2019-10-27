@@ -149,5 +149,188 @@ class RDSLFormatter extends AbstractFormatter2 {
 		close_bracket_keyword.prepend[newLine]
 	}
 		
+	/**
+	 * We want our Requirement to be formatted in the following format: 
+	 * 
+	 * Requirement {
+	 * 	title ...
+	 * 	description ...
+	 *  type ...
+	 *  priority ...
+	 *  author ...
+	 *  created ...
+	 *  id ...
+	 *  state ...
+	 *  resolution ...
+	 *  version {...}
+	 *  dependencies {...}
+	 *  children {...}
+	 *  comments {...} 
+	 * }
+	 */
+	
+	def dispatch void format(Requirement requirement, extension IFormattableDocument document) {
+		
+		val requirement_keyword = requirement.regionFor.keyword(requirementAccess.requirementKeyword_0)
+		
+		val title_keyword = requirement.regionFor.keyword(requirementAccess.titleKeyword_2_0)
+		
+		val description_keyword = requirement.regionFor.keyword(requirementAccess.descriptionKeyword_3_0)
+		
+		val type_keyword = requirement.regionFor.keyword(requirementAccess.typeKeyword_4_0)
+		
+		val priority_keyword = requirement.regionFor.keyword(requirementAccess.priorityKeyword_5_0)
+		
+		val author_keyword = requirement.regionFor.keyword(requirementAccess.authorKeyword_6_0)
+		
+		val created_keyword = requirement.regionFor.keyword(requirementAccess.createdKeyword_7_0)
+		
+		val id_keyword = requirement.regionFor.keyword(requirementAccess.idKeyword_8_0)
+		
+		val state_keyword = requirement.regionFor.keyword(requirementAccess.stateKeyword_9_0)
+		
+		val resolution_keyword = requirement.regionFor.keyword(requirementAccess.resolutionKeyword_10_0)
+		
+		val version_keyword = requirement.regionFor.keyword(requirementAccess.versionKeyword_12)
+		
+		val dependencies_keyword = requirement.regionFor.keyword(requirementAccess.dependenciesKeyword_11_0)
+		
+		val children_keyword = requirement.regionFor.keyword(requirementAccess.childrenKeyword_15_0)
+		
+		val comments_keyword = requirement.regionFor.keyword(requirementAccess.commentsKeyword_14_0)
+		
+		val open_bracket_keyword = requirement.regionFor.keyword(requirementAccess.leftCurlyBracketKeyword_14_1)
+		
+		val close_bracket_keyword = requirement.regionFor.keyword(requirementAccess.rightCurlyBracketKeyword_14_4)
+		
+		// space after requirement keyword
+		requirement_keyword.append[space = " "]
+		
+		
+		// new line before title keyword
+		title_keyword.prepend[newLine]
+		
+		// space after title keyword
+		title_keyword.append[space = " "]
+		
+		
+		// new line before description keyword
+		description_keyword.prepend[newLine]
+		
+		// space after description keyword
+		description_keyword.append[space = " "]
+		
+		
+		// new line before type keyword
+		type_keyword.prepend[newLine]
+		
+		// space after type keyword
+		type_keyword.append[space = " "]
+		
+		
+		// new line before priority keyword
+		priority_keyword.prepend[newLine]
+		
+		// space after priority keyword
+		priority_keyword.append[space = " "]
+		
+		
+		// new line before author keyword
+		author_keyword.prepend[newLine]
+		
+		// space after author keyword
+		author_keyword.append[space = " "]
+		
+		
+		// new line before created keyword
+		created_keyword.prepend[newLine]
+		
+		// space after title keyword
+		created_keyword.append[space = " "]
+		
+		
+		// new line before id keyword
+		id_keyword.prepend[newLine]
+		
+		// space after id keyword
+		id_keyword.append[space = " "]
+		
+		
+		// new line before state keyword
+		state_keyword.prepend[newLine]
+		
+		// space after state keyword
+		state_keyword.append[space = " "]
+		
+		
+		// new line before resolution keyword
+		resolution_keyword.prepend[newLine]
+		
+		// space after resolution keyword
+		resolution_keyword.append[space = " "]
+		
+		
+		// new line before version keyword
+		version_keyword.prepend[newLine]
+		
+		// space after version keyword
+		version_keyword.append[space = " "]
+		
+		requirement.version.format
+		
+		
+		// new line before dependencies keyword
+		dependencies_keyword.prepend[newLine]
+		
+		// space after dependencies keyword
+		dependencies_keyword.append[space = " "]
+		
+		
+		// new line before children keyword
+		children_keyword.prepend[newLine]
+		
+		// space after children keyword
+		children_keyword.append[space = " "]
+		
+		
+		// new line before comments keyword
+		comments_keyword.prepend[newLine]
+		
+		// space after comments keyword
+		comments_keyword.append[space = " "]
+		
+		
+		interior(open_bracket_keyword, close_bracket_keyword)[indent]
+		
+		// new line before first dependency
+		open_bracket_keyword.append[newLine]
+		
+		for (dependency : requirement.dependencies) {
+			dependency.format
+			dependency.append[newLine]
+		}
+		
+		
+		// new line before first children
+		open_bracket_keyword.append[newLine]
+		
+		for (children : requirement.children) {
+			children.format
+			children.append[newLine]
+		}
+		
+		
+		// new line before first comment
+		open_bracket_keyword.append[newLine]
+		
+		for (comment : requirement.comments) {
+			comment.format
+			comment.append[newLine]
+		}
+		
+		close_bracket_keyword.prepend[newLine]
+	}
+	
+	
 	
 }

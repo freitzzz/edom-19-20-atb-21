@@ -380,6 +380,60 @@ public class RDSLFormatter extends AbstractFormatter2 {
     document.prepend(close_bracket_keyword, _function_31);
   }
   
+  /**
+   * We want our Version to be formatted in the following format:
+   * 
+   * Version {
+   * 	major ...
+   * 	minor ...
+   * 	service ...
+   * }
+   */
+  protected void _format(final Version version, @Extension final IFormattableDocument document) {
+    final ISemanticRegion version_keyword = this.textRegionExtensions.regionFor(version).keyword(this._rDSLGrammarAccess.getVersionAccess().getVersionKeyword_0());
+    final ISemanticRegion major_keyword = this.textRegionExtensions.regionFor(version).keyword(this._rDSLGrammarAccess.getVersionAccess().getMajorKeyword_2());
+    final ISemanticRegion minor_keyword = this.textRegionExtensions.regionFor(version).keyword(this._rDSLGrammarAccess.getVersionAccess().getMinorKeyword_4());
+    final ISemanticRegion service_keyword = this.textRegionExtensions.regionFor(version).keyword(this._rDSLGrammarAccess.getVersionAccess().getServiceKeyword_6());
+    final ISemanticRegion open_bracket_keyword = this.textRegionExtensions.regionFor(version).keyword(this._rDSLGrammarAccess.getVersionAccess().getLeftCurlyBracketKeyword_1());
+    final ISemanticRegion close_bracket_keyword = this.textRegionExtensions.regionFor(version).keyword(this._rDSLGrammarAccess.getVersionAccess().getRightCurlyBracketKeyword_8());
+    final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
+      it.setSpace(" ");
+    };
+    document.append(version_keyword, _function);
+    final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    document.prepend(major_keyword, _function_1);
+    final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
+      it.setSpace(" ");
+    };
+    document.append(major_keyword, _function_2);
+    final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    document.prepend(minor_keyword, _function_3);
+    final Procedure1<IHiddenRegionFormatter> _function_4 = (IHiddenRegionFormatter it) -> {
+      it.setSpace(" ");
+    };
+    document.append(minor_keyword, _function_4);
+    final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    document.prepend(service_keyword, _function_5);
+    final Procedure1<IHiddenRegionFormatter> _function_6 = (IHiddenRegionFormatter it) -> {
+      it.setSpace(" ");
+    };
+    document.append(service_keyword, _function_6);
+    final Procedure1<IHiddenRegionFormatter> _function_7 = (IHiddenRegionFormatter it) -> {
+      it.indent();
+    };
+    document.<ISemanticRegion, ISemanticRegion>interior(open_bracket_keyword, close_bracket_keyword, _function_7);
+    final Procedure1<IHiddenRegionFormatter> _function_8 = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    document.prepend(close_bracket_keyword, _function_8);
+  }
+  
   public void format(final Object model, final IFormattableDocument document) {
     if (model instanceof XtextResource) {
       _format((XtextResource)model, document);
@@ -392,6 +446,9 @@ public class RDSLFormatter extends AbstractFormatter2 {
       return;
     } else if (model instanceof RequirementGroup) {
       _format((RequirementGroup)model, document);
+      return;
+    } else if (model instanceof Version) {
+      _format((Version)model, document);
       return;
     } else if (model instanceof EObject) {
       _format((EObject)model, document);

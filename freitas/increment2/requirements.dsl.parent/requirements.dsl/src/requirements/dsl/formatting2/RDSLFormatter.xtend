@@ -332,5 +332,59 @@ class RDSLFormatter extends AbstractFormatter2 {
 	}
 	
 	
+	/**
+	 * We want our Version to be formatted in the following format: 
+	 * 
+	 * Version {
+	 * 	major ...
+	 * 	minor ...
+	 * 	service ...
+	 * }
+	 */
+	def dispatch void format(Version version, extension IFormattableDocument document) {
+		
+		val version_keyword = version.regionFor.keyword(versionAccess.versionKeyword_0)
+		
+		val major_keyword = version.regionFor.keyword(versionAccess.majorKeyword_2)
+		
+		val minor_keyword = version.regionFor.keyword(versionAccess.minorKeyword_4)
+		
+		val service_keyword = version.regionFor.keyword(versionAccess.serviceKeyword_6)
+		
+		val open_bracket_keyword = version.regionFor.keyword(versionAccess.leftCurlyBracketKeyword_1)
+		
+		val close_bracket_keyword = version.regionFor.keyword(versionAccess.rightCurlyBracketKeyword_8)
+		
+		// space after version keyword
+		version_keyword.append[space = " "]
+		
+		
+		// new line before major keyword
+		major_keyword.prepend[newLine]
+		
+		// space after major keyword
+		major_keyword.append[space = " "]
+		
+		
+		// new line before minor keyword
+		minor_keyword.prepend[newLine]
+		
+		// space after minor keyword
+		minor_keyword.append[space = " "]
+		
+		
+		// new line before service keyword
+		service_keyword.prepend[newLine]
+		
+		// space after service keyword
+		service_keyword.append[space = " "]
+		
+		
+		interior(open_bracket_keyword, close_bracket_keyword)[indent]
+		
+		close_bracket_keyword.prepend[newLine]
+	}
+	
+	
 	
 }

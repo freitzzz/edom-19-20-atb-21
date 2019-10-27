@@ -29,7 +29,10 @@ public class RDSLParsingTest {
   public void loadModel() {
     try {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("Model { title \"Gorgeous Food Application Requirements\" ");
+      _builder.append("Model { ");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("title \"Gorgeous Food Application Requirements\" ");
       _builder.newLine();
       _builder.append("\t");
       _builder.append("groups { ");

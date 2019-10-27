@@ -21,7 +21,8 @@ class RDSLParsingTest {
 	@Test
 	def void loadModel() {
 		val result = parseHelper.parse('''
-			Model { title "Gorgeous Food Application Requirements" 
+			Model { 
+				title "Gorgeous Food Application Requirements" 
 				groups { 
 					RequirementGroup "Functional Requirements" { 
 						description "This group details Gorgeous Food Application functional requirements" 

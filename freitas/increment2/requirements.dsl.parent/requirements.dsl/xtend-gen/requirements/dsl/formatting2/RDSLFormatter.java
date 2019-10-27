@@ -9,10 +9,12 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.formatting2.AbstractFormatter2;
 import org.eclipse.xtext.formatting2.IFormattableDocument;
+import org.eclipse.xtext.formatting2.IHiddenRegionFormatter;
+import org.eclipse.xtext.formatting2.regionaccess.ISemanticRegion;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.xbase.lib.Extension;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import requirements.Model;
-import requirements.Requirement;
 import requirements.RequirementGroup;
 import requirements.dsl.services.RDSLGrammarAccess;
 
@@ -22,21 +24,65 @@ public class RDSLFormatter extends AbstractFormatter2 {
   @Extension
   private RDSLGrammarAccess _rDSLGrammarAccess;
   
+  /**
+   * We want our Model to be formatted in the following format:
+   * 
+   * Model {
+   * 	title ...
+   * 	groups {...}
+   * }
+   */
   protected void _format(final Model model, @Extension final IFormattableDocument document) {
+    final ISemanticRegion model_keyword = this.textRegionExtensions.regionFor(model).keyword(this._rDSLGrammarAccess.getModelAccess().getModelKeyword_1());
+    final ISemanticRegion open_bracket_keyword = this.textRegionExtensions.regionFor(model).keyword(this._rDSLGrammarAccess.getModelAccess().getLeftCurlyBracketKeyword_4_1());
+    final ISemanticRegion close_bracket_keyword = this.textRegionExtensions.regionFor(model).keyword(this._rDSLGrammarAccess.getModelAccess().getRightCurlyBracketKeyword_4_4());
+    ISemanticRegion title_keyword = this.textRegionExtensions.regionFor(model).keyword(this._rDSLGrammarAccess.getModelAccess().getTitleKeyword_3_0());
+    ISemanticRegion groups_keyword = this.textRegionExtensions.regionFor(model).keyword(this._rDSLGrammarAccess.getModelAccess().getGroupsKeyword_4_0());
+    final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
+      it.setSpace(" ");
+    };
+    document.append(model_keyword, _function);
+    final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    document.prepend(title_keyword, _function_1);
+    final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
+      it.indent();
+    };
+    document.<ISemanticRegion, ISemanticRegion>interior(open_bracket_keyword, close_bracket_keyword, _function_2);
+    final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
+      it.setSpace("  ");
+    };
+    document.prepend(title_keyword, _function_3);
+    final Procedure1<IHiddenRegionFormatter> _function_4 = (IHiddenRegionFormatter it) -> {
+      it.setSpace(" ");
+    };
+    document.append(title_keyword, _function_4);
+    final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    document.prepend(groups_keyword, _function_5);
+    final Procedure1<IHiddenRegionFormatter> _function_6 = (IHiddenRegionFormatter it) -> {
+      it.setSpace("  ");
+    };
+    document.prepend(groups_keyword, _function_6);
+    final Procedure1<IHiddenRegionFormatter> _function_7 = (IHiddenRegionFormatter it) -> {
+      it.setSpace(" ");
+    };
+    document.append(groups_keyword, _function_7);
+    final Procedure1<IHiddenRegionFormatter> _function_8 = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    document.append(open_bracket_keyword, _function_8);
     EList<RequirementGroup> _groups = model.getGroups();
     for (final RequirementGroup requirementGroup : _groups) {
-      document.<RequirementGroup>format(requirementGroup);
-    }
-  }
-  
-  protected void _format(final RequirementGroup requirementGroup, @Extension final IFormattableDocument document) {
-    EList<Requirement> _requirements = requirementGroup.getRequirements();
-    for (final Requirement requirement : _requirements) {
-      document.<Requirement>format(requirement);
-    }
-    EList<RequirementGroup> _children = requirementGroup.getChildren();
-    for (final RequirementGroup _requirementGroup : _children) {
-      document.<RequirementGroup>format(_requirementGroup);
+      {
+        document.<RequirementGroup>format(requirementGroup);
+        final Procedure1<IHiddenRegionFormatter> _function_9 = (IHiddenRegionFormatter it) -> {
+          it.newLine();
+        };
+        document.<RequirementGroup>append(requirementGroup, _function_9);
+      }
     }
   }
   
@@ -46,9 +92,6 @@ public class RDSLFormatter extends AbstractFormatter2 {
       return;
     } else if (model instanceof Model) {
       _format((Model)model, document);
-      return;
-    } else if (model instanceof RequirementGroup) {
-      _format((RequirementGroup)model, document);
       return;
     } else if (model instanceof EObject) {
       _format((EObject)model, document);

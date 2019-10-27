@@ -434,34 +434,115 @@ public class RDSLFormatter extends AbstractFormatter2 {
     document.prepend(close_bracket_keyword, _function_8);
   }
   
-  public void format(final Object model, final IFormattableDocument document) {
-    if (model instanceof XtextResource) {
-      _format((XtextResource)model, document);
+  /**
+   * We want our Comment to be formatted in the following format:
+   * 
+   * Comment {
+   * 	body ...
+   * 	author ...
+   * 	created ...
+   * 	children {...}
+   * }
+   */
+  protected void _format(final Comment comment, @Extension final IFormattableDocument document) {
+    final ISemanticRegion comment_keyword = this.textRegionExtensions.regionFor(comment).keyword(this._rDSLGrammarAccess.getCommentAccess().getCommentKeyword_1());
+    final ISemanticRegion body_keyword = this.textRegionExtensions.regionFor(comment).keyword(this._rDSLGrammarAccess.getCommentAccess().getBodyKeyword_4_0());
+    final ISemanticRegion author_keyword = this.textRegionExtensions.regionFor(comment).keyword(this._rDSLGrammarAccess.getCommentAccess().getAuthorKeyword_5_0());
+    final ISemanticRegion created_keyword = this.textRegionExtensions.regionFor(comment).keyword(this._rDSLGrammarAccess.getCommentAccess().getCreatedKeyword_6_0());
+    final ISemanticRegion children_keyword = this.textRegionExtensions.regionFor(comment).keyword(this._rDSLGrammarAccess.getCommentAccess().getChildrenKeyword_7_0());
+    final ISemanticRegion open_bracket_keyword = this.textRegionExtensions.regionFor(comment).keyword(this._rDSLGrammarAccess.getCommentAccess().getLeftCurlyBracketKeyword_7_1());
+    final ISemanticRegion close_bracket_keyword = this.textRegionExtensions.regionFor(comment).keyword(this._rDSLGrammarAccess.getCommentAccess().getRightCurlyBracketKeyword_7_4());
+    final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
+      it.setSpace(" ");
+    };
+    document.append(comment_keyword, _function);
+    final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    document.prepend(body_keyword, _function_1);
+    final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
+      it.setSpace(" ");
+    };
+    document.append(body_keyword, _function_2);
+    final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    document.prepend(author_keyword, _function_3);
+    final Procedure1<IHiddenRegionFormatter> _function_4 = (IHiddenRegionFormatter it) -> {
+      it.setSpace(" ");
+    };
+    document.append(author_keyword, _function_4);
+    final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    document.prepend(created_keyword, _function_5);
+    final Procedure1<IHiddenRegionFormatter> _function_6 = (IHiddenRegionFormatter it) -> {
+      it.setSpace(" ");
+    };
+    document.append(created_keyword, _function_6);
+    final Procedure1<IHiddenRegionFormatter> _function_7 = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    document.prepend(created_keyword, _function_7);
+    final Procedure1<IHiddenRegionFormatter> _function_8 = (IHiddenRegionFormatter it) -> {
+      it.setSpace(" ");
+    };
+    document.append(children_keyword, _function_8);
+    final Procedure1<IHiddenRegionFormatter> _function_9 = (IHiddenRegionFormatter it) -> {
+      it.indent();
+    };
+    document.<ISemanticRegion, ISemanticRegion>interior(open_bracket_keyword, close_bracket_keyword, _function_9);
+    final Procedure1<IHiddenRegionFormatter> _function_10 = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    document.append(open_bracket_keyword, _function_10);
+    EList<Comment> _children = comment.getChildren();
+    for (final Comment _comment : _children) {
+      {
+        document.<Comment>format(_comment);
+        final Procedure1<IHiddenRegionFormatter> _function_11 = (IHiddenRegionFormatter it) -> {
+          it.newLine();
+        };
+        document.<Comment>append(_comment, _function_11);
+      }
+    }
+    final Procedure1<IHiddenRegionFormatter> _function_11 = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    document.prepend(close_bracket_keyword, _function_11);
+  }
+  
+  public void format(final Object comment, final IFormattableDocument document) {
+    if (comment instanceof XtextResource) {
+      _format((XtextResource)comment, document);
       return;
-    } else if (model instanceof Model) {
-      _format((Model)model, document);
+    } else if (comment instanceof Comment) {
+      _format((Comment)comment, document);
       return;
-    } else if (model instanceof Requirement) {
-      _format((Requirement)model, document);
+    } else if (comment instanceof Model) {
+      _format((Model)comment, document);
       return;
-    } else if (model instanceof RequirementGroup) {
-      _format((RequirementGroup)model, document);
+    } else if (comment instanceof Requirement) {
+      _format((Requirement)comment, document);
       return;
-    } else if (model instanceof Version) {
-      _format((Version)model, document);
+    } else if (comment instanceof RequirementGroup) {
+      _format((RequirementGroup)comment, document);
       return;
-    } else if (model instanceof EObject) {
-      _format((EObject)model, document);
+    } else if (comment instanceof Version) {
+      _format((Version)comment, document);
       return;
-    } else if (model == null) {
+    } else if (comment instanceof EObject) {
+      _format((EObject)comment, document);
+      return;
+    } else if (comment == null) {
       _format((Void)null, document);
       return;
-    } else if (model != null) {
-      _format(model, document);
+    } else if (comment != null) {
+      _format(comment, document);
       return;
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(model, document).toString());
+        Arrays.<Object>asList(comment, document).toString());
     }
   }
 }

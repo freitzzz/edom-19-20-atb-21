@@ -386,5 +386,75 @@ class RDSLFormatter extends AbstractFormatter2 {
 	}
 	
 	
-	
+	/**
+	 * We want our Comment to be formatted in the following format: 
+	 * 
+	 * Comment {
+	 * 	body ...
+	 * 	author ...
+	 * 	created ...
+	 * 	children {...}
+	 * }
+	 */
+	def dispatch void format(Comment comment, extension IFormattableDocument document) {
+		
+		val comment_keyword = comment.regionFor.keyword(commentAccess.commentKeyword_1)
+		
+		val body_keyword = comment.regionFor.keyword(commentAccess.bodyKeyword_4_0)
+		
+		val author_keyword = comment.regionFor.keyword(commentAccess.authorKeyword_5_0)
+		
+		val created_keyword = comment.regionFor.keyword(commentAccess.createdKeyword_6_0)
+		
+		val children_keyword = comment.regionFor.keyword(commentAccess.childrenKeyword_7_0)
+		
+		val open_bracket_keyword = comment.regionFor.keyword(commentAccess.leftCurlyBracketKeyword_7_1)
+		
+		val close_bracket_keyword = comment.regionFor.keyword(commentAccess.rightCurlyBracketKeyword_7_4)
+		
+		// space after comment keyword
+		comment_keyword.append[space = " "]
+		
+		
+		// new line before body keyword
+		body_keyword.prepend[newLine]
+		
+		// space after body keyword
+		body_keyword.append[space = " "]
+		
+		
+		// new line before author keyword
+		author_keyword.prepend[newLine]
+		
+		// space after author keyword
+		author_keyword.append[space = " "]
+		
+		
+		// new line before created keyword
+		created_keyword.prepend[newLine]
+		
+		// space after created keyword
+		created_keyword.append[space = " "]
+		
+		
+		// new line before children keyword
+		created_keyword.prepend[newLine]
+		
+		// space after children keyword
+		children_keyword.append[space = " "]
+		
+		
+		interior(open_bracket_keyword, close_bracket_keyword)[indent]
+		
+		
+		// new line before first comment
+		open_bracket_keyword.append[newLine]
+		
+		for (_comment : comment.children) {
+			_comment.format
+			_comment.append[newLine]
+		}
+		
+		close_bracket_keyword.prepend[newLine]
+	}
 }

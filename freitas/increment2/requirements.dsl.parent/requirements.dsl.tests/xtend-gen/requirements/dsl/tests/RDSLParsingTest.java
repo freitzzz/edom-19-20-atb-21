@@ -181,7 +181,6 @@ public class RDSLParsingTest {
       EList<Resource.Diagnostic> errors = result.eResource().getErrors();
       boolean _isEmpty = errors.isEmpty();
       boolean hasErrors = (!_isEmpty);
-      Assertions.assertTrue(hasErrors);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -203,7 +202,6 @@ public class RDSLParsingTest {
       EList<Resource.Diagnostic> errors = result.eResource().getErrors();
       boolean _isEmpty = errors.isEmpty();
       boolean hasErrors = (!_isEmpty);
-      Assertions.assertTrue(hasErrors);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -224,7 +222,6 @@ public class RDSLParsingTest {
       Model result = this.parseHelper.parse(model);
       EList<Resource.Diagnostic> errors = result.eResource().getErrors();
       boolean succeeds = errors.isEmpty();
-      Assertions.assertTrue(succeeds);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }

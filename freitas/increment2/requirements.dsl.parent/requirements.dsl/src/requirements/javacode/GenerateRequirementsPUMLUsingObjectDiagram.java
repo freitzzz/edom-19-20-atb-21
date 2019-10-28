@@ -294,6 +294,15 @@ public class GenerateRequirementsPUMLUsingObjectDiagram {
 	
 	// Quotes a string (e.g. quoteString("abc") -> "abc"
 	private static String quoteString(String stringToQuote) {
+		
+		if(stringToQuote.startsWith("\"") && stringToQuote.endsWith("\"")) {
+			return stringToQuote;
+		}
+		
+		if(stringToQuote.startsWith("'") && stringToQuote.endsWith("'")) {
+			return stringToQuote;
+		}
+		
 		return new StringBuilder().append('"').append(stringToQuote).append('"').toString();
 	}
 	

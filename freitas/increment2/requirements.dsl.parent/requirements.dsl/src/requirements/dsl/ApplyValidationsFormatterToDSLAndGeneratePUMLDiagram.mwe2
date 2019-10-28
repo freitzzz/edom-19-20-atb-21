@@ -5,6 +5,7 @@ import org.eclipse.xtext.xtext.generator.model.project.*
 import requirements.javacode.workflow.ResourceReader
 import requirements.javacode.workflow.ModelValidator
 import requirements.javacode.workflow.DSLFormatterAndSaver
+import requirements.javacode.workflow.GeneratePUMLDiagram
 
 var rootPath = ".."
 
@@ -12,13 +13,21 @@ var dslFilePath = "requirementsdsl.rdsl"
 
 var filePath = "${dslFilePath}"
 
+var diagramFilePath = "generated_diagram.puml"
+
+var _diagramFilePath = "${diagramFilePath}"
+
+var diagramType = "circles"
+
+var _diagramType = "${diagramType}"
+
 var dslInMemoryObjectSlotName = "dslinmemory"
 
 Workflow {
 	
 	component = ResourceReader{
 		slot = dslInMemoryObjectSlotName
-		uri = dslFilePath
+		uri = filePath
 	}
 	
 	component = ModelValidator{
@@ -28,5 +37,11 @@ Workflow {
 	component = DSLFormatterAndSaver{
 		slot = dslInMemoryObjectSlotName
 		uri = dslFilePath
+	}
+	
+	component = GeneratePUMLDiagram{
+		slot = dslFilePath
+		pumlDiagramType = _diagramType
+		generatedPUMLDiagramFilePath = _diagramFilePath
 	}
 }

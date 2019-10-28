@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.^extension.ExtendWith
 import requirements.Model
+import org.junit.jupiter.api.BeforeAll
 
 @ExtendWith(InjectionExtension)
 @InjectWith(RDSLInjectorProvider)
@@ -64,4 +65,200 @@ class RDSLParsingTest {
 		val errors = result.eResource.errors
 		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
 	}
+	
+	@Test
+	def void testNoModelDefinitionFailsParse() {
+		
+		var model = ''''''
+		
+		var result = parseHelper.parse(model)
+		
+		var errors = result.eResource.errors
+		
+		var hasErrors = !errors.empty
+		
+		Assertions.assertTrue(hasErrors)
+	}
+	
+	@Test
+	def void testModelWithNoTitleDefinitionFailsParse() {
+		
+		var model = '''
+			Model {}
+		'''
+		
+		var result = parseHelper.parse(model)
+		
+		var errors = result.eResource.errors
+		
+		var hasErrors = !errors.empty
+		
+		Assertions.assertTrue(hasErrors)
+	}
+	
+	
+	@Test
+	def void testModelWithTitleLengthLessThanThreeFailsParse() {
+		
+		var model = '''
+			Model {
+				title tw
+			}
+		'''
+		
+		var result = parseHelper.parse(model)
+		
+		var errors = result.eResource.errors
+		
+		var hasErrors = !errors.empty
+		
+		Assertions.assertTrue(hasErrors)
+	}
+	
+	
+	@Test
+	def void testModelWithTitleLengthGreaterOrEqualThanThreeSucceedsParse() {
+		
+		var model = '''
+			Model {
+				title two
+			}
+		'''
+		
+		var result = parseHelper.parse(model)
+		
+		var errors = result.eResource.errors
+		
+		var succeeds = errors.empty
+		
+		Assertions.assertTrue(succeeds)
+	}
+	
+	
+	@Test
+	def void testRequirementGroupWithNameLengthLessThanFiveFailsParse(){}
+	
+	
+	@Test
+	def void testRequirementGroupWithNameLengthGreaterOrEqualThanFiveSucceedsParse(){}
+	
+	
+	@Test
+	def void testRequirementGroupWithoutDescriptionFailsParse(){}
+	
+	
+	@Test
+	def void testRequirementGroupWithDescriptionLengthLessThanTenFailsParse(){}
+	
+	
+	@Test
+	def void testRequirementGroupWithDescriptionLengthGreaterOrEqualThanTenSucceedsParse(){}
+	
+	
+	@Test
+	def void testRequirementGroupWithSubRequirementGroupsWithSameNameFailsParse(){}
+	
+	
+	@Test
+	def void testRequirementWithoutTitleFailsParse(){}
+	
+	
+	@Test
+	def void testRequirementWithTitleLengthLessThanFiveFailsParse(){}
+	
+	
+	@Test
+	def void testRequirementWithTitleLengthGreaterOrEqualThanFiveSucceedsParse(){}
+	
+	
+	@Test
+	def void testRequirementWithoutDescriptionFailsParse(){}
+	
+	
+	@Test
+	def void testRequirementWithDescriptionLengthLessThanTenFailsParse(){}
+	
+	
+	@Test
+	def void testRequirementWithDescriptionLengthGreaterOrEqualThanTenSucceedsParse(){}
+	
+	
+	@Test
+	def void testRequirementWithResolvedStateAndInvalidResolutionFailsParse(){}
+	
+	
+	@Test
+	def void testRequirementWithApprovedStateAndInvalidResolutionFailsParse(){}
+	
+	
+	@Test
+	def void testRequirementWithReviewedStateAndInvalidResolutionFailsParse(){}
+	
+	
+	@Test
+	def void testRequirementWithoutCreationDateFailsParse(){}
+	
+	
+	@Test
+	def void testRequirementWithoutAuthorFailsParse(){}
+	
+	
+	@Test
+	def void testRequirementWithAuthorLengthLessThanThreeFailsParse(){}
+	
+	
+	@Test
+	def void testRequirementWithAuthorLengthGreaterOrEqualThanThreeSucceedsParse(){}
+	
+	
+	@Test
+	def void testVersionWithMajorLowerThanZeroFailsParse(){}
+	
+	
+	@Test
+	def void testVersionWithMinorLowerThanZeroFailsParse(){}
+	
+	
+	@Test
+	def void testVersionWithServiceLowerThanZeroFailsParse(){}
+	
+	
+	@Test
+	def void testCommentWithoutAuthorFailsParse(){}
+	
+	
+	@Test
+	def void testCommentWithAuthorLengthLessThanThreeFailsParse(){}
+	
+	
+	@Test
+	def void testCommentWithAuthorLengthGreaterOrEqualThanThreeSucceedsParse(){}
+	
+	
+	@Test
+	def void testCommentWithoutBodyFailsParse(){}
+	
+	
+	@Test
+	def void testCommentWithBodyLengthLessThanFifteenFailsParse(){}
+	
+	
+	@Test
+	def void testCommentWithBodyLengthGreaterOrEqualThanFifteenSucceedsParse(){}
+	
+	
+	@Test
+	def void testCommentWithoutSubjectFailsParse(){}
+	
+	
+	@Test
+	def void testCommentWithSubjectLengthLessThanTenFailsParse(){}
+	
+	
+	@Test
+	def void testCommentWithSubjectLengthGreaterOrEqualThanTenSucceedsParse(){}
+	
+	
+	@Test
+	def void testCommentWithoutCreationDateFailsParse(){}
 }

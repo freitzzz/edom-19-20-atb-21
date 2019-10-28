@@ -154,4 +154,207 @@ public class RDSLParsingTest {
       throw Exceptions.sneakyThrow(_e);
     }
   }
+  
+  @Test
+  public void testNoModelDefinitionFailsParse() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      String model = _builder.toString();
+      Model result = this.parseHelper.parse(model);
+      EList<Resource.Diagnostic> errors = result.eResource().getErrors();
+      boolean _isEmpty = errors.isEmpty();
+      boolean hasErrors = (!_isEmpty);
+      Assertions.assertTrue(hasErrors);
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void testModelWithNoTitleDefinitionFailsParse() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("Model {}");
+      _builder.newLine();
+      String model = _builder.toString();
+      Model result = this.parseHelper.parse(model);
+      EList<Resource.Diagnostic> errors = result.eResource().getErrors();
+      boolean _isEmpty = errors.isEmpty();
+      boolean hasErrors = (!_isEmpty);
+      Assertions.assertTrue(hasErrors);
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void testModelWithTitleLengthLessThanThreeFailsParse() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("Model {");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("title tw");
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
+      String model = _builder.toString();
+      Model result = this.parseHelper.parse(model);
+      EList<Resource.Diagnostic> errors = result.eResource().getErrors();
+      boolean _isEmpty = errors.isEmpty();
+      boolean hasErrors = (!_isEmpty);
+      Assertions.assertTrue(hasErrors);
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void testModelWithTitleLengthGreaterOrEqualThanThreeSucceedsParse() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("Model {");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("title two");
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
+      String model = _builder.toString();
+      Model result = this.parseHelper.parse(model);
+      EList<Resource.Diagnostic> errors = result.eResource().getErrors();
+      boolean succeeds = errors.isEmpty();
+      Assertions.assertTrue(succeeds);
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void testRequirementGroupWithNameLengthLessThanFiveFailsParse() {
+  }
+  
+  @Test
+  public void testRequirementGroupWithNameLengthGreaterOrEqualThanFiveSucceedsParse() {
+  }
+  
+  @Test
+  public void testRequirementGroupWithoutDescriptionFailsParse() {
+  }
+  
+  @Test
+  public void testRequirementGroupWithDescriptionLengthLessThanTenFailsParse() {
+  }
+  
+  @Test
+  public void testRequirementGroupWithDescriptionLengthGreaterOrEqualThanTenSucceedsParse() {
+  }
+  
+  @Test
+  public void testRequirementGroupWithSubRequirementGroupsWithSameNameFailsParse() {
+  }
+  
+  @Test
+  public void testRequirementWithoutTitleFailsParse() {
+  }
+  
+  @Test
+  public void testRequirementWithTitleLengthLessThanFiveFailsParse() {
+  }
+  
+  @Test
+  public void testRequirementWithTitleLengthGreaterOrEqualThanFiveSucceedsParse() {
+  }
+  
+  @Test
+  public void testRequirementWithoutDescriptionFailsParse() {
+  }
+  
+  @Test
+  public void testRequirementWithDescriptionLengthLessThanTenFailsParse() {
+  }
+  
+  @Test
+  public void testRequirementWithDescriptionLengthGreaterOrEqualThanTenSucceedsParse() {
+  }
+  
+  @Test
+  public void testRequirementWithResolvedStateAndInvalidResolutionFailsParse() {
+  }
+  
+  @Test
+  public void testRequirementWithApprovedStateAndInvalidResolutionFailsParse() {
+  }
+  
+  @Test
+  public void testRequirementWithReviewedStateAndInvalidResolutionFailsParse() {
+  }
+  
+  @Test
+  public void testRequirementWithoutCreationDateFailsParse() {
+  }
+  
+  @Test
+  public void testRequirementWithoutAuthorFailsParse() {
+  }
+  
+  @Test
+  public void testRequirementWithAuthorLengthLessThanThreeFailsParse() {
+  }
+  
+  @Test
+  public void testRequirementWithAuthorLengthGreaterOrEqualThanThreeSucceedsParse() {
+  }
+  
+  @Test
+  public void testVersionWithMajorLowerThanZeroFailsParse() {
+  }
+  
+  @Test
+  public void testVersionWithMinorLowerThanZeroFailsParse() {
+  }
+  
+  @Test
+  public void testVersionWithServiceLowerThanZeroFailsParse() {
+  }
+  
+  @Test
+  public void testCommentWithoutAuthorFailsParse() {
+  }
+  
+  @Test
+  public void testCommentWithAuthorLengthLessThanThreeFailsParse() {
+  }
+  
+  @Test
+  public void testCommentWithAuthorLengthGreaterOrEqualThanThreeSucceedsParse() {
+  }
+  
+  @Test
+  public void testCommentWithoutBodyFailsParse() {
+  }
+  
+  @Test
+  public void testCommentWithBodyLengthLessThanFifteenFailsParse() {
+  }
+  
+  @Test
+  public void testCommentWithBodyLengthGreaterOrEqualThanFifteenSucceedsParse() {
+  }
+  
+  @Test
+  public void testCommentWithoutSubjectFailsParse() {
+  }
+  
+  @Test
+  public void testCommentWithSubjectLengthLessThanTenFailsParse() {
+  }
+  
+  @Test
+  public void testCommentWithSubjectLengthGreaterOrEqualThanTenSucceedsParse() {
+  }
+  
+  @Test
+  public void testCommentWithoutCreationDateFailsParse() {
+  }
 }

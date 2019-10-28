@@ -21,9 +21,11 @@ public class GeneratePUMLDiagram extends WorkflowComponentWithSlot {
 		switch(pumlDiagramType.toLowerCase()) {
 		case "circles":
 			GenerateRequirementsPUMLUsingCircles.main(arguments);
+			System.out.println("Generated PUML Circles Diagram successfully");
 			break;
 		case "object":
 			GenerateRequirementsPUMLUsingObjectDiagram.main(arguments);
+			System.out.println("Generated PUML Object Diagram successfully");
 			break;
 		default:
 			throw new IllegalStateException("'" + pumlDiagramType + "' is not a valid puml diagram type (can either be circles or object)");

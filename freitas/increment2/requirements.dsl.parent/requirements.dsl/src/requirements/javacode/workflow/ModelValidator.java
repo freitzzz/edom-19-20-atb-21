@@ -59,7 +59,7 @@ public class ModelValidator extends WorkflowComponentWithSlot {
 			throw new IllegalStateException(diag.getException());
 
 		} else {
-			System.out.println("Model validated successfuly");
+			System.out.println("Model validated successfully");
 		}
 
 	}

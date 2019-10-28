@@ -7,6 +7,7 @@ import org.eclipse.xtext.resource.XtextResourceSet;
 
 import com.google.inject.Injector;
 
+import requirements.Model;
 import requirements.RequirementsFactory;
 import requirements.RequirementsPackage;
 import requirements.dsl.RDSLStandaloneSetup;
@@ -31,6 +32,12 @@ public class ResourceReader extends WorkflowComponentWithSlot {
 		URI fileURI = URI.createFileURI(uri);
 		Resource resource = resSet.getResource(fileURI, true);
 		ctx.put(getSlot(), resource);
+		
+		Model model = (Model)resource.getContents().get(0);
+		
+		System.out.println("-> " + model.getTitle());
+		
+		System.out.println("DSL was read successfully");
 	}
 
 	public void setUri(String uri) {

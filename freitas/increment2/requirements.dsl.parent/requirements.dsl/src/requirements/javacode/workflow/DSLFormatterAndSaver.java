@@ -39,6 +39,7 @@ public class DSLFormatterAndSaver extends WorkflowComponentWithSlot {
 		
 		try {
 			resource.save(SaveOptions.newBuilder().format().getOptions().toOptionsMap());
+			System.out.println("Formatted and saved DSL successfully");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			throw new IllegalStateException(e);

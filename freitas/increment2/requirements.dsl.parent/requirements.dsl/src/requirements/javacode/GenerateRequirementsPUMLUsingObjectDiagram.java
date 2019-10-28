@@ -308,6 +308,10 @@ public class GenerateRequirementsPUMLUsingObjectDiagram {
 	
 	private static String breakStringInLines(String string, int maxCharacters) {
 		
+		if(string == null) {
+			return "";
+		}
+		
 		StringBuilder builder = new StringBuilder();
 		
 		if(string.length() > maxCharacters) {

@@ -2,10 +2,20 @@ module requirements.dsl.GenerateRDSL
 
 import org.eclipse.xtext.xtext.generator.*
 import org.eclipse.xtext.xtext.generator.model.project.*
+import requirements.javacode.workflow.ResourceReader
 
 var rootPath = ".."
 
+var _dslFilePath = ""
+
+var dslFilePath = "${_dslFilePath}"
+
 Workflow {
+	
+	component = ResourceReader{
+		slot = "dslinmemory"
+		uri = dslFilePath
+	}
 	
 	component = XtextGenerator {
 		configuration = {

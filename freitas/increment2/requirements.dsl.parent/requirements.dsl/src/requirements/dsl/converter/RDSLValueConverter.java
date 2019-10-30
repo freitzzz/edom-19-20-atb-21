@@ -115,4 +115,32 @@ public class RDSLValueConverter extends DefaultTerminalConverters {
 		
 	}
 	
+	// This rule is applied to string in order to make sure a string is not stored with start and end quotes
+	@ValueConverter(rule = "EString")
+	public IValueConverter<String> EString() {
+		return new IValueConverter<String>() {
+
+			@Override
+			public String toValue(String string, INode node) throws ValueConverterException {
+				
+				if(string.charAt(0) == '"' && string.charAt(string.length() -1 ) == '"') {
+					return string.substring(1, string.length() -1);
+				}
+				
+				if(string.charAt(0) == '\'' && string.charAt(string.length() -1 ) == '\'') {
+					return string.substring(1, string.length() -1);
+				}
+				
+				return string;
+				
+			}
+
+			@Override
+			public String toString(String value) throws ValueConverterException {
+				return value;
+			}
+			
+		};
+	}
+	
 }

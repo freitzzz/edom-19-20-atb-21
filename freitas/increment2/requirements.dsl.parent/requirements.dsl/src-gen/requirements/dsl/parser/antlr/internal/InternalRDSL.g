@@ -1197,16 +1197,23 @@ ruleEDate returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
 @after {
 	leaveRule();
 }:
-	{
-		newCompositeNode(grammarAccess.getEDateAccess().getEStringParserRuleCall());
-	}
-	this_EString_0=ruleEString
-	{
-		$current.merge(this_EString_0);
-	}
-	{
-		afterParserOrEnumRuleCall();
-	}
+	(
+		this_CUSTOM_DATE_SINGLE_QUOTE_0=RULE_CUSTOM_DATE_SINGLE_QUOTE
+		{
+			$current.merge(this_CUSTOM_DATE_SINGLE_QUOTE_0);
+		}
+		{
+			newLeafNode(this_CUSTOM_DATE_SINGLE_QUOTE_0, grammarAccess.getEDateAccess().getCUSTOM_DATE_SINGLE_QUOTETerminalRuleCall_0());
+		}
+		    |
+		this_CUSTOM_DATE_DOUBLE_QUOTE_1=RULE_CUSTOM_DATE_DOUBLE_QUOTE
+		{
+			$current.merge(this_CUSTOM_DATE_DOUBLE_QUOTE_1);
+		}
+		{
+			newLeafNode(this_CUSTOM_DATE_DOUBLE_QUOTE_1, grammarAccess.getEDateAccess().getCUSTOM_DATE_DOUBLE_QUOTETerminalRuleCall_1());
+		}
+	)
 ;
 
 // Entry rule entryRuleEInt
@@ -1389,6 +1396,10 @@ ruleResolution returns [Enumerator current=null]
 		)
 	)
 ;
+
+RULE_CUSTOM_DATE_SINGLE_QUOTE : '\''? ('0'..'9')+ '-' ('0'..'9')+ '-' ('0'..'9')+ ('T' ('0'..'9')+ ':' ('0'..'9')+ ':' ('0'..'9')+ ('.' ('0'..'9')+ '+' ('0'..'9')+)?)? '\''?;
+
+RULE_CUSTOM_DATE_DOUBLE_QUOTE : '"'? ('0'..'9')+ '-' ('0'..'9')+ '-' ('0'..'9')+ ('T' ('0'..'9')+ ':' ('0'..'9')+ ':' ('0'..'9')+ ('.' ('0'..'9')+ '+' ('0'..'9')+)?)? '"'?;
 
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 

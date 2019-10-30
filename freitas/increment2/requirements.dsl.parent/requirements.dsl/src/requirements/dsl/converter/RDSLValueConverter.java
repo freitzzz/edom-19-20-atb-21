@@ -36,7 +36,7 @@ public class RDSLValueConverter extends DefaultTerminalConverters {
 			@Override
 			public java.util.Date toValue(String string, INode node)
 					throws ValueConverterException {
-				String str2=string.substring(1, string.length()-1);
+				String str2=string.replaceAll("'", "").replaceAll("\"", "");
 				
 				LocalDateTime date = tryParseInYYYYMMDDTHHMMSSWithTimeZoneFormat(str2);
 				

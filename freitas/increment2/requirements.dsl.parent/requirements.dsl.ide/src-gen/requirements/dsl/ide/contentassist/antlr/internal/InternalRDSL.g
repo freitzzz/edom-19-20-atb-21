@@ -215,9 +215,9 @@ ruleEDate
 	}
 	:
 	(
-		{ before(grammarAccess.getEDateAccess().getEStringParserRuleCall()); }
-		ruleEString
-		{ after(grammarAccess.getEDateAccess().getEStringParserRuleCall()); }
+		{ before(grammarAccess.getEDateAccess().getAlternatives()); }
+		(rule__EDate__Alternatives)
+		{ after(grammarAccess.getEDateAccess().getAlternatives()); }
 	)
 ;
 finally {
@@ -328,6 +328,27 @@ rule__EString__Alternatives
 		{ before(grammarAccess.getEStringAccess().getIDTerminalRuleCall_1()); }
 		RULE_ID
 		{ after(grammarAccess.getEStringAccess().getIDTerminalRuleCall_1()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__EDate__Alternatives
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getEDateAccess().getCUSTOM_DATE_SINGLE_QUOTETerminalRuleCall_0()); }
+		RULE_CUSTOM_DATE_SINGLE_QUOTE
+		{ after(grammarAccess.getEDateAccess().getCUSTOM_DATE_SINGLE_QUOTETerminalRuleCall_0()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getEDateAccess().getCUSTOM_DATE_DOUBLE_QUOTETerminalRuleCall_1()); }
+		RULE_CUSTOM_DATE_DOUBLE_QUOTE
+		{ after(grammarAccess.getEDateAccess().getCUSTOM_DATE_DOUBLE_QUOTETerminalRuleCall_1()); }
 	)
 ;
 finally {
@@ -4571,6 +4592,10 @@ rule__Comment__ChildrenAssignment_7_3_1
 finally {
 	restoreStackSize(stackSize);
 }
+
+RULE_CUSTOM_DATE_SINGLE_QUOTE : '\''? ('0'..'9')+ '-' ('0'..'9')+ '-' ('0'..'9')+ ('T' ('0'..'9')+ ':' ('0'..'9')+ ':' ('0'..'9')+ ('.' ('0'..'9')+ '+' ('0'..'9')+)?)? '\''?;
+
+RULE_CUSTOM_DATE_DOUBLE_QUOTE : '"'? ('0'..'9')+ '-' ('0'..'9')+ '-' ('0'..'9')+ ('T' ('0'..'9')+ ':' ('0'..'9')+ ':' ('0'..'9')+ ('.' ('0'..'9')+ '+' ('0'..'9')+)?)? '"'?;
 
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 

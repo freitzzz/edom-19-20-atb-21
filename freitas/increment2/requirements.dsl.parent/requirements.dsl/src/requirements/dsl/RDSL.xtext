@@ -73,8 +73,21 @@ enum Type returns Type:
 enum Priority returns Priority:
 				HIGH = 'HIGH' | MEDIUM = 'MEDIUM' | LOW = 'LOW';
 
+
+terminal CUSTOM_DATE_SINGLE_QUOTE:
+	// 2018-10-26T18:51:52.009+0100
+	('\'')? (('0'..'9')+ '-' ('0'..'9')+ '-' ('0'..'9')+)('T' ('0'..'9')+ ':' ('0'..'9')+ ':' ('0'..'9')+ ('.' ('0'..'9')+ '+' ('0'..'9')+)?)? ('\'')?
+
+;
+
+terminal CUSTOM_DATE_DOUBLE_QUOTE:
+	// 2018-10-26T18:51:52.009+0100
+	('"')? (('0'..'9')+ '-' ('0'..'9')+ '-' ('0'..'9')+)('T' ('0'..'9')+ ':' ('0'..'9')+ ':' ('0'..'9')+ ('.' ('0'..'9')+ '+' ('0'..'9')+)?)? ('"')?
+
+;
+
 EDate returns ecore::EDate:
-	EString /* TODO: implement this rule and an appropriate IValueConverter */;
+	CUSTOM_DATE_SINGLE_QUOTE | CUSTOM_DATE_DOUBLE_QUOTE /* TODO: implement this rule and an appropriate IValueConverter */;
 
 enum State returns State:
 				NEW = 'NEW' | REVIEWED = 'REVIEWED' | APPROVED = 'APPROVED' | RESOLVED = 'RESOLVED';

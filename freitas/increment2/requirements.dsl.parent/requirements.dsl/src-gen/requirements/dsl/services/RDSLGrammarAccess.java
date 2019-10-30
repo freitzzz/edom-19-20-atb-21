@@ -807,14 +807,23 @@ public class RDSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	public class EDateElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "requirements.dsl.RDSL.EDate");
-		private final RuleCall cEStringParserRuleCall = (RuleCall)rule.eContents().get(1);
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cCUSTOM_DATE_SINGLE_QUOTETerminalRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cCUSTOM_DATE_DOUBLE_QUOTETerminalRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//EDate ecore::EDate:
-		//	EString /* TODO: implement this rule and an appropriate IValueConverter */;
+		//	CUSTOM_DATE_SINGLE_QUOTE | CUSTOM_DATE_DOUBLE_QUOTE
+		//	/* TODO: implement this rule and an appropriate IValueConverter */;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//EString
-		public RuleCall getEStringParserRuleCall() { return cEStringParserRuleCall; }
+		//CUSTOM_DATE_SINGLE_QUOTE | CUSTOM_DATE_DOUBLE_QUOTE
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//CUSTOM_DATE_SINGLE_QUOTE
+		public RuleCall getCUSTOM_DATE_SINGLE_QUOTETerminalRuleCall_0() { return cCUSTOM_DATE_SINGLE_QUOTETerminalRuleCall_0; }
+		
+		//CUSTOM_DATE_DOUBLE_QUOTE
+		public RuleCall getCUSTOM_DATE_DOUBLE_QUOTETerminalRuleCall_1() { return cCUSTOM_DATE_DOUBLE_QUOTETerminalRuleCall_1; }
 	}
 	public class EIntElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "requirements.dsl.RDSL.EInt");
@@ -993,6 +1002,8 @@ public class RDSLGrammarAccess extends AbstractGrammarElementFinder {
 	private final CommentElements pComment;
 	private final TypeElements eType;
 	private final PriorityElements ePriority;
+	private final TerminalRule tCUSTOM_DATE_SINGLE_QUOTE;
+	private final TerminalRule tCUSTOM_DATE_DOUBLE_QUOTE;
 	private final EDateElements pEDate;
 	private final StateElements eState;
 	private final ResolutionElements eResolution;
@@ -1015,6 +1026,8 @@ public class RDSLGrammarAccess extends AbstractGrammarElementFinder {
 		this.pComment = new CommentElements();
 		this.eType = new TypeElements();
 		this.ePriority = new PriorityElements();
+		this.tCUSTOM_DATE_SINGLE_QUOTE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "requirements.dsl.RDSL.CUSTOM_DATE_SINGLE_QUOTE");
+		this.tCUSTOM_DATE_DOUBLE_QUOTE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "requirements.dsl.RDSL.CUSTOM_DATE_DOUBLE_QUOTE");
 		this.pEDate = new EDateElements();
 		this.eState = new StateElements();
 		this.eResolution = new ResolutionElements();
@@ -1152,8 +1165,23 @@ public class RDSLGrammarAccess extends AbstractGrammarElementFinder {
 		return getPriorityAccess().getRule();
 	}
 	
+	//terminal CUSTOM_DATE_SINGLE_QUOTE:
+	//	'\''? ('0'..'9'+ '-' '0'..'9'+ '-' '0'..'9'+) ('T' '0'..'9'+ ':' '0'..'9'+ ':' '0'..'9'+ ('.' '0'..'9'+ '+'
+	//	'0'..'9'+)?)? '\''?;
+	public TerminalRule getCUSTOM_DATE_SINGLE_QUOTERule() {
+		return tCUSTOM_DATE_SINGLE_QUOTE;
+	}
+	
+	//terminal CUSTOM_DATE_DOUBLE_QUOTE:
+	//	'"'? ('0'..'9'+ '-' '0'..'9'+ '-' '0'..'9'+) ('T' '0'..'9'+ ':' '0'..'9'+ ':' '0'..'9'+ ('.' '0'..'9'+ '+'
+	//	'0'..'9'+)?)? '"'?;
+	public TerminalRule getCUSTOM_DATE_DOUBLE_QUOTERule() {
+		return tCUSTOM_DATE_DOUBLE_QUOTE;
+	}
+	
 	//EDate ecore::EDate:
-	//	EString /* TODO: implement this rule and an appropriate IValueConverter */;
+	//	CUSTOM_DATE_SINGLE_QUOTE | CUSTOM_DATE_DOUBLE_QUOTE
+	//	/* TODO: implement this rule and an appropriate IValueConverter */;
 	public EDateElements getEDateAccess() {
 		return pEDate;
 	}

@@ -32,6 +32,7 @@ public class RDSLParser extends AbstractContentAssistParser {
 		
 		private static void init(ImmutableMap.Builder<AbstractElement, String> builder, RDSLGrammarAccess grammarAccess) {
 			builder.put(grammarAccess.getEStringAccess().getAlternatives(), "rule__EString__Alternatives");
+			builder.put(grammarAccess.getEDateAccess().getAlternatives(), "rule__EDate__Alternatives");
 			builder.put(grammarAccess.getTypeAccess().getAlternatives(), "rule__Type__Alternatives");
 			builder.put(grammarAccess.getPriorityAccess().getAlternatives(), "rule__Priority__Alternatives");
 			builder.put(grammarAccess.getStateAccess().getAlternatives(), "rule__State__Alternatives");

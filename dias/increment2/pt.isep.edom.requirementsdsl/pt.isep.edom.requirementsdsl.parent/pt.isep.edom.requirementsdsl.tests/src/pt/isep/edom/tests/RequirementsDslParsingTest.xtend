@@ -11,6 +11,7 @@ import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
 import requirements.Model
+import requirements.RequirementGroup
 
 @RunWith(XtextRunner)
 @InjectWith(RequirementsDslInjectorProvider)
@@ -21,8 +22,31 @@ class RequirementsDslParsingTest {
 	@Test
 	def void loadModel() {
 		val result = parseHelper.parse('''
-			Hello Xtext!
-		''')
+			Model {
+				title ola groups {
+				RequirementGroup RG1 {
+					id id1
+					children {
+					RequirementGroup RG2 {
+						id id2
+					}
+				}	requirements {
+				Requirement {
+					title ola
+					created '26-10-2019 15:33'
+					id id1 version Version {
+						major 1 minor 2 service 0
+					} comments {
+					Comment {
+						subject algo body 'algo no body' author joao created '26-10-2019 17:33'
+					}
+				}
+				}
+				}
+			}
+			}
+			}
+		''') 
 		Assert.assertNotNull(result)
 		Assert.assertTrue(result.eResource.errors.isEmpty)
 	}

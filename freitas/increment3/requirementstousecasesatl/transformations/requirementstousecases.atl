@@ -1,0 +1,7 @@
+-- @atlcompiler emftvm
+-- @path UC=/pt.isep.edom.usecases2/model/usecases2.ecore
+-- @path RQ=/requirements/model/requirements.ecore
+
+module requirementstousecases;
+create UseCases : UC from Requirements : RQ;
+

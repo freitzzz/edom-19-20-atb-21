@@ -33,7 +33,8 @@ rule ModelToUseCaseModel {
 rule RequirementWithActorCommentToActor {
 	from
 		requirement : RQ!Requirement(
-			requirement.comments.first().subject = 'Actor'
+			not requirement.comments.isEmpty()
+			and requirement.comments.first().subject = 'Actor'
 		)
 	to 
 		actor : UC!Actor (
@@ -44,7 +45,8 @@ rule RequirementWithActorCommentToActor {
 rule RequirementWithUseCaseCommentToUseCase {
 	from
 		requirement : RQ!Requirement(
-			requirement.comments.first().subject = 'UseCase'
+			not requirement.comments.isEmpty()
+			and requirement.comments.first().subject = 'UseCase'
 		)
 	to 
 		use_case : UC!UseCase (
@@ -66,7 +68,8 @@ rule RequirementWithoutCommentsToUseCase {
 rule RequirementWithActorCommentAndUseCaseDependencyToAssociation {
 	from
 		requirement : RQ!Requirement(
-			requirement.comments.first().subject = 'Actor'
+			not requirement.comments.isEmpty()
+			and requirement.comments.first().subject = 'Actor'
 			and not requirement.dependencies.isEmpty()
 			and (
 				requirement.dependencies.first().comments.isEmpty()

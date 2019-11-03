@@ -11,6 +11,18 @@ helper def : allFunctionalRequirements(): Set(RQ!Requirement) =
 	-> select(requirement | requirement.type = #FUNCTIONAL);
 	
 
+helper context RQ!Requirement def : toActor() : UC!Actor = 
+	let actor : UC!Actor = UC!Actor.newInstance()
+	
+	in actor.name = self.title;
+
+helper context RQ!Requirement def : toUseCase() : UC!UseCase = 
+	let use_case : UC!UseCase = UC!UseCase.newInstance()
+	
+	in use_case.name = self.title;
+	
+
+
 rule ModelToUseCaseModel {
 	from
 		model : RQ!Model
@@ -48,5 +60,23 @@ rule RequirementWithoutCommentsToUseCase {
 	to 
 		use_case : UC!UseCase (
 			name <- requirement.title
+		)
+}
+
+rule RequirementWithActorCommentAndRequirementDependencyToAssociation {
+	from
+		requirement : RQ!Requirement(
+			requirement.comments.first().subject = 'Actor'
+			and not requirement.dependencies.isEmpty()
+			and (
+				requirement.dependencies.first().comments.isEmpty()
+				or requirement.dependencies.first().comments.first().author = 'UseCase'
+			)
+		)
+	to 
+		association : UC!Association (
+			name <- requirement.title + '_' + requirement.dependencies.first().title,
+			actor <- requirement.toActor(),
+			usecase <- requirement.dependencies.first().toUseCase()
 		)
 }

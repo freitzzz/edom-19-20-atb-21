@@ -35,7 +35,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see requirements.RequirementsPackage#getRequirement()
  * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='mustHaveID IDMustBeUnique mustHaveTitle mustHaveCreatedDate'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot mustHaveID='not id.oclIsUndefined()' IDMustBeUnique='RequirementGroup.allInstances()-&gt;isUnique(id)' mustHaveTitle='not title.oclIsUndefined()' mustHaveCreatedDate='not created.oclIsUndefined()'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot mustHaveID='not id.oclIsUndefined()' IDMustBeUnique='Requirement.allInstances()-&gt;isUnique(id)' mustHaveTitle='not title.oclIsUndefined()' mustHaveCreatedDate='not created.oclIsUndefined()'"
  * @generated
  */
 public interface Requirement extends EObject {

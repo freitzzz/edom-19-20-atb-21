@@ -787,7 +787,7 @@ public class RequirementsPackageImpl extends EPackageImpl implements Requirement
 						"IDMustBeUnique", "RequirementGroup.allInstances()->isUnique(id)" });
 		addAnnotation(requirementEClass, source,
 				new String[] { "mustHaveID", "not id.oclIsUndefined()", "IDMustBeUnique",
-						"RequirementGroup.allInstances()->isUnique(id)", "mustHaveTitle", "not title.oclIsUndefined()",
+						"Requirement.allInstances()->isUnique(id)", "mustHaveTitle", "not title.oclIsUndefined()",
 						"mustHaveCreatedDate", "not created.oclIsUndefined()" });
 		addAnnotation(commentEClass, source,
 				new String[] { "mustHaveSubject", "not subject.oclIsUndefined()", "mustHaveBody",

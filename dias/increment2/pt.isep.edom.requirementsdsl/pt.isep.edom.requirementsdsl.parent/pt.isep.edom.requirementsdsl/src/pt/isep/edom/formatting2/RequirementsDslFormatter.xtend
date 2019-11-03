@@ -10,6 +10,8 @@ import pt.isep.edom.services.RequirementsDslGrammarAccess
 import requirements.Model
 import requirements.Requirement
 import requirements.RequirementGroup
+import requirements.Comment
+import requirements.Version
 
 class RequirementsDslFormatter extends AbstractFormatter2 {
 	
@@ -22,12 +24,14 @@ class RequirementsDslFormatter extends AbstractFormatter2 {
 		val close = model.regionFor.keyword("}")
 		open.append[newLine]
 		interior(open, close)[indent]
-						
+		
 		for (RequirementGroup requirementGroup : model.getGroups()) {
 			requirementGroup.prepend[newLine]
 			requirementGroup.format;
 			requirementGroup.append[newLine]
 		}
+		
+		close.prepend[newLine]
 	}
 
 	def dispatch void format(RequirementGroup requirementGroup, extension IFormattableDocument document) {
@@ -37,18 +41,14 @@ class RequirementsDslFormatter extends AbstractFormatter2 {
 		val closeChildren = requirementGroup.regionFor.keyword("}")
 		openChildren.append[newLine]
 		interior(openChildren, closeChildren)[indent]
+		closeChildren.prepend[newLine]
 		
 		for (RequirementGroup _requirementGroup : requirementGroup.getChildren()) {
 			_requirementGroup.prepend[newLine]
 			_requirementGroup.format
 			_requirementGroup.append[newLine]
 		}
-		
-		val openRequirement = requirementGroup.regionFor.keyword("{")
-		val closeRequirement = requirementGroup.regionFor.keyword("}")
-		openChildren.append[newLine]
-		interior(openRequirement, closeRequirement)[indent]
-		
+				
 		for (Requirement requirement : requirementGroup.getRequirements()) {
 			requirement.prepend[newLine]
 			requirement.format
@@ -56,5 +56,35 @@ class RequirementsDslFormatter extends AbstractFormatter2 {
 		}
 	}
 	
-	// TODO: implement for Requirement, Comment
+	def dispatch void format(Requirement requirement, extension IFormattableDocument document) {
+		// TODO: format HiddenRegions around keywords, attributes, cross references, etc. 
+		
+		val openChildren = requirement.regionFor.keyword("{")
+		val closeChildren = requirement.regionFor.keyword("}")
+		openChildren.append[newLine]
+		interior(openChildren, closeChildren)[indent]
+		closeChildren.prepend[newLine]
+		
+		for (Comment comment : requirement.comments) {
+			comment.prepend[newLine]
+			comment.format
+			comment.append[newLine]
+		}
+		
+		val openVersion = requirement.version.regionFor.keyword("{")
+		val closeVersion = requirement.version.regionFor.keyword("}")
+		openVersion.append[newLine]
+		interior(openVersion, closeVersion)[indent]
+		closeVersion.prepend[newLine]
+	}
+	
+	def dispatch void format(Comment comment, extension IFormattableDocument document) {
+		// TODO: format HiddenRegions around keywords, attributes, cross references, etc. 
+		
+		val open = comment.regionFor.keyword("{")
+		val close = comment.regionFor.keyword("}")
+		open.append[newLine]
+		interior(open, close)[indent]
+		close.prepend[newLine]
+	}
 }

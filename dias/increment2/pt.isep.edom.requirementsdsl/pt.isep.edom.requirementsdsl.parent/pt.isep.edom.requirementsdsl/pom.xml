@@ -23,6 +23,21 @@
 							<goal>java</goal>
 						</goals>
 					</execution>
+					<execution>
+						<id>saveModel</id>
+						<goals>
+							<goal>java</goal>
+						</goals>
+						<configuration>
+							<executable>java</executable>
+							<mainClass>pt.isep.edom.SaveModel</mainClass>
+							<!-- <arguments> <argument>foo</argument> <argument>bar</argument></arguments> -->
+							<classpathScope>compile</classpathScope>
+							<includeProjectDependencies>true</includeProjectDependencies>
+							<includePluginDependencies>true</includePluginDependencies>
+							<cleanupDaemonThreads>false</cleanupDaemonThreads><!-- see https://bugs.eclipse.org/bugs/show_bug.cgi?id=475098#c3 -->							
+						</configuration>
+					</execution>
 				</executions>
 				<configuration>
 					<mainClass>org.eclipse.emf.mwe2.launch.runtime.Mwe2Launcher</mainClass>

@@ -15,6 +15,7 @@ import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import pt.isep.edom.services.RequirementsDslGrammarAccess;
+import requirements.Comment;
 import requirements.Model;
 import requirements.Requirement;
 import requirements.RequirementGroup;
@@ -50,6 +51,10 @@ public class RequirementsDslFormatter extends AbstractFormatter2 {
         document.<RequirementGroup>append(requirementGroup, _function_3);
       }
     }
+    final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    document.prepend(close, _function_2);
   }
   
   protected void _format(final RequirementGroup requirementGroup, @Extension final IFormattableDocument document) {
@@ -63,68 +68,130 @@ public class RequirementsDslFormatter extends AbstractFormatter2 {
       it.indent();
     };
     document.<ISemanticRegion, ISemanticRegion>interior(openChildren, closeChildren, _function_1);
-    EList<RequirementGroup> _children = requirementGroup.getChildren();
-    for (final RequirementGroup _requirementGroup : _children) {
-      {
-        final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
-          it.newLine();
-        };
-        document.<RequirementGroup>prepend(_requirementGroup, _function_2);
-        document.<RequirementGroup>format(_requirementGroup);
-        final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
-          it.newLine();
-        };
-        document.<RequirementGroup>append(_requirementGroup, _function_3);
-      }
-    }
-    final ISemanticRegion openRequirement = this.textRegionExtensions.regionFor(requirementGroup).keyword("{");
-    final ISemanticRegion closeRequirement = this.textRegionExtensions.regionFor(requirementGroup).keyword("}");
     final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(openChildren, _function_2);
-    final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
-      it.indent();
-    };
-    document.<ISemanticRegion, ISemanticRegion>interior(openRequirement, closeRequirement, _function_3);
-    EList<Requirement> _requirements = requirementGroup.getRequirements();
-    for (final Requirement requirement : _requirements) {
+    document.prepend(closeChildren, _function_2);
+    EList<RequirementGroup> _children = requirementGroup.getChildren();
+    for (final RequirementGroup _requirementGroup : _children) {
       {
+        final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
+          it.newLine();
+        };
+        document.<RequirementGroup>prepend(_requirementGroup, _function_3);
+        document.<RequirementGroup>format(_requirementGroup);
         final Procedure1<IHiddenRegionFormatter> _function_4 = (IHiddenRegionFormatter it) -> {
           it.newLine();
         };
-        document.<Requirement>prepend(requirement, _function_4);
-        document.<Requirement>format(requirement);
-        final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
+        document.<RequirementGroup>append(_requirementGroup, _function_4);
+      }
+    }
+    EList<Requirement> _requirements = requirementGroup.getRequirements();
+    for (final Requirement requirement : _requirements) {
+      {
+        final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
           it.newLine();
         };
-        document.<Requirement>append(requirement, _function_5);
+        document.<Requirement>prepend(requirement, _function_3);
+        document.<Requirement>format(requirement);
+        final Procedure1<IHiddenRegionFormatter> _function_4 = (IHiddenRegionFormatter it) -> {
+          it.newLine();
+        };
+        document.<Requirement>append(requirement, _function_4);
       }
     }
   }
   
-  public void format(final Object model, final IFormattableDocument document) {
-    if (model instanceof XtextResource) {
-      _format((XtextResource)model, document);
+  protected void _format(final Requirement requirement, @Extension final IFormattableDocument document) {
+    final ISemanticRegion openChildren = this.textRegionExtensions.regionFor(requirement).keyword("{");
+    final ISemanticRegion closeChildren = this.textRegionExtensions.regionFor(requirement).keyword("}");
+    final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    document.append(openChildren, _function);
+    final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
+      it.indent();
+    };
+    document.<ISemanticRegion, ISemanticRegion>interior(openChildren, closeChildren, _function_1);
+    final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    document.prepend(closeChildren, _function_2);
+    EList<Comment> _comments = requirement.getComments();
+    for (final Comment comment : _comments) {
+      {
+        final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
+          it.newLine();
+        };
+        document.<Comment>prepend(comment, _function_3);
+        document.<Comment>format(comment);
+        final Procedure1<IHiddenRegionFormatter> _function_4 = (IHiddenRegionFormatter it) -> {
+          it.newLine();
+        };
+        document.<Comment>append(comment, _function_4);
+      }
+    }
+    final ISemanticRegion openVersion = this.textRegionExtensions.regionFor(requirement.getVersion()).keyword("{");
+    final ISemanticRegion closeVersion = this.textRegionExtensions.regionFor(requirement.getVersion()).keyword("}");
+    final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    document.append(openVersion, _function_3);
+    final Procedure1<IHiddenRegionFormatter> _function_4 = (IHiddenRegionFormatter it) -> {
+      it.indent();
+    };
+    document.<ISemanticRegion, ISemanticRegion>interior(openVersion, closeVersion, _function_4);
+    final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    document.prepend(closeVersion, _function_5);
+  }
+  
+  protected void _format(final Comment comment, @Extension final IFormattableDocument document) {
+    final ISemanticRegion open = this.textRegionExtensions.regionFor(comment).keyword("{");
+    final ISemanticRegion close = this.textRegionExtensions.regionFor(comment).keyword("}");
+    final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    document.append(open, _function);
+    final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
+      it.indent();
+    };
+    document.<ISemanticRegion, ISemanticRegion>interior(open, close, _function_1);
+    final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    document.prepend(close, _function_2);
+  }
+  
+  public void format(final Object comment, final IFormattableDocument document) {
+    if (comment instanceof XtextResource) {
+      _format((XtextResource)comment, document);
       return;
-    } else if (model instanceof Model) {
-      _format((Model)model, document);
+    } else if (comment instanceof Comment) {
+      _format((Comment)comment, document);
       return;
-    } else if (model instanceof RequirementGroup) {
-      _format((RequirementGroup)model, document);
+    } else if (comment instanceof Model) {
+      _format((Model)comment, document);
       return;
-    } else if (model instanceof EObject) {
-      _format((EObject)model, document);
+    } else if (comment instanceof Requirement) {
+      _format((Requirement)comment, document);
       return;
-    } else if (model == null) {
+    } else if (comment instanceof RequirementGroup) {
+      _format((RequirementGroup)comment, document);
+      return;
+    } else if (comment instanceof EObject) {
+      _format((EObject)comment, document);
+      return;
+    } else if (comment == null) {
       _format((Void)null, document);
       return;
-    } else if (model != null) {
-      _format(model, document);
+    } else if (comment != null) {
+      _format(comment, document);
       return;
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(model, document).toString());
+        Arrays.<Object>asList(comment, document).toString());
     }
   }
 }

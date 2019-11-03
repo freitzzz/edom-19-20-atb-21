@@ -316,7 +316,7 @@ public class RequirementsValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static final String REQUIREMENT__ID_MUST_BE_UNIQUE__EEXPRESSION = "RequirementGroup.allInstances()->isUnique(id)";
+	protected static final String REQUIREMENT__ID_MUST_BE_UNIQUE__EEXPRESSION = "Requirement.allInstances()->isUnique(id)";
 
 	/**
 	 * Validates the IDMustBeUnique constraint of '<em>Requirement</em>'.

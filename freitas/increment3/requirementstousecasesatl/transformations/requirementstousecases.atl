@@ -5,9 +5,16 @@
 module requirementstousecases;
 create UseCases : UC from Requirements : RQ;
 
+helper def : allFunctionalRequirements(): Set(RQ!Requirement) = 
+	RQ!Requirement
+	.allInstances()
+	-> select(requirement | requirement.type = #FUNCTIONAL);
+	
+
 rule ModelToUseCaseModel {
 	from
 		model : RQ!Model
 	to 
 		use_case_model : UC!UseCaseModel ()
 }
+

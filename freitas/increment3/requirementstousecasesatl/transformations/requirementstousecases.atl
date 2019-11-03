@@ -18,6 +18,17 @@ rule ModelToUseCaseModel {
 		use_case_model : UC!UseCaseModel ()
 }
 
+rule RequirementWithActorCommentToActor {
+	from
+		requirement : RQ!Requirement(
+			requirement.comments.first().subject = 'Actor'
+		)
+	to 
+		actor : UC!Actor (
+			name <- requirement.title
+		)
+}
+
 rule RequirementWithoutCommentsToUseCase {
 	from
 		requirement : RQ!Requirement(

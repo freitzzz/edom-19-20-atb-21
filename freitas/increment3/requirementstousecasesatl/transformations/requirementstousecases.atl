@@ -63,7 +63,7 @@ rule RequirementWithoutCommentsToUseCase {
 		)
 }
 
-rule RequirementWithActorCommentAndRequirementDependencyToAssociation {
+rule RequirementWithActorCommentAndUseCaseDependencyToAssociation {
 	from
 		requirement : RQ!Requirement(
 			requirement.comments.first().subject = 'Actor'
@@ -78,5 +78,21 @@ rule RequirementWithActorCommentAndRequirementDependencyToAssociation {
 			name <- requirement.title + '_' + requirement.dependencies.first().title,
 			actor <- requirement.toActor(),
 			usecase <- requirement.dependencies.first().toUseCase()
+		)
+}
+
+rule RequirementWithUseCaseAndActorDependencyToAssociation {
+	from
+		requirement : RQ!Requirement(
+			requirement.comments.isEmpty()
+			or requirement.comments.first().subject = 'UseCase'
+			and not requirement.dependencies.isEmpty()
+			and requirement.dependencies.first().comments.first().author = 'Author'
+		)
+	to 
+		association : UC!Association (
+			name <- requirement.title + '_' + requirement.dependencies.first().title,
+			actor <- requirement.dependencies.first().toActor(),
+			usecase <- requirement.toUseCase()
 		)
 }

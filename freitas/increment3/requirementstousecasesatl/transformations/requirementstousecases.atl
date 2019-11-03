@@ -91,8 +91,26 @@ rule RequirementWithUseCaseAndActorDependencyToAssociation {
 		)
 	to 
 		association : UC!Association (
-			name <- requirement.title + '_' + requirement.dependencies.first().title,
+			name <- requirement.dependencies.first().title + '_' + requirement.title,
 			actor <- requirement.dependencies.first().toActor(),
 			usecase <- requirement.toUseCase()
+		)
+}
+
+rule RequirementWithUseCaseAndUseCaseDependencyToUseCaseWithInclusion {
+	from
+		requirement : RQ!Requirement(
+			requirement.comments.isEmpty()
+			or requirement.comments.first().subject = 'UseCase'
+			and not requirement.dependencies.isEmpty()
+			and (
+				requirement.dependencies.first().comments.isEmpty()
+				or requirement.dependencies.first().comments.first().subject = 'UseCase'
+			)
+		)
+	to 
+		use_case_with_inclusion : UC!UseCase (
+			name <- requirement.title,
+			include <- requirement.dependencies.first().toUseCase()
 		)
 }

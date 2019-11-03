@@ -1,0 +1,26 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: pt.isep.edom.usecases.dsl
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: pt.isep.edom.usecases.dsl; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: pt.isep.edom.usecases2,
+ org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.xtext.xbase.lib,
+ org.antlr.runtime,
+ org.eclipse.xtext.util,
+ org.eclipse.xtend.lib
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: pt.isep.edom.usecases.dsl.scoping,
+ pt.isep.edom.usecases.dsl.generator,
+ pt.isep.edom.usecases.dsl.serializer,
+ pt.isep.edom.usecases.dsl.parser.antlr,
+ pt.isep.edom.usecases.dsl.formatting2,
+ pt.isep.edom.usecases.dsl.validation,
+ pt.isep.edom.usecases.dsl.parser.antlr.internal,
+ pt.isep.edom.usecases.dsl,
+ pt.isep.edom.usecases.dsl.services
+Import-Package: org.apache.log4j

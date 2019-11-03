@@ -1,0 +1,176 @@
+@startuml
+object "(M) Gorgeous Food Application Requirements" as obj_1739540573
+object "(RG) "Functional Requirements"" as obj_447254365
+obj_447254365 : description = "This group details Gorgeous Food Appli\ncation functional requirements"
+obj_447254365 : id = ""
+object "(RG) "Manage Meals"" as obj_825289089
+obj_825289089 : description = "Details functionalities regarding meal\ns management."
+obj_825289089 : id = ""
+object "(R) "Save Meal"" as obj_1337395299
+obj_1337395299 : created = Fri Oct 26 18:51:52 WEST 2018
+obj_1337395299 : id = "0"
+obj_1337395299 : description = "The software should be able to save a \nmeal that is served to students and non\n students. A meal is identified by its \ndesignation, has a type, nutritional da\nta, list of ingredients, can also conta\nin allergens, has a cost-price and is a\nvailable at a specific location. Once a\n meal is saved it is only available for\n the next 24 hours in the specified loc\nation."
+obj_1337395299 : author = "EDOM"
+obj_1337395299 : priority = HIGH
+obj_1337395299 : state = NEW
+obj_1337395299 : type = FUNCTIONAL
+obj_1337395299 : version = "Version 0.0.1"
+object "(R) "Show Meal Designation"" as obj1522176966
+obj1522176966 : created = Sat Oct 26 18:51:52 WEST 2019
+obj1522176966 : id = "0"
+obj1522176966 : description = "The software should be able to show a \nmeal designation."
+obj1522176966 : author = "EDOM"
+obj1522176966 : priority = HIGH
+obj1522176966 : state = NEW
+obj1522176966 : type = FUNCTIONAL
+obj1522176966 : version = "Version 0.0.1"
+object "(R) "Show Meal Nutritional Data"" as obj_1194142432
+obj_1194142432 : created = Sat Oct 26 18:51:52 WEST 2019
+obj_1194142432 : id = "0"
+obj_1194142432 : description = "The software should be able to show a \nmeal nutritional data."
+obj_1194142432 : author = "EDOM"
+obj_1194142432 : priority = HIGH
+obj_1194142432 : state = NEW
+obj_1194142432 : type = FUNCTIONAL
+obj_1194142432 : version = "Version 0.0.1"
+object "(R) "Show Meal Type"" as obj_116789299
+obj_116789299 : created = Sat Oct 26 18:51:52 WEST 2019
+obj_116789299 : id = "0"
+obj_116789299 : description = "The software should be able to show a \nmeal type."
+obj_116789299 : author = "EDOM"
+obj_116789299 : priority = HIGH
+obj_116789299 : state = NEW
+obj_116789299 : type = FUNCTIONAL
+obj_116789299 : version = "Version 0.0.1"
+object "(R) "Show Meal Location"" as obj486839346
+obj486839346 : created = Sat Oct 26 18:51:52 WEST 2019
+obj486839346 : id = "0"
+obj486839346 : description = "The software should be able to show th\ne location in which a meal is available\n."
+obj486839346 : author = "EDOM"
+obj486839346 : priority = HIGH
+obj486839346 : state = NEW
+obj486839346 : type = FUNCTIONAL
+obj486839346 : version = "Version 0.0.1"
+object "(R) "Show Meal Price"" as obj553309428
+obj553309428 : created = Sat Oct 26 18:51:52 WEST 2019
+obj553309428 : id = "0"
+obj553309428 : description = "The software should be able to show th\ne price of a meal."
+obj553309428 : author = "EDOM"
+obj553309428 : priority = HIGH
+obj553309428 : state = NEW
+obj553309428 : type = FUNCTIONAL
+obj553309428 : version = "Version 0.0.1"
+object "(R) "List Meal Ingreditens"" as obj1100023406
+obj1100023406 : created = Sat Oct 26 18:51:52 WEST 2019
+obj1100023406 : id = "0"
+obj1100023406 : description = "The software should be able to list th\ne ingredients of a meal."
+obj1100023406 : author = "EDOM"
+obj1100023406 : priority = HIGH
+obj1100023406 : state = NEW
+obj1100023406 : type = FUNCTIONAL
+obj1100023406 : version = "Version 0.0.1"
+object "(R) "List Meal Allergens"" as obj1461279533
+obj1461279533 : created = Sat Oct 26 18:51:52 WEST 2019
+obj1461279533 : id = "0"
+obj1461279533 : description = "The software should be able to list th\ne allergens of a meal if existent."
+obj1461279533 : author = "EDOM"
+obj1461279533 : priority = HIGH
+obj1461279533 : state = NEW
+obj1461279533 : type = FUNCTIONAL
+obj1461279533 : version = "Version 0.0.1"
+object "(R) "Pay Meal"" as obj_403133530
+obj_403133530 : created = Sat Oct 26 18:51:52 WEST 2019
+obj_403133530 : id = "0"
+obj_403133530 : description = "The software should be able handle a m\neal payment. The type of user that is p\naying for the meal should be recorded. \nIt should not be possible to pay for an\n unavailable meal or a meal that is una\nvailable at the payment location."
+obj_403133530 : author = "EDOM"
+obj_403133530 : priority = HIGH
+obj_403133530 : state = NEW
+obj_403133530 : type = FUNCTIONAL
+obj_403133530 : version = "Version 0.0.1"
+obj_825289089 .. obj_1337395299
+obj_825289089 .. obj1522176966
+obj_825289089 .. obj_1194142432
+obj_825289089 .. obj_116789299
+obj_825289089 .. obj486839346
+obj_825289089 .. obj553309428
+obj_825289089 .. obj1100023406
+obj_825289089 .. obj1461279533
+obj_825289089 .. obj_403133530
+object "(RG) "Manage Unserved Meals"" as obj89026487
+obj89026487 : description = "Details functionalities regarding unse\nrved meals management."
+obj89026487 : id = ""
+object "(R) "Save Unserved Meal"" as obj1190753263
+obj1190753263 : created = Sat Oct 26 18:51:52 WEST 2019
+obj1190753263 : id = "0"
+obj1190753263 : description = "The software should be able to save an\n unserved meal that will be packaged in\n the latter. It is identified by an ide\nntification number, has a production an\nd expiration date and a designation of \nthe meal. An unserved meal also has a s\ntate, and once saved its state is set t\no frozen."
+obj1190753263 : author = "EDOM"
+obj1190753263 : priority = HIGH
+obj1190753263 : state = NEW
+obj1190753263 : type = FUNCTIONAL
+obj1190753263 : version = "Version 0.0.1"
+object "(R) "Show Unserved Meal Identification Number"" as obj1166167284
+obj1166167284 : created = Sat Oct 26 18:51:52 WEST 2019
+obj1166167284 : id = "0"
+obj1166167284 : description = "The software should be able to show an\n unserved meal identification number."
+obj1166167284 : author = "EDOM"
+obj1166167284 : priority = HIGH
+obj1166167284 : state = NEW
+obj1166167284 : type = FUNCTIONAL
+obj1166167284 : version = "Version 0.0.1"
+object "(R) "Show Unserved Meal Designation"" as obj_1610063336
+obj_1610063336 : created = Sat Oct 26 18:51:52 WEST 2019
+obj_1610063336 : id = "0"
+obj_1610063336 : description = "The software should be able to show an\n unserved meal designation."
+obj_1610063336 : author = "EDOM"
+obj_1610063336 : priority = HIGH
+obj_1610063336 : state = NEW
+obj_1610063336 : type = FUNCTIONAL
+obj_1610063336 : version = "Version 0.0.1"
+object "(R) "Show Unserved Meal Production Date"" as obj889708666
+obj889708666 : created = Sat Oct 26 18:51:52 WEST 2019
+obj889708666 : id = "0"
+obj889708666 : description = "The software should be able to show an\n unserved meal production date."
+obj889708666 : author = "EDOM"
+obj889708666 : priority = HIGH
+obj889708666 : state = NEW
+obj889708666 : type = FUNCTIONAL
+obj889708666 : version = "Version 0.0.1"
+object "(R) "Show Unserved Meal Expiration Date"" as obj_394892816
+obj_394892816 : created = Sat Oct 26 18:51:52 WEST 2019
+obj_394892816 : id = "0"
+obj_394892816 : description = "The software should be able to show an\n unserved meal expiration date."
+obj_394892816 : author = "EDOM"
+obj_394892816 : priority = HIGH
+obj_394892816 : state = NEW
+obj_394892816 : type = FUNCTIONAL
+obj_394892816 : version = "Version 0.0.1"
+object "(R) "Show Unserved Meal State"" as obj_1270505858
+obj_1270505858 : created = Sat Oct 26 18:51:52 WEST 2019
+obj_1270505858 : id = "0"
+obj_1270505858 : description = "The software should be able to show an\n unserved meal state."
+obj_1270505858 : author = "EDOM"
+obj_1270505858 : priority = HIGH
+obj_1270505858 : state = NEW
+obj_1270505858 : type = FUNCTIONAL
+obj_1270505858 : version = "Version 0.0.1"
+obj89026487 .. obj1190753263
+obj89026487 .. obj1166167284
+obj89026487 .. obj_1610063336
+obj89026487 .. obj889708666
+obj89026487 .. obj_394892816
+obj89026487 .. obj_1270505858
+obj_447254365 .. obj_825289089
+obj_447254365 .. obj89026487
+object "(RG) "Quality Attributes"" as obj_1344065380
+obj_1344065380 : description = "This group details Gorgeous Food Appli\ncation quality attributes"
+obj_1344065380 : id = ""
+obj_1739540573 .. obj_447254365
+obj_1739540573 .. obj_1344065380
+legend right
+|= |= Type |
+| M|Model|
+| R|Requirement|
+| RG|Requirement Group |
+endlegend
+
+@enduml

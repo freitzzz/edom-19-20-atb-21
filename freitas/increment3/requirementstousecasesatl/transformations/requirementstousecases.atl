@@ -29,6 +29,17 @@ rule RequirementWithActorCommentToActor {
 		)
 }
 
+rule RequirementWithUseCaseCommentToUseCase {
+	from
+		requirement : RQ!Requirement(
+			requirement.comments.first().subject = 'UseCase'
+		)
+	to 
+		use_case : UC!UseCase (
+			name <- requirement.title
+		)
+}
+
 rule RequirementWithoutCommentsToUseCase {
 	from
 		requirement : RQ!Requirement(

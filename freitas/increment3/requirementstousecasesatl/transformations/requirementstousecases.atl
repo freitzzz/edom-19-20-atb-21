@@ -18,3 +18,13 @@ rule ModelToUseCaseModel {
 		use_case_model : UC!UseCaseModel ()
 }
 
+rule RequirementWithoutCommentsToUseCase {
+	from
+		requirement : RQ!Requirement(
+			requirement.comments.isEmpty()
+		)
+	to 
+		use_case : UC!UseCase (
+			name <- requirement.title
+		)
+}

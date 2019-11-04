@@ -103,29 +103,38 @@ rule RequirementWithoutCommentsToUseCase {
 rule RequirementWithActorCommentAndUseCaseDependencyToAssociation {
 	from
 		requirement : RQ!Requirement(
-			requirement.isActor()
-			and not requirement.dependencies.isEmpty()
-			and requirement.dependencies.first().isUseCase()
+			requirement.isActorAssociation()
 		)
 	to 
 		association : UC!Association (
 			name <- requirement.title + '_' + requirement.dependencies.first().title,
-			usecase <- requirement.dependencies.first()
+			actor <- _actor,
+			usecase <- _use_case
+		),
+		_use_case : UC!UseCase(
+			name <- requirement.dependencies.first().title
+		),
+		_actor : UC!Actor(
+			name <- requirement.title
 		)
 }
 
 rule RequirementWithUseCaseAndActorDependencyToAssociation {
 	from
 		requirement : RQ!Requirement(
-			requirement.isUseCase()
-			and not requirement.dependencies.isEmpty()
-			and requirement.dependencies.first().isActor()
+			requirement.isUseCaseAssociation()
 		)
 	to 
 		association : UC!Association (
 			name <- requirement.dependencies.first().title + '_' + requirement.title,
-			actor <- requirement.dependencies.first(),
-			usecase <- requirement
+			actor <- _actor,
+			usecase <- _use_case
+		),
+		_use_case : UC!UseCase(
+			name <- requirement.title
+		),
+		_actor : UC!Actor(
+			name <- requirement.dependencies.first().title
 		)
 }
 

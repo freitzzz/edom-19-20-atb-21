@@ -4,7 +4,7 @@
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:requirements="http://www.example.org/requirements"
-    xsi:schemaLocation="http://www.example.org/requirements ../model/requirements.ecore"
+    xsi:schemaLocation="http://www.example.org/requirements /requirements/model/requirements.ecore"
     title="Gorgeous Food Application">
   <groups name="Functional Requirements"
       description="This group details GFA functional requirements."
@@ -161,6 +161,86 @@
           id="0">
         <version
             service="1"/>
+      </requirements>
+      <requirements
+          title="Add Meal Ingredients"
+          author="EDOM"
+          created="2019-11-04T00:00:00.000+0000"
+          id="0">
+        <version
+            service="1"/>
+        <comments
+            subject="UseCase"/>
+      </requirements>
+      <requirements
+          title="Add Meal Allergens"
+          author="EDOM"
+          created="2019-11-04T00:00:00.000+0000"
+          id="0">
+        <version
+            service="1"/>
+        <comments
+            subject="UseCase"/>
+      </requirements>
+      <requirements
+          title="Adminstrator"
+          author="EDOM"
+          created="2019-11-04T00:00:00.000+0000"
+          id="0">
+        <version
+            service="1"/>
+        <comments
+            subject="Actor"/>
+      </requirements>
+      <requirements
+          title="Kitchen Worker"
+          author="EDOM"
+          created="2019-11-04T00:00:00.000+0000"
+          id="0">
+        <version
+            service="1"/>
+        <comments
+            subject="Actor"/>
+      </requirements>
+      <requirements
+          dependencies="//@groups.0/@children.0/@requirements.0"
+          title="Use Case Without Comment with Use Case Without Comment Dependency"
+          author="EDOM"
+          created="2019-11-04T00:00:00.000+0000"
+          id="0">
+        <version
+            service="1"/>
+      </requirements>
+      <requirements
+          dependencies="//@groups.0/@children.0/@requirements.1"
+          title="Use Case With Comment with Use Case Without Comment Dependency"
+          author="EDOM"
+          created="2019-11-04T00:00:00.000+0000"
+          id="0">
+        <version
+            service="1"/>
+        <comments
+            subject="UseCase"/>
+      </requirements>
+      <requirements
+          dependencies="//@groups.0/@children.1/@requirements.6"
+          title="Use Case Without Comment with Use Case With Comment Dependency"
+          author="EDOM"
+          created="2019-11-04T00:00:00.000+0000"
+          id="0">
+        <version
+            service="1"/>
+      </requirements>
+      <requirements
+          dependencies="//@groups.0/@children.1/@requirements.7"
+          title="Use Case With Comment with Use Case With Comment Dependency"
+          author="EDOM"
+          created="2019-11-04T00:00:00.000+0000"
+          id="0">
+        <version
+            service="1"/>
+        <comments
+            subject="UseCase"/>
       </requirements>
     </children>
   </groups>

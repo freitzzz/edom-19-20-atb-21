@@ -9,7 +9,18 @@ helper def : allFunctionalRequirements(): Set(RQ!Requirement) =
 	RQ!Requirement
 	.allInstances()
 	-> select(requirement | requirement.type = #FUNCTIONAL);
-	
+
+helper def : allRequirementsThatAreUseCases(): Set(RQ!Requirement) =
+	thisModule.allFunctionalRequirements()
+	-> select(requirement | requirement.isUseCase() and not requirement.isUseCaseAssociation());
+
+helper def : allRequirementsThatAreActors(): Set(RQ!Requirement) =
+	thisModule.allFunctionalRequirements()
+	-> select(requirement | requirement.isActor() and not requirement.isActorAssociation());
+
+helper def : allRequirementsThatAreAssociations(): Set(RQ!Requirement) =
+	thisModule.allFunctionalRequirements()
+	-> select(requirement | requirement.isUseCaseAssociation() or requirement.isActorAssociation() );
 
 helper context RQ!Requirement def : isUseCaseWithoutComment() : Boolean = 
 	self.comments.isEmpty();
@@ -20,20 +31,36 @@ helper context RQ!Requirement def : isUseCaseWithComment() : Boolean =
 
 helper context RQ!Requirement def : isUseCase() : Boolean = 
 	self.isUseCaseWithoutComment()
-	or self.isUseCaseWithoutComment();
+	or self.isUseCaseWithComment();
 
 helper context RQ!Requirement def : isActor() : Boolean = 
 	not self.comments.isEmpty()
 	and self.comments.first().subject = 'Actor';
-	
 
+helper context RQ!Requirement def : isUseCaseInclusion : Boolean = 
+	self.isUseCase()
+	and not self.dependencies.isEmpty()
+	and self.dependencies.first().isUseCase();
+
+helper context RQ!Requirement def : isUseCaseAssociation() : Boolean = 
+	self.isUseCase()
+	and not self.dependencies.isEmpty()
+	and self.dependencies.first().isActor();
+
+helper context RQ!Requirement def : isActorAssociation() : Boolean = 
+	self.isActor()
+	and not self.dependencies.isEmpty()
+	and self.dependencies.first().isUseCase();
+	
 
 rule ModelToUseCaseModel {
 	from
 		model : RQ!Model
 	to 
 		use_case_model : UC!UseCaseModel (
-			usecase <- thisModule.allFunctionalRequirements()
+			usecase <- thisModule.allRequirementsThatAreUseCases(),
+			actor <- thisModule.allRequirementsThatAreActors(),
+			association <- thisModule.allRequirementsThatAreAssociations()
 		)
 }
 
@@ -41,6 +68,7 @@ rule RequirementWithActorCommentToActor {
 	from
 		requirement : RQ!Requirement(
 			requirement.isActor()
+			and requirement.dependencies.isEmpty()
 		)
 	to 
 		actor : UC!Actor (
@@ -82,7 +110,6 @@ rule RequirementWithActorCommentAndUseCaseDependencyToAssociation {
 	to 
 		association : UC!Association (
 			name <- requirement.title + '_' + requirement.dependencies.first().title,
-			actor <- requirement,
 			usecase <- requirement.dependencies.first()
 		)
 }
@@ -102,62 +129,18 @@ rule RequirementWithUseCaseAndActorDependencyToAssociation {
 		)
 }
 
--- no comment comment
-rule RequirementWithUseCaseWithoutCommentAndUseCaseWithCommentDependencyToUseCaseWithInclusion {
+rule InclusionRequirementToInclusionUseCase {
 	from
 		requirement : RQ!Requirement(
-			requirement.isUseCaseWithoutComment()
-			and not requirement.dependencies.isEmpty()
-			and requirement.dependencies.first().isUseCaseWithComment()
+			requirement.isUseCaseInclusion
 		)
 	to 
 		use_case_with_inclusion : UC!UseCase (
 			name <- requirement.title,
-			include <- Set{requirement.dependencies.first()}
-		)
-}
-
--- no comment no comment
-rule RequirementWithUseCaseWithoutCommentAndUseCaseWithoutCommentDependencyToUseCaseWithInclusion {
-	from
-		requirement : RQ!Requirement(
-			requirement.isUseCaseWithoutComment()
-			and not requirement.dependencies.isEmpty()
-			and requirement.dependencies.first().isUseCaseWithoutComment()
-		)
-	to 
-		use_case_with_inclusion : UC!UseCase (
-			name <- requirement.title,
-			include <- Set{requirement.dependencies.first()}
-		)
-}
-
--- comment comment
-rule RequirementWithUseCaseCommentAndUseCaseCommentDependencyToUseCaseWithInclusion {
-	from
-		requirement : RQ!Requirement(
-			requirement.isUseCaseWithComment()
-			and not requirement.dependencies.isEmpty()
-			and requirement.dependencies.first().isUseCaseWithComment()
-		)
-	to 
-		use_case_with_inclusion : UC!UseCase (
-			name <- requirement.title,
-			include <- Set{requirement.dependencies.first()}
-		)
-}
-
--- comment no comment
-rule RequirementWithUseCaseCommentAndUseCaseWithoutCommentDependencyToUseCaseWithInclusion {
-	from
-		requirement : RQ!Requirement(
-			requirement.isUseCaseWithComment()
-			and not requirement.dependencies.isEmpty()
-			and requirement.dependencies.first().isUseCaseWithoutComment()
-		)
-	to 
-		use_case_with_inclusion : UC!UseCase (
-			name <- requirement.title,
-			include <- Set{requirement.dependencies.first()}
+			include <- Set{_include}
+		),
+		_include : UC!Include (
+			name <- requirement.title + '_' + requirement.dependencies.first().title,
+			usecase <- requirement.dependencies.first()
 		)
 }

@@ -103,6 +103,105 @@
         <version
             service="1"/>
       </requirements>
+      <requirements
+          dependencies="//@groups.0/@children.0/@requirements.0"
+          title="Kitchen Worker"
+          author="EDOM"
+          created="2019-11-04T00:00:00.000+0000"
+          id="0">
+        <version
+            service="1"/>
+        <comments
+            subject="Actor"/>
+      </requirements>
+      <requirements
+          dependencies="//@groups.0/@children.0/@requirements.1"
+          title="Kitchen Worker"
+          author="EDOM"
+          created="2019-11-04T00:00:00.000+0000"
+          id="0">
+        <version
+            service="1"/>
+        <comments
+            subject="Actor"/>
+      </requirements>
+      <requirements
+          dependencies="//@groups.0/@children.0/@requirements.2"
+          title="Kitchen Worker"
+          author="EDOM"
+          created="2019-11-04T00:00:00.000+0000"
+          id="0">
+        <version
+            service="1"/>
+        <comments
+            subject="Actor"/>
+      </requirements>
+      <requirements
+          dependencies="//@groups.0/@children.0/@requirements.3"
+          title="Kitchen Worker"
+          author="EDOM"
+          created="2019-11-04T00:00:00.000+0000"
+          id="0">
+        <version
+            service="1"/>
+        <comments
+            subject="Actor"/>
+      </requirements>
+      <requirements
+          dependencies="//@groups.0/@children.0/@requirements.4"
+          title="Kitchen Worker"
+          author="EDOM"
+          created="2019-11-04T00:00:00.000+0000"
+          id="0">
+        <version
+            service="1"/>
+        <comments
+            subject="Actor"/>
+      </requirements>
+      <requirements
+          dependencies="//@groups.0/@children.0/@requirements.5"
+          title="Kitchen Worker"
+          author="EDOM"
+          created="2019-11-04T00:00:00.000+0000"
+          id="0">
+        <version
+            service="1"/>
+        <comments
+            subject="Actor"/>
+      </requirements>
+      <requirements
+          dependencies="//@groups.0/@children.0/@requirements.6"
+          title="Kitchen Worker"
+          author="EDOM"
+          created="2019-11-04T00:00:00.000+0000"
+          id="0">
+        <version
+            service="1"/>
+        <comments
+            subject="Actor"/>
+      </requirements>
+      <requirements
+          dependencies="//@groups.0/@children.0/@requirements.7"
+          title="Kitchen Worker"
+          author="EDOM"
+          created="2019-11-04T00:00:00.000+0000"
+          id="0">
+        <version
+            service="1"/>
+        <comments
+            subject="Actor"/>
+      </requirements>
+      <requirements
+          dependencies="//@groups.0/@children.0/@requirements.8"
+          title="Kitchen Worker"
+          author="EDOM"
+          created="2019-11-04T00:00:00.000+0000"
+          id="0">
+        <version
+            service="1"/>
+        <comments
+            subject="Actor"/>
+      </requirements>
     </children>
     <children
         name="Manage Unserved Meals"
@@ -193,6 +292,7 @@
             subject="Actor"/>
       </requirements>
       <requirements
+          dependencies="//@groups.0/@children.1/@requirements.0"
           title="Kitchen Worker"
           author="EDOM"
           created="2019-11-04T00:00:00.000+0000"
@@ -201,6 +301,94 @@
             service="1"/>
         <comments
             subject="Actor"/>
+      </requirements>
+      <requirements
+          dependencies="//@groups.0/@children.1/@requirements.1"
+          title="Kitchen Worker"
+          author="EDOM"
+          created="2019-11-04T00:00:00.000+0000"
+          id="0">
+        <version
+            service="1"/>
+        <comments
+            subject="Actor"/>
+      </requirements>
+      <requirements
+          dependencies="//@groups.0/@children.1/@requirements.2"
+          title="Kitchen Worker"
+          author="EDOM"
+          created="2019-11-04T00:00:00.000+0000"
+          id="0">
+        <version
+            service="1"/>
+        <comments
+            subject="Actor"/>
+      </requirements>
+      <requirements
+          dependencies="//@groups.0/@children.1/@requirements.3"
+          title="Kitchen Worker"
+          author="EDOM"
+          created="2019-11-04T00:00:00.000+0000"
+          id="0">
+        <version
+            service="1"/>
+        <comments
+            subject="Actor"/>
+      </requirements>
+      <requirements
+          dependencies="//@groups.0/@children.1/@requirements.4"
+          title="Kitchen Worker"
+          author="EDOM"
+          created="2019-11-04T00:00:00.000+0000"
+          id="0">
+        <version
+            service="1"/>
+        <comments
+            subject="Actor"/>
+      </requirements>
+      <requirements
+          dependencies="//@groups.0/@children.1/@requirements.5"
+          title="Kitchen Worker"
+          author="EDOM"
+          created="2019-11-04T00:00:00.000+0000"
+          id="0">
+        <version
+            service="1"/>
+        <comments
+            subject="Actor"/>
+      </requirements>
+      <requirements
+          dependencies="//@groups.0/@children.1/@requirements.6"
+          title="Kitchen Worker"
+          author="EDOM"
+          created="2019-11-04T00:00:00.000+0000"
+          id="0">
+        <version
+            service="1"/>
+        <comments
+            subject="Actor"/>
+      </requirements>
+      <requirements
+          dependencies="//@groups.0/@children.1/@requirements.7"
+          title="Kitchen Worker"
+          author="EDOM"
+          created="2019-11-04T00:00:00.000+0000"
+          id="0">
+        <version
+            service="1"/>
+        <comments
+            subject="Actor"/>
+      </requirements>
+      <requirements
+          dependencies="//@groups.0/@children.1/@requirements.8"
+          title="Remove Item from Inventory"
+          author="EDOM"
+          created="2019-11-04T00:00:00.000+0000"
+          id="0">
+        <version
+            service="1"/>
+        <comments
+            subject="UseCase"/>
       </requirements>
       <requirements
           dependencies="//@groups.0/@children.0/@requirements.0"

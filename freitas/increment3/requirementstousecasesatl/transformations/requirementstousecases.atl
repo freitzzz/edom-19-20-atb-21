@@ -27,7 +27,9 @@ rule ModelToUseCaseModel {
 	from
 		model : RQ!Model
 	to 
-		use_case_model : UC!UseCaseModel ()
+		use_case_model : UC!UseCaseModel (
+			usecase <- thisModule.allFunctionalRequirements()
+		)
 }
 
 rule RequirementWithActorCommentToActor {

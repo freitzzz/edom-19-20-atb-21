@@ -51,17 +51,57 @@ helper context RQ!Requirement def : isActorAssociation() : Boolean =
 	self.isActor()
 	and not self.dependencies.isEmpty()
 	and self.dependencies.first().isUseCase();
+
+
+
+-- This sequence is defined in order to map transformed requirements in use cases by their names
+-- By doing this it is possible to compare in transformations which transformation equality colides
+-- And only create one unique use case per association
+helper def : useCases : Map(String, UC!UseCase) = Map{};
+
+
+-- This sequence is defined in order to map transformed requirements in actors by their names
+-- By doing this it is possible to compare in transformations which transformation equality colides
+-- And only create one unique actor per association
+helper def : actors : Map(String, UC!Actor) = Map{};
+
+
+-- This sequence contains all transformed requirements in actors
+helper def : transformedActors : Sequence(UC!Actor) = Sequence{};
+
+
+-- This sequence contains all transformed requirements in use cases
+helper def : transformedUseCases : Sequence(UC!UseCase) = Sequence{};
+
+
+-- This UseCaseModel has the reference of the transformed use case model
+-- This is defined as in associations transformations, actors and use cases 
+-- That haven't been created yet, are created but placed outside of the use case model context
+-- By defining the use case model as accessible in all transformations context, it is possible 
+-- To assign the actors and use cases being transformed, contained in transformedUseCases and transformedActors
+-- Which will remove the problem of those association use cases and actors being created outside of the use case model context
+helper def : useCaseModel : UC!UseCaseModel = OclUndefined;
 	
 
 rule ModelToUseCaseModel {
 	from
 		model : RQ!Model
+		
+	using 
+	{
+			actors : Sequence(UC!Actor) = Sequence{};
+	}
+		
 	to 
 		use_case_model : UC!UseCaseModel (
 			usecase <- thisModule.allRequirementsThatAreUseCases(),
 			actor <- thisModule.allRequirementsThatAreActors(),
 			association <- thisModule.allRequirementsThatAreAssociations()
 		)
+		
+	do {
+		thisModule.useCaseModel <- use_case_model;
+	}
 }
 
 rule RequirementWithActorCommentToActor {
@@ -74,6 +114,13 @@ rule RequirementWithActorCommentToActor {
 		actor : UC!Actor (
 			name <- requirement.title
 		)
+	do{
+		thisModule.actors <- thisModule.actors.including(requirement.title, actor);
+		
+		thisModule.transformedActors <- thisModule.transformedActors.append(actor);
+		
+		thisModule.useCaseModel.actor <- thisModule.transformedActors;
+	}
 }
 
 rule RequirementWithUseCaseCommentToUseCase {
@@ -86,6 +133,13 @@ rule RequirementWithUseCaseCommentToUseCase {
 		use_case : UC!UseCase (
 			name <- requirement.title
 		)
+	do{
+		thisModule.useCases <- thisModule.useCases.including(requirement.title, use_case);
+		
+		thisModule.transformedUseCases <- thisModule.transformedUseCases.append(use_case);
+		
+		thisModule.useCaseModel.usecase <- thisModule.transformedUseCases;
+	}
 }
 
 rule RequirementWithoutCommentsToUseCase {
@@ -98,6 +152,13 @@ rule RequirementWithoutCommentsToUseCase {
 		use_case : UC!UseCase (
 			name <- requirement.title
 		)
+	do{
+		thisModule.useCases <- thisModule.useCases.including(requirement.title, use_case);
+		
+		thisModule.transformedUseCases <- thisModule.transformedUseCases.append(use_case);
+		
+		thisModule.useCaseModel.usecase <- thisModule.transformedUseCases;
+	}
 }
 
 rule RequirementWithActorCommentAndUseCaseDependencyToAssociation {
@@ -107,16 +168,17 @@ rule RequirementWithActorCommentAndUseCaseDependencyToAssociation {
 		)
 	to 
 		association : UC!Association (
-			name <- requirement.title + '_' + requirement.dependencies.first().title,
-			actor <- _actor,
-			usecase <- _use_case
-		),
-		_use_case : UC!UseCase(
-			name <- requirement.dependencies.first().title
-		),
-		_actor : UC!Actor(
-			name <- requirement.title
+			name <- requirement.title + '_' + requirement.dependencies.first().title
 		)
+	do{
+		
+		if(thisModule.actors.get(requirement.title) = OclUndefined){
+			thisModule.InsertRequirementAsActorInActorsMap(requirement);
+		}
+		
+		association.usecase <- thisModule.useCases.get(requirement.dependencies.first().title);
+		association.actor <- thisModule.actors.get(requirement.title);
+	}
 }
 
 rule RequirementWithUseCaseAndActorDependencyToAssociation {
@@ -126,16 +188,17 @@ rule RequirementWithUseCaseAndActorDependencyToAssociation {
 		)
 	to 
 		association : UC!Association (
-			name <- requirement.dependencies.first().title + '_' + requirement.title,
-			actor <- _actor,
-			usecase <- _use_case
-		),
-		_use_case : UC!UseCase(
-			name <- requirement.title
-		),
-		_actor : UC!Actor(
-			name <- requirement.dependencies.first().title
+			name <- requirement.dependencies.first().title + '_' + requirement.title
 		)
+	do{
+		
+		if(thisModule.useCases.get(requirement.title) = OclUndefined){
+			thisModule.InsertRequirementAsUseCaseInUseCasesMap(requirement);
+		}
+		
+		association.usecase <- thisModule.useCases.get(requirement.title);
+		association.actor <- thisModule.actors.get(requirement.dependencies.first().title);
+	}
 }
 
 rule InclusionRequirementToInclusionUseCase {
@@ -152,4 +215,47 @@ rule InclusionRequirementToInclusionUseCase {
 			name <- requirement.title + '_' + requirement.dependencies.first().title,
 			usecase <- requirement.dependencies.first()
 		)
+		
+	do {
+		
+		thisModule.transformedUseCases <- thisModule.transformedUseCases.append(use_case_with_inclusion);
+		
+		thisModule.useCaseModel.usecase <- thisModule.transformedUseCases;
+		
+	}
+}
+
+
+rule InsertRequirementAsActorInActorsMap(requirement : RQ!Requirement){
+	
+	to 
+		actor : UC!Actor(
+			name <- requirement.title	
+		)
+		
+	do {
+		thisModule.actors <- thisModule.actors.including(requirement.title, actor);
+		
+		thisModule.transformedActors <- thisModule.transformedActors.append(actor);
+		
+		thisModule.useCaseModel.actor <- thisModule.transformedActors;
+	}
+	
+}
+
+rule InsertRequirementAsUseCaseInUseCasesMap(requirement : RQ!Requirement){
+	
+	to 
+		use_case : UC!UseCase(
+			name <- requirement.title	
+		)
+		
+	do {
+		thisModule.useCases <- thisModule.useCases.including(requirement.title, use_case);
+		
+		thisModule.transformedUseCases <- thisModule.transformedUseCases.append(use_case);
+		
+		thisModule.useCaseModel.usecase <- thisModule.transformedUseCases;
+	}
+	
 }

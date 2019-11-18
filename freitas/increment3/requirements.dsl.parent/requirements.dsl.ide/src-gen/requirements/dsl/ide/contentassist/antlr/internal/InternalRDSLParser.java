@@ -7951,7 +7951,7 @@ public class InternalRDSLParser extends AbstractInternalContentAssistParser {
             // InternalRDSL.g:2582:1: ( rule__Requirement__Group_11__1__Impl rule__Requirement__Group_11__2 )
             // InternalRDSL.g:2583:2: rule__Requirement__Group_11__1__Impl rule__Requirement__Group_11__2
             {
-            pushFollow(FOLLOW_6);
+            pushFollow(FOLLOW_11);
             rule__Requirement__Group_11__1__Impl();
 
             state._fsp--;
@@ -8284,7 +8284,7 @@ public class InternalRDSLParser extends AbstractInternalContentAssistParser {
             // InternalRDSL.g:2690:1: ( rule__Requirement__Group_11_3__0__Impl rule__Requirement__Group_11_3__1 )
             // InternalRDSL.g:2691:2: rule__Requirement__Group_11_3__0__Impl rule__Requirement__Group_11_3__1
             {
-            pushFollow(FOLLOW_6);
+            pushFollow(FOLLOW_11);
             rule__Requirement__Group_11_3__0__Impl();
 
             state._fsp--;
@@ -13155,33 +13155,25 @@ public class InternalRDSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Requirement__DependenciesAssignment_11_2"
-    // InternalRDSL.g:4348:1: rule__Requirement__DependenciesAssignment_11_2 : ( ( ruleEString ) ) ;
+    // InternalRDSL.g:4348:1: rule__Requirement__DependenciesAssignment_11_2 : ( ruleRequirement ) ;
     public final void rule__Requirement__DependenciesAssignment_11_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalRDSL.g:4352:1: ( ( ( ruleEString ) ) )
-            // InternalRDSL.g:4353:2: ( ( ruleEString ) )
+            // InternalRDSL.g:4352:1: ( ( ruleRequirement ) )
+            // InternalRDSL.g:4353:2: ( ruleRequirement )
             {
-            // InternalRDSL.g:4353:2: ( ( ruleEString ) )
-            // InternalRDSL.g:4354:3: ( ruleEString )
+            // InternalRDSL.g:4353:2: ( ruleRequirement )
+            // InternalRDSL.g:4354:3: ruleRequirement
             {
-             before(grammarAccess.getRequirementAccess().getDependenciesRequirementCrossReference_11_2_0()); 
-            // InternalRDSL.g:4355:3: ( ruleEString )
-            // InternalRDSL.g:4356:4: ruleEString
-            {
-             before(grammarAccess.getRequirementAccess().getDependenciesRequirementEStringParserRuleCall_11_2_0_1()); 
+             before(grammarAccess.getRequirementAccess().getDependenciesRequirementParserRuleCall_11_2_0()); 
             pushFollow(FOLLOW_2);
-            ruleEString();
+            ruleRequirement();
 
             state._fsp--;
 
-             after(grammarAccess.getRequirementAccess().getDependenciesRequirementEStringParserRuleCall_11_2_0_1()); 
-
-            }
-
-             after(grammarAccess.getRequirementAccess().getDependenciesRequirementCrossReference_11_2_0()); 
+             after(grammarAccess.getRequirementAccess().getDependenciesRequirementParserRuleCall_11_2_0()); 
 
             }
 
@@ -13204,33 +13196,25 @@ public class InternalRDSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Requirement__DependenciesAssignment_11_3_1"
-    // InternalRDSL.g:4367:1: rule__Requirement__DependenciesAssignment_11_3_1 : ( ( ruleEString ) ) ;
+    // InternalRDSL.g:4363:1: rule__Requirement__DependenciesAssignment_11_3_1 : ( ruleRequirement ) ;
     public final void rule__Requirement__DependenciesAssignment_11_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalRDSL.g:4371:1: ( ( ( ruleEString ) ) )
-            // InternalRDSL.g:4372:2: ( ( ruleEString ) )
+            // InternalRDSL.g:4367:1: ( ( ruleRequirement ) )
+            // InternalRDSL.g:4368:2: ( ruleRequirement )
             {
-            // InternalRDSL.g:4372:2: ( ( ruleEString ) )
-            // InternalRDSL.g:4373:3: ( ruleEString )
+            // InternalRDSL.g:4368:2: ( ruleRequirement )
+            // InternalRDSL.g:4369:3: ruleRequirement
             {
-             before(grammarAccess.getRequirementAccess().getDependenciesRequirementCrossReference_11_3_1_0()); 
-            // InternalRDSL.g:4374:3: ( ruleEString )
-            // InternalRDSL.g:4375:4: ruleEString
-            {
-             before(grammarAccess.getRequirementAccess().getDependenciesRequirementEStringParserRuleCall_11_3_1_0_1()); 
+             before(grammarAccess.getRequirementAccess().getDependenciesRequirementParserRuleCall_11_3_1_0()); 
             pushFollow(FOLLOW_2);
-            ruleEString();
+            ruleRequirement();
 
             state._fsp--;
 
-             after(grammarAccess.getRequirementAccess().getDependenciesRequirementEStringParserRuleCall_11_3_1_0_1()); 
-
-            }
-
-             after(grammarAccess.getRequirementAccess().getDependenciesRequirementCrossReference_11_3_1_0()); 
+             after(grammarAccess.getRequirementAccess().getDependenciesRequirementParserRuleCall_11_3_1_0()); 
 
             }
 
@@ -13253,17 +13237,17 @@ public class InternalRDSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Requirement__VersionAssignment_13"
-    // InternalRDSL.g:4386:1: rule__Requirement__VersionAssignment_13 : ( ruleVersion ) ;
+    // InternalRDSL.g:4378:1: rule__Requirement__VersionAssignment_13 : ( ruleVersion ) ;
     public final void rule__Requirement__VersionAssignment_13() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalRDSL.g:4390:1: ( ( ruleVersion ) )
-            // InternalRDSL.g:4391:2: ( ruleVersion )
+            // InternalRDSL.g:4382:1: ( ( ruleVersion ) )
+            // InternalRDSL.g:4383:2: ( ruleVersion )
             {
-            // InternalRDSL.g:4391:2: ( ruleVersion )
-            // InternalRDSL.g:4392:3: ruleVersion
+            // InternalRDSL.g:4383:2: ( ruleVersion )
+            // InternalRDSL.g:4384:3: ruleVersion
             {
              before(grammarAccess.getRequirementAccess().getVersionVersionParserRuleCall_13_0()); 
             pushFollow(FOLLOW_2);
@@ -13294,17 +13278,17 @@ public class InternalRDSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Requirement__CommentsAssignment_14_2"
-    // InternalRDSL.g:4401:1: rule__Requirement__CommentsAssignment_14_2 : ( ruleComment ) ;
+    // InternalRDSL.g:4393:1: rule__Requirement__CommentsAssignment_14_2 : ( ruleComment ) ;
     public final void rule__Requirement__CommentsAssignment_14_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalRDSL.g:4405:1: ( ( ruleComment ) )
-            // InternalRDSL.g:4406:2: ( ruleComment )
+            // InternalRDSL.g:4397:1: ( ( ruleComment ) )
+            // InternalRDSL.g:4398:2: ( ruleComment )
             {
-            // InternalRDSL.g:4406:2: ( ruleComment )
-            // InternalRDSL.g:4407:3: ruleComment
+            // InternalRDSL.g:4398:2: ( ruleComment )
+            // InternalRDSL.g:4399:3: ruleComment
             {
              before(grammarAccess.getRequirementAccess().getCommentsCommentParserRuleCall_14_2_0()); 
             pushFollow(FOLLOW_2);
@@ -13335,17 +13319,17 @@ public class InternalRDSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Requirement__CommentsAssignment_14_3_1"
-    // InternalRDSL.g:4416:1: rule__Requirement__CommentsAssignment_14_3_1 : ( ruleComment ) ;
+    // InternalRDSL.g:4408:1: rule__Requirement__CommentsAssignment_14_3_1 : ( ruleComment ) ;
     public final void rule__Requirement__CommentsAssignment_14_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalRDSL.g:4420:1: ( ( ruleComment ) )
-            // InternalRDSL.g:4421:2: ( ruleComment )
+            // InternalRDSL.g:4412:1: ( ( ruleComment ) )
+            // InternalRDSL.g:4413:2: ( ruleComment )
             {
-            // InternalRDSL.g:4421:2: ( ruleComment )
-            // InternalRDSL.g:4422:3: ruleComment
+            // InternalRDSL.g:4413:2: ( ruleComment )
+            // InternalRDSL.g:4414:3: ruleComment
             {
              before(grammarAccess.getRequirementAccess().getCommentsCommentParserRuleCall_14_3_1_0()); 
             pushFollow(FOLLOW_2);
@@ -13376,17 +13360,17 @@ public class InternalRDSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Requirement__ChildrenAssignment_15_2"
-    // InternalRDSL.g:4431:1: rule__Requirement__ChildrenAssignment_15_2 : ( ruleRequirement ) ;
+    // InternalRDSL.g:4423:1: rule__Requirement__ChildrenAssignment_15_2 : ( ruleRequirement ) ;
     public final void rule__Requirement__ChildrenAssignment_15_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalRDSL.g:4435:1: ( ( ruleRequirement ) )
-            // InternalRDSL.g:4436:2: ( ruleRequirement )
+            // InternalRDSL.g:4427:1: ( ( ruleRequirement ) )
+            // InternalRDSL.g:4428:2: ( ruleRequirement )
             {
-            // InternalRDSL.g:4436:2: ( ruleRequirement )
-            // InternalRDSL.g:4437:3: ruleRequirement
+            // InternalRDSL.g:4428:2: ( ruleRequirement )
+            // InternalRDSL.g:4429:3: ruleRequirement
             {
              before(grammarAccess.getRequirementAccess().getChildrenRequirementParserRuleCall_15_2_0()); 
             pushFollow(FOLLOW_2);
@@ -13417,17 +13401,17 @@ public class InternalRDSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Requirement__ChildrenAssignment_15_3_1"
-    // InternalRDSL.g:4446:1: rule__Requirement__ChildrenAssignment_15_3_1 : ( ruleRequirement ) ;
+    // InternalRDSL.g:4438:1: rule__Requirement__ChildrenAssignment_15_3_1 : ( ruleRequirement ) ;
     public final void rule__Requirement__ChildrenAssignment_15_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalRDSL.g:4450:1: ( ( ruleRequirement ) )
-            // InternalRDSL.g:4451:2: ( ruleRequirement )
+            // InternalRDSL.g:4442:1: ( ( ruleRequirement ) )
+            // InternalRDSL.g:4443:2: ( ruleRequirement )
             {
-            // InternalRDSL.g:4451:2: ( ruleRequirement )
-            // InternalRDSL.g:4452:3: ruleRequirement
+            // InternalRDSL.g:4443:2: ( ruleRequirement )
+            // InternalRDSL.g:4444:3: ruleRequirement
             {
              before(grammarAccess.getRequirementAccess().getChildrenRequirementParserRuleCall_15_3_1_0()); 
             pushFollow(FOLLOW_2);
@@ -13458,17 +13442,17 @@ public class InternalRDSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Version__MajorAssignment_3"
-    // InternalRDSL.g:4461:1: rule__Version__MajorAssignment_3 : ( ruleEInt ) ;
+    // InternalRDSL.g:4453:1: rule__Version__MajorAssignment_3 : ( ruleEInt ) ;
     public final void rule__Version__MajorAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalRDSL.g:4465:1: ( ( ruleEInt ) )
-            // InternalRDSL.g:4466:2: ( ruleEInt )
+            // InternalRDSL.g:4457:1: ( ( ruleEInt ) )
+            // InternalRDSL.g:4458:2: ( ruleEInt )
             {
-            // InternalRDSL.g:4466:2: ( ruleEInt )
-            // InternalRDSL.g:4467:3: ruleEInt
+            // InternalRDSL.g:4458:2: ( ruleEInt )
+            // InternalRDSL.g:4459:3: ruleEInt
             {
              before(grammarAccess.getVersionAccess().getMajorEIntParserRuleCall_3_0()); 
             pushFollow(FOLLOW_2);
@@ -13499,17 +13483,17 @@ public class InternalRDSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Version__MinorAssignment_5"
-    // InternalRDSL.g:4476:1: rule__Version__MinorAssignment_5 : ( ruleEInt ) ;
+    // InternalRDSL.g:4468:1: rule__Version__MinorAssignment_5 : ( ruleEInt ) ;
     public final void rule__Version__MinorAssignment_5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalRDSL.g:4480:1: ( ( ruleEInt ) )
-            // InternalRDSL.g:4481:2: ( ruleEInt )
+            // InternalRDSL.g:4472:1: ( ( ruleEInt ) )
+            // InternalRDSL.g:4473:2: ( ruleEInt )
             {
-            // InternalRDSL.g:4481:2: ( ruleEInt )
-            // InternalRDSL.g:4482:3: ruleEInt
+            // InternalRDSL.g:4473:2: ( ruleEInt )
+            // InternalRDSL.g:4474:3: ruleEInt
             {
              before(grammarAccess.getVersionAccess().getMinorEIntParserRuleCall_5_0()); 
             pushFollow(FOLLOW_2);
@@ -13540,17 +13524,17 @@ public class InternalRDSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Version__ServiceAssignment_7"
-    // InternalRDSL.g:4491:1: rule__Version__ServiceAssignment_7 : ( ruleEInt ) ;
+    // InternalRDSL.g:4483:1: rule__Version__ServiceAssignment_7 : ( ruleEInt ) ;
     public final void rule__Version__ServiceAssignment_7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalRDSL.g:4495:1: ( ( ruleEInt ) )
-            // InternalRDSL.g:4496:2: ( ruleEInt )
+            // InternalRDSL.g:4487:1: ( ( ruleEInt ) )
+            // InternalRDSL.g:4488:2: ( ruleEInt )
             {
-            // InternalRDSL.g:4496:2: ( ruleEInt )
-            // InternalRDSL.g:4497:3: ruleEInt
+            // InternalRDSL.g:4488:2: ( ruleEInt )
+            // InternalRDSL.g:4489:3: ruleEInt
             {
              before(grammarAccess.getVersionAccess().getServiceEIntParserRuleCall_7_0()); 
             pushFollow(FOLLOW_2);
@@ -13581,17 +13565,17 @@ public class InternalRDSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Comment__SubjectAssignment_3_1"
-    // InternalRDSL.g:4506:1: rule__Comment__SubjectAssignment_3_1 : ( ruleEString ) ;
+    // InternalRDSL.g:4498:1: rule__Comment__SubjectAssignment_3_1 : ( ruleEString ) ;
     public final void rule__Comment__SubjectAssignment_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalRDSL.g:4510:1: ( ( ruleEString ) )
-            // InternalRDSL.g:4511:2: ( ruleEString )
+            // InternalRDSL.g:4502:1: ( ( ruleEString ) )
+            // InternalRDSL.g:4503:2: ( ruleEString )
             {
-            // InternalRDSL.g:4511:2: ( ruleEString )
-            // InternalRDSL.g:4512:3: ruleEString
+            // InternalRDSL.g:4503:2: ( ruleEString )
+            // InternalRDSL.g:4504:3: ruleEString
             {
              before(grammarAccess.getCommentAccess().getSubjectEStringParserRuleCall_3_1_0()); 
             pushFollow(FOLLOW_2);
@@ -13622,17 +13606,17 @@ public class InternalRDSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Comment__BodyAssignment_4_1"
-    // InternalRDSL.g:4521:1: rule__Comment__BodyAssignment_4_1 : ( ruleEString ) ;
+    // InternalRDSL.g:4513:1: rule__Comment__BodyAssignment_4_1 : ( ruleEString ) ;
     public final void rule__Comment__BodyAssignment_4_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalRDSL.g:4525:1: ( ( ruleEString ) )
-            // InternalRDSL.g:4526:2: ( ruleEString )
+            // InternalRDSL.g:4517:1: ( ( ruleEString ) )
+            // InternalRDSL.g:4518:2: ( ruleEString )
             {
-            // InternalRDSL.g:4526:2: ( ruleEString )
-            // InternalRDSL.g:4527:3: ruleEString
+            // InternalRDSL.g:4518:2: ( ruleEString )
+            // InternalRDSL.g:4519:3: ruleEString
             {
              before(grammarAccess.getCommentAccess().getBodyEStringParserRuleCall_4_1_0()); 
             pushFollow(FOLLOW_2);
@@ -13663,17 +13647,17 @@ public class InternalRDSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Comment__AuthorAssignment_5_1"
-    // InternalRDSL.g:4536:1: rule__Comment__AuthorAssignment_5_1 : ( ruleEString ) ;
+    // InternalRDSL.g:4528:1: rule__Comment__AuthorAssignment_5_1 : ( ruleEString ) ;
     public final void rule__Comment__AuthorAssignment_5_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalRDSL.g:4540:1: ( ( ruleEString ) )
-            // InternalRDSL.g:4541:2: ( ruleEString )
+            // InternalRDSL.g:4532:1: ( ( ruleEString ) )
+            // InternalRDSL.g:4533:2: ( ruleEString )
             {
-            // InternalRDSL.g:4541:2: ( ruleEString )
-            // InternalRDSL.g:4542:3: ruleEString
+            // InternalRDSL.g:4533:2: ( ruleEString )
+            // InternalRDSL.g:4534:3: ruleEString
             {
              before(grammarAccess.getCommentAccess().getAuthorEStringParserRuleCall_5_1_0()); 
             pushFollow(FOLLOW_2);
@@ -13704,17 +13688,17 @@ public class InternalRDSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Comment__CreatedAssignment_6_1"
-    // InternalRDSL.g:4551:1: rule__Comment__CreatedAssignment_6_1 : ( ruleEDate ) ;
+    // InternalRDSL.g:4543:1: rule__Comment__CreatedAssignment_6_1 : ( ruleEDate ) ;
     public final void rule__Comment__CreatedAssignment_6_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalRDSL.g:4555:1: ( ( ruleEDate ) )
-            // InternalRDSL.g:4556:2: ( ruleEDate )
+            // InternalRDSL.g:4547:1: ( ( ruleEDate ) )
+            // InternalRDSL.g:4548:2: ( ruleEDate )
             {
-            // InternalRDSL.g:4556:2: ( ruleEDate )
-            // InternalRDSL.g:4557:3: ruleEDate
+            // InternalRDSL.g:4548:2: ( ruleEDate )
+            // InternalRDSL.g:4549:3: ruleEDate
             {
              before(grammarAccess.getCommentAccess().getCreatedEDateParserRuleCall_6_1_0()); 
             pushFollow(FOLLOW_2);
@@ -13745,17 +13729,17 @@ public class InternalRDSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Comment__ChildrenAssignment_7_2"
-    // InternalRDSL.g:4566:1: rule__Comment__ChildrenAssignment_7_2 : ( ruleComment ) ;
+    // InternalRDSL.g:4558:1: rule__Comment__ChildrenAssignment_7_2 : ( ruleComment ) ;
     public final void rule__Comment__ChildrenAssignment_7_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalRDSL.g:4570:1: ( ( ruleComment ) )
-            // InternalRDSL.g:4571:2: ( ruleComment )
+            // InternalRDSL.g:4562:1: ( ( ruleComment ) )
+            // InternalRDSL.g:4563:2: ( ruleComment )
             {
-            // InternalRDSL.g:4571:2: ( ruleComment )
-            // InternalRDSL.g:4572:3: ruleComment
+            // InternalRDSL.g:4563:2: ( ruleComment )
+            // InternalRDSL.g:4564:3: ruleComment
             {
              before(grammarAccess.getCommentAccess().getChildrenCommentParserRuleCall_7_2_0()); 
             pushFollow(FOLLOW_2);
@@ -13786,17 +13770,17 @@ public class InternalRDSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Comment__ChildrenAssignment_7_3_1"
-    // InternalRDSL.g:4581:1: rule__Comment__ChildrenAssignment_7_3_1 : ( ruleComment ) ;
+    // InternalRDSL.g:4573:1: rule__Comment__ChildrenAssignment_7_3_1 : ( ruleComment ) ;
     public final void rule__Comment__ChildrenAssignment_7_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalRDSL.g:4585:1: ( ( ruleComment ) )
-            // InternalRDSL.g:4586:2: ( ruleComment )
+            // InternalRDSL.g:4577:1: ( ( ruleComment ) )
+            // InternalRDSL.g:4578:2: ( ruleComment )
             {
-            // InternalRDSL.g:4586:2: ( ruleComment )
-            // InternalRDSL.g:4587:3: ruleComment
+            // InternalRDSL.g:4578:2: ( ruleComment )
+            // InternalRDSL.g:4579:3: ruleComment
             {
              before(grammarAccess.getCommentAccess().getChildrenCommentParserRuleCall_7_3_1_0()); 
             pushFollow(FOLLOW_2);

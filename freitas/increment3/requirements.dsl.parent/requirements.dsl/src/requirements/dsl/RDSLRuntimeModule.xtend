@@ -5,15 +5,25 @@ package requirements.dsl
 
 import org.eclipse.xtext.conversion.IValueConverterService
 import requirements.dsl.converter.RDSLValueConverter
+import requirements.dsl.scoping.RDSLScopeProvider
+import com.google.inject.Binder
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 class RDSLRuntimeModule extends AbstractRDSLRuntimeModule {
+
+	override public Class<? extends IValueConverterService> bindIValueConverterService() {
+		// return null
+		return RDSLValueConverter
+	}
+
+	override bindIScopeProvider() {
+		return RDSLScopeProvider;
+	}
 	
-	override
-    public Class<? extends IValueConverterService> bindIValueConverterService() {
-    	// return null
-        return RDSLValueConverter 
-    }
+	override configureSerializerIScopeProvider(Binder binder) {
+		 binder.bind(org.eclipse.xtext.scoping.IScopeProvider).annotatedWith(org.eclipse.xtext.serializer.tokens.SerializerScopeProviderBinding).to(RDSLScopeProvider);
+	}
+
 }

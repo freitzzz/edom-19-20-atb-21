@@ -9,7 +9,6 @@ import java.util.List;
 import org.eclipse.xtext.Action;
 import org.eclipse.xtext.Alternatives;
 import org.eclipse.xtext.Assignment;
-import org.eclipse.xtext.CrossReference;
 import org.eclipse.xtext.EnumLiteralDeclaration;
 import org.eclipse.xtext.EnumRule;
 import org.eclipse.xtext.Grammar;
@@ -332,13 +331,11 @@ public class RDSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cDependenciesKeyword_11_0 = (Keyword)cGroup_11.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_11_1 = (Keyword)cGroup_11.eContents().get(1);
 		private final Assignment cDependenciesAssignment_11_2 = (Assignment)cGroup_11.eContents().get(2);
-		private final CrossReference cDependenciesRequirementCrossReference_11_2_0 = (CrossReference)cDependenciesAssignment_11_2.eContents().get(0);
-		private final RuleCall cDependenciesRequirementEStringParserRuleCall_11_2_0_1 = (RuleCall)cDependenciesRequirementCrossReference_11_2_0.eContents().get(1);
+		private final RuleCall cDependenciesRequirementParserRuleCall_11_2_0 = (RuleCall)cDependenciesAssignment_11_2.eContents().get(0);
 		private final Group cGroup_11_3 = (Group)cGroup_11.eContents().get(3);
 		private final Keyword cCommaKeyword_11_3_0 = (Keyword)cGroup_11_3.eContents().get(0);
 		private final Assignment cDependenciesAssignment_11_3_1 = (Assignment)cGroup_11_3.eContents().get(1);
-		private final CrossReference cDependenciesRequirementCrossReference_11_3_1_0 = (CrossReference)cDependenciesAssignment_11_3_1.eContents().get(0);
-		private final RuleCall cDependenciesRequirementEStringParserRuleCall_11_3_1_0_1 = (RuleCall)cDependenciesRequirementCrossReference_11_3_1_0.eContents().get(1);
+		private final RuleCall cDependenciesRequirementParserRuleCall_11_3_1_0 = (RuleCall)cDependenciesAssignment_11_3_1.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_11_4 = (Keyword)cGroup_11.eContents().get(4);
 		private final Keyword cVersionKeyword_12 = (Keyword)cGroup.eContents().get(12);
 		private final Assignment cVersionAssignment_13 = (Assignment)cGroup.eContents().get(13);
@@ -369,8 +366,7 @@ public class RDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//	'Requirement'
 		//	'{' ('title' title=EString)? ('description' description=EString)? ('type' type=Type)? ('priority' priority=Priority)?
 		//	('author' author=EString)? ('created' created=EDate)? ('id' id=EString)? ('state' state=State)? ('resolution'
-		//	resolution=Resolution)? ('dependencies' '(' dependencies+=[Requirement|EString] (","
-		//	dependencies+=[Requirement|EString])* ')')?
+		//	resolution=Resolution)? ('dependencies' '(' dependencies+=Requirement ("," dependencies+=Requirement)* ')')?
 		//	'version' version=Version ('comments' '{' comments+=Comment ("," comments+=Comment)* '}')? ('children' '{'
 		//	children+=Requirement ("," children+=Requirement)* '}')?
 		//	'}';
@@ -378,9 +374,9 @@ public class RDSLGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//'Requirement' '{' ('title' title=EString)? ('description' description=EString)? ('type' type=Type)? ('priority'
 		//priority=Priority)? ('author' author=EString)? ('created' created=EDate)? ('id' id=EString)? ('state' state=State)?
-		//('resolution' resolution=Resolution)? ('dependencies' '(' dependencies+=[Requirement|EString] (","
-		//dependencies+=[Requirement|EString])* ')')? 'version' version=Version ('comments' '{' comments+=Comment (","
-		//comments+=Comment)* '}')? ('children' '{' children+=Requirement ("," children+=Requirement)* '}')? '}'
+		//('resolution' resolution=Resolution)? ('dependencies' '(' dependencies+=Requirement ("," dependencies+=Requirement)*
+		//')')? 'version' version=Version ('comments' '{' comments+=Comment ("," comments+=Comment)* '}')? ('children' '{'
+		//children+=Requirement ("," children+=Requirement)* '}')? '}'
 		public Group getGroup() { return cGroup; }
 		
 		//'Requirement'
@@ -497,7 +493,7 @@ public class RDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//Resolution
 		public RuleCall getResolutionResolutionEnumRuleCall_10_1_0() { return cResolutionResolutionEnumRuleCall_10_1_0; }
 		
-		//('dependencies' '(' dependencies+=[Requirement|EString] ("," dependencies+=[Requirement|EString])* ')')?
+		//('dependencies' '(' dependencies+=Requirement ("," dependencies+=Requirement)* ')')?
 		public Group getGroup_11() { return cGroup_11; }
 		
 		//'dependencies'
@@ -506,29 +502,23 @@ public class RDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//'('
 		public Keyword getLeftParenthesisKeyword_11_1() { return cLeftParenthesisKeyword_11_1; }
 		
-		//dependencies+=[Requirement|EString]
+		//dependencies+=Requirement
 		public Assignment getDependenciesAssignment_11_2() { return cDependenciesAssignment_11_2; }
 		
-		//[Requirement|EString]
-		public CrossReference getDependenciesRequirementCrossReference_11_2_0() { return cDependenciesRequirementCrossReference_11_2_0; }
+		//Requirement
+		public RuleCall getDependenciesRequirementParserRuleCall_11_2_0() { return cDependenciesRequirementParserRuleCall_11_2_0; }
 		
-		//EString
-		public RuleCall getDependenciesRequirementEStringParserRuleCall_11_2_0_1() { return cDependenciesRequirementEStringParserRuleCall_11_2_0_1; }
-		
-		//("," dependencies+=[Requirement|EString])*
+		//("," dependencies+=Requirement)*
 		public Group getGroup_11_3() { return cGroup_11_3; }
 		
 		//","
 		public Keyword getCommaKeyword_11_3_0() { return cCommaKeyword_11_3_0; }
 		
-		//dependencies+=[Requirement|EString]
+		//dependencies+=Requirement
 		public Assignment getDependenciesAssignment_11_3_1() { return cDependenciesAssignment_11_3_1; }
 		
-		//[Requirement|EString]
-		public CrossReference getDependenciesRequirementCrossReference_11_3_1_0() { return cDependenciesRequirementCrossReference_11_3_1_0; }
-		
-		//EString
-		public RuleCall getDependenciesRequirementEStringParserRuleCall_11_3_1_0_1() { return cDependenciesRequirementEStringParserRuleCall_11_3_1_0_1; }
+		//Requirement
+		public RuleCall getDependenciesRequirementParserRuleCall_11_3_1_0() { return cDependenciesRequirementParserRuleCall_11_3_1_0; }
 		
 		//')'
 		public Keyword getRightParenthesisKeyword_11_4() { return cRightParenthesisKeyword_11_4; }
@@ -1103,8 +1093,7 @@ public class RDSLGrammarAccess extends AbstractGrammarElementFinder {
 	//	'Requirement'
 	//	'{' ('title' title=EString)? ('description' description=EString)? ('type' type=Type)? ('priority' priority=Priority)?
 	//	('author' author=EString)? ('created' created=EDate)? ('id' id=EString)? ('state' state=State)? ('resolution'
-	//	resolution=Resolution)? ('dependencies' '(' dependencies+=[Requirement|EString] (","
-	//	dependencies+=[Requirement|EString])* ')')?
+	//	resolution=Resolution)? ('dependencies' '(' dependencies+=Requirement ("," dependencies+=Requirement)* ')')?
 	//	'version' version=Version ('comments' '{' comments+=Comment ("," comments+=Comment)* '}')? ('children' '{'
 	//	children+=Requirement ("," children+=Requirement)* '}')?
 	//	'}';

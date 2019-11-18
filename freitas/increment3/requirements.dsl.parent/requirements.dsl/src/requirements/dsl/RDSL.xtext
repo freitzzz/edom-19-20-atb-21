@@ -42,7 +42,7 @@ Requirement returns Requirement:
 		('id' id=EString)?
 		('state' state=State)?
 		('resolution' resolution=Resolution)?
-		('dependencies' '(' dependencies+=[Requirement|EString] ( "," dependencies+=[Requirement|EString])* ')' )?
+		('dependencies' '(' dependencies+=Requirement ( "," dependencies+=Requirement)* ')' )?
 		'version' version=Version
 		('comments' '{' comments+=Comment ( "," comments+=Comment)* '}' )?
 		('children' '{' children+=Requirement ( "," children+=Requirement)* '}' )?

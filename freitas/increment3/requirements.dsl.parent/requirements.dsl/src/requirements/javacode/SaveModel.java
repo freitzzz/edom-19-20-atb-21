@@ -1,7 +1,9 @@
 package requirements.javacode;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -9,10 +11,13 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.ocl.common.OCLConstants;
 import org.eclipse.ocl.pivot.internal.delegate.OCLDelegateDomain;
@@ -36,6 +41,8 @@ public class SaveModel {
 
 	// Example of how to use the EMF library
 	public static void main(String[] args) {
+
+		args = new String[] { "instances/gfa.rdsl" };
 
 		String requirementsInstancePath = args[0];
 		File requirementsInstanceAsFile = new File(requirementsInstancePath);
@@ -66,18 +73,36 @@ public class SaveModel {
 
 		// Initialize OCL support
 		initOCL();
-		
+
 		Injector injector = new RDSLStandaloneSetup().createInjectorAndDoEMFRegistration();
-		
+
 		XtextResourceSet resSet = injector.getInstance(XtextResourceSet.class);
 
 		// Initialize the model
 		RequirementsPackage.eINSTANCE.eClass();
 
+		// Obtain a new resource set
+		ResourceSet resSet2 = new ResourceSetImpl();
+
+		Resource resource2 = resSet.getResource(URI.createURI("/home/freitas/Development/Projects/edom/edom-19-20-atb-21/freitas/increment3/requirements/instances/GorgeousFoodApplication.xmi"), true);
+
 		// Retrieve the default factory singleton
 		RequirementsFactory factory = RequirementsFactory.eINSTANCE;
 
 		Model myModel = generateModel(factory);
+
+		try {
+			resource2.load(Collections.EMPTY_MAP);
+
+			EObject root = resource2.getContents().get(0);
+			myModel = (Model) root;
+
+			System.out.println(root.toString());
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		// create a resource
 		Resource resource = resSet.createResource(URI.createURI(instanceToSave.getAbsolutePath()));
@@ -232,6 +257,11 @@ public class SaveModel {
 		showUnservedMealStateRequirementVersion.setMinor(0);
 		showUnservedMealStateRequirementVersion.setService(1);
 
+		Version kitchenWorkerRequirementVersion = factory.createVersion();
+		kitchenWorkerRequirementVersion.setMajor(0);
+		kitchenWorkerRequirementVersion.setMinor(0);
+		kitchenWorkerRequirementVersion.setService(1);
+
 		Version requirementsVersion = factory.createVersion();
 
 		requirementsVersion.setMajor(0);
@@ -338,6 +368,17 @@ public class SaveModel {
 		payMealRequirement.setAuthor("EDOM");
 		payMealRequirement.setCreated(new Date(System.currentTimeMillis()));
 
+		Requirement kitchenWorkerRequirement = factory.createRequirement();
+
+		kitchenWorkerRequirement.setTitle("Pay Meal");
+		kitchenWorkerRequirement.setDescription(
+				"The software should be able handle a meal payment. The type of user that is paying for the meal should be recorded. It should not be possible to pay for an unavailable meal or a meal that is unavailable at the payment location.");
+		kitchenWorkerRequirement.setId("0");
+		kitchenWorkerRequirement.setVersion(kitchenWorkerRequirementVersion);
+		kitchenWorkerRequirement.setAuthor("EDOM");
+		kitchenWorkerRequirement.setCreated(new Date(System.currentTimeMillis()));
+		kitchenWorkerRequirement.getDependencies().add(showMealPriceRequirement);
+
 		List<Requirement> manageMealsRequirements = new ArrayList<Requirement>();
 
 		manageMealsRequirements.add(saveMealRequirement);
@@ -359,6 +400,8 @@ public class SaveModel {
 		manageMealsRequirements.add(checkMealAvailabilityRequirement);
 
 		manageMealsRequirements.add(payMealRequirement);
+
+		manageMealsRequirements.add(kitchenWorkerRequirement);
 
 		// manageMealsRequirementsGroup.eSet(manageMealsRequirementsGroup.eContainingFeature(),
 		// manageMealsRequirements);

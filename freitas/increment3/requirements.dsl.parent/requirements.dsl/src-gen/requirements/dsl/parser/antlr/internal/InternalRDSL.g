@@ -700,15 +700,18 @@ ruleRequirement returns [EObject current=null]
 			(
 				(
 					{
+						newCompositeNode(grammarAccess.getRequirementAccess().getDependenciesRequirementParserRuleCall_11_2_0());
+					}
+					lv_dependencies_22_0=ruleRequirement
+					{
 						if ($current==null) {
-							$current = createModelElement(grammarAccess.getRequirementRule());
+							$current = createModelElementForParent(grammarAccess.getRequirementRule());
 						}
-					}
-					{
-						newCompositeNode(grammarAccess.getRequirementAccess().getDependenciesRequirementCrossReference_11_2_0());
-					}
-					ruleEString
-					{
+						add(
+							$current,
+							"dependencies",
+							lv_dependencies_22_0,
+							"requirements.dsl.RDSL.Requirement");
 						afterParserOrEnumRuleCall();
 					}
 				)
@@ -721,15 +724,18 @@ ruleRequirement returns [EObject current=null]
 				(
 					(
 						{
+							newCompositeNode(grammarAccess.getRequirementAccess().getDependenciesRequirementParserRuleCall_11_3_1_0());
+						}
+						lv_dependencies_24_0=ruleRequirement
+						{
 							if ($current==null) {
-								$current = createModelElement(grammarAccess.getRequirementRule());
+								$current = createModelElementForParent(grammarAccess.getRequirementRule());
 							}
-						}
-						{
-							newCompositeNode(grammarAccess.getRequirementAccess().getDependenciesRequirementCrossReference_11_3_1_0());
-						}
-						ruleEString
-						{
+							add(
+								$current,
+								"dependencies",
+								lv_dependencies_24_0,
+								"requirements.dsl.RDSL.Requirement");
 							afterParserOrEnumRuleCall();
 						}
 					)

@@ -28,7 +28,7 @@
 <stringAttribute key="selected_workspace_plugins" value="requirements.dsl.ide@default:default,requirements.dsl.tests@default:default,requirements.dsl.ui.tests@default:default,requirements.dsl.ui@default:default,requirements.dsl@default:default,requirements@default:default"/>
 <booleanAttribute key="show_selected_only" value="false"/>
 <stringAttribute key="templateConfig" value="${target_home}/configuration/config.ini"/>
-<stringAttribute key="timestamp" value="1572454263338"/>
+<stringAttribute key="timestamp" value="1574024610131"/>
 <booleanAttribute key="tracing" value="false"/>
 <booleanAttribute key="useCustomFeatures" value="false"/>
 <booleanAttribute key="useDefaultConfig" value="true"/>

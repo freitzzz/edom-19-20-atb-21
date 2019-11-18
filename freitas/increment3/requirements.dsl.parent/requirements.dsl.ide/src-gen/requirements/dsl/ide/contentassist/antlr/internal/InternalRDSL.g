@@ -4351,13 +4351,9 @@ rule__Requirement__DependenciesAssignment_11_2
 	}
 :
 	(
-		{ before(grammarAccess.getRequirementAccess().getDependenciesRequirementCrossReference_11_2_0()); }
-		(
-			{ before(grammarAccess.getRequirementAccess().getDependenciesRequirementEStringParserRuleCall_11_2_0_1()); }
-			ruleEString
-			{ after(grammarAccess.getRequirementAccess().getDependenciesRequirementEStringParserRuleCall_11_2_0_1()); }
-		)
-		{ after(grammarAccess.getRequirementAccess().getDependenciesRequirementCrossReference_11_2_0()); }
+		{ before(grammarAccess.getRequirementAccess().getDependenciesRequirementParserRuleCall_11_2_0()); }
+		ruleRequirement
+		{ after(grammarAccess.getRequirementAccess().getDependenciesRequirementParserRuleCall_11_2_0()); }
 	)
 ;
 finally {
@@ -4370,13 +4366,9 @@ rule__Requirement__DependenciesAssignment_11_3_1
 	}
 :
 	(
-		{ before(grammarAccess.getRequirementAccess().getDependenciesRequirementCrossReference_11_3_1_0()); }
-		(
-			{ before(grammarAccess.getRequirementAccess().getDependenciesRequirementEStringParserRuleCall_11_3_1_0_1()); }
-			ruleEString
-			{ after(grammarAccess.getRequirementAccess().getDependenciesRequirementEStringParserRuleCall_11_3_1_0_1()); }
-		)
-		{ after(grammarAccess.getRequirementAccess().getDependenciesRequirementCrossReference_11_3_1_0()); }
+		{ before(grammarAccess.getRequirementAccess().getDependenciesRequirementParserRuleCall_11_3_1_0()); }
+		ruleRequirement
+		{ after(grammarAccess.getRequirementAccess().getDependenciesRequirementParserRuleCall_11_3_1_0()); }
 	)
 ;
 finally {

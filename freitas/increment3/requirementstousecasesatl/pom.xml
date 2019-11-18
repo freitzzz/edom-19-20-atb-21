@@ -16,6 +16,15 @@
 		<emf.version>2.13.0</emf.version>
 		<target-version>0.0.1-SNAPSHOT</target-version>
 	</properties>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>repo.eclipse.org</id>
+			<name>ATL Repository</name>
+			<url>https://repo.eclipse.org/content/groups/atl/</url>
+		</pluginRepository>
+	</pluginRepositories>
+
 	<build>
 		<sourceDirectory>src</sourceDirectory>
 		<plugins>
@@ -25,27 +34,77 @@
 				<version>${tycho-version}</version>
 				<extensions>true</extensions>
 			</plugin>
-
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<!-- Test EMFTVM stand-alone Ant/Maven integration -->
+						<id>Compile.atl</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<taskdef
+									resource="org/eclipse/m2m/atl/emftvm/ant/antlib.xml"
+									classpathref="maven.plugin.classpath" />
+								<mkdir dir="${project.build.directory}" />
+								<emftvm.compile module="requirementstousecases"
+									modulepath="${project.basedir}/transformations/"
+									outputpath="${project.basedir}/transformations/" charset="UTF-8"
+								/>
+							</tasks>
+						</configuration>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>org.eclipse.m2m.atl</groupId>
+						<artifactId>org.eclipse.m2m.atl.emftvm.ant.standalone</artifactId>
+						<version>${atl.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+			
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
 				<version>1.4.0</version>
-				<!--executions>
+				<executions>
 					<execution>
-						<id>requirementstousecases</id>
+						<id>requirementstousecasesxmi</id>
 						<goals>
 							<goal>java</goal>
 						</goals>
 						<configuration>
 							<executable>java</executable>
-							<mainClass>requirementstousecases.RequirementsToUseCases</mainClass>
+							<mainClass>transformations.javacode.RequirementsXMIModelToUseCasesXMIModel
+							</mainClass>
 							<classpathScope>compile</classpathScope>
 							<includeProjectDependencies>true</includeProjectDependencies>
 							<includePluginDependencies>true</includePluginDependencies>
 							<cleanupDaemonThreads>false</cleanupDaemonThreads>
 						</configuration>
 					</execution>
-				</executions-->
+					<execution>
+						<id>requirementstousecasesdsl</id>
+						<goals>
+							<goal>java</goal>
+						</goals>
+						<configuration>
+							<executable>java</executable>
+							<mainClass>transformations.javacode.RequirementsDSLToUseCasesDSL
+							</mainClass>
+							<classpathScope>compile</classpathScope>
+							<includeProjectDependencies>true</includeProjectDependencies>
+							<includePluginDependencies>true</includePluginDependencies>
+							<cleanupDaemonThreads>false</cleanupDaemonThreads>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 
@@ -94,15 +153,25 @@
 			<url>http://download.eclipse.org/releases/oxygen/201804111000/</url>
 		</repository>
 		<repository>
-			<id>eclipse-mmt-atl</id>
+
+			<id>xtext-2-14</id>
+
 			<layout>p2</layout>
-			<url>http://download.eclipse.org/mmt/atl/updates/releases/4.0</url>
+
+			<url>http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.14.0/
+			</url>
+
 		</repository>
 		<repository>
 			<id>xtext</id>
 			<layout>p2</layout>
 			<url>http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.12.0/
 			</url>
+		</repository>
+		<repository>
+			<id>eclipse-mmt-atl</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/mmt/atl/updates/releases/4.0</url>
 		</repository>
 	</repositories>
 </project>

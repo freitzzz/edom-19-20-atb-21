@@ -118,6 +118,7 @@ public class RDSLValueConverter extends DefaultTerminalConverters {
 	// This rule is applied to string in order to make sure a string is not stored with start and end quotes
 	@ValueConverter(rule = "EString")
 	public IValueConverter<String> EString() {
+		
 		return new IValueConverter<String>() {
 
 			@Override

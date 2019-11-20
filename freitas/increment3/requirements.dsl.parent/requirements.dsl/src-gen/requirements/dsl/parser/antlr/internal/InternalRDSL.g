@@ -455,48 +455,49 @@ ruleRequirement returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='Requirement'
+		(
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getRequirementAccess().getRequirementAction_0(),
+					$current);
+			}
+		)
+		otherlv_1='Requirement'
 		{
-			newLeafNode(otherlv_0, grammarAccess.getRequirementAccess().getRequirementKeyword_0());
-		}
-		otherlv_1='{'
-		{
-			newLeafNode(otherlv_1, grammarAccess.getRequirementAccess().getLeftCurlyBracketKeyword_1());
+			newLeafNode(otherlv_1, grammarAccess.getRequirementAccess().getRequirementKeyword_1());
 		}
 		(
-			otherlv_2='title'
-			{
-				newLeafNode(otherlv_2, grammarAccess.getRequirementAccess().getTitleKeyword_2_0());
-			}
 			(
-				(
-					{
-						newCompositeNode(grammarAccess.getRequirementAccess().getTitleEStringParserRuleCall_2_1_0());
+				{
+					newCompositeNode(grammarAccess.getRequirementAccess().getNameEStringParserRuleCall_2_0());
+				}
+				lv_name_2_0=ruleEString
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getRequirementRule());
 					}
-					lv_title_3_0=ruleEString
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getRequirementRule());
-						}
-						set(
-							$current,
-							"title",
-							lv_title_3_0,
-							"requirements.dsl.RDSL.EString");
-						afterParserOrEnumRuleCall();
-					}
-				)
+					set(
+						$current,
+						"name",
+						lv_name_2_0,
+						"requirements.dsl.RDSL.EString");
+					afterParserOrEnumRuleCall();
+				}
 			)
-		)?
+		)
+		otherlv_3='{'
+		{
+			newLeafNode(otherlv_3, grammarAccess.getRequirementAccess().getLeftCurlyBracketKeyword_3());
+		}
 		(
 			otherlv_4='description'
 			{
-				newLeafNode(otherlv_4, grammarAccess.getRequirementAccess().getDescriptionKeyword_3_0());
+				newLeafNode(otherlv_4, grammarAccess.getRequirementAccess().getDescriptionKeyword_4_0());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getRequirementAccess().getDescriptionEStringParserRuleCall_3_1_0());
+						newCompositeNode(grammarAccess.getRequirementAccess().getDescriptionEStringParserRuleCall_4_1_0());
 					}
 					lv_description_5_0=ruleEString
 					{
@@ -516,12 +517,12 @@ ruleRequirement returns [EObject current=null]
 		(
 			otherlv_6='type'
 			{
-				newLeafNode(otherlv_6, grammarAccess.getRequirementAccess().getTypeKeyword_4_0());
+				newLeafNode(otherlv_6, grammarAccess.getRequirementAccess().getTypeKeyword_5_0());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getRequirementAccess().getTypeTypeEnumRuleCall_4_1_0());
+						newCompositeNode(grammarAccess.getRequirementAccess().getTypeTypeEnumRuleCall_5_1_0());
 					}
 					lv_type_7_0=ruleType
 					{
@@ -541,12 +542,12 @@ ruleRequirement returns [EObject current=null]
 		(
 			otherlv_8='priority'
 			{
-				newLeafNode(otherlv_8, grammarAccess.getRequirementAccess().getPriorityKeyword_5_0());
+				newLeafNode(otherlv_8, grammarAccess.getRequirementAccess().getPriorityKeyword_6_0());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getRequirementAccess().getPriorityPriorityEnumRuleCall_5_1_0());
+						newCompositeNode(grammarAccess.getRequirementAccess().getPriorityPriorityEnumRuleCall_6_1_0());
 					}
 					lv_priority_9_0=rulePriority
 					{
@@ -566,12 +567,12 @@ ruleRequirement returns [EObject current=null]
 		(
 			otherlv_10='author'
 			{
-				newLeafNode(otherlv_10, grammarAccess.getRequirementAccess().getAuthorKeyword_6_0());
+				newLeafNode(otherlv_10, grammarAccess.getRequirementAccess().getAuthorKeyword_7_0());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getRequirementAccess().getAuthorEStringParserRuleCall_6_1_0());
+						newCompositeNode(grammarAccess.getRequirementAccess().getAuthorEStringParserRuleCall_7_1_0());
 					}
 					lv_author_11_0=ruleEString
 					{
@@ -591,12 +592,12 @@ ruleRequirement returns [EObject current=null]
 		(
 			otherlv_12='created'
 			{
-				newLeafNode(otherlv_12, grammarAccess.getRequirementAccess().getCreatedKeyword_7_0());
+				newLeafNode(otherlv_12, grammarAccess.getRequirementAccess().getCreatedKeyword_8_0());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getRequirementAccess().getCreatedEDateParserRuleCall_7_1_0());
+						newCompositeNode(grammarAccess.getRequirementAccess().getCreatedEDateParserRuleCall_8_1_0());
 					}
 					lv_created_13_0=ruleEDate
 					{
@@ -616,12 +617,12 @@ ruleRequirement returns [EObject current=null]
 		(
 			otherlv_14='id'
 			{
-				newLeafNode(otherlv_14, grammarAccess.getRequirementAccess().getIdKeyword_8_0());
+				newLeafNode(otherlv_14, grammarAccess.getRequirementAccess().getIdKeyword_9_0());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getRequirementAccess().getIdEStringParserRuleCall_8_1_0());
+						newCompositeNode(grammarAccess.getRequirementAccess().getIdEStringParserRuleCall_9_1_0());
 					}
 					lv_id_15_0=ruleEString
 					{
@@ -641,12 +642,12 @@ ruleRequirement returns [EObject current=null]
 		(
 			otherlv_16='state'
 			{
-				newLeafNode(otherlv_16, grammarAccess.getRequirementAccess().getStateKeyword_9_0());
+				newLeafNode(otherlv_16, grammarAccess.getRequirementAccess().getStateKeyword_10_0());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getRequirementAccess().getStateStateEnumRuleCall_9_1_0());
+						newCompositeNode(grammarAccess.getRequirementAccess().getStateStateEnumRuleCall_10_1_0());
 					}
 					lv_state_17_0=ruleState
 					{
@@ -666,12 +667,12 @@ ruleRequirement returns [EObject current=null]
 		(
 			otherlv_18='resolution'
 			{
-				newLeafNode(otherlv_18, grammarAccess.getRequirementAccess().getResolutionKeyword_10_0());
+				newLeafNode(otherlv_18, grammarAccess.getRequirementAccess().getResolutionKeyword_11_0());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getRequirementAccess().getResolutionResolutionEnumRuleCall_10_1_0());
+						newCompositeNode(grammarAccess.getRequirementAccess().getResolutionResolutionEnumRuleCall_11_1_0());
 					}
 					lv_resolution_19_0=ruleResolution
 					{
@@ -691,27 +692,24 @@ ruleRequirement returns [EObject current=null]
 		(
 			otherlv_20='dependencies'
 			{
-				newLeafNode(otherlv_20, grammarAccess.getRequirementAccess().getDependenciesKeyword_11_0());
+				newLeafNode(otherlv_20, grammarAccess.getRequirementAccess().getDependenciesKeyword_12_0());
 			}
 			otherlv_21='('
 			{
-				newLeafNode(otherlv_21, grammarAccess.getRequirementAccess().getLeftParenthesisKeyword_11_1());
+				newLeafNode(otherlv_21, grammarAccess.getRequirementAccess().getLeftParenthesisKeyword_12_1());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getRequirementAccess().getDependenciesRequirementParserRuleCall_11_2_0());
-					}
-					lv_dependencies_22_0=ruleRequirement
-					{
 						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getRequirementRule());
+							$current = createModelElement(grammarAccess.getRequirementRule());
 						}
-						add(
-							$current,
-							"dependencies",
-							lv_dependencies_22_0,
-							"requirements.dsl.RDSL.Requirement");
+					}
+					{
+						newCompositeNode(grammarAccess.getRequirementAccess().getDependenciesRequirementCrossReference_12_2_0());
+					}
+					ruleEString
+					{
 						afterParserOrEnumRuleCall();
 					}
 				)
@@ -719,23 +717,20 @@ ruleRequirement returns [EObject current=null]
 			(
 				otherlv_23=','
 				{
-					newLeafNode(otherlv_23, grammarAccess.getRequirementAccess().getCommaKeyword_11_3_0());
+					newLeafNode(otherlv_23, grammarAccess.getRequirementAccess().getCommaKeyword_12_3_0());
 				}
 				(
 					(
 						{
-							newCompositeNode(grammarAccess.getRequirementAccess().getDependenciesRequirementParserRuleCall_11_3_1_0());
-						}
-						lv_dependencies_24_0=ruleRequirement
-						{
 							if ($current==null) {
-								$current = createModelElementForParent(grammarAccess.getRequirementRule());
+								$current = createModelElement(grammarAccess.getRequirementRule());
 							}
-							add(
-								$current,
-								"dependencies",
-								lv_dependencies_24_0,
-								"requirements.dsl.RDSL.Requirement");
+						}
+						{
+							newCompositeNode(grammarAccess.getRequirementAccess().getDependenciesRequirementCrossReference_12_3_1_0());
+						}
+						ruleEString
+						{
 							afterParserOrEnumRuleCall();
 						}
 					)
@@ -743,17 +738,17 @@ ruleRequirement returns [EObject current=null]
 			)*
 			otherlv_25=')'
 			{
-				newLeafNode(otherlv_25, grammarAccess.getRequirementAccess().getRightParenthesisKeyword_11_4());
+				newLeafNode(otherlv_25, grammarAccess.getRequirementAccess().getRightParenthesisKeyword_12_4());
 			}
 		)?
 		otherlv_26='version'
 		{
-			newLeafNode(otherlv_26, grammarAccess.getRequirementAccess().getVersionKeyword_12());
+			newLeafNode(otherlv_26, grammarAccess.getRequirementAccess().getVersionKeyword_13());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getRequirementAccess().getVersionVersionParserRuleCall_13_0());
+					newCompositeNode(grammarAccess.getRequirementAccess().getVersionVersionParserRuleCall_14_0());
 				}
 				lv_version_27_0=ruleVersion
 				{
@@ -772,16 +767,16 @@ ruleRequirement returns [EObject current=null]
 		(
 			otherlv_28='comments'
 			{
-				newLeafNode(otherlv_28, grammarAccess.getRequirementAccess().getCommentsKeyword_14_0());
+				newLeafNode(otherlv_28, grammarAccess.getRequirementAccess().getCommentsKeyword_15_0());
 			}
 			otherlv_29='{'
 			{
-				newLeafNode(otherlv_29, grammarAccess.getRequirementAccess().getLeftCurlyBracketKeyword_14_1());
+				newLeafNode(otherlv_29, grammarAccess.getRequirementAccess().getLeftCurlyBracketKeyword_15_1());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getRequirementAccess().getCommentsCommentParserRuleCall_14_2_0());
+						newCompositeNode(grammarAccess.getRequirementAccess().getCommentsCommentParserRuleCall_15_2_0());
 					}
 					lv_comments_30_0=ruleComment
 					{
@@ -800,12 +795,12 @@ ruleRequirement returns [EObject current=null]
 			(
 				otherlv_31=','
 				{
-					newLeafNode(otherlv_31, grammarAccess.getRequirementAccess().getCommaKeyword_14_3_0());
+					newLeafNode(otherlv_31, grammarAccess.getRequirementAccess().getCommaKeyword_15_3_0());
 				}
 				(
 					(
 						{
-							newCompositeNode(grammarAccess.getRequirementAccess().getCommentsCommentParserRuleCall_14_3_1_0());
+							newCompositeNode(grammarAccess.getRequirementAccess().getCommentsCommentParserRuleCall_15_3_1_0());
 						}
 						lv_comments_32_0=ruleComment
 						{
@@ -824,22 +819,22 @@ ruleRequirement returns [EObject current=null]
 			)*
 			otherlv_33='}'
 			{
-				newLeafNode(otherlv_33, grammarAccess.getRequirementAccess().getRightCurlyBracketKeyword_14_4());
+				newLeafNode(otherlv_33, grammarAccess.getRequirementAccess().getRightCurlyBracketKeyword_15_4());
 			}
 		)?
 		(
 			otherlv_34='children'
 			{
-				newLeafNode(otherlv_34, grammarAccess.getRequirementAccess().getChildrenKeyword_15_0());
+				newLeafNode(otherlv_34, grammarAccess.getRequirementAccess().getChildrenKeyword_16_0());
 			}
 			otherlv_35='{'
 			{
-				newLeafNode(otherlv_35, grammarAccess.getRequirementAccess().getLeftCurlyBracketKeyword_15_1());
+				newLeafNode(otherlv_35, grammarAccess.getRequirementAccess().getLeftCurlyBracketKeyword_16_1());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getRequirementAccess().getChildrenRequirementParserRuleCall_15_2_0());
+						newCompositeNode(grammarAccess.getRequirementAccess().getChildrenRequirementParserRuleCall_16_2_0());
 					}
 					lv_children_36_0=ruleRequirement
 					{
@@ -858,12 +853,12 @@ ruleRequirement returns [EObject current=null]
 			(
 				otherlv_37=','
 				{
-					newLeafNode(otherlv_37, grammarAccess.getRequirementAccess().getCommaKeyword_15_3_0());
+					newLeafNode(otherlv_37, grammarAccess.getRequirementAccess().getCommaKeyword_16_3_0());
 				}
 				(
 					(
 						{
-							newCompositeNode(grammarAccess.getRequirementAccess().getChildrenRequirementParserRuleCall_15_3_1_0());
+							newCompositeNode(grammarAccess.getRequirementAccess().getChildrenRequirementParserRuleCall_16_3_1_0());
 						}
 						lv_children_38_0=ruleRequirement
 						{
@@ -882,12 +877,12 @@ ruleRequirement returns [EObject current=null]
 			)*
 			otherlv_39='}'
 			{
-				newLeafNode(otherlv_39, grammarAccess.getRequirementAccess().getRightCurlyBracketKeyword_15_4());
+				newLeafNode(otherlv_39, grammarAccess.getRequirementAccess().getRightCurlyBracketKeyword_16_4());
 			}
 		)?
 		otherlv_40='}'
 		{
-			newLeafNode(otherlv_40, grammarAccess.getRequirementAccess().getRightCurlyBracketKeyword_16());
+			newLeafNode(otherlv_40, grammarAccess.getRequirementAccess().getRightCurlyBracketKeyword_17());
 		}
 	)
 ;

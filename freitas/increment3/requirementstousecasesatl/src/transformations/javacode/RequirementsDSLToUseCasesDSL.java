@@ -3,8 +3,12 @@ package transformations.javacode;
 import java.io.File;
 import java.io.IOException;
 import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EValidator;
@@ -26,12 +30,15 @@ import org.eclipse.ocl.pivot.internal.delegate.OCLInvocationDelegateFactory;
 import org.eclipse.ocl.pivot.internal.delegate.OCLSettingDelegateFactory;
 import org.eclipse.ocl.pivot.internal.delegate.OCLValidationDelegateFactory;
 import org.eclipse.ocl.pivot.model.OCLstdlib;
+import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.XtextResourceSet;
 
 import com.google.inject.Injector;
 
 import pt.isep.edom.usecases.UsecasesPackage;
 import pt.isep.edom.usecases.dsl.UseCasesDslStandaloneSetup;
+import requirements.Requirement;
+import requirements.RequirementsFactory;
 import requirements.RequirementsPackage;
 import requirements.dsl.RDSLStandaloneSetup;
 
@@ -39,7 +46,14 @@ import requirements.dsl.RDSLStandaloneSetup;
 public class RequirementsDSLToUseCasesDSL {
 
 	public static void main(String[] args) {
-
+		
+		args = new String[] {
+				
+				"instances/gfa.rdsl",
+				"instances/gfa.usecasesdsl"
+				
+		};
+		
 		String requirementsToTranformFilePathAsString = args[0];
 
 		String usecasesTransformedFilePathAsString = args[1];
@@ -81,6 +95,8 @@ public class RequirementsDSLToUseCasesDSL {
 
 		XtextResourceSet resSet = injector.getInstance(XtextResourceSet.class);		
 		
+		resSet.addLoadOption(XtextResource.OPTION_RESOLVE_ALL, true);
+		
 		Injector injector2 = new UseCasesDslStandaloneSetup().createInjectorAndDoEMFRegistration();
 
 		XtextResourceSet resSet2 = injector2.getInstance(XtextResourceSet.class);
@@ -121,6 +137,34 @@ public class RequirementsDSLToUseCasesDSL {
 
 		inModel.setResource(rs.getResource(URI.createURI(requirementsModelToTransformFilePath.getPath(), true), true));
 		env.registerInputModel("Requirements", inModel);
+		
+//		System.out.println("!");
+//		
+//		List<EObject> asd = inModel.allInstancesOf(RequirementsFactory.eINSTANCE.createRequirement().eClass());
+//		
+//		for(int i = 0; i < asd.size(); i++) {
+//			System.out.println(asd.get(i).toString());
+//		
+//			int asdd = (((Requirement)asd.get(i)).getDependencies().size());
+//			
+//			if(asdd == 1) {
+//				System.out.println("!!!");
+//				
+//				System.out.println((((Requirement)asd.get(i)).getDependencies().get(0).toString()));
+//			}
+//			
+//			
+//		}
+//			
+//		Iterator<EObject> objects = inModel.eContents().iterator();
+//		
+//		while(objects.hasNext()) {
+//			EObject next = objects.next();
+//			
+//			System.out.println(next.toString());
+//		}
+//		
+//		System.out.println("?");
 
 		Model outModel = EmftvmFactory.eINSTANCE.createModel();
 

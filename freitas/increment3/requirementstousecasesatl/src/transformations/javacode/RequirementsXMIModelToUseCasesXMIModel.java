@@ -34,8 +34,6 @@ public class RequirementsXMIModelToUseCasesXMIModel {
 	
 	public static void main(String[] args) {
 		
-		args = new String[] {"../requirements/instances/GorgeousFoodApplication.xmi","instances/transformed.xmi"};
-		
 		String requirementsToTranformFilePathAsString = args[0];
 		
 		String usecasesTransformedFilePathAsString = args[1];
@@ -135,6 +133,7 @@ public class RequirementsXMIModelToUseCasesXMIModel {
 
 		// Save models
 		try {
+			inModel.getResource().save(Collections.emptyMap());
 			outModel.getResource().save(Collections.emptyMap());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

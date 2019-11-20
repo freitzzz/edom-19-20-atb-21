@@ -13,7 +13,7 @@ import requirements.dsl.ui.AbstractRDSLUiModule;
 @FinalFieldsConstructor
 @SuppressWarnings("all")
 public class RDSLUiModule extends AbstractRDSLUiModule {
-  public RDSLUiModule(final AbstractUIPlugin plugin) {
-    super(plugin);
+  public RDSLUiModule(final AbstractUIPlugin arg0) {
+    super(arg0);
   }
 }

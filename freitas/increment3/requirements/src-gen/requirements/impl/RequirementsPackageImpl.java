@@ -212,6 +212,16 @@ public class RequirementsPackageImpl extends EPackageImpl implements Requirement
 	 * @generated
 	 */
 	@Override
+	public EAttribute getRequirement_Name() {
+		return (EAttribute) requirementEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EReference getRequirement_Children() {
 		return (EReference) requirementEClass.getEStructuralFeatures().get(12);
 	}
@@ -224,16 +234,6 @@ public class RequirementsPackageImpl extends EPackageImpl implements Requirement
 	@Override
 	public EReference getRequirement_Parent() {
 		return (EReference) requirementEClass.getEStructuralFeatures().get(13);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getRequirement_Title() {
-		return (EAttribute) requirementEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -590,7 +590,7 @@ public class RequirementsPackageImpl extends EPackageImpl implements Requirement
 		createEReference(requirementEClass, REQUIREMENT__VERSION);
 		createEReference(requirementEClass, REQUIREMENT__COMMENTS);
 		createEReference(requirementEClass, REQUIREMENT__DEPENDENCIES);
-		createEAttribute(requirementEClass, REQUIREMENT__TITLE);
+		createEAttribute(requirementEClass, REQUIREMENT__NAME);
 		createEAttribute(requirementEClass, REQUIREMENT__DESCRIPTION);
 		createEAttribute(requirementEClass, REQUIREMENT__TYPE);
 		createEAttribute(requirementEClass, REQUIREMENT__PRIORITY);
@@ -675,7 +675,7 @@ public class RequirementsPackageImpl extends EPackageImpl implements Requirement
 		initEReference(getRequirement_Dependencies(), this.getRequirement(), null, "dependencies", null, 0, -1,
 				Requirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRequirement_Title(), ecorePackage.getEString(), "title", null, 0, 1, Requirement.class,
+		initEAttribute(getRequirement_Name(), ecorePackage.getEString(), "name", null, 0, 1, Requirement.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRequirement_Description(), ecorePackage.getEString(), "description", null, 0, 1,
 				Requirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,

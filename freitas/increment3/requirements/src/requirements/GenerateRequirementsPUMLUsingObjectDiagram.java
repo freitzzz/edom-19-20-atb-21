@@ -132,7 +132,7 @@ public class GenerateRequirementsPUMLUsingObjectDiagram {
 			
 			for(Requirement r: requirements) {
 				
-				builder.append("obj").append(groupName.hashCode()).append(" .. ").append("obj").append(("(R) " + r.getTitle()).hashCode()).append('\n');
+				builder.append("obj").append(groupName.hashCode()).append(" .. ").append("obj").append(("(R) " + r.getName()).hashCode()).append('\n');
 				
 			}
 			
@@ -165,7 +165,7 @@ public class GenerateRequirementsPUMLUsingObjectDiagram {
 		
 		Version version = requirement.getVersion();
 		
-		String requirementTitle = "(R) " + requirement.getTitle();
+		String requirementTitle = "(R) " + requirement.getName();
 
 		if(version == null) {
 			
@@ -210,7 +210,7 @@ public class GenerateRequirementsPUMLUsingObjectDiagram {
 			
 			for(Requirement r: subRequirements) {
 				
-				builder.append(quoteString(requirementTitle)).append(" .. ").append(quoteString("(R) " + r.getTitle())).append('\n');
+				builder.append(quoteString(requirementTitle)).append(" .. ").append(quoteString("(R) " + r.getName())).append('\n');
 				
 			}
 			
@@ -228,7 +228,7 @@ public class GenerateRequirementsPUMLUsingObjectDiagram {
 			
 			for(Requirement r: dependencies) {
 				
-				builder.append("obj").append(requirementTitle.hashCode()).append(" .. ").append("obj").append(("(R) " + r.getTitle()).hashCode()).append('\n');
+				builder.append("obj").append(requirementTitle.hashCode()).append(" .. ").append("obj").append(("(R) " + r.getName()).hashCode()).append('\n');
 				
 			}
 			

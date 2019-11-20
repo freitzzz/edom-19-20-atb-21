@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link requirements.Requirement#getVersion <em>Version</em>}</li>
  *   <li>{@link requirements.Requirement#getComments <em>Comments</em>}</li>
  *   <li>{@link requirements.Requirement#getDependencies <em>Dependencies</em>}</li>
- *   <li>{@link requirements.Requirement#getTitle <em>Title</em>}</li>
+ *   <li>{@link requirements.Requirement#getName <em>Name</em>}</li>
  *   <li>{@link requirements.Requirement#getDescription <em>Description</em>}</li>
  *   <li>{@link requirements.Requirement#getType <em>Type</em>}</li>
  *   <li>{@link requirements.Requirement#getPriority <em>Priority</em>}</li>
@@ -86,6 +86,28 @@ public interface Requirement extends EObject {
 	EList<Requirement> getDependencies();
 
 	/**
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Name</em>' attribute.
+	 * @see #setName(String)
+	 * @see requirements.RequirementsPackage#getRequirement_Name()
+	 * @model
+	 * @generated
+	 */
+	String getName();
+
+	/**
+	 * Sets the value of the '{@link requirements.Requirement#getName <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * @see #getName()
+	 * @generated
+	 */
+	void setName(String value);
+
+	/**
 	 * Returns the value of the '<em><b>Children</b></em>' containment reference list.
 	 * The list contents are of type {@link requirements.Requirement}.
 	 * It is bidirectional and its opposite is '{@link requirements.Requirement#getParent <em>Parent</em>}'.
@@ -122,28 +144,6 @@ public interface Requirement extends EObject {
 	 * @generated
 	 */
 	void setParent(Requirement value);
-
-	/**
-	 * Returns the value of the '<em><b>Title</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Title</em>' attribute.
-	 * @see #setTitle(String)
-	 * @see requirements.RequirementsPackage#getRequirement_Title()
-	 * @model
-	 * @generated
-	 */
-	String getTitle();
-
-	/**
-	 * Sets the value of the '{@link requirements.Requirement#getTitle <em>Title</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Title</em>' attribute.
-	 * @see #getTitle()
-	 * @generated
-	 */
-	void setTitle(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Description</b></em>' attribute.

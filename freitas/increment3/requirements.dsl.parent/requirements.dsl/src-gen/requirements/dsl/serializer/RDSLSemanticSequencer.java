@@ -104,7 +104,7 @@ public class RDSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *
 	 * Constraint:
 	 *     (
-	 *         title=EString? 
+	 *         name=EString 
 	 *         description=EString? 
 	 *         type=Type? 
 	 *         priority=Priority? 
@@ -113,7 +113,7 @@ public class RDSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *         id=EString? 
 	 *         state=State? 
 	 *         resolution=Resolution? 
-	 *         (dependencies+=Requirement dependencies+=Requirement*)? 
+	 *         (dependencies+=[Requirement|EString] dependencies+=[Requirement|EString]*)? 
 	 *         version=Version 
 	 *         (comments+=Comment comments+=Comment*)? 
 	 *         (children+=Requirement children+=Requirement*)?

@@ -97,13 +97,13 @@ public interface RequirementsPackage extends EPackage {
 	int REQUIREMENT__DEPENDENCIES = 2;
 
 	/**
-	 * The feature id for the '<em><b>Title</b></em>' attribute.
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REQUIREMENT__TITLE = 3;
+	int REQUIREMENT__NAME = 3;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -553,6 +553,17 @@ public interface RequirementsPackage extends EPackage {
 	EReference getRequirement_Dependencies();
 
 	/**
+	 * Returns the meta object for the attribute '{@link requirements.Requirement#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see requirements.Requirement#getName()
+	 * @see #getRequirement()
+	 * @generated
+	 */
+	EAttribute getRequirement_Name();
+
+	/**
 	 * Returns the meta object for the containment reference list '{@link requirements.Requirement#getChildren <em>Children</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -573,17 +584,6 @@ public interface RequirementsPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getRequirement_Parent();
-
-	/**
-	 * Returns the meta object for the attribute '{@link requirements.Requirement#getTitle <em>Title</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Title</em>'.
-	 * @see requirements.Requirement#getTitle()
-	 * @see #getRequirement()
-	 * @generated
-	 */
-	EAttribute getRequirement_Title();
 
 	/**
 	 * Returns the meta object for the attribute '{@link requirements.Requirement#getDescription <em>Description</em>}'.
@@ -987,6 +987,14 @@ public interface RequirementsPackage extends EPackage {
 		EReference REQUIREMENT__DEPENDENCIES = eINSTANCE.getRequirement_Dependencies();
 
 		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REQUIREMENT__NAME = eINSTANCE.getRequirement_Name();
+
+		/**
 		 * The meta object literal for the '<em><b>Children</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1001,14 +1009,6 @@ public interface RequirementsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference REQUIREMENT__PARENT = eINSTANCE.getRequirement_Parent();
-
-		/**
-		 * The meta object literal for the '<em><b>Title</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute REQUIREMENT__TITLE = eINSTANCE.getRequirement_Title();
 
 		/**
 		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.

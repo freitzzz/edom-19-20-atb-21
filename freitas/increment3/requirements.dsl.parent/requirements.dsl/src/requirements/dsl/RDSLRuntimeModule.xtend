@@ -18,12 +18,4 @@ class RDSLRuntimeModule extends AbstractRDSLRuntimeModule {
 		return RDSLValueConverter
 	}
 
-	override bindIScopeProvider() {
-		return RDSLScopeProvider;
-	}
-	
-	override configureSerializerIScopeProvider(Binder binder) {
-		 binder.bind(org.eclipse.xtext.scoping.IScopeProvider).annotatedWith(org.eclipse.xtext.serializer.tokens.SerializerScopeProviderBinding).to(RDSLScopeProvider);
-	}
-
 }

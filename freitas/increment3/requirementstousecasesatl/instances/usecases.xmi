@@ -2,6 +2,8 @@
 <usecases:UseCaseModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:usecases="http://www.example.org/usecases">
   <actor name="Adminstrator"/>
   <actor name="Kitchen Worker"/>
+  <actor name="Chef"/>
+  <actor name="Kitchen Worker Chief"/>
   <association name="Kitchen Worker_Save Meal" actor="//@actor.1" usecase="//@usecase.2"/>
   <association name="Kitchen Worker_Show Meal Designation" actor="//@actor.1" usecase="//@usecase.3"/>
   <association name="Kitchen Worker_Show Meal Nutritional Data" actor="//@actor.1" usecase="//@usecase.4"/>
@@ -11,15 +13,19 @@
   <association name="Kitchen Worker_List Meal Ingreditens" actor="//@actor.1" usecase="//@usecase.8"/>
   <association name="Kitchen Worker_List Meal Allergens" actor="//@actor.1" usecase="//@usecase.9"/>
   <association name="Kitchen Worker_Check Meal Availability" actor="//@actor.1" usecase="//@usecase.10"/>
-  <association name="Kitchen Worker_Save Unserved Meal" actor="//@actor.1" usecase="//@usecase.12"/>
-  <association name="Kitchen Worker_Show Unserved Meal Identification Number" actor="//@actor.1" usecase="//@usecase.13"/>
-  <association name="Kitchen Worker_Show Unserved Meal Designation" actor="//@actor.1" usecase="//@usecase.14"/>
-  <association name="Kitchen Worker_Show Unserved Meal Production Date" actor="//@actor.1" usecase="//@usecase.15"/>
-  <association name="Kitchen Worker_Show Unserved Meal Expiration Date" actor="//@actor.1" usecase="//@usecase.16"/>
-  <association name="Kitchen Worker_Show Unserved Meal State" actor="//@actor.1" usecase="//@usecase.17"/>
+  <association name="Chef_Check Meal Availability" actor="//@actor.2" usecase="//@usecase.10"/>
+  <association name="Chef_List Meal Allergens" actor="//@actor.2" usecase="//@usecase.9"/>
+  <association name="Kitchen Worker Chief_List Meal Ingreditens" actor="//@actor.3" usecase="//@usecase.8"/>
+  <association name="Kitchen Worker Chief_List All Meals" actor="//@actor.3" usecase="//@usecase.12"/>
+  <association name="Kitchen Worker_Save Unserved Meal" actor="//@actor.1" usecase="//@usecase.13"/>
+  <association name="Kitchen Worker_Show Unserved Meal Identification Number" actor="//@actor.1" usecase="//@usecase.14"/>
+  <association name="Kitchen Worker_Show Unserved Meal Designation" actor="//@actor.1" usecase="//@usecase.15"/>
+  <association name="Kitchen Worker_Show Unserved Meal Production Date" actor="//@actor.1" usecase="//@usecase.16"/>
+  <association name="Kitchen Worker_Show Unserved Meal Expiration Date" actor="//@actor.1" usecase="//@usecase.17"/>
+  <association name="Kitchen Worker_Show Unserved Meal State" actor="//@actor.1" usecase="//@usecase.18"/>
   <association name="Kitchen Worker_Add Meal Ingredients" actor="//@actor.1" usecase="//@usecase.0"/>
   <association name="Kitchen Worker_Add Meal Allergens" actor="//@actor.1" usecase="//@usecase.1"/>
-  <association name="Adminstrator_Remove Item from Inventory" actor="//@actor.0" usecase="//@usecase.18"/>
+  <association name="Adminstrator_Remove Item from Inventory" actor="//@actor.0" usecase="//@usecase.19"/>
   <usecase name="Add Meal Ingredients"/>
   <usecase name="Add Meal Allergens"/>
   <usecase name="Save Meal"/>
@@ -32,6 +38,7 @@
   <usecase name="List Meal Allergens"/>
   <usecase name="Check Meal Availability"/>
   <usecase name="Pay Meal"/>
+  <usecase name="List All Meals"/>
   <usecase name="Save Unserved Meal"/>
   <usecase name="Show Unserved Meal Identification Number"/>
   <usecase name="Show Unserved Meal Designation"/>
@@ -39,16 +46,4 @@
   <usecase name="Show Unserved Meal Expiration Date"/>
   <usecase name="Show Unserved Meal State"/>
   <usecase name="Remove Item from Inventory"/>
-  <usecase name="Use Case Without Comment with Use Case Without Comment Dependency">
-    <include name="Use Case Without Comment with Use Case Without Comment Dependency_Save Meal" usecase="//@usecase.2"/>
-  </usecase>
-  <usecase name="Use Case With Comment with Use Case Without Comment Dependency">
-    <include name="Use Case With Comment with Use Case Without Comment Dependency_Show Meal Designation" usecase="//@usecase.3"/>
-  </usecase>
-  <usecase name="Use Case Without Comment with Use Case With Comment Dependency">
-    <include name="Use Case Without Comment with Use Case With Comment Dependency_Add Meal Ingredients" usecase="//@usecase.0"/>
-  </usecase>
-  <usecase name="Use Case With Comment with Use Case With Comment Dependency">
-    <include name="Use Case With Comment with Use Case With Comment Dependency_Add Meal Allergens" usecase="//@usecase.1"/>
-  </usecase>
 </usecases:UseCaseModel>

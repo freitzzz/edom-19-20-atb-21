@@ -68,6 +68,25 @@
         <version service="1"/>
         <comments subject="Actor"/>
       </requirements>
+      <requirements dependencies="//@groups.0/@children.0/@requirements.8" name="Chef" author="EDOM" created="2019-11-04T00:00:00.000+0000" id="0">
+        <version service="1"/>
+        <comments subject="Actor"/>
+      </requirements>
+      <requirements dependencies="//@groups.0/@children.0/@requirements.7" name="Chef" author="EDOM" created="2019-11-04T00:00:00.000+0000" id="0">
+        <version service="1"/>
+        <comments subject="Actor"/>
+      </requirements>
+      <requirements dependencies="//@groups.0/@children.0/@requirements.6" name="Kitchen Worker Chief" author="EDOM" created="2019-11-04T00:00:00.000+0000" id="0">
+        <version service="1"/>
+        <comments subject="Actor"/>
+      </requirements>
+      <requirements name="List All Meals" description="The software should be able handle a meal payment. The type of user that is paying for the meal should be recorded. It should not be possible to pay for an unavailable meal or a meal that is unavailable at the payment location." author="EDOM" created="2019-11-04T00:00:00.000+0000" id="0">
+        <version service="1"/>
+      </requirements>
+      <requirements dependencies="//@groups.0/@children.0/@requirements.22" name="Kitchen Worker Chief" author="EDOM" created="2019-11-04T00:00:00.000+0000" id="0">
+        <version service="1"/>
+        <comments subject="Actor"/>
+      </requirements>
     </children>
     <children name="Manage Unserved Meals" description="Details functionalities regarding unserved meals management." id="3">
       <requirements name="Save Unserved Meal" description="The software should be able to save an unserved meal that will be packaged in the latter. It is identified by an identification number, has a production and expiration date and a designation of the meal. An unserved meal also has a state, and once saved its state is set to frozen." author="EDOM" created="2019-11-04T00:00:00.000+0000" id="0">
@@ -133,20 +152,6 @@
         <comments subject="Actor"/>
       </requirements>
       <requirements dependencies="//@groups.0/@children.1/@requirements.8" name="Remove Item from Inventory" author="EDOM" created="2019-11-04T00:00:00.000+0000" id="0">
-        <version service="1"/>
-        <comments subject="UseCase"/>
-      </requirements>
-      <requirements dependencies="//@groups.0/@children.0/@requirements.0" name="Use Case Without Comment with Use Case Without Comment Dependency" author="EDOM" created="2019-11-04T00:00:00.000+0000" id="0">
-        <version service="1"/>
-      </requirements>
-      <requirements dependencies="//@groups.0/@children.0/@requirements.1" name="Use Case With Comment with Use Case Without Comment Dependency" author="EDOM" created="2019-11-04T00:00:00.000+0000" id="0">
-        <version service="1"/>
-        <comments subject="UseCase"/>
-      </requirements>
-      <requirements dependencies="//@groups.0/@children.1/@requirements.6" name="Use Case Without Comment with Use Case With Comment Dependency" author="EDOM" created="2019-11-04T00:00:00.000+0000" id="0">
-        <version service="1"/>
-      </requirements>
-      <requirements dependencies="//@groups.0/@children.1/@requirements.7" name="Use Case With Comment with Use Case With Comment Dependency" author="EDOM" created="2019-11-04T00:00:00.000+0000" id="0">
         <version service="1"/>
         <comments subject="UseCase"/>
       </requirements>

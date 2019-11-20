@@ -10,26 +10,26 @@ Model {
 					id '2'
 					requirements {
 						Requirement 'Save Meal' {
-									description 'The software should be able to save a meal that is served to students and non students. A meal is identified by its designation, has a type, nutritional data, list of ingredients, can also contain allergens, has a cost-price and is available at a specific location. Once a meal is saved it is only available for the next 24 hours in the specified location.'
-									author 'EDOM'
-									created '2019-11-04'
-									id '0'
-									version Version {
-												major 0
-												minor 0
-												service 1
-									}
+								description 'The software should be able to save a meal that is served to students and non students. A meal is identified by its designation, has a type, nutritional data, list of ingredients, can also contain allergens, has a cost-price and is available at a specific location. Once a meal is saved it is only available for the next 24 hours in the specified location.'
+								author 'EDOM'
+								created '2019-11-04'
+								id '0'
+								version Version {
+										major 0
+										minor 0
+										service 1
+								}
 						}
 						, Requirement 'Show Meal Designation' {
-									description 'The software should be able to show a meal designation.'
-									author 'EDOM'
-									created '2019-11-04'
-									id '0'
-									version Version {
-												major 0
-												minor 0
-												service 1
-									}
+								description 'The software should be able to show a meal designation.'
+								author 'EDOM'
+								created '2019-11-04'
+								id '0'
+								version Version {
+										major 0
+										minor 0
+										service 1
+								}
 						}
 						, Requirement 'Show Meal Nutritional Data' {
 								description 'The software should be able to show a meal nutritional data.'
@@ -76,37 +76,37 @@ Model {
 								}
 						}
 						, Requirement 'List Meal Ingreditens' {
-								description 'The software should be able to list the ingredients of a meal.'
-								author 'EDOM'
-								created '2019-11-04'
-								id '0'
-								version Version {
-										major 0
-										minor 0
-										service 1
-								}
+									description 'The software should be able to list the ingredients of a meal.'
+									author 'EDOM'
+									created '2019-11-04'
+									id '0'
+									version Version {
+												major 0
+												minor 0
+												service 1
+									}
 						}
 						, Requirement 'List Meal Allergens' {
-								description 'The software should be able to list the allergens of a meal if existent.'
-								author 'EDOM'
-								created '2019-11-04'
-								id '0'
-								version Version {
-										major 0
-										minor 0
-										service 1
-								}
+									description 'The software should be able to list the allergens of a meal if existent.'
+									author 'EDOM'
+									created '2019-11-04'
+									id '0'
+									version Version {
+												major 0
+												minor 0
+												service 1
+									}
 						}
 						, Requirement 'Check Meal Availability' {
-								description 'The software should be able to check if a meal is available. A meal is only available in a period of 24 hours and at a specific location.'
-								author 'EDOM'
-								created '2019-11-04'
-								id '0'
-								version Version {
-										major 0
-										minor 0
-										service 1
-								}
+									description 'The software should be able to check if a meal is available. A meal is only available in a period of 24 hours and at a specific location.'
+									author 'EDOM'
+									created '2019-11-04'
+									id '0'
+									version Version {
+												major 0
+												minor 0
+												service 1
+									}
 						}
 						, Requirement 'Pay Meal' {
 							description 'The software should be able handle a meal payment. The type of user that is paying for the meal should be recorded. It should not be possible to pay for an unavailable meal or a meal that is unavailable at the payment location.'
@@ -281,6 +281,89 @@ Model {
 								}
 							}
 						}
+						, Requirement 'Chef' {
+							author 'EDOM'
+							created '2019-11-04'
+							id '0'
+							dependencies (
+								'Check Meal Availability'
+							)
+							version Version {
+								major 0
+								minor 0
+								service 1
+							}
+							comments {
+								Comment {
+									subject 'Actor'
+								}
+							}
+						}
+						, Requirement 'Chef' {
+							author 'EDOM'
+							created '2019-11-04'
+							id '0'
+							dependencies (
+								'List Meal Allergens'
+							)
+							version Version {
+								major 0
+								minor 0
+								service 1
+							}
+							comments {
+								Comment {
+									subject 'Actor'
+								}
+							}
+						}
+						, Requirement 'Kitchen Worker Chief' {
+							author 'EDOM'
+							created '2019-11-04'
+							id '0'
+							dependencies (
+								'List Meal Ingreditens'
+							)
+							version Version {
+								major 0
+								minor 0
+								service 1
+							}
+							comments {
+								Comment {
+									subject 'Actor'
+								}
+							}
+						}
+						, Requirement 'List All Meals' {
+								description 'The software should be able handle a meal payment. The type of user that is paying for the meal should be recorded. It should not be possible to pay for an unavailable meal or a meal that is unavailable at the payment location.'
+								author 'EDOM'
+								created '2019-11-04'
+								id '0'
+								version Version {
+										major 0
+										minor 0
+										service 1
+								}
+						}
+						, Requirement 'Kitchen Worker Chief' {
+							author 'EDOM'
+							created '2019-11-04'
+							id '0'
+							dependencies (
+								'List All Meals'
+							)
+							version Version {
+								major 0
+								minor 0
+								service 1
+							}
+							comments {
+								Comment {
+									subject 'Actor'
+								}
+							}
+						}
 					}
 				}
 				, RequirementGroup 'Manage Unserved Meals' {
@@ -354,34 +437,34 @@ Model {
 								}
 						}
 						, Requirement 'Add Meal Ingredients' {
-									author 'EDOM'
-									created '2019-11-04'
-									id '0'
-									version Version {
-												major 0
-												minor 0
-												service 1
-									}
-									comments {
-												Comment {
-															subject 'UseCase'
-												}
-									}
+								author 'EDOM'
+								created '2019-11-04'
+								id '0'
+								version Version {
+										major 0
+										minor 0
+										service 1
+								}
+								comments {
+										Comment {
+												subject 'UseCase'
+										}
+								}
 						}
 						, Requirement 'Add Meal Allergens' {
-									author 'EDOM'
-									created '2019-11-04'
-									id '0'
-									version Version {
-												major 0
-												minor 0
-												service 1
-									}
-									comments {
-												Comment {
-															subject 'UseCase'
-												}
-									}
+								author 'EDOM'
+								created '2019-11-04'
+								id '0'
+								version Version {
+										major 0
+										minor 0
+										service 1
+								}
+								comments {
+										Comment {
+												subject 'UseCase'
+										}
+								}
 						}
 						, Requirement 'Adminstrator' {
 								author 'EDOM'
@@ -548,68 +631,6 @@ Model {
 							id '0'
 							dependencies (
 								'Adminstrator'
-							)
-							version Version {
-								major 0
-								minor 0
-								service 1
-							}
-							comments {
-								Comment {
-									subject 'UseCase'
-								}
-							}
-						}
-						, Requirement 'Use Case Without Comment with Use Case Without Comment Dependency' {
-							author 'EDOM'
-							created '2019-11-04'
-							id '0'
-							dependencies (
-								'Manage Meals.Save Meal'
-							)
-							version Version {
-								major 0
-								minor 0
-								service 1
-							}
-						}
-						, Requirement 'Use Case With Comment with Use Case Without Comment Dependency' {
-							author 'EDOM'
-							created '2019-11-04'
-							id '0'
-							dependencies (
-								'Manage Meals.Show Meal Designation'
-							)
-							version Version {
-								major 0
-								minor 0
-								service 1
-							}
-							comments {
-								Comment {
-									subject 'UseCase'
-								}
-							}
-						}
-						, Requirement 'Use Case Without Comment with Use Case With Comment Dependency' {
-							author 'EDOM'
-							created '2019-11-04'
-							id '0'
-							dependencies (
-								'Add Meal Ingredients'
-							)
-							version Version {
-								major 0
-								minor 0
-								service 1
-							}
-						}
-						, Requirement 'Use Case With Comment with Use Case With Comment Dependency' {
-							author 'EDOM'
-							created '2019-11-04'
-							id '0'
-							dependencies (
-								'Add Meal Allergens'
 							)
 							version Version {
 								major 0

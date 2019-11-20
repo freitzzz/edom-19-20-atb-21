@@ -1,138 +1,634 @@
 Model {
-	title 'Gorgeous Food Application' groups { RequirementGroup 'Functional Requirements' {
-		description 'This group details GFA functional requirements.' id '0' children { RequirementGroup 'Manage Meals' {
-			description 'Details functionalities regarding meals management.' id '2' requirements { Requirement 'Save Meal' {
-						description 'The software should be able to save a meal that is served to students and non students. A meal is identified by its designation, has a type, nutritional data, list of ingredients, can also contain allergens, has a cost-price and is available at a specific location. Once a meal is saved it is only available for the next 24 hours in the specified location.' author 'EDOM' created '2019-11-04' id '0' version Version { major 0 minor 0 service 1 } }
-			, Requirement 'Show Meal Designation' {
-						description 'The software should be able to show a meal designation.' author 'EDOM' created '2019-11-04' id '0' version Version { major 0 minor 0 service 1 } }
-			, Requirement 'Show Meal Nutritional Data' {
-					description 'The software should be able to show a meal nutritional data.' author 'EDOM' created '2019-11-04' id '0' version Version { major 0 minor 0 service 1 } }
-			, Requirement 'Show Meal Type' {
-					description 'The software should be able to show a meal type.' author 'EDOM' created '2019-11-04' id '0' version Version { major 0 minor 0 service 1 } }
-			, Requirement 'Show Meal Location' {
-					description 'The software should be able to show the location in which a meal is available.' author 'EDOM' created '2019-11-04' id '0' version Version { major 0 minor 0 service 1 } }
-			, Requirement 'Show Meal Price' {
-					description 'The software should be able to show the price of a meal.' author 'EDOM' created '2019-11-04' id '0' version Version { major 0 minor 0 service 1 } }
-			, Requirement 'List Meal Ingreditens' {
-					description 'The software should be able to list the ingredients of a meal.' author 'EDOM' created '2019-11-04' id '0' version Version { major 0 minor 0 service 1 } }
-			, Requirement 'List Meal Allergens' {
-					description 'The software should be able to list the allergens of a meal if existent.' author 'EDOM' created '2019-11-04' id '0' version Version { major 0 minor 0 service 1 } }
-			, Requirement 'Check Meal Availability' {
-					description 'The software should be able to check if a meal is available. A meal is only available in a period of 24 hours and at a specific location.' author 'EDOM' created '2019-11-04' id '0' version Version { major 0 minor 0 service 1 } }
-			, Requirement 'Pay Meal' {
-				description 'The software should be able handle a meal payment. The type of user that is paying for the meal should be recorded. It should not be possible to pay for an unavailable meal or a meal that is unavailable at the payment location.' author 'EDOM' created '2019-11-04' id '0' version Version { major 0 minor 0 service 1 } }
-			, Requirement 'Kitchen Worker' {
-				author 'EDOM' created '2019-11-04' id '0' dependencies ( 'Save Meal' ) version Version { major 0 minor 0 service 1 } comments { Comment {
-					subject 'Actor' }
-			} }
-			, Requirement 'Kitchen Worker' {
-				author 'EDOM' created '2019-11-04' id '0' dependencies ( 'Show Meal Designation' ) version Version { major 0 minor 0 service 1 } comments { Comment {
-					subject 'Actor' }
-			} }
-			, Requirement 'Kitchen Worker' {
-				author 'EDOM' created '2019-11-04' id '0' dependencies ( 'Show Meal Nutritional Data' ) version Version { major 0 minor 0 service 1 } comments { Comment {
-					subject 'Actor' }
-			} }
-			, Requirement 'Kitchen Worker' {
-				author 'EDOM' created '2019-11-04' id '0' dependencies ( 'Show Meal Type' ) version Version { major 0 minor 0 service 1 } comments { Comment {
-					subject 'Actor' }
-			} }
-			, Requirement 'Kitchen Worker' {
-				author 'EDOM' created '2019-11-04' id '0' dependencies ( 'Show Meal Location' ) version Version { major 0 minor 0 service 1 } comments { Comment {
-					subject 'Actor' }
-			} }
-			, Requirement 'Kitchen Worker' {
-				author 'EDOM' created '2019-11-04' id '0' dependencies ( 'Show Meal Price' ) version Version { major 0 minor 0 service 1 } comments { Comment {
-					subject 'Actor' }
-			} }
-			, Requirement 'Kitchen Worker' {
-				author 'EDOM' created '2019-11-04' id '0' dependencies ( 'List Meal Ingreditens' ) version Version { major 0 minor 0 service 1 } comments { Comment {
-					subject 'Actor' }
-			} }
-			, Requirement 'Kitchen Worker' {
-				author 'EDOM' created '2019-11-04' id '0' dependencies ( 'List Meal Allergens' ) version Version { major 0 minor 0 service 1 } comments { Comment {
-					subject 'Actor' }
-			} }
-			, Requirement 'Kitchen Worker' {
-				author 'EDOM' created '2019-11-04' id '0' dependencies ( 'Check Meal Availability' ) version Version { major 0 minor 0 service 1 } comments { Comment {
-					subject 'Actor' }
-			} }
-		} }
-		, RequirementGroup 'Manage Unserved Meals' {
-			description 'Details functionalities regarding unserved meals management.' id '3' requirements { Requirement 'Save Unserved Meal' {
-					description 'The software should be able to save an unserved meal that will be packaged in the latter. It is identified by an identification number, has a production and expiration date and a designation of the meal. An unserved meal also has a state, and once saved its state is set to frozen.' author 'EDOM' created '2019-11-04' id '0' version Version { major 0 minor 0 service 1 } }
-			, Requirement 'Show Unserved Meal Identification Number' {
-					description 'The software should be able to show an unserved meal identification number.' author 'EDOM' created '2019-11-04' id '0' version Version { major 0 minor 0 service 1 } }
-			, Requirement 'Show Unserved Meal Designation' {
-					description 'The software should be able to show an unserved meal designation.' author 'EDOM' created '2019-11-04' id '0' version Version { major 0 minor 0 service 1 } }
-			, Requirement 'Show Unserved Meal Production Date' {
-					description 'The software should be able to show an unserved meal production date.' author 'EDOM' created '2019-11-04' id '0' version Version { major 0 minor 0 service 1 } }
-			, Requirement 'Show Unserved Meal Expiration Date' {
-					description 'The software should be able to show an unserved meal expiration date.' author 'EDOM' created '2019-11-04' id '0' version Version { major 0 minor 0 service 1 } }
-			, Requirement 'Show Unserved Meal State' {
-					description 'The software should be able to show an unserved meal state.' author 'EDOM' created '2019-11-04' id '0' version Version { major 0 minor 0 service 1 } }
-			, Requirement 'Add Meal Ingredients' {
-						author 'EDOM' created '2019-11-04' id '0' version Version { major 0 minor 0 service 1 } comments { Comment {
-									subject 'UseCase' }
-			} }
-			, Requirement 'Add Meal Allergens' {
-						author 'EDOM' created '2019-11-04' id '0' version Version { major 0 minor 0 service 1 } comments { Comment {
-									subject 'UseCase' }
-			} }
-			, Requirement 'Adminstrator' {
-					author 'EDOM' created '2019-11-04' id '0' version Version { major 0 minor 0 service 1 } comments { Comment {
-							subject 'Actor' }
-			} }
-			, Requirement 'Kitchen Worker' {
-				author 'EDOM' created '2019-11-04' id '0' dependencies ( 'Save Unserved Meal' ) version Version { major 0 minor 0 service 1 } comments { Comment {
-					subject 'Actor' }
-			} }
-			, Requirement 'Kitchen Worker' {
-				author 'EDOM' created '2019-11-04' id '0' dependencies ( 'Show Unserved Meal Identification Number' ) version Version { major 0 minor 0 service 1 } comments { Comment {
-					subject 'Actor' }
-			} }
-			, Requirement 'Kitchen Worker' {
-				author 'EDOM' created '2019-11-04' id '0' dependencies ( 'Show Unserved Meal Designation' ) version Version { major 0 minor 0 service 1 } comments { Comment {
-					subject 'Actor' }
-			} }
-			, Requirement 'Kitchen Worker' {
-				author 'EDOM' created '2019-11-04' id '0' dependencies ( 'Show Unserved Meal Production Date' ) version Version { major 0 minor 0 service 1 } comments { Comment {
-					subject 'Actor' }
-			} }
-			, Requirement 'Kitchen Worker' {
-				author 'EDOM' created '2019-11-04' id '0' dependencies ( 'Show Unserved Meal Expiration Date' ) version Version { major 0 minor 0 service 1 } comments { Comment {
-					subject 'Actor' }
-			} }
-			, Requirement 'Kitchen Worker' {
-				author 'EDOM' created '2019-11-04' id '0' dependencies ( 'Show Unserved Meal State' ) version Version { major 0 minor 0 service 1 } comments { Comment {
-					subject 'Actor' }
-			} }
-			, Requirement 'Kitchen Worker' {
-				author 'EDOM' created '2019-11-04' id '0' dependencies ( 'Add Meal Ingredients' ) version Version { major 0 minor 0 service 1 } comments { Comment {
-					subject 'Actor' }
-			} }
-			, Requirement 'Kitchen Worker' {
-				author 'EDOM' created '2019-11-04' id '0' dependencies ( 'Add Meal Allergens' ) version Version { major 0 minor 0 service 1 } comments { Comment {
-					subject 'Actor' }
-			} }
-			, Requirement 'Remove Item from Inventory' {
-				author 'EDOM' created '2019-11-04' id '0' dependencies ( 'Adminstrator' ) version Version { major 0 minor 0 service 1 } comments { Comment {
-					subject 'UseCase' }
-			} }
-			, Requirement 'Use Case Without Comment with Use Case Without Comment Dependency' {
-				author 'EDOM' created '2019-11-04' id '0' dependencies ( 'Manage Meals.Save Meal' ) version Version { major 0 minor 0 service 1 } }
-			, Requirement 'Use Case With Comment with Use Case Without Comment Dependency' {
-				author 'EDOM' created '2019-11-04' id '0' dependencies ( 'Manage Meals.Show Meal Designation' ) version Version { major 0 minor 0 service 1 } comments { Comment {
-					subject 'UseCase' }
-			} }
-			, Requirement 'Use Case Without Comment with Use Case With Comment Dependency' {
-				author 'EDOM' created '2019-11-04' id '0' dependencies ( 'Add Meal Ingredients' ) version Version { major 0 minor 0 service 1 } }
-			, Requirement 'Use Case With Comment with Use Case With Comment Dependency' {
-				author 'EDOM' created '2019-11-04' id '0' dependencies ( 'Add Meal Allergens' ) version Version { major 0 minor 0 service 1 } comments { Comment {
-					subject 'UseCase' }
-			} }
-		} }
-	} }
-	, RequirementGroup 'Quality Attributes' {
-		description 'This group details GFA quality attributes.' id '1' }
-} }
+	title 'Gorgeous Food Application'
+	groups {
+		RequirementGroup 'Functional Requirements' {
+			description 'This group details GFA functional requirements.'
+			id '0'
+			children {
+				RequirementGroup 'Manage Meals' {
+					description 'Details functionalities regarding meals management.'
+					id '2'
+					requirements {
+						Requirement 'Save Meal' {
+									description 'The software should be able to save a meal that is served to students and non students. A meal is identified by its designation, has a type, nutritional data, list of ingredients, can also contain allergens, has a cost-price and is available at a specific location. Once a meal is saved it is only available for the next 24 hours in the specified location.'
+									author 'EDOM'
+									created '2019-11-04'
+									id '0'
+									version Version {
+												major 0
+												minor 0
+												service 1
+									}
+						}
+						, Requirement 'Show Meal Designation' {
+									description 'The software should be able to show a meal designation.'
+									author 'EDOM'
+									created '2019-11-04'
+									id '0'
+									version Version {
+												major 0
+												minor 0
+												service 1
+									}
+						}
+						, Requirement 'Show Meal Nutritional Data' {
+								description 'The software should be able to show a meal nutritional data.'
+								author 'EDOM'
+								created '2019-11-04'
+								id '0'
+								version Version {
+										major 0
+										minor 0
+										service 1
+								}
+						}
+						, Requirement 'Show Meal Type' {
+								description 'The software should be able to show a meal type.'
+								author 'EDOM'
+								created '2019-11-04'
+								id '0'
+								version Version {
+										major 0
+										minor 0
+										service 1
+								}
+						}
+						, Requirement 'Show Meal Location' {
+								description 'The software should be able to show the location in which a meal is available.'
+								author 'EDOM'
+								created '2019-11-04'
+								id '0'
+								version Version {
+										major 0
+										minor 0
+										service 1
+								}
+						}
+						, Requirement 'Show Meal Price' {
+								description 'The software should be able to show the price of a meal.'
+								author 'EDOM'
+								created '2019-11-04'
+								id '0'
+								version Version {
+										major 0
+										minor 0
+										service 1
+								}
+						}
+						, Requirement 'List Meal Ingreditens' {
+								description 'The software should be able to list the ingredients of a meal.'
+								author 'EDOM'
+								created '2019-11-04'
+								id '0'
+								version Version {
+										major 0
+										minor 0
+										service 1
+								}
+						}
+						, Requirement 'List Meal Allergens' {
+								description 'The software should be able to list the allergens of a meal if existent.'
+								author 'EDOM'
+								created '2019-11-04'
+								id '0'
+								version Version {
+										major 0
+										minor 0
+										service 1
+								}
+						}
+						, Requirement 'Check Meal Availability' {
+								description 'The software should be able to check if a meal is available. A meal is only available in a period of 24 hours and at a specific location.'
+								author 'EDOM'
+								created '2019-11-04'
+								id '0'
+								version Version {
+										major 0
+										minor 0
+										service 1
+								}
+						}
+						, Requirement 'Pay Meal' {
+							description 'The software should be able handle a meal payment. The type of user that is paying for the meal should be recorded. It should not be possible to pay for an unavailable meal or a meal that is unavailable at the payment location.'
+							author 'EDOM'
+							created '2019-11-04'
+							id '0'
+							version Version {
+								major 0
+								minor 0
+								service 1
+							}
+						}
+						, Requirement 'Kitchen Worker' {
+							author 'EDOM'
+							created '2019-11-04'
+							id '0'
+							dependencies (
+								'Save Meal'
+							)
+							version Version {
+								major 0
+								minor 0
+								service 1
+							}
+							comments {
+								Comment {
+									subject 'Actor'
+								}
+							}
+						}
+						, Requirement 'Kitchen Worker' {
+							author 'EDOM'
+							created '2019-11-04'
+							id '0'
+							dependencies (
+								'Show Meal Designation'
+							)
+							version Version {
+								major 0
+								minor 0
+								service 1
+							}
+							comments {
+								Comment {
+									subject 'Actor'
+								}
+							}
+						}
+						, Requirement 'Kitchen Worker' {
+							author 'EDOM'
+							created '2019-11-04'
+							id '0'
+							dependencies (
+								'Show Meal Nutritional Data'
+							)
+							version Version {
+								major 0
+								minor 0
+								service 1
+							}
+							comments {
+								Comment {
+									subject 'Actor'
+								}
+							}
+						}
+						, Requirement 'Kitchen Worker' {
+							author 'EDOM'
+							created '2019-11-04'
+							id '0'
+							dependencies (
+								'Show Meal Type'
+							)
+							version Version {
+								major 0
+								minor 0
+								service 1
+							}
+							comments {
+								Comment {
+									subject 'Actor'
+								}
+							}
+						}
+						, Requirement 'Kitchen Worker' {
+							author 'EDOM'
+							created '2019-11-04'
+							id '0'
+							dependencies (
+								'Show Meal Location'
+							)
+							version Version {
+								major 0
+								minor 0
+								service 1
+							}
+							comments {
+								Comment {
+									subject 'Actor'
+								}
+							}
+						}
+						, Requirement 'Kitchen Worker' {
+							author 'EDOM'
+							created '2019-11-04'
+							id '0'
+							dependencies (
+								'Show Meal Price'
+							)
+							version Version {
+								major 0
+								minor 0
+								service 1
+							}
+							comments {
+								Comment {
+									subject 'Actor'
+								}
+							}
+						}
+						, Requirement 'Kitchen Worker' {
+							author 'EDOM'
+							created '2019-11-04'
+							id '0'
+							dependencies (
+								'List Meal Ingreditens'
+							)
+							version Version {
+								major 0
+								minor 0
+								service 1
+							}
+							comments {
+								Comment {
+									subject 'Actor'
+								}
+							}
+						}
+						, Requirement 'Kitchen Worker' {
+							author 'EDOM'
+							created '2019-11-04'
+							id '0'
+							dependencies (
+								'List Meal Allergens'
+							)
+							version Version {
+								major 0
+								minor 0
+								service 1
+							}
+							comments {
+								Comment {
+									subject 'Actor'
+								}
+							}
+						}
+						, Requirement 'Kitchen Worker' {
+							author 'EDOM'
+							created '2019-11-04'
+							id '0'
+							dependencies (
+								'Check Meal Availability'
+							)
+							version Version {
+								major 0
+								minor 0
+								service 1
+							}
+							comments {
+								Comment {
+									subject 'Actor'
+								}
+							}
+						}
+					}
+				}
+				, RequirementGroup 'Manage Unserved Meals' {
+					description 'Details functionalities regarding unserved meals management.'
+					id '3'
+					requirements {
+						Requirement 'Save Unserved Meal' {
+								description 'The software should be able to save an unserved meal that will be packaged in the latter. It is identified by an identification number, has a production and expiration date and a designation of the meal. An unserved meal also has a state, and once saved its state is set to frozen.'
+								author 'EDOM'
+								created '2019-11-04'
+								id '0'
+								version Version {
+										major 0
+										minor 0
+										service 1
+								}
+						}
+						, Requirement 'Show Unserved Meal Identification Number' {
+								description 'The software should be able to show an unserved meal identification number.'
+								author 'EDOM'
+								created '2019-11-04'
+								id '0'
+								version Version {
+										major 0
+										minor 0
+										service 1
+								}
+						}
+						, Requirement 'Show Unserved Meal Designation' {
+								description 'The software should be able to show an unserved meal designation.'
+								author 'EDOM'
+								created '2019-11-04'
+								id '0'
+								version Version {
+										major 0
+										minor 0
+										service 1
+								}
+						}
+						, Requirement 'Show Unserved Meal Production Date' {
+								description 'The software should be able to show an unserved meal production date.'
+								author 'EDOM'
+								created '2019-11-04'
+								id '0'
+								version Version {
+										major 0
+										minor 0
+										service 1
+								}
+						}
+						, Requirement 'Show Unserved Meal Expiration Date' {
+								description 'The software should be able to show an unserved meal expiration date.'
+								author 'EDOM'
+								created '2019-11-04'
+								id '0'
+								version Version {
+										major 0
+										minor 0
+										service 1
+								}
+						}
+						, Requirement 'Show Unserved Meal State' {
+								description 'The software should be able to show an unserved meal state.'
+								author 'EDOM'
+								created '2019-11-04'
+								id '0'
+								version Version {
+										major 0
+										minor 0
+										service 1
+								}
+						}
+						, Requirement 'Add Meal Ingredients' {
+									author 'EDOM'
+									created '2019-11-04'
+									id '0'
+									version Version {
+												major 0
+												minor 0
+												service 1
+									}
+									comments {
+												Comment {
+															subject 'UseCase'
+												}
+									}
+						}
+						, Requirement 'Add Meal Allergens' {
+									author 'EDOM'
+									created '2019-11-04'
+									id '0'
+									version Version {
+												major 0
+												minor 0
+												service 1
+									}
+									comments {
+												Comment {
+															subject 'UseCase'
+												}
+									}
+						}
+						, Requirement 'Adminstrator' {
+								author 'EDOM'
+								created '2019-11-04'
+								id '0'
+								version Version {
+										major 0
+										minor 0
+										service 1
+								}
+								comments {
+										Comment {
+												subject 'Actor'
+										}
+								}
+						}
+						, Requirement 'Kitchen Worker' {
+							author 'EDOM'
+							created '2019-11-04'
+							id '0'
+							dependencies (
+								'Save Unserved Meal'
+							)
+							version Version {
+								major 0
+								minor 0
+								service 1
+							}
+							comments {
+								Comment {
+									subject 'Actor'
+								}
+							}
+						}
+						, Requirement 'Kitchen Worker' {
+							author 'EDOM'
+							created '2019-11-04'
+							id '0'
+							dependencies (
+								'Show Unserved Meal Identification Number'
+							)
+							version Version {
+								major 0
+								minor 0
+								service 1
+							}
+							comments {
+								Comment {
+									subject 'Actor'
+								}
+							}
+						}
+						, Requirement 'Kitchen Worker' {
+							author 'EDOM'
+							created '2019-11-04'
+							id '0'
+							dependencies (
+								'Show Unserved Meal Designation'
+							)
+							version Version {
+								major 0
+								minor 0
+								service 1
+							}
+							comments {
+								Comment {
+									subject 'Actor'
+								}
+							}
+						}
+						, Requirement 'Kitchen Worker' {
+							author 'EDOM'
+							created '2019-11-04'
+							id '0'
+							dependencies (
+								'Show Unserved Meal Production Date'
+							)
+							version Version {
+								major 0
+								minor 0
+								service 1
+							}
+							comments {
+								Comment {
+									subject 'Actor'
+								}
+							}
+						}
+						, Requirement 'Kitchen Worker' {
+							author 'EDOM'
+							created '2019-11-04'
+							id '0'
+							dependencies (
+								'Show Unserved Meal Expiration Date'
+							)
+							version Version {
+								major 0
+								minor 0
+								service 1
+							}
+							comments {
+								Comment {
+									subject 'Actor'
+								}
+							}
+						}
+						, Requirement 'Kitchen Worker' {
+							author 'EDOM'
+							created '2019-11-04'
+							id '0'
+							dependencies (
+								'Show Unserved Meal State'
+							)
+							version Version {
+								major 0
+								minor 0
+								service 1
+							}
+							comments {
+								Comment {
+									subject 'Actor'
+								}
+							}
+						}
+						, Requirement 'Kitchen Worker' {
+							author 'EDOM'
+							created '2019-11-04'
+							id '0'
+							dependencies (
+								'Add Meal Ingredients'
+							)
+							version Version {
+								major 0
+								minor 0
+								service 1
+							}
+							comments {
+								Comment {
+									subject 'Actor'
+								}
+							}
+						}
+						, Requirement 'Kitchen Worker' {
+							author 'EDOM'
+							created '2019-11-04'
+							id '0'
+							dependencies (
+								'Add Meal Allergens'
+							)
+							version Version {
+								major 0
+								minor 0
+								service 1
+							}
+							comments {
+								Comment {
+									subject 'Actor'
+								}
+							}
+						}
+						, Requirement 'Remove Item from Inventory' {
+							author 'EDOM'
+							created '2019-11-04'
+							id '0'
+							dependencies (
+								'Adminstrator'
+							)
+							version Version {
+								major 0
+								minor 0
+								service 1
+							}
+							comments {
+								Comment {
+									subject 'UseCase'
+								}
+							}
+						}
+						, Requirement 'Use Case Without Comment with Use Case Without Comment Dependency' {
+							author 'EDOM'
+							created '2019-11-04'
+							id '0'
+							dependencies (
+								'Manage Meals.Save Meal'
+							)
+							version Version {
+								major 0
+								minor 0
+								service 1
+							}
+						}
+						, Requirement 'Use Case With Comment with Use Case Without Comment Dependency' {
+							author 'EDOM'
+							created '2019-11-04'
+							id '0'
+							dependencies (
+								'Manage Meals.Show Meal Designation'
+							)
+							version Version {
+								major 0
+								minor 0
+								service 1
+							}
+							comments {
+								Comment {
+									subject 'UseCase'
+								}
+							}
+						}
+						, Requirement 'Use Case Without Comment with Use Case With Comment Dependency' {
+							author 'EDOM'
+							created '2019-11-04'
+							id '0'
+							dependencies (
+								'Add Meal Ingredients'
+							)
+							version Version {
+								major 0
+								minor 0
+								service 1
+							}
+						}
+						, Requirement 'Use Case With Comment with Use Case With Comment Dependency' {
+							author 'EDOM'
+							created '2019-11-04'
+							id '0'
+							dependencies (
+								'Add Meal Allergens'
+							)
+							version Version {
+								major 0
+								minor 0
+								service 1
+							}
+							comments {
+								Comment {
+									subject 'UseCase'
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		, RequirementGroup 'Quality Attributes' {
+			description 'This group details GFA quality attributes.'
+			id '1'
+		}
+	}
+}

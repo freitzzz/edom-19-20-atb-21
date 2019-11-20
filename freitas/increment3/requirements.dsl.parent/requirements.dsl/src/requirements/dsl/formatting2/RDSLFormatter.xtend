@@ -15,8 +15,6 @@ import requirements.Comment
 
 class RDSLFormatter extends AbstractFormatter2 {
 	
-	@Inject extension RDSLGrammarAccess
-	
 	/**
 	 * We want our Model to be formatted in the following format: 
 	 * 
@@ -26,16 +24,30 @@ class RDSLFormatter extends AbstractFormatter2 {
 	 * }
 	 */
 	
+	@Inject extension RDSLGrammarAccess
 	def dispatch void format(Model model, extension IFormattableDocument document) {
 		// TODO: format HiddenRegions around keywords, attributes, cross references, etc. 
 		
-		val open_bracket = model.regionFor.keyword("{")
+		val open_bracket = model.regionFor.keyword(modelAccess.leftCurlyBracketKeyword_2)
 		
-		val close_bracket = model.regionFor.keyword("}")
+		val close_bracket = model.regionFor.keyword(modelAccess.rightCurlyBracketKeyword_5)
+		
+		val groups_open_bracket = model.regionFor.keyword(modelAccess.leftCurlyBracketKeyword_4_1)
+		
+		val groups_close_bracket = model.regionFor.keyword(modelAccess.rightCurlyBracketKeyword_4_4)
 		
 		open_bracket.append[newLine]
 		interior(open_bracket, close_bracket)[indent]
 		
+		model.regionFor.keyword(modelAccess.groupsKeyword_4_0).prepend[newLine]
+		
+		groups_open_bracket.append[newLine]
+		
+		interior(groups_open_bracket, groups_close_bracket)[indent]
+		
+		groups_close_bracket.prepend[newLine]
+		
+		close_bracket.prepend[newLine]
 		
 		for (requirementGroup : model.groups) {
 			requirementGroup.format
@@ -58,12 +70,44 @@ class RDSLFormatter extends AbstractFormatter2 {
 	
 	def dispatch void format(RequirementGroup requirementGroup, extension IFormattableDocument document) {
 		
-		val open_bracket = requirementGroup.regionFor.keyword("{")
+		val open_bracket = requirementGroup.regionFor.keyword(requirementGroupAccess.leftCurlyBracketKeyword_3)
 		
-		val close_bracket = requirementGroup.regionFor.keyword("}")
+		val close_bracket = requirementGroup.regionFor.keyword(requirementGroupAccess.rightCurlyBracketKeyword_8)
+		
+		val requirements_open_bracket = requirementGroup.regionFor.keyword(requirementGroupAccess.leftCurlyBracketKeyword_6_1)
+		
+		val requirements_close_bracket = requirementGroup.regionFor.keyword(requirementGroupAccess.rightCurlyBracketKeyword_6_4)
+		
+		val children_open_bracket = requirementGroup.regionFor.keyword(requirementGroupAccess.leftCurlyBracketKeyword_7_1)
+		
+		val children_close_bracket = requirementGroup.regionFor.keyword(requirementGroupAccess.rightCurlyBracketKeyword_7_4)
 		
 		open_bracket.append[newLine]
 		interior(open_bracket, close_bracket)[indent]
+		
+		requirementGroup.regionFor.keyword(requirementGroupAccess.descriptionKeyword_4_0).prepend[newLine]
+		
+		requirementGroup.regionFor.keyword(requirementGroupAccess.idKeyword_5_0).prepend[newLine]
+		
+		requirementGroup.regionFor.keyword(requirementGroupAccess.childrenKeyword_7_0).prepend[newLine]
+		
+		requirementGroup.regionFor.keyword(requirementGroupAccess.requirementsKeyword_6_0).prepend[newLine]
+		
+		requirements_open_bracket.append[newLine]
+		
+		interior(requirements_open_bracket, requirements_close_bracket)[indent]
+		
+		requirements_close_bracket.prepend[newLine]
+		
+		
+		children_open_bracket.append[newLine]
+		
+		interior(children_open_bracket, children_close_bracket)[indent]
+		
+		children_close_bracket.prepend[newLine]
+		
+		
+		close_bracket.prepend[newLine]
 		
 		// TODO: format HiddenRegions around keywords, attributes, cross references, etc. 
 		for (requirement : requirementGroup.requirements) {
@@ -101,12 +145,75 @@ class RDSLFormatter extends AbstractFormatter2 {
 	
 	def dispatch void format(Requirement requirement, extension IFormattableDocument document) {
 		
-		val open_bracket = requirement.regionFor.keyword("{")
+		val open_bracket = requirement.regionFor.keyword(requirementAccess.leftCurlyBracketKeyword_3)
 		
-		val close_bracket = requirement.regionFor.keyword("}")
+		val close_bracket = requirement.regionFor.keyword(requirementAccess.rightCurlyBracketKeyword_17)
+		
+		val comments_open_bracket = requirement.regionFor.keyword(requirementAccess.leftCurlyBracketKeyword_15_1)
+		
+		val comments_close_bracket = requirement.regionFor.keyword(requirementAccess.rightCurlyBracketKeyword_15_4)
+		
+		val children_open_bracket = requirement.regionFor.keyword(requirementAccess.leftCurlyBracketKeyword_16_1)
+		
+		val children_close_bracket = requirement.regionFor.keyword(requirementAccess.rightCurlyBracketKeyword_16_4)
+		
+		val dependencies_open_parenthesis = requirement.regionFor.keyword(requirementAccess.leftParenthesisKeyword_12_1)
+		
+		val dependencies_close_parenthesis = requirement.regionFor.keyword(requirementAccess.rightParenthesisKeyword_12_4)
 		
 		open_bracket.append[newLine]
 		interior(open_bracket, close_bracket)[indent]
+		
+		requirement.regionFor.keyword(requirementAccess.authorKeyword_7_0).prepend[newLine]
+		
+		requirement.regionFor.keyword(requirementAccess.createdKeyword_8_0).prepend[newLine]
+		
+		requirement.regionFor.keyword(requirementAccess.dependenciesKeyword_12_0).prepend[newLine]
+		
+		requirement.regionFor.keyword(requirementAccess.descriptionKeyword_4_0).prepend[newLine]
+		
+		requirement.regionFor.keyword(requirementAccess.idKeyword_9_0).prepend[newLine]
+		
+		requirement.regionFor.keyword(requirementAccess.priorityKeyword_6_0).prepend[newLine]
+		
+		requirement.regionFor.keyword(requirementAccess.resolutionKeyword_11_0).prepend[newLine]
+		
+		requirement.regionFor.keyword(requirementAccess.stateKeyword_10_0).prepend[newLine]
+		
+		requirement.regionFor.keyword(requirementAccess.typeKeyword_5_0).prepend[newLine]
+		
+		requirement.regionFor.keyword(requirementAccess.versionKeyword_13).prepend[newLine]
+		
+		requirement.regionFor.keyword(requirementAccess.childrenKeyword_16_0).prepend[newLine]
+		
+		requirement.regionFor.keyword(requirementAccess.commentsKeyword_15_0).prepend[newLine]
+		
+		if(requirement.version !== null){
+			requirement.version.format
+		}
+		
+		comments_open_bracket.append[newLine]
+		
+		interior(comments_open_bracket, comments_close_bracket)[indent]
+		
+		comments_close_bracket.prepend[newLine]
+		
+		
+		children_open_bracket.append[newLine]
+		
+		interior(children_open_bracket, children_close_bracket)[indent]
+		
+		children_close_bracket.prepend[newLine]
+		
+		
+		dependencies_open_parenthesis.append[newLine]
+		
+		interior(dependencies_open_parenthesis, dependencies_close_parenthesis)[indent]
+		
+		dependencies_close_parenthesis.prepend[newLine]
+		
+		
+		close_bracket.prepend[newLine]
 		
 		for (dependency : requirement.dependencies) {
 			dependency.format
@@ -136,12 +243,20 @@ class RDSLFormatter extends AbstractFormatter2 {
 	 */
 	def dispatch void format(Version version, extension IFormattableDocument document) {
 		
-		val open_bracket = version.regionFor.keyword("{")
+		val open_bracket = version.regionFor.keyword(versionAccess.leftCurlyBracketKeyword_1)
 		
-		val close_bracket = version.regionFor.keyword("}")
+		val close_bracket = version.regionFor.keyword(versionAccess.rightCurlyBracketKeyword_8)
 		
 		open_bracket.append[newLine]
 		interior(open_bracket, close_bracket)[indent]
+		
+		version.regionFor.keyword(versionAccess.minorKeyword_4).prepend[newLine]
+		
+		version.regionFor.keyword(versionAccess.majorKeyword_2).prepend[newLine]
+		
+		version.regionFor.keyword(versionAccess.serviceKeyword_6).prepend[newLine]
+		
+		version.regionFor.keyword(versionAccess.rightCurlyBracketKeyword_8).prepend[newLine]
 	}
 	
 	
@@ -157,12 +272,33 @@ class RDSLFormatter extends AbstractFormatter2 {
 	 */
 	def dispatch void format(Comment comment, extension IFormattableDocument document) {
 		
-		val open_bracket = comment.regionFor.keyword("{")
+		val open_bracket = comment.regionFor.keyword(commentAccess.leftCurlyBracketKeyword_2)
 		
-		val close_bracket = comment.regionFor.keyword("}")
+		val close_bracket = comment.regionFor.keyword(commentAccess.rightCurlyBracketKeyword_8)
+		
+		val children_open_bracket = comment.regionFor.keyword(commentAccess.leftCurlyBracketKeyword_7_1)
+		
+		val children_close_bracket = comment.regionFor.keyword(commentAccess.rightCurlyBracketKeyword_7_4)
 		
 		open_bracket.append[newLine]
 		interior(open_bracket, close_bracket)[indent]
+		
+		comment.regionFor.keyword(commentAccess.bodyKeyword_4_0).prepend[newLine]
+		
+		comment.regionFor.keyword(commentAccess.subjectKeyword_3_0).prepend[newLine]
+		
+		comment.regionFor.keyword(commentAccess.authorKeyword_5_0).prepend[newLine]
+		
+		comment.regionFor.keyword(commentAccess.createdKeyword_6_0).prepend[newLine]
+		
+		children_open_bracket.append[newLine]
+		
+		interior(children_open_bracket, children_close_bracket)[indent]
+		
+		children_close_bracket.prepend[newLine]
+		
+		
+		close_bracket.prepend[newLine]
 		
 		for (_comment : comment.children) {
 			_comment.format

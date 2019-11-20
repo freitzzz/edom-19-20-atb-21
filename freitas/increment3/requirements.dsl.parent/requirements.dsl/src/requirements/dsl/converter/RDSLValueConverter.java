@@ -2,6 +2,7 @@ package requirements.dsl.converter;
 
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -56,12 +57,6 @@ public class RDSLValueConverter extends DefaultTerminalConverters {
 					return Date.from(date.atZone(ZoneId.systemDefault()).toInstant());
 				}
 				
-				date = tryParseInYYYYMMDDFormatWithSlashes(str2);
-				
-				if(date != null) {
-					return Date.from(date.atZone(ZoneId.systemDefault()).toInstant());
-				}
-				
 				IllegalStateException dateDoesntFollowAcceptedFormats 
 					= new IllegalStateException("Date: " + str2 + " does not follow supported formats");
 				
@@ -90,16 +85,10 @@ public class RDSLValueConverter extends DefaultTerminalConverters {
 			// Tries to parse a string to a LocalDateTime using YYYY-MM-DD format
 			private java.time.LocalDateTime tryParseInYYYYMMDDFormat(String date) {
 				try {
-					return LocalDateTime.parse(date, DateTimeFormatter.ISO_DATE);
-				}catch(Exception e) {
-					return null;
-				}
-			}
-			
-			// Tries to parse a string to a LocalDateTime using YYYY/MM/DD format
-			private java.time.LocalDateTime tryParseInYYYYMMDDFormatWithSlashes(String date) {
-				try {
-					return LocalDateTime.parse(date.replaceAll("-", "/"), DateTimeFormatter.ISO_DATE);
+					DateTimeFormatter dateformatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+					LocalDate localDate = LocalDate.parse(date, dateformatter);
+					
+					return localDate.atStartOfDay();
 				}catch(Exception e) {
 					return null;
 				}

@@ -11,11 +11,11 @@
   </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="Requirement">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="MustHaveTitle TitleLengthMustBeGreaterOrEqualThanFive MustHaveDescription DescriptionLengthMustBeGreaterOrEqualThanTen StateCannotBeResolvedIfResolutionIsInvalid StateCannotBeApprovedIfResolutionIsInvalid StateCannotBeReviewedIfResolutionIsInvalid MustHaveCreationDate MustHaveAuthor AuthorLengthMustBeGreaterOrEqualThanThree"/>
+      <details key="constraints" value="MustHaveTitle NameLengthMustBeGreaterOrEqualThanFive MustHaveDescription DescriptionLengthMustBeGreaterOrEqualThanTen StateCannotBeResolvedIfResolutionIsInvalid StateCannotBeApprovedIfResolutionIsInvalid StateCannotBeReviewedIfResolutionIsInvalid MustHaveCreationDate MustHaveAuthor AuthorLengthMustBeGreaterOrEqualThanThree"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="MustHaveTitle" value="not title.oclIsUndefined()"/>
-      <details key="TitleLengthMustBeGreaterOrEqualThanFive" value="title.size() >= 5"/>
+      <details key="MustHaveTitle" value="not name.oclIsUndefined()"/>
+      <details key="NameLengthMustBeGreaterOrEqualThanFive" value="name.size() >= 5"/>
       <details key="MustHaveDescription" value="not description.oclIsUndefined()"/>
       <details key="DescriptionLengthMustBeGreaterOrEqualThanTen" value="description.size() >= 10"/>
       <details key="StateCannotBeResolvedIfResolutionIsInvalid" value="if resolution = 'INVALID' then &#xA;&#x9;&#x9;&#x9;&#x9;state &lt;> 'RESOLVED'&#xA;&#x9;&#x9;&#x9; else &#xA;&#x9;&#x9;&#x9; &#x9;true&#xA;&#x9;&#x9;&#x9; endif "/>

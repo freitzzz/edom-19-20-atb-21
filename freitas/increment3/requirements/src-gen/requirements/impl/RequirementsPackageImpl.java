@@ -808,7 +808,7 @@ public class RequirementsPackageImpl extends EPackageImpl implements Requirement
 						"settingDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "validationDelegates",
 						"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot" });
 		addAnnotation(requirementEClass, source, new String[] { "constraints",
-				"MustHaveTitle TitleLengthMustBeGreaterOrEqualThanFive MustHaveDescription DescriptionLengthMustBeGreaterOrEqualThanTen StateCannotBeResolvedIfResolutionIsInvalid StateCannotBeApprovedIfResolutionIsInvalid StateCannotBeReviewedIfResolutionIsInvalid MustHaveCreationDate MustHaveAuthor AuthorLengthMustBeGreaterOrEqualThanThree" });
+				"MustHaveTitle NameLengthMustBeGreaterOrEqualThanFive MustHaveDescription DescriptionLengthMustBeGreaterOrEqualThanTen StateCannotBeResolvedIfResolutionIsInvalid StateCannotBeApprovedIfResolutionIsInvalid StateCannotBeReviewedIfResolutionIsInvalid MustHaveCreationDate MustHaveAuthor AuthorLengthMustBeGreaterOrEqualThanThree" });
 		addAnnotation(requirementGroupEClass, source, new String[] { "constraints",
 				"MustHaveDescription DescriptionLengthMustBeGreaterOrEqualThanTen MustHaveName NameLengthMustBeGreaterOrEqualThanTen CannotHaveSubRequirementsGroupWithSameName" });
 		addAnnotation(modelEClass, source,
@@ -827,8 +827,8 @@ public class RequirementsPackageImpl extends EPackageImpl implements Requirement
 	 */
 	protected void createPivotAnnotations() {
 		String source = "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot";
-		addAnnotation(requirementEClass, source, new String[] { "MustHaveTitle", "not title.oclIsUndefined()",
-				"TitleLengthMustBeGreaterOrEqualThanFive", "title.size() >= 5", "MustHaveDescription",
+		addAnnotation(requirementEClass, source, new String[] { "MustHaveTitle", "not name.oclIsUndefined()",
+				"NameLengthMustBeGreaterOrEqualThanFive", "name.size() >= 5", "MustHaveDescription",
 				"not description.oclIsUndefined()", "DescriptionLengthMustBeGreaterOrEqualThanTen",
 				"description.size() >= 10", "StateCannotBeResolvedIfResolutionIsInvalid",
 				"if resolution = \'INVALID\' then \n\t\t\t\tstate <> \'RESOLVED\'\n\t\t\t else \n\t\t\t \ttrue\n\t\t\t endif ",

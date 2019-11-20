@@ -212,6 +212,16 @@ public class RequirementsPackageImpl extends EPackageImpl implements Requirement
 	 * @generated
 	 */
 	@Override
+	public EAttribute getRequirement_Name() {
+		return (EAttribute) requirementEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EReference getRequirement_Children() {
 		return (EReference) requirementEClass.getEStructuralFeatures().get(12);
 	}
@@ -224,16 +234,6 @@ public class RequirementsPackageImpl extends EPackageImpl implements Requirement
 	@Override
 	public EReference getRequirement_Parent() {
 		return (EReference) requirementEClass.getEStructuralFeatures().get(13);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getRequirement_Title() {
-		return (EAttribute) requirementEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -590,7 +590,7 @@ public class RequirementsPackageImpl extends EPackageImpl implements Requirement
 		createEReference(requirementEClass, REQUIREMENT__VERSION);
 		createEReference(requirementEClass, REQUIREMENT__COMMENTS);
 		createEReference(requirementEClass, REQUIREMENT__DEPENDENCIES);
-		createEAttribute(requirementEClass, REQUIREMENT__TITLE);
+		createEAttribute(requirementEClass, REQUIREMENT__NAME);
 		createEAttribute(requirementEClass, REQUIREMENT__DESCRIPTION);
 		createEAttribute(requirementEClass, REQUIREMENT__TYPE);
 		createEAttribute(requirementEClass, REQUIREMENT__PRIORITY);
@@ -675,7 +675,7 @@ public class RequirementsPackageImpl extends EPackageImpl implements Requirement
 		initEReference(getRequirement_Dependencies(), this.getRequirement(), null, "dependencies", null, 0, -1,
 				Requirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRequirement_Title(), ecorePackage.getEString(), "title", null, 0, 1, Requirement.class,
+		initEAttribute(getRequirement_Name(), ecorePackage.getEString(), "name", null, 0, 1, Requirement.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRequirement_Description(), ecorePackage.getEString(), "description", null, 0, 1,
 				Requirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
@@ -808,7 +808,7 @@ public class RequirementsPackageImpl extends EPackageImpl implements Requirement
 						"settingDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "validationDelegates",
 						"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot" });
 		addAnnotation(requirementEClass, source, new String[] { "constraints",
-				"MustHaveTitle TitleLengthMustBeGreaterOrEqualThanFive MustHaveDescription DescriptionLengthMustBeGreaterOrEqualThanTen StateCannotBeResolvedIfResolutionIsInvalid StateCannotBeApprovedIfResolutionIsInvalid StateCannotBeReviewedIfResolutionIsInvalid MustHaveCreationDate MustHaveAuthor AuthorLengthMustBeGreaterOrEqualThanThree" });
+				"MustHaveTitle NameLengthMustBeGreaterOrEqualThanFive MustHaveDescription DescriptionLengthMustBeGreaterOrEqualThanTen StateCannotBeResolvedIfResolutionIsInvalid StateCannotBeApprovedIfResolutionIsInvalid StateCannotBeReviewedIfResolutionIsInvalid MustHaveCreationDate MustHaveAuthor AuthorLengthMustBeGreaterOrEqualThanThree" });
 		addAnnotation(requirementGroupEClass, source, new String[] { "constraints",
 				"MustHaveDescription DescriptionLengthMustBeGreaterOrEqualThanTen MustHaveName NameLengthMustBeGreaterOrEqualThanTen CannotHaveSubRequirementsGroupWithSameName" });
 		addAnnotation(modelEClass, source,
@@ -827,8 +827,8 @@ public class RequirementsPackageImpl extends EPackageImpl implements Requirement
 	 */
 	protected void createPivotAnnotations() {
 		String source = "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot";
-		addAnnotation(requirementEClass, source, new String[] { "MustHaveTitle", "not title.oclIsUndefined()",
-				"TitleLengthMustBeGreaterOrEqualThanFive", "title.size() >= 5", "MustHaveDescription",
+		addAnnotation(requirementEClass, source, new String[] { "MustHaveTitle", "not name.oclIsUndefined()",
+				"NameLengthMustBeGreaterOrEqualThanFive", "name.size() >= 5", "MustHaveDescription",
 				"not description.oclIsUndefined()", "DescriptionLengthMustBeGreaterOrEqualThanTen",
 				"description.size() >= 10", "StateCannotBeResolvedIfResolutionIsInvalid",
 				"if resolution = \'INVALID\' then \n\t\t\t\tstate <> \'RESOLVED\'\n\t\t\t else \n\t\t\t \ttrue\n\t\t\t endif ",

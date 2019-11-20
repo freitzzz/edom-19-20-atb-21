@@ -5,6 +5,7 @@
 		<accessrules>
 			<accessrule kind="accessible" pattern="com/google/inject/**"/>
 			<accessrule kind="accessible" pattern="org/eclipse/emf/**"/>
+			<accessrule kind="accessible" pattern="org/eclipse/ocl/**"/>
 		</accessrules>
 	</classpathentry>
 	<classpathentry kind="src" path="src">

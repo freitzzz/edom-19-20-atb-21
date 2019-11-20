@@ -42,7 +42,7 @@ import requirements.Version;
  *   <li>{@link requirements.impl.RequirementImpl#getVersion <em>Version</em>}</li>
  *   <li>{@link requirements.impl.RequirementImpl#getComments <em>Comments</em>}</li>
  *   <li>{@link requirements.impl.RequirementImpl#getDependencies <em>Dependencies</em>}</li>
- *   <li>{@link requirements.impl.RequirementImpl#getTitle <em>Title</em>}</li>
+ *   <li>{@link requirements.impl.RequirementImpl#getName <em>Name</em>}</li>
  *   <li>{@link requirements.impl.RequirementImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link requirements.impl.RequirementImpl#getType <em>Type</em>}</li>
  *   <li>{@link requirements.impl.RequirementImpl#getPriority <em>Priority</em>}</li>
@@ -89,24 +89,24 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
 	protected EList<Requirement> dependencies;
 
 	/**
-	 * The default value of the '{@link #getTitle() <em>Title</em>}' attribute.
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTitle()
+	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TITLE_EDEFAULT = null;
+	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getTitle() <em>Title</em>}' attribute.
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTitle()
+	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-	protected String title = TITLE_EDEFAULT;
+	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
@@ -383,6 +383,30 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
 	 * @generated
 	 */
 	@Override
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RequirementsPackage.REQUIREMENT__NAME, oldName,
+					name));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EList<Requirement> getChildren() {
 		if (children == null) {
 			children = new EObjectContainmentWithInverseEList<Requirement>(Requirement.class, this,
@@ -455,30 +479,6 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
 			return basicSetParent((Requirement) otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String getTitle() {
-		return title;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setTitle(String newTitle) {
-		String oldTitle = title;
-		title = newTitle;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RequirementsPackage.REQUIREMENT__TITLE, oldTitle,
-					title));
 	}
 
 	/**
@@ -721,8 +721,8 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
 			return getComments();
 		case RequirementsPackage.REQUIREMENT__DEPENDENCIES:
 			return getDependencies();
-		case RequirementsPackage.REQUIREMENT__TITLE:
-			return getTitle();
+		case RequirementsPackage.REQUIREMENT__NAME:
+			return getName();
 		case RequirementsPackage.REQUIREMENT__DESCRIPTION:
 			return getDescription();
 		case RequirementsPackage.REQUIREMENT__TYPE:
@@ -767,8 +767,8 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
 			getDependencies().clear();
 			getDependencies().addAll((Collection<? extends Requirement>) newValue);
 			return;
-		case RequirementsPackage.REQUIREMENT__TITLE:
-			setTitle((String) newValue);
+		case RequirementsPackage.REQUIREMENT__NAME:
+			setName((String) newValue);
 			return;
 		case RequirementsPackage.REQUIREMENT__DESCRIPTION:
 			setDescription((String) newValue);
@@ -822,8 +822,8 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
 		case RequirementsPackage.REQUIREMENT__DEPENDENCIES:
 			getDependencies().clear();
 			return;
-		case RequirementsPackage.REQUIREMENT__TITLE:
-			setTitle(TITLE_EDEFAULT);
+		case RequirementsPackage.REQUIREMENT__NAME:
+			setName(NAME_EDEFAULT);
 			return;
 		case RequirementsPackage.REQUIREMENT__DESCRIPTION:
 			setDescription(DESCRIPTION_EDEFAULT);
@@ -873,8 +873,8 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
 			return comments != null && !comments.isEmpty();
 		case RequirementsPackage.REQUIREMENT__DEPENDENCIES:
 			return dependencies != null && !dependencies.isEmpty();
-		case RequirementsPackage.REQUIREMENT__TITLE:
-			return TITLE_EDEFAULT == null ? title != null : !TITLE_EDEFAULT.equals(title);
+		case RequirementsPackage.REQUIREMENT__NAME:
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case RequirementsPackage.REQUIREMENT__DESCRIPTION:
 			return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
 		case RequirementsPackage.REQUIREMENT__TYPE:
@@ -910,8 +910,8 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
 			return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (title: ");
-		result.append(title);
+		result.append(" (name: ");
+		result.append(name);
 		result.append(", description: ");
 		result.append(description);
 		result.append(", type: ");

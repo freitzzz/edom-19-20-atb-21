@@ -120,7 +120,7 @@ public class GenerateRequirementsPUMLUsingCircles {
 			
 			for(Requirement r: requirements) {
 				
-				builder.append(quoteString(group.getName())).append(" -> ").append(quoteString(r.getTitle())).append('\n');
+				builder.append(quoteString(group.getName())).append(" -> ").append(quoteString(r.getName())).append('\n');
 				
 			}
 			
@@ -151,7 +151,7 @@ public class GenerateRequirementsPUMLUsingCircles {
 		
 		StringBuilder builder = new StringBuilder();
 		
-		builder.append(quoteString(requirement.getTitle())).append('\n');
+		builder.append(quoteString(requirement.getName())).append('\n');
 		
 		Version version = requirement.getVersion();
 		
@@ -161,7 +161,7 @@ public class GenerateRequirementsPUMLUsingCircles {
 			
 			builder.append(versionString).append('\n');
 			
-			builder.append(quoteString(requirement.getTitle())).append(" -> ").append(versionString).append('\n');
+			builder.append(quoteString(requirement.getName())).append(" -> ").append(versionString).append('\n');
 			
 		}else {
 			
@@ -169,7 +169,7 @@ public class GenerateRequirementsPUMLUsingCircles {
 			
 			builder.append(versionString).append('\n');
 			
-			builder.append(quoteString(requirement.getTitle())).append(" -> ").append(versionString).append('\n');
+			builder.append(quoteString(requirement.getName())).append(" -> ").append(versionString).append('\n');
 			
 		}
 		
@@ -185,7 +185,7 @@ public class GenerateRequirementsPUMLUsingCircles {
 			
 			for(Requirement r: subRequirements) {
 				
-				builder.append(quoteString(requirement.getTitle())).append(" -> ").append(quoteString(r.getTitle())).append('\n');
+				builder.append(quoteString(requirement.getName())).append(" -> ").append(quoteString(r.getName())).append('\n');
 				
 			}
 			
@@ -203,7 +203,7 @@ public class GenerateRequirementsPUMLUsingCircles {
 			
 			for(Requirement r: dependencies) {
 				
-				builder.append(quoteString(requirement.getTitle())).append(" -> ").append(quoteString(r.getTitle())).append('\n');
+				builder.append(quoteString(requirement.getName())).append(" -> ").append(quoteString(r.getName())).append('\n');
 				
 			}
 			
@@ -221,7 +221,7 @@ public class GenerateRequirementsPUMLUsingCircles {
 			
 			for(Comment c: comments) {
 				
-				builder.append(quoteString(requirement.getTitle())).append(" -> ").append(quoteString(c.getSubject())).append('\n');
+				builder.append(quoteString(requirement.getName())).append(" -> ").append(quoteString(c.getSubject())).append('\n');
 				
 			}
 			

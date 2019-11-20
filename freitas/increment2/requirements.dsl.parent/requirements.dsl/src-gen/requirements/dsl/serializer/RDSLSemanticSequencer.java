@@ -104,7 +104,7 @@ public class RDSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *
 	 * Constraint:
 	 *     (
-	 *         title=EString? 
+	 *         name=EString 
 	 *         description=EString? 
 	 *         type=Type? 
 	 *         priority=Priority? 

@@ -242,7 +242,7 @@ public class SaveModel {
 
 		Requirement saveMealRequirement = factory.createRequirement();
 
-		saveMealRequirement.setTitle("Save Meal");
+		saveMealRequirement.setName("Save Meal");
 		saveMealRequirement.setDescription(
 				"The software should be able to save a meal that is served to students and non students. A meal is identified by its designation, has a type, nutritional data, list of ingredients, can also contain allergens, has a cost-price and is available at a specific location. Once a meal is saved it is only available for the next 24 hours in the specified location.");
 		saveMealRequirement.setId("0");
@@ -254,7 +254,7 @@ public class SaveModel {
 
 		Requirement showMealDesignationRequirement = factory.createRequirement();
 
-		showMealDesignationRequirement.setTitle("Show Meal Designation");
+		showMealDesignationRequirement.setName("Show Meal Designation");
 		showMealDesignationRequirement.setDescription("The software should be able to show a meal designation.");
 		showMealDesignationRequirement.setId("0");
 		showMealDesignationRequirement.setVersion(showMealDesignationRequirementVersion);
@@ -263,7 +263,7 @@ public class SaveModel {
 
 		Requirement showMealNutritionalDataRequirement = factory.createRequirement();
 
-		showMealNutritionalDataRequirement.setTitle("Show Meal Nutritional Data");
+		showMealNutritionalDataRequirement.setName("Show Meal Nutritional Data");
 		showMealNutritionalDataRequirement
 				.setDescription("The software should be able to show a meal nutritional data.");
 		showMealNutritionalDataRequirement.setId("0");
@@ -273,7 +273,7 @@ public class SaveModel {
 
 		Requirement showMealTypeRequirement = factory.createRequirement();
 
-		showMealTypeRequirement.setTitle("Show Meal Type");
+		showMealTypeRequirement.setName("Show Meal Type");
 		showMealTypeRequirement.setDescription("The software should be able to show a meal type.");
 		showMealTypeRequirement.setId("0");
 		showMealTypeRequirement.setVersion(showMealTypeRequirementVersion);
@@ -282,7 +282,7 @@ public class SaveModel {
 
 		Requirement showMealLocationRequirement = factory.createRequirement();
 
-		showMealLocationRequirement.setTitle("Show Meal Location");
+		showMealLocationRequirement.setName("Show Meal Location");
 		showMealLocationRequirement
 				.setDescription("The software should be able to show the location in which a meal is available.");
 		showMealLocationRequirement.setId("0");
@@ -292,7 +292,7 @@ public class SaveModel {
 
 		Requirement showMealPriceRequirement = factory.createRequirement();
 
-		showMealPriceRequirement.setTitle("Show Meal Price");
+		showMealPriceRequirement.setName("Show Meal Price");
 		showMealPriceRequirement.setDescription("The software should be able to show the price of a meal.");
 		showMealPriceRequirement.setId("0");
 		showMealPriceRequirement.setVersion(showMealPriceRequirementVersion);
@@ -301,7 +301,7 @@ public class SaveModel {
 
 		Requirement listMealIngredientsRequirement = factory.createRequirement();
 
-		listMealIngredientsRequirement.setTitle("List Meal Ingreditens");
+		listMealIngredientsRequirement.setName("List Meal Ingreditens");
 		listMealIngredientsRequirement.setDescription("The software should be able to list the ingredients of a meal.");
 		listMealIngredientsRequirement.setId("0");
 		listMealIngredientsRequirement.setVersion(listMealIngredientsRequirementVersion);
@@ -310,7 +310,7 @@ public class SaveModel {
 
 		Requirement listMealAllergensRequirement = factory.createRequirement();
 
-		listMealAllergensRequirement.setTitle("List Meal Allergens");
+		listMealAllergensRequirement.setName("List Meal Allergens");
 		listMealAllergensRequirement
 				.setDescription("The software should be able to list the allergens of a meal if existent.");
 		listMealAllergensRequirement.setId("0");
@@ -320,7 +320,7 @@ public class SaveModel {
 
 		Requirement checkMealAvailabilityRequirement = factory.createRequirement();
 
-		checkMealAvailabilityRequirement.setTitle("Check Meal Availability");
+		checkMealAvailabilityRequirement.setName("Check Meal Availability");
 		checkMealAvailabilityRequirement.setDescription(
 				"The software should be able to check if a meal is available. A meal is only available in a period of 24 hours and at a specific location.");
 		checkMealAvailabilityRequirement.setId("0");
@@ -330,7 +330,7 @@ public class SaveModel {
 
 		Requirement payMealRequirement = factory.createRequirement();
 
-		payMealRequirement.setTitle("Pay Meal");
+		payMealRequirement.setName("Pay Meal");
 		payMealRequirement.setDescription(
 				"The software should be able handle a meal payment. The type of user that is paying for the meal should be recorded. It should not be possible to pay for an unavailable meal or a meal that is unavailable at the payment location.");
 		payMealRequirement.setId("0");
@@ -369,7 +369,7 @@ public class SaveModel {
 
 		Requirement saveUnservedMealRequirement = factory.createRequirement();
 
-		saveUnservedMealRequirement.setTitle("Save Unserved Meal");
+		saveUnservedMealRequirement.setName("Save Unserved Meal");
 		saveUnservedMealRequirement.setDescription(
 				"The software should be able to save an unserved meal that will be packaged in the latter. It is identified by an identification number, has a production and expiration date and a designation of the meal. An unserved meal also has a state, and once saved its state is set to frozen.");
 		saveUnservedMealRequirement.setId("0");
@@ -379,7 +379,7 @@ public class SaveModel {
 
 		Requirement showUnservedMealIdentificationNumberRequirement = factory.createRequirement();
 
-		showUnservedMealIdentificationNumberRequirement.setTitle("Show Unserved Meal Identification Number");
+		showUnservedMealIdentificationNumberRequirement.setName("Show Unserved Meal Identification Number");
 		showUnservedMealIdentificationNumberRequirement
 				.setDescription("The software should be able to show an unserved meal identification number.");
 		showUnservedMealIdentificationNumberRequirement.setId("0");
@@ -390,7 +390,7 @@ public class SaveModel {
 
 		Requirement showUnservedMealDesignationRequirement = factory.createRequirement();
 
-		showUnservedMealDesignationRequirement.setTitle("Show Unserved Meal Designation");
+		showUnservedMealDesignationRequirement.setName("Show Unserved Meal Designation");
 		showUnservedMealDesignationRequirement
 				.setDescription("The software should be able to show an unserved meal designation.");
 		showUnservedMealDesignationRequirement.setId("0");
@@ -400,7 +400,7 @@ public class SaveModel {
 
 		Requirement showUnservedMealProductionDateRequirement = factory.createRequirement();
 
-		showUnservedMealProductionDateRequirement.setTitle("Show Unserved Meal Production Date");
+		showUnservedMealProductionDateRequirement.setName("Show Unserved Meal Production Date");
 		showUnservedMealProductionDateRequirement
 				.setDescription("The software should be able to show an unserved meal production date.");
 		showUnservedMealProductionDateRequirement.setId("0");
@@ -410,7 +410,7 @@ public class SaveModel {
 
 		Requirement showUnservedMealExpirationDateRequirement = factory.createRequirement();
 
-		showUnservedMealExpirationDateRequirement.setTitle("Show Unserved Meal Expiration Date");
+		showUnservedMealExpirationDateRequirement.setName("Show Unserved Meal Expiration Date");
 		showUnservedMealExpirationDateRequirement
 				.setDescription("The software should be able to show an unserved meal expiration date.");
 		showUnservedMealExpirationDateRequirement.setId("0");
@@ -420,7 +420,7 @@ public class SaveModel {
 
 		Requirement showUnservedMealStateRequirement = factory.createRequirement();
 
-		showUnservedMealStateRequirement.setTitle("Show Unserved Meal State");
+		showUnservedMealStateRequirement.setName("Show Unserved Meal State");
 		showUnservedMealStateRequirement.setDescription("The software should be able to show an unserved meal state.");
 		showUnservedMealStateRequirement.setId("0");
 		showUnservedMealStateRequirement.setVersion(showUnservedMealStateRequirementVersion);

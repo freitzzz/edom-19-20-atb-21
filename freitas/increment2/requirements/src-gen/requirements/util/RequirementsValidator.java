@@ -137,7 +137,7 @@ public class RequirementsValidator extends EObjectValidator {
 		if (result || diagnostics != null)
 			result &= validateRequirement_MustHaveTitle(requirement, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateRequirement_TitleLengthMustBeGreaterOrEqualThanFive(requirement, diagnostics, context);
+			result &= validateRequirement_NameLengthMustBeGreaterOrEqualThanFive(requirement, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRequirement_MustHaveDescription(requirement, diagnostics, context);
 		if (result || diagnostics != null)
@@ -164,7 +164,7 @@ public class RequirementsValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static final String REQUIREMENT__MUST_HAVE_TITLE__EEXPRESSION = "not title.oclIsUndefined()";
+	protected static final String REQUIREMENT__MUST_HAVE_TITLE__EEXPRESSION = "not name.oclIsUndefined()";
 
 	/**
 	 * Validates the MustHaveTitle constraint of '<em>Requirement</em>'.
@@ -180,24 +180,24 @@ public class RequirementsValidator extends EObjectValidator {
 	}
 
 	/**
-	 * The cached validation expression for the TitleLengthMustBeGreaterOrEqualThanFive constraint of '<em>Requirement</em>'.
+	 * The cached validation expression for the NameLengthMustBeGreaterOrEqualThanFive constraint of '<em>Requirement</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static final String REQUIREMENT__TITLE_LENGTH_MUST_BE_GREATER_OR_EQUAL_THAN_FIVE__EEXPRESSION = "title.size() >= 5";
+	protected static final String REQUIREMENT__NAME_LENGTH_MUST_BE_GREATER_OR_EQUAL_THAN_FIVE__EEXPRESSION = "name.size() >= 5";
 
 	/**
-	 * Validates the TitleLengthMustBeGreaterOrEqualThanFive constraint of '<em>Requirement</em>'.
+	 * Validates the NameLengthMustBeGreaterOrEqualThanFive constraint of '<em>Requirement</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateRequirement_TitleLengthMustBeGreaterOrEqualThanFive(Requirement requirement,
+	public boolean validateRequirement_NameLengthMustBeGreaterOrEqualThanFive(Requirement requirement,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate(RequirementsPackage.Literals.REQUIREMENT, requirement, diagnostics, context,
-				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "TitleLengthMustBeGreaterOrEqualThanFive",
-				REQUIREMENT__TITLE_LENGTH_MUST_BE_GREATER_OR_EQUAL_THAN_FIVE__EEXPRESSION, Diagnostic.ERROR,
+				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "NameLengthMustBeGreaterOrEqualThanFive",
+				REQUIREMENT__NAME_LENGTH_MUST_BE_GREATER_OR_EQUAL_THAN_FIVE__EEXPRESSION, Diagnostic.ERROR,
 				DIAGNOSTIC_SOURCE, 0);
 	}
 

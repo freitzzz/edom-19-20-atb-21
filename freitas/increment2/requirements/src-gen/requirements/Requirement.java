@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link requirements.Requirement#getVersion <em>Version</em>}</li>
  *   <li>{@link requirements.Requirement#getComments <em>Comments</em>}</li>
  *   <li>{@link requirements.Requirement#getDependencies <em>Dependencies</em>}</li>
- *   <li>{@link requirements.Requirement#getTitle <em>Title</em>}</li>
+ *   <li>{@link requirements.Requirement#getName <em>Name</em>}</li>
  *   <li>{@link requirements.Requirement#getDescription <em>Description</em>}</li>
  *   <li>{@link requirements.Requirement#getType <em>Type</em>}</li>
  *   <li>{@link requirements.Requirement#getPriority <em>Priority</em>}</li>
@@ -34,8 +34,8 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see requirements.RequirementsPackage#getRequirement()
- * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='MustHaveTitle TitleLengthMustBeGreaterOrEqualThanFive MustHaveDescription DescriptionLengthMustBeGreaterOrEqualThanTen StateCannotBeResolvedIfResolutionIsInvalid StateCannotBeApprovedIfResolutionIsInvalid StateCannotBeReviewedIfResolutionIsInvalid MustHaveCreationDate MustHaveAuthor AuthorLengthMustBeGreaterOrEqualThanThree'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot MustHaveTitle='not title.oclIsUndefined()' TitleLengthMustBeGreaterOrEqualThanFive='title.size() &gt;= 5' MustHaveDescription='not description.oclIsUndefined()' DescriptionLengthMustBeGreaterOrEqualThanTen='description.size() &gt;= 10' StateCannotBeResolvedIfResolutionIsInvalid='if resolution = \'INVALID\' then \n\t\t\t\tstate &lt;&gt; \'RESOLVED\'\n\t\t\t else \n\t\t\t \ttrue\n\t\t\t endif ' StateCannotBeApprovedIfResolutionIsInvalid='if resolution = \'INVALID\' then \n\t\t\t\tstate &lt;&gt; \'APPROVED\'\n\t\t\t else \n\t\t\t \ttrue\n\t\t\t endif ' StateCannotBeReviewedIfResolutionIsInvalid='if resolution = \'INVALID\' then \n\t\t\t\tstate &lt;&gt; \'REVIEWED\'\n\t\t\t else \n\t\t\t \ttrue\n\t\t\t endif ' MustHaveCreationDate='not created.oclIsUndefined()' MustHaveAuthor='not author.oclIsUndefined()' AuthorLengthMustBeGreaterOrEqualThanThree='author.size() &gt;= 3'"
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='MustHaveTitle NameLengthMustBeGreaterOrEqualThanFive MustHaveDescription DescriptionLengthMustBeGreaterOrEqualThanTen StateCannotBeResolvedIfResolutionIsInvalid StateCannotBeApprovedIfResolutionIsInvalid StateCannotBeReviewedIfResolutionIsInvalid MustHaveCreationDate MustHaveAuthor AuthorLengthMustBeGreaterOrEqualThanThree'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot MustHaveTitle='not name.oclIsUndefined()' NameLengthMustBeGreaterOrEqualThanFive='name.size() &gt;= 5' MustHaveDescription='not description.oclIsUndefined()' DescriptionLengthMustBeGreaterOrEqualThanTen='description.size() &gt;= 10' StateCannotBeResolvedIfResolutionIsInvalid='if resolution = \'INVALID\' then \n\t\t\t\tstate &lt;&gt; \'RESOLVED\'\n\t\t\t else \n\t\t\t \ttrue\n\t\t\t endif ' StateCannotBeApprovedIfResolutionIsInvalid='if resolution = \'INVALID\' then \n\t\t\t\tstate &lt;&gt; \'APPROVED\'\n\t\t\t else \n\t\t\t \ttrue\n\t\t\t endif ' StateCannotBeReviewedIfResolutionIsInvalid='if resolution = \'INVALID\' then \n\t\t\t\tstate &lt;&gt; \'REVIEWED\'\n\t\t\t else \n\t\t\t \ttrue\n\t\t\t endif ' MustHaveCreationDate='not created.oclIsUndefined()' MustHaveAuthor='not author.oclIsUndefined()' AuthorLengthMustBeGreaterOrEqualThanThree='author.size() &gt;= 3'"
  * @generated
  */
 public interface Requirement extends EObject {
@@ -86,6 +86,28 @@ public interface Requirement extends EObject {
 	EList<Requirement> getDependencies();
 
 	/**
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Name</em>' attribute.
+	 * @see #setName(String)
+	 * @see requirements.RequirementsPackage#getRequirement_Name()
+	 * @model
+	 * @generated
+	 */
+	String getName();
+
+	/**
+	 * Sets the value of the '{@link requirements.Requirement#getName <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * @see #getName()
+	 * @generated
+	 */
+	void setName(String value);
+
+	/**
 	 * Returns the value of the '<em><b>Children</b></em>' containment reference list.
 	 * The list contents are of type {@link requirements.Requirement}.
 	 * It is bidirectional and its opposite is '{@link requirements.Requirement#getParent <em>Parent</em>}'.
@@ -122,28 +144,6 @@ public interface Requirement extends EObject {
 	 * @generated
 	 */
 	void setParent(Requirement value);
-
-	/**
-	 * Returns the value of the '<em><b>Title</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Title</em>' attribute.
-	 * @see #setTitle(String)
-	 * @see requirements.RequirementsPackage#getRequirement_Title()
-	 * @model
-	 * @generated
-	 */
-	String getTitle();
-
-	/**
-	 * Sets the value of the '{@link requirements.Requirement#getTitle <em>Title</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Title</em>' attribute.
-	 * @see #getTitle()
-	 * @generated
-	 */
-	void setTitle(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Description</b></em>' attribute.

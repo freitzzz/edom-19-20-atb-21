@@ -4,61 +4,690 @@
 package requirements.dsl.tests
 
 import com.google.inject.Inject
+import org.eclipse.emf.ecore.EOperation
+import org.eclipse.emf.ecore.EStructuralFeature
+import org.eclipse.emf.ecore.EValidator
+import org.eclipse.emf.ecore.util.Diagnostician
+import org.eclipse.ocl.common.OCLConstants
+import org.eclipse.ocl.pivot.internal.delegate.OCLDelegateDomain
+import org.eclipse.ocl.pivot.internal.delegate.OCLInvocationDelegateFactory
+import org.eclipse.ocl.pivot.internal.delegate.OCLSettingDelegateFactory
+import org.eclipse.ocl.pivot.internal.delegate.OCLValidationDelegateFactory
+import org.eclipse.ocl.pivot.model.OCLstdlib
+import org.eclipse.ocl.xtext.essentialocl.EssentialOCLStandaloneSetup
 import org.eclipse.xtext.testing.InjectWith
 import org.eclipse.xtext.testing.extensions.InjectionExtension
 import org.eclipse.xtext.testing.util.ParseHelper
 import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.^extension.ExtendWith
 import requirements.Model
+import org.eclipse.emf.common.util.Diagnostic
 
 @ExtendWith(InjectionExtension)
 @InjectWith(RDSLInjectorProvider)
 class RDSLParsingTest {
-	
+
+	@BeforeAll
+	static def void initOCL() {
+		// -----------------------------------------
+		// Initialize Stand alone OCLInEcore
+		// The first thing to do before using any code of the model
+		var oclDelegateURI = OCLConstants.OCL_DELEGATE_URI;
+		EOperation.Internal.InvocationDelegate.Factory.Registry.INSTANCE.put(oclDelegateURI,
+			new OCLInvocationDelegateFactory.Global());
+		EStructuralFeature.Internal.SettingDelegate.Factory.Registry.INSTANCE.put(oclDelegateURI,
+			new OCLSettingDelegateFactory.Global());
+		EValidator.ValidationDelegate.Registry.INSTANCE.put(oclDelegateURI, new OCLValidationDelegateFactory.Global());
+
+		OCLDelegateDomain.initialize(null);
+
+		EssentialOCLStandaloneSetup.doSetup();
+
+		OCLstdlib.install();
+	// -------------
+	}
+
 	@Inject
 	ParseHelper<Model> parseHelper
-	
+
 	@Test
 	def void loadModel() {
 		val result = parseHelper.parse('''
-			Model { 
-				title "Gorgeous Food Application Requirements" 
-				groups { 
-					RequirementGroup "Functional Requirements" { 
-						description "This group details Gorgeous Food Application functional requirements" 
-						children { 
-							RequirementGroup "Manage Meals" { 
-								description "Details functionalities regarding meals management." 
-								requirements { 
-									Requirement { title "Save Meal" description "The software should be able to save a meal that is served to students and non students. A meal is identified by its designation, has a type, nutritional data, list of ingredients, can also contain allergens, has a cost-price and is available at a specific location. Once a meal is saved it is only available for the next 24 hours in the specified location." author EDOM created 2018-10-26T18:51:52.009+0100 id "0" version Version { major 0 minor 0 service 1 } } , 
-									Requirement { title "Show Meal Designation" description "The software should be able to show a meal designation." author EDOM created '2019-10-26T18:51:52.009+0100' id "0" version Version { major 0 minor 0 service 1 } } , 
-									Requirement { title "Show Meal Nutritional Data" description "The software should be able to show a meal nutritional data." author EDOM created '2019-10-26T18:51:52.009+0100' id "0" version Version { major 0 minor 0 service 1 } } , 
-									Requirement { title "Show Meal Type" description "The software should be able to show a meal type." author EDOM created '2019-10-26T18:51:52.009+0100' id "0" version Version { major 0 minor 0 service 1 } } , 
-									Requirement { title "Show Meal Location" description "The software should be able to show the location in which a meal is available." author EDOM created '2019-10-26T18:51:52.009+0100' id "0" version Version { major 0 minor 0 service 1 } } , 
-									Requirement { title "Show Meal Price" description "The software should be able to show the price of a meal." author EDOM created '2019-10-26T18:51:52.009+0100' id "0" version Version { major 0 minor 0 service 1 } } , 
-									Requirement { title "List Meal Ingreditens" description "The software should be able to list the ingredients of a meal." author EDOM created '2019-10-26T18:51:52.009+0100' id "0" version Version { major 0 minor 0 service 1 } } , 
-									Requirement { title "List Meal Allergens" description "The software should be able to list the allergens of a meal if existent." author EDOM created 2019-10-26T18:51:52.009+0100 id "0" version Version { major 0 minor 0 service 1 } } , Requirement { title "Check Meal Availability" description "The software should be able to check if a meal is available. A meal is only available in a period of 24 hours and at a specific location." author EDOM created 2019-10-26T18:51:52.009+0100 id "0" version Version { major 0 minor 0 service 1 } } , 
-									Requirement { title "Pay Meal" description "The software should be able handle a meal payment. The type of user that is paying for the meal should be recorded. It should not be possible to pay for an unavailable meal or a meal that is unavailable at the payment location." author EDOM created '2019-10-26T18:51:52.009+0100' id "0" version Version { major 0 minor 0 service 1 } }
+			Model {
+				title 'Gorgeous Food Application'
+				groups {
+					RequirementGroup 'Functional Requirements' {
+						description 'This group details GFA functional requirements.'
+						id '0'
+						children {
+							RequirementGroup 'Manage Meals' {
+								description 'Details functionalities regarding meals management.'
+								id '2'
+								requirements {
+									Requirement 'Save Meal' {
+												description 'The software should be able to save a meal that is served to students and non students. A meal is identified by its designation, has a type, nutritional data, list of ingredients, can also contain allergens, has a cost-price and is available at a specific location. Once a meal is saved it is only available for the next 24 hours in the specified location.'
+												author 'EDOM'
+												created '2019-11-04T00:00:00.000+0000'
+												id '0'
+												version Version {
+															major 0
+															minor 0
+															service 1
+												}
+									}
+									, Requirement 'Show Meal Designation' {
+												description 'The software should be able to show a meal designation.'
+												author 'EDOM'
+												created '2019-11-04T00:00:00.000+0000'
+												id '0'
+												version Version {
+															major 0
+															minor 0
+															service 1
+												}
+									}
+									, Requirement 'Show Meal Nutritional Data' {
+											description 'The software should be able to show a meal nutritional data.'
+											author 'EDOM'
+											created '2019-11-04T00:00:00.000+0000'
+											id '0'
+											version Version {
+													major 0
+													minor 0
+													service 1
+											}
+									}
+									, Requirement 'Show Meal Type' {
+											description 'The software should be able to show a meal type.'
+											author 'EDOM'
+											created '2019-11-04T00:00:00.000+0000'
+											id '0'
+											version Version {
+													major 0
+													minor 0
+													service 1
+											}
+									}
+									, Requirement 'Show Meal Location' {
+											description 'The software should be able to show the location in which a meal is available.'
+											author 'EDOM'
+											created '2019-11-04T00:00:00.000+0000'
+											id '0'
+											version Version {
+													major 0
+													minor 0
+													service 1
+											}
+									}
+									, Requirement 'Show Meal Price' {
+											description 'The software should be able to show the price of a meal.'
+											author 'EDOM'
+											created '2019-11-04T00:00:00.000+0000'
+											id '0'
+											version Version {
+													major 0
+													minor 0
+													service 1
+											}
+									}
+									, Requirement 'List Meal Ingreditens' {
+											description 'The software should be able to list the ingredients of a meal.'
+											author 'EDOM'
+											created '2019-11-04T00:00:00.000+0000'
+											id '0'
+											version Version {
+													major 0
+													minor 0
+													service 1
+											}
+									}
+									, Requirement 'List Meal Allergens' {
+											description 'The software should be able to list the allergens of a meal if existent.'
+											author 'EDOM'
+											created '2019-11-04T00:00:00.000+0000'
+											id '0'
+											version Version {
+													major 0
+													minor 0
+													service 1
+											}
+									}
+									, Requirement 'Check Meal Availability' {
+											description 'The software should be able to check if a meal is available. A meal is only available in a period of 24 hours and at a specific location.'
+											author 'EDOM'
+											created '2019-11-04T00:00:00.000+0000'
+											id '0'
+											version Version {
+													major 0
+													minor 0
+													service 1
+											}
+									}
+									, Requirement 'Pay Meal' {
+										description 'The software should be able handle a meal payment. The type of user that is paying for the meal should be recorded. It should not be possible to pay for an unavailable meal or a meal that is unavailable at the payment location.'
+										author 'EDOM'
+										created '2019-11-04T00:00:00.000+0000'
+										id '0'
+										version Version {
+											major 0
+											minor 0
+											service 1
+										}
+									}
+									, Requirement 'Kitchen Worker' {
+										author 'EDOM'
+										created '2019-11-04T00:00:00.000+0000'
+										id '0'
+										dependencies (
+											'Save Meal'
+										)
+										version Version {
+											major 0
+											minor 0
+											service 1
+										}
+										comments {
+											Comment {
+												subject 'Actor'
+											}
+										}
+									}
+									, Requirement 'Kitchen Worker' {
+										author 'EDOM'
+										created '2019-11-04T00:00:00.000+0000'
+										id '0'
+										dependencies (
+											'Show Meal Designation'
+										)
+										version Version {
+											major 0
+											minor 0
+											service 1
+										}
+										comments {
+											Comment {
+												subject 'Actor'
+											}
+										}
+									}
+									, Requirement 'Kitchen Worker' {
+										author 'EDOM'
+										created '2019-11-04T00:00:00.000+0000'
+										id '0'
+										dependencies (
+											'Show Meal Nutritional Data'
+										)
+										version Version {
+											major 0
+											minor 0
+											service 1
+										}
+										comments {
+											Comment {
+												subject 'Actor'
+											}
+										}
+									}
+									, Requirement 'Kitchen Worker' {
+										author 'EDOM'
+										created '2019-11-04T00:00:00.000+0000'
+										id '0'
+										dependencies (
+											'Show Meal Type'
+										)
+										version Version {
+											major 0
+											minor 0
+											service 1
+										}
+										comments {
+											Comment {
+												subject 'Actor'
+											}
+										}
+									}
+									, Requirement 'Kitchen Worker' {
+										author 'EDOM'
+										created '2019-11-04T00:00:00.000+0000'
+										id '0'
+										dependencies (
+											'Show Meal Location'
+										)
+										version Version {
+											major 0
+											minor 0
+											service 1
+										}
+										comments {
+											Comment {
+												subject 'Actor'
+											}
+										}
+									}
+									, Requirement 'Kitchen Worker' {
+										author 'EDOM'
+										created '2019-11-04T00:00:00.000+0000'
+										id '0'
+										dependencies (
+											'Show Meal Price'
+										)
+										version Version {
+											major 0
+											minor 0
+											service 1
+										}
+										comments {
+											Comment {
+												subject 'Actor'
+											}
+										}
+									}
+									, Requirement 'Kitchen Worker' {
+										author 'EDOM'
+										created '2019-11-04T00:00:00.000+0000'
+										id '0'
+										dependencies (
+											'List Meal Ingreditens'
+										)
+										version Version {
+											major 0
+											minor 0
+											service 1
+										}
+										comments {
+											Comment {
+												subject 'Actor'
+											}
+										}
+									}
+									, Requirement 'Kitchen Worker' {
+										author 'EDOM'
+										created '2019-11-04T00:00:00.000+0000'
+										id '0'
+										dependencies (
+											'List Meal Allergens'
+										)
+										version Version {
+											major 0
+											minor 0
+											service 1
+										}
+										comments {
+											Comment {
+												subject 'Actor'
+											}
+										}
+									}
+									, Requirement 'Kitchen Worker' {
+										author 'EDOM'
+										created '2019-11-04T00:00:00.000+0000'
+										id '0'
+										dependencies (
+											'Check Meal Availability'
+										)
+										version Version {
+											major 0
+											minor 0
+											service 1
+										}
+										comments {
+											Comment {
+												subject 'Actor'
+											}
+										}
+									}
 								}
-							} , 
-							RequirementGroup "Manage Unserved Meals" { 
-								description "Details functionalities regarding unserved meals management." 
-								requirements { 
-									Requirement { title "Save Unserved Meal" description "The software should be able to save an unserved meal that will be packaged in the latter. It is identified by an identification number, has a production and expiration date and a designation of the meal. An unserved meal also has a state, and once saved its state is set to frozen." author EDOM created '2019-10-26T18:51:52.009+0100' id "0" version Version { major 0 minor 0 service 1 } } , 
-									Requirement { title "Show Unserved Meal Identification Number" description "The software should be able to show an unserved meal identification number." author EDOM created '2019-10-26T18:51:52.010+0100' id "0" version Version { major 0 minor 0 service 1 } } , 
-									Requirement { title "Show Unserved Meal Designation" description "The software should be able to show an unserved meal designation." author EDOM created '2019-10-26T18:51:52.010+0100' id "0" version Version { major 0 minor 0 service 1 } } , 
-									Requirement { title "Show Unserved Meal Production Date" description "The software should be able to show an unserved meal production date." author EDOM created '2019-10-26T18:51:52.010+0100' id "0" version Version { major 0 minor 0 service 1 } } , 
-									Requirement { title "Show Unserved Meal Expiration Date" description "The software should be able to show an unserved meal expiration date." author EDOM created '2019-10-26T18:51:52.010+0100' id "0" version Version { major 0 minor 0 service 1 } } , 
-									Requirement { title "Show Unserved Meal State" description "The software should be able to show an unserved meal state." author EDOM created '2019-10-26T18:51:52.010+0100' id "0" version Version { major 0 minor 0 service 1 } }
+							}
+							, RequirementGroup 'Manage Unserved Meals' {
+								description 'Details functionalities regarding unserved meals management.'
+								id '3'
+								requirements {
+									Requirement 'Save Unserved Meal' {
+											description 'The software should be able to save an unserved meal that will be packaged in the latter. It is identified by an identification number, has a production and expiration date and a designation of the meal. An unserved meal also has a state, and once saved its state is set to frozen.'
+											author 'EDOM'
+											created '2019-11-04T00:00:00.000+0000'
+											id '0'
+											version Version {
+													major 0
+													minor 0
+													service 1
+											}
+									}
+									, Requirement 'Show Unserved Meal Identification Number' {
+											description 'The software should be able to show an unserved meal identification number.'
+											author 'EDOM'
+											created '2019-11-04T00:00:00.000+0000'
+											id '0'
+											version Version {
+													major 0
+													minor 0
+													service 1
+											}
+									}
+									, Requirement 'Show Unserved Meal Designation' {
+											description 'The software should be able to show an unserved meal designation.'
+											author 'EDOM'
+											created '2019-11-04T00:00:00.000+0000'
+											id '0'
+											version Version {
+													major 0
+													minor 0
+													service 1
+											}
+									}
+									, Requirement 'Show Unserved Meal Production Date' {
+											description 'The software should be able to show an unserved meal production date.'
+											author 'EDOM'
+											created '2019-11-04T00:00:00.000+0000'
+											id '0'
+											version Version {
+													major 0
+													minor 0
+													service 1
+											}
+									}
+									, Requirement 'Show Unserved Meal Expiration Date' {
+											description 'The software should be able to show an unserved meal expiration date.'
+											author 'EDOM'
+											created '2019-11-04T00:00:00.000+0000'
+											id '0'
+											version Version {
+													major 0
+													minor 0
+													service 1
+											}
+									}
+									, Requirement 'Show Unserved Meal State' {
+											description 'The software should be able to show an unserved meal state.'
+											author 'EDOM'
+											created '2019-11-04T00:00:00.000+0000'
+											id '0'
+											version Version {
+													major 0
+													minor 0
+													service 1
+											}
+									}
+									, Requirement 'Add Meal Ingredients' {
+												author 'EDOM'
+												created '2019-11-04T00:00:00.000+0000'
+												id '0'
+												version Version {
+															major 0
+															minor 0
+															service 1
+												}
+												comments {
+															Comment {
+																		subject 'UseCase'
+															}
+												}
+									}
+									, Requirement 'Add Meal Allergens' {
+												author 'EDOM'
+												created '2019-11-04T00:00:00.000+0000'
+												id '0'
+												version Version {
+															major 0
+															minor 0
+															service 1
+												}
+												comments {
+															Comment {
+																		subject 'UseCase'
+															}
+												}
+									}
+									, Requirement 'Adminstrator' {
+											author 'EDOM'
+											created '2019-11-04T00:00:00.000+0000'
+											id '0'
+											version Version {
+													major 0
+													minor 0
+													service 1
+											}
+											comments {
+													Comment {
+															subject 'Actor'
+													}
+											}
+									}
+									, Requirement 'Kitchen Worker' {
+										author 'EDOM'
+										created '2019-11-04T00:00:00.000+0000'
+										id '0'
+										dependencies (
+											'Save Unserved Meal'
+										)
+										version Version {
+											major 0
+											minor 0
+											service 1
+										}
+										comments {
+											Comment {
+												subject 'Actor'
+											}
+										}
+									}
+									, Requirement 'Kitchen Worker' {
+										author 'EDOM'
+										created '2019-11-04T00:00:00.000+0000'
+										id '0'
+										dependencies (
+											'Show Unserved Meal Identification Number'
+										)
+										version Version {
+											major 0
+											minor 0
+											service 1
+										}
+										comments {
+											Comment {
+												subject 'Actor'
+											}
+										}
+									}
+									, Requirement 'Kitchen Worker' {
+										author 'EDOM'
+										created '2019-11-04T00:00:00.000+0000'
+										id '0'
+										dependencies (
+											'Show Unserved Meal Designation'
+										)
+										version Version {
+											major 0
+											minor 0
+											service 1
+										}
+										comments {
+											Comment {
+												subject 'Actor'
+											}
+										}
+									}
+									, Requirement 'Kitchen Worker' {
+										author 'EDOM'
+										created '2019-11-04T00:00:00.000+0000'
+										id '0'
+										dependencies (
+											'Show Unserved Meal Production Date'
+										)
+										version Version {
+											major 0
+											minor 0
+											service 1
+										}
+										comments {
+											Comment {
+												subject 'Actor'
+											}
+										}
+									}
+									, Requirement 'Kitchen Worker' {
+										author 'EDOM'
+										created '2019-11-04T00:00:00.000+0000'
+										id '0'
+										dependencies (
+											'Show Unserved Meal Expiration Date'
+										)
+										version Version {
+											major 0
+											minor 0
+											service 1
+										}
+										comments {
+											Comment {
+												subject 'Actor'
+											}
+										}
+									}
+									, Requirement 'Kitchen Worker' {
+										author 'EDOM'
+										created '2019-11-04T00:00:00.000+0000'
+										id '0'
+										dependencies (
+											'Show Unserved Meal State'
+										)
+										version Version {
+											major 0
+											minor 0
+											service 1
+										}
+										comments {
+											Comment {
+												subject 'Actor'
+											}
+										}
+									}
+									, Requirement 'Kitchen Worker' {
+										author 'EDOM'
+										created '2019-11-04T00:00:00.000+0000'
+										id '0'
+										dependencies (
+											'Add Meal Ingredients'
+										)
+										version Version {
+											major 0
+											minor 0
+											service 1
+										}
+										comments {
+											Comment {
+												subject 'Actor'
+											}
+										}
+									}
+									, Requirement 'Kitchen Worker' {
+										author 'EDOM'
+										created '2019-11-04T00:00:00.000+0000'
+										id '0'
+										dependencies (
+											'Add Meal Allergens'
+										)
+										version Version {
+											major 0
+											minor 0
+											service 1
+										}
+										comments {
+											Comment {
+												subject 'Actor'
+											}
+										}
+									}
+									, Requirement 'Remove Item from Inventory' {
+										author 'EDOM'
+										created '2019-11-04T00:00:00.000+0000'
+										id '0'
+										dependencies (
+											'Adminstrator'
+										)
+										version Version {
+											major 0
+											minor 0
+											service 1
+										}
+										comments {
+											Comment {
+												subject 'UseCase'
+											}
+										}
+									}
+									, Requirement 'Use Case Without Comment with Use Case Without Comment Dependency' {
+										author 'EDOM'
+										created '2019-11-04T00:00:00.000+0000'
+										id '0'
+										dependencies (
+											'Manage Meals.Save Meal'
+										)
+										version Version {
+											major 0
+											minor 0
+											service 1
+										}
+									}
+									, Requirement 'Use Case With Comment with Use Case Without Comment Dependency' {
+										author 'EDOM'
+										created '2019-11-04T00:00:00.000+0000'
+										id '0'
+										dependencies (
+											'Manage Meals.Show Meal Designation'
+										)
+										version Version {
+											major 0
+											minor 0
+											service 1
+										}
+										comments {
+											Comment {
+												subject 'UseCase'
+											}
+										}
+									}
+									, Requirement 'Use Case Without Comment with Use Case With Comment Dependency' {
+										author 'EDOM'
+										created '2019-11-04T00:00:00.000+0000'
+										id '0'
+										dependencies (
+											'Add Meal Ingredients'
+										)
+										version Version {
+											major 0
+											minor 0
+											service 1
+										}
+									}
+									, Requirement 'Use Case With Comment with Use Case With Comment Dependency' {
+										author 'EDOM'
+										created '2019-11-04T00:00:00.000+0000'
+										id '0'
+										dependencies (
+											'Add Meal Allergens'
+										)
+										version Version {
+											major 0
+											minor 0
+											service 1
+										}
+										comments {
+											Comment {
+												subject 'UseCase'
+											}
+										}
+									}
 								}
 							}
 						}
-					} , 
-					RequirementGroup "Quality Attributes" { 
-						description "This group details Gorgeous Food Application quality attributes"
 					}
-				} 
+					, RequirementGroup 'Quality Attributes' {
+						description 'This group details GFA quality attributes.'
+						id '1'
+					}
+				}
 			}
 		''')
 		Assertions.assertNotNull(result)
@@ -67,198 +696,1231 @@ class RDSLParsingTest {
 	}
 	
 	@Test
-	def void testNoModelDefinitionFailsParse() {
-		
-		var model = ''''''
-		
-		var result = parseHelper.parse(model)
-		
-		var errors = result.eResource.errors
-		
-		var hasErrors = !errors.empty
-		
-		Assertions.assertTrue(hasErrors)
+	def void modelWithDateWhichIsNotRecognizedByDSLFailsParse() {
+		val result = parseHelper.parse('''
+			Model {
+				title 'Gorgeous Food Application'
+				groups {
+					RequirementGroup 'Functional Requirements' {
+						description 'This group details GFA functional requirements.'
+						id '0'
+						children {
+							RequirementGroup 'Manage Meals' {
+								description 'Details functionalities regarding meals management.'
+								id '2'
+								requirements {
+									Requirement 'Save Meal' {
+												description 'The software should be able to save a meal that is served to students and non students. A meal is identified by its designation, has a type, nutritional data, list of ingredients, can also contain allergens, has a cost-price and is available at a specific location. Once a meal is saved it is only available for the next 24 hours in the specified location.'
+												author 'EDOM'
+												created 'thisdateisnotvalid'
+												id '0'
+												version Version {
+															major 0
+															minor 0
+															service 1
+												}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		''')
+		Assertions.assertNotNull(result)
+		val errors = result.eResource.errors
+		Assertions.assertFalse(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
 	}
 	
 	@Test
+	def void modelWithDateInYYYYMMDDUsingSingleQuotesFormatSucceedsParse() {
+		val result = parseHelper.parse('''
+			Model {
+				title 'Gorgeous Food Application'
+				groups {
+					RequirementGroup 'Functional Requirements' {
+						description 'This group details GFA functional requirements.'
+						id '0'
+						children {
+							RequirementGroup 'Manage Meals' {
+								description 'Details functionalities regarding meals management.'
+								id '2'
+								requirements {
+									Requirement 'Save Meal' {
+												description 'The software should be able to save a meal that is served to students and non students. A meal is identified by its designation, has a type, nutritional data, list of ingredients, can also contain allergens, has a cost-price and is available at a specific location. Once a meal is saved it is only available for the next 24 hours in the specified location.'
+												author 'EDOM'
+												created '2019-01-01'
+												id '0'
+												version Version {
+															major 0
+															minor 0
+															service 1
+												}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		''')
+		Assertions.assertNotNull(result)
+		val errors = result.eResource.errors
+		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+	}
+	
+	@Test
+	def void modelWithDateInYYYYMMDDTHHMMSSUsingSingleQuotesFormatSucceedsParse() {
+		val result = parseHelper.parse('''
+			Model {
+				title 'Gorgeous Food Application'
+				groups {
+					RequirementGroup 'Functional Requirements' {
+						description 'This group details GFA functional requirements.'
+						id '0'
+						children {
+							RequirementGroup 'Manage Meals' {
+								description 'Details functionalities regarding meals management.'
+								id '2'
+								requirements {
+									Requirement 'Save Meal' {
+												description 'The software should be able to save a meal that is served to students and non students. A meal is identified by its designation, has a type, nutritional data, list of ingredients, can also contain allergens, has a cost-price and is available at a specific location. Once a meal is saved it is only available for the next 24 hours in the specified location.'
+												author 'EDOM'
+												created '2019-01-01T00:00:00'
+												id '0'
+												version Version {
+															major 0
+															minor 0
+															service 1
+												}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		''')
+		Assertions.assertNotNull(result)
+		val errors = result.eResource.errors
+		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+	}
+	
+	@Test
+	def void modelWithDateInYYYYMMDDTHHMMSSZUsingSingleQuotesFormatSucceedsParse() {
+		val result = parseHelper.parse('''
+			Model {
+				title 'Gorgeous Food Application'
+				groups {
+					RequirementGroup 'Functional Requirements' {
+						description 'This group details GFA functional requirements.'
+						id '0'
+						children {
+							RequirementGroup 'Manage Meals' {
+								description 'Details functionalities regarding meals management.'
+								id '2'
+								requirements {
+									Requirement 'Save Meal' {
+												description 'The software should be able to save a meal that is served to students and non students. A meal is identified by its designation, has a type, nutritional data, list of ingredients, can also contain allergens, has a cost-price and is available at a specific location. Once a meal is saved it is only available for the next 24 hours in the specified location.'
+												author 'EDOM'
+												created '2019-01-01T00:00:00.000+0000'
+												id '0'
+												version Version {
+															major 0
+															minor 0
+															service 1
+												}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		''')
+		Assertions.assertNotNull(result)
+		val errors = result.eResource.errors
+		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+	}
+	
+	@Test
+	def void modelWithDateInYYYYMMDDUsingDoubleQuotesFormatSucceedsParse() {
+		val result = parseHelper.parse('''
+			Model {
+				title 'Gorgeous Food Application'
+				groups {
+					RequirementGroup 'Functional Requirements' {
+						description 'This group details GFA functional requirements.'
+						id '0'
+						children {
+							RequirementGroup 'Manage Meals' {
+								description 'Details functionalities regarding meals management.'
+								id '2'
+								requirements {
+									Requirement 'Save Meal' {
+												description 'The software should be able to save a meal that is served to students and non students. A meal is identified by its designation, has a type, nutritional data, list of ingredients, can also contain allergens, has a cost-price and is available at a specific location. Once a meal is saved it is only available for the next 24 hours in the specified location.'
+												author 'EDOM'
+												created "2019-01-01"
+												id '0'
+												version Version {
+															major 0
+															minor 0
+															service 1
+												}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		''')
+		Assertions.assertNotNull(result)
+		val errors = result.eResource.errors
+		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+	}
+	
+	@Test
+	def void modelWithDateInYYYYMMDDTHHMMSSUsingDoubleQuotesFormatSucceedsParse() {
+		val result = parseHelper.parse('''
+			Model {
+				title 'Gorgeous Food Application'
+				groups {
+					RequirementGroup 'Functional Requirements' {
+						description 'This group details GFA functional requirements.'
+						id '0'
+						children {
+							RequirementGroup 'Manage Meals' {
+								description 'Details functionalities regarding meals management.'
+								id '2'
+								requirements {
+									Requirement 'Save Meal' {
+												description 'The software should be able to save a meal that is served to students and non students. A meal is identified by its designation, has a type, nutritional data, list of ingredients, can also contain allergens, has a cost-price and is available at a specific location. Once a meal is saved it is only available for the next 24 hours in the specified location.'
+												author 'EDOM'
+												created "2019-01-01T00:00:00"
+												id '0'
+												version Version {
+															major 0
+															minor 0
+															service 1
+												}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		''')
+		Assertions.assertNotNull(result)
+		val errors = result.eResource.errors
+		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+	}
+	
+	@Test
+	def void modelWithDateInYYYYMMDDTHHMMSSZUsingDoubleQuotesFormatSucceedsParse() {
+		val result = parseHelper.parse('''
+			Model {
+				title 'Gorgeous Food Application'
+				groups {
+					RequirementGroup 'Functional Requirements' {
+						description 'This group details GFA functional requirements.'
+						id '0'
+						children {
+							RequirementGroup 'Manage Meals' {
+								description 'Details functionalities regarding meals management.'
+								id '2'
+								requirements {
+									Requirement 'Save Meal' {
+												description 'The software should be able to save a meal that is served to students and non students. A meal is identified by its designation, has a type, nutritional data, list of ingredients, can also contain allergens, has a cost-price and is available at a specific location. Once a meal is saved it is only available for the next 24 hours in the specified location.'
+												author 'EDOM'
+												created "2019-01-01T00:00:00.000+0000"
+												id '0'
+												version Version {
+															major 0
+															minor 0
+															service 1
+												}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		''')
+		Assertions.assertNotNull(result)
+		val errors = result.eResource.errors
+		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+	}
+
+	@Test
+	def void testNoModelDefinitionFailsParse() {
+
+		var model = ''''''
+
+		var result = parseHelper.parse(model)
+
+		var errors = result.eResource.errors
+
+		var hasErrors = !errors.empty
+
+		Assertions.assertTrue(hasErrors)
+	}
+
+	@Test
 	def void testModelWithNoTitleDefinitionFailsParse() {
-		
+
 		var model = '''
 			Model {}
 		'''
-		
+
 		var result = parseHelper.parse(model)
 		
-		var errors = result.eResource.errors
+		var diagnostic = Diagnostician.INSTANCE.validate(result);
 		
-		var hasErrors = !errors.empty
+		var hasDiagnosticErrors = diagnostic.severity != Diagnostic.OK;
 		
-		//Assertions.assertTrue(hasErrors)
+		Assertions.assertTrue(hasDiagnosticErrors)
 	}
-	
-	
+
 	@Test
 	def void testModelWithTitleLengthLessThanThreeFailsParse() {
-		
+
 		var model = '''
 			Model {
 				title tw
 			}
 		'''
-		
+
 		var result = parseHelper.parse(model)
+
+		var diagnostic = Diagnostician.INSTANCE.validate(result);
 		
-		var errors = result.eResource.errors
+		var hasDiagnosticErrors = diagnostic.severity != Diagnostic.OK;
 		
-		var hasErrors = !errors.empty
-		
-		//Assertions.assertTrue(hasErrors)
+		Assertions.assertTrue(hasDiagnosticErrors)
 	}
-	
-	
+
 	@Test
 	def void testModelWithTitleLengthGreaterOrEqualThanThreeSucceedsParse() {
-		
+
 		var model = '''
 			Model {
 				title two
 			}
 		'''
-		
+
 		var result = parseHelper.parse(model)
+
+		var diagnostic = Diagnostician.INSTANCE.validate(result);
 		
-		var errors = result.eResource.errors
+		var hasDiagnosticErrors = diagnostic.severity != Diagnostic.OK;
 		
-		var succeeds = errors.empty
-		
-		//Assertions.assertTrue(succeeds)
+		Assertions.assertTrue(!hasDiagnosticErrors)
 	}
-	
-	
+
 	@Test
-	def void testRequirementGroupWithNameLengthLessThanFiveFailsParse(){}
-	
-	
+	def void testRequirementGroupWithNameLengthLessThanFiveFailsParse() {
+		var model = '''
+			Model {
+			title "Gorgeous Food Application Requirements"
+			groups {
+				RequirementGroup "four" {
+					description "This group"
+				}
+			}
+			}
+		'''
+
+		var result = parseHelper.parse(model)
+
+		var diagnostic = Diagnostician.INSTANCE.validate(result);
+		
+		var hasDiagnosticErrors = diagnostic.severity != Diagnostic.OK;
+		
+		Assertions.assertTrue(hasDiagnosticErrors)
+	}
+
 	@Test
-	def void testRequirementGroupWithNameLengthGreaterOrEqualThanFiveSucceedsParse(){}
-	
-	
+	def void testRequirementGroupWithNameLengthGreaterOrEqualThanFiveSucceedsParse() {
+		var model = '''
+			Model {
+			title "Gorgeous Food Application Requirements"
+			groups {
+				RequirementGroup "fiveee" {
+					description "This group"
+				}
+			}
+			}
+		'''
+
+		var result = parseHelper.parse(model)
+
+		var diagnostic = Diagnostician.INSTANCE.validate(result);
+		
+		var hasDiagnosticErrors = diagnostic.severity != Diagnostic.OK;
+		
+		Assertions.assertTrue(!hasDiagnosticErrors)
+	}
+
 	@Test
-	def void testRequirementGroupWithoutDescriptionFailsParse(){}
-	
-	
+	def void testRequirementGroupWithoutDescriptionFailsParse() {
+		var model = '''
+			Model {
+			title "Gorgeous Food Application Requirements"
+			groups {
+				RequirementGroup "fivee" {
+					
+				}
+			}
+			}
+		'''
+
+		var result = parseHelper.parse(model)
+
+		var diagnostic = Diagnostician.INSTANCE.validate(result);
+		
+		var hasDiagnosticErrors = diagnostic.severity != Diagnostic.OK;
+		
+		Assertions.assertTrue(hasDiagnosticErrors)
+	}
+
 	@Test
-	def void testRequirementGroupWithDescriptionLengthLessThanTenFailsParse(){}
-	
-	
+	def void testRequirementGroupWithDescriptionLengthLessThanTenFailsParse() {
+		var model = '''
+			Model {
+			title "Gorgeous Food Application Requirements"
+			groups {
+				RequirementGroup "fivee" {
+					description "This grou"
+				}
+			}
+			}
+		'''
+
+		var result = parseHelper.parse(model)
+
+		var diagnostic = Diagnostician.INSTANCE.validate(result);
+		
+		var hasDiagnosticErrors = diagnostic.severity != Diagnostic.OK;
+		
+		Assertions.assertTrue(hasDiagnosticErrors)
+	}
+
 	@Test
-	def void testRequirementGroupWithDescriptionLengthGreaterOrEqualThanTenSucceedsParse(){}
-	
-	
+	def void testRequirementGroupWithDescriptionLengthGreaterOrEqualThanTenSucceedsParse() {
+		var model = '''
+			Model {
+			title "Gorgeous Food Application Requirements"
+			groups {
+				RequirementGroup "fivee" {
+					description "This group"
+				}
+			}
+			}
+		'''
+
+		var result = parseHelper.parse(model)
+
+		var diagnostic = Diagnostician.INSTANCE.validate(result);
+		
+		var hasDiagnosticErrors = diagnostic.severity != Diagnostic.OK;
+		
+		Assertions.assertTrue(!hasDiagnosticErrors)
+	}
+
 	@Test
-	def void testRequirementGroupWithSubRequirementGroupsWithSameNameFailsParse(){}
-	
-	
+	def void testRequirementGroupWithSubRequirementGroupsWithSameNameFailsParse() {
+		var model = '''
+			Model {
+			title "Gorgeous Food Application Requirements"
+			groups {
+				RequirementGroup "fivee" {
+					description "This group"
+					children {
+						RequirementGroup "fivee"
+					}
+				}
+			}
+			}
+		'''
+
+		var result = parseHelper.parse(model)
+
+		var diagnostic = Diagnostician.INSTANCE.validate(result);
+		
+		var hasDiagnosticErrors = diagnostic.severity != Diagnostic.OK;
+		
+		Assertions.assertTrue(hasDiagnosticErrors)
+	}
+
 	@Test
-	def void testRequirementWithoutTitleFailsParse(){}
-	
-	
+	def void testRequirementWithoutTitleFailsParse() {
+		var model = '''
+			Model {
+			title "Gorgeous Food Application Requirements"
+			groups {
+				RequirementGroup "fivee" {
+					description "This group"
+					
+					requirements{
+						Requirement{
+							description "The software should be able to save a meal that is served to students and non students. A meal is identified by its designation, has a type, nutritional data, list of ingredients, can also contain allergens, has a cost-price and is available at a specific location. Once a meal is saved it is only available for the next 24 hours in the specified location."
+							author EDOM
+							created 2019-10-26T18:51:52.009+0100
+							id "0"
+							version Version {
+								major 0
+								minor 0
+								service 1
+							}
+						}
+					}
+				}
+			}
+			}
+		'''
+
+		var result = parseHelper.parse(model)
+
+		var diagnostic = Diagnostician.INSTANCE.validate(result);
+		
+		var hasDiagnosticErrors = diagnostic.severity != Diagnostic.OK;
+		
+		Assertions.assertTrue(hasDiagnosticErrors)
+	}
+
 	@Test
-	def void testRequirementWithTitleLengthLessThanFiveFailsParse(){}
-	
-	
+	def void testRequirementWithTitleLengthLessThanFiveFailsParse() {
+		var model = '''
+			Model {
+			title "Gorgeous Food Application Requirements"
+			groups {
+				RequirementGroup "fivee" {
+					description "This group"
+					
+					requirements{
+						Requirement "four"{
+							description "The software should be able to save a meal that is served to students and non students. A meal is identified by its designation, has a type, nutritional data, list of ingredients, can also contain allergens, has a cost-price and is available at a specific location. Once a meal is saved it is only available for the next 24 hours in the specified location."
+							author EDOM
+							created 2019-10-26T18:51:52.009+0100
+							id "0"
+							version Version {
+								major 0
+								minor 0
+								service 1
+							}
+						}
+					}
+				}
+			}
+			}
+		'''
+
+		var result = parseHelper.parse(model)
+
+		var diagnostic = Diagnostician.INSTANCE.validate(result);
+		
+		var hasDiagnosticErrors = diagnostic.severity != Diagnostic.OK;
+		
+		Assertions.assertTrue(hasDiagnosticErrors)
+	}
+
 	@Test
-	def void testRequirementWithTitleLengthGreaterOrEqualThanFiveSucceedsParse(){}
-	
-	
+	def void testRequirementWithTitleLengthGreaterOrEqualThanFiveSucceedsParse() {
+		var model = '''
+			Model {
+			title "Gorgeous Food Application Requirements"
+			groups {
+				RequirementGroup "fivee" {
+					description "This group"
+					
+					requirements{
+						Requirement "fivee"{
+							description "The software should be able to save a meal that is served to students and non students. A meal is identified by its designation, has a type, nutritional data, list of ingredients, can also contain allergens, has a cost-price and is available at a specific location. Once a meal is saved it is only available for the next 24 hours in the specified location."
+							author EDOM
+							created 2019-10-26T18:51:52.009+0100
+							id "0"
+							version Version {
+								major 0
+								minor 0
+								service 1
+							}
+						}
+					}
+				}
+			}
+			}
+		'''
+
+		var result = parseHelper.parse(model)
+
+		var diagnostic = Diagnostician.INSTANCE.validate(result);
+		
+		var hasDiagnosticErrors = diagnostic.severity != Diagnostic.OK;
+		
+		Assertions.assertTrue(!hasDiagnosticErrors)
+	}
+
 	@Test
-	def void testRequirementWithoutDescriptionFailsParse(){}
-	
-	
+	def void testRequirementWithoutDescriptionFailsParse() {
+		var model = '''
+			Model {
+			title "Gorgeous Food Application Requirements"
+			groups {
+				RequirementGroup "fivee" {
+					description "This group"
+					
+					requirements{
+						Requirement "fivee"{
+							author EDOM
+							created 2019-10-26T18:51:52.009+0100
+							id "0"
+							version Version {
+								major 0
+								minor 0
+								service 1
+							}
+						}
+					}
+				}
+			}
+			}
+		'''
+
+		var result = parseHelper.parse(model)
+
+		var diagnostic = Diagnostician.INSTANCE.validate(result);
+		
+		var hasDiagnosticErrors = diagnostic.severity != Diagnostic.OK;
+		
+		Assertions.assertTrue(hasDiagnosticErrors)
+	}
+
 	@Test
-	def void testRequirementWithDescriptionLengthLessThanTenFailsParse(){}
-	
-	
+	def void testRequirementWithDescriptionLengthLessThanTenFailsParse() {
+		var model = '''
+			Model {
+			title "Gorgeous Food Application Requirements"
+			groups {
+				RequirementGroup "fivee" {
+					description "This group"
+					
+					requirements{
+						Requirement "fivee"{
+							description "tententen"
+							author EDOM
+							created 2019-10-26T18:51:52.009+0100
+							id "0"
+							version Version {
+								major 0
+								minor 0
+								service 1
+							}
+						}
+					}
+				}
+			}
+			}
+		'''
+
+		var result = parseHelper.parse(model)
+
+		var diagnostic = Diagnostician.INSTANCE.validate(result);
+		
+		var hasDiagnosticErrors = diagnostic.severity != Diagnostic.OK;
+		
+		Assertions.assertTrue(hasDiagnosticErrors)
+	}
+
 	@Test
-	def void testRequirementWithDescriptionLengthGreaterOrEqualThanTenSucceedsParse(){}
-	
-	
+	def void testRequirementWithDescriptionLengthGreaterOrEqualThanTenSucceedsParse() {
+		var model = '''
+			Model {
+			title "Gorgeous Food Application Requirements"
+			groups {
+				RequirementGroup "fivee" {
+					description "This group"
+					
+					requirements{
+						Requirement "fivee"{
+							description "The software should be able to save a meal that is served to students and non students. A meal is identified by its designation, has a type, nutritional data, list of ingredients, can also contain allergens, has a cost-price and is available at a specific location. Once a meal is saved it is only available for the next 24 hours in the specified location."
+							author EDOM
+							created 2019-10-26T18:51:52.009+0100
+							id "0"
+							version Version {
+								major 0
+								minor 0
+								service 1
+							}
+						}
+					}
+				}
+			}
+			}
+		'''
+
+		var result = parseHelper.parse(model)
+
+		var diagnostic = Diagnostician.INSTANCE.validate(result);
+		
+		var hasDiagnosticErrors = diagnostic.severity != Diagnostic.OK;
+		
+		Assertions.assertTrue(!hasDiagnosticErrors)
+	}
+
 	@Test
-	def void testRequirementWithResolvedStateAndInvalidResolutionFailsParse(){}
-	
-	
+	def void testRequirementWithoutCreationDateFailsParse() {
+		var model = '''
+			Model {
+			title "Gorgeous Food Application Requirements"
+			groups {
+				RequirementGroup "fivee" {
+					description "This group"
+					
+					requirements{
+						Requirement "fivee"{
+							description "The software should be able to save a meal that is served to students and non students. A meal is identified by its designation, has a type, nutritional data, list of ingredients, can also contain allergens, has a cost-price and is available at a specific location. Once a meal is saved it is only available for the next 24 hours in the specified location."
+							author EDOM
+							id "0"
+							version Version {
+								major 0
+								minor 0
+								service 1
+							}
+						}
+					}
+				}
+			}
+			}
+		'''
+
+		var result = parseHelper.parse(model)
+
+		var diagnostic = Diagnostician.INSTANCE.validate(result);
+		
+		var hasDiagnosticErrors = diagnostic.severity != Diagnostic.OK;
+		
+		Assertions.assertTrue(hasDiagnosticErrors)
+	}
+
 	@Test
-	def void testRequirementWithApprovedStateAndInvalidResolutionFailsParse(){}
-	
-	
+	def void testRequirementWithoutAuthorFailsParse() {
+		var model = '''
+			Model {
+			title "Gorgeous Food Application Requirements"
+			groups {
+				RequirementGroup "fivee" {
+					description "This group"
+					
+					requirements{
+						Requirement "fivee"{
+							description "The software should be able to save a meal that is served to students and non students. A meal is identified by its designation, has a type, nutritional data, list of ingredients, can also contain allergens, has a cost-price and is available at a specific location. Once a meal is saved it is only available for the next 24 hours in the specified location."
+							created 2019-10-26T18:51:52.009+0100
+							id "0"
+							version Version {
+								major 0
+								minor 0
+								service 1
+							}
+						}
+					}
+				}
+			}
+			}
+		'''
+
+		var result = parseHelper.parse(model)
+
+		var diagnostic = Diagnostician.INSTANCE.validate(result);
+		
+		var hasDiagnosticErrors = diagnostic.severity != Diagnostic.OK;
+		
+		Assertions.assertTrue(hasDiagnosticErrors)
+	}
+
 	@Test
-	def void testRequirementWithReviewedStateAndInvalidResolutionFailsParse(){}
-	
-	
+	def void testRequirementWithAuthorLengthLessThanThreeFailsParse() {
+		var model = '''
+			Model {
+			title "Gorgeous Food Application Requirements"
+			groups {
+				RequirementGroup "fivee" {
+					description "tw"
+					
+					requirements{
+						Requirement "fivee"{
+							description "The software should be able to save a meal that is served to students and non students. A meal is identified by its designation, has a type, nutritional data, list of ingredients, can also contain allergens, has a cost-price and is available at a specific location. Once a meal is saved it is only available for the next 24 hours in the specified location."
+							author ED
+							created 2019-10-26T18:51:52.009+0100
+							id "0"
+							version Version {
+								major 0
+								minor 0
+								service 1
+							}
+						}
+					}
+				}
+			}
+			}
+		'''
+
+		var result = parseHelper.parse(model)
+
+		var diagnostic = Diagnostician.INSTANCE.validate(result);
+		
+		var hasDiagnosticErrors = diagnostic.severity != Diagnostic.OK;
+		
+		Assertions.assertTrue(hasDiagnosticErrors)
+	}
+
 	@Test
-	def void testRequirementWithoutCreationDateFailsParse(){}
-	
-	
+	def void testRequirementWithAuthorLengthGreaterOrEqualThanThreeSucceedsParse() {
+		var model = '''
+			Model {
+			title "Gorgeous Food Application Requirements"
+			groups {
+				RequirementGroup "fivee" {
+					description "This group"
+					
+					requirements{
+						Requirement "fivee"{
+							description "The software should be able to save a meal that is served to students and non students. A meal is identified by its designation, has a type, nutritional data, list of ingredients, can also contain allergens, has a cost-price and is available at a specific location. Once a meal is saved it is only available for the next 24 hours in the specified location."
+							author "EDO"
+							created "2019-10-26T18:51:52.009+0100"
+							id "0"
+							version Version {
+								major 0
+								minor 0
+								service 1
+							}
+						}
+					}
+				}
+			}
+			}
+		'''
+
+		var result = parseHelper.parse(model)
+
+		var diagnostic = Diagnostician.INSTANCE.validate(result);
+		
+		var hasDiagnosticErrors = diagnostic.severity != Diagnostic.OK;
+				
+		Assertions.assertTrue(!hasDiagnosticErrors, diagnostic.children.toString)
+	}
+
 	@Test
-	def void testRequirementWithoutAuthorFailsParse(){}
-	
-	
+	def void testVersionWithMajorLowerThanZeroFailsParse() {
+		var model = '''
+			Model {
+			title "Gorgeous Food Application Requirements"
+			groups {
+				RequirementGroup "fivee" {
+					description "This group"
+					
+					requirements{
+						Requirement "fivee"{
+							description "The software should be able to save a meal that is served to students and non students. A meal is identified by its designation, has a type, nutritional data, list of ingredients, can also contain allergens, has a cost-price and is available at a specific location. Once a meal is saved it is only available for the next 24 hours in the specified location."
+							author EDOM
+							created 2019-10-26T18:51:52.009+0100
+							id "0"
+							version Version {
+								major -1
+								minor 0
+								service 1
+							}
+						}
+					}
+				}
+			}
+			}
+		'''
+
+		var result = parseHelper.parse(model)
+
+		var diagnostic = Diagnostician.INSTANCE.validate(result);
+		
+		var hasDiagnosticErrors = diagnostic.severity != Diagnostic.OK;
+		
+		Assertions.assertTrue(hasDiagnosticErrors)
+	}
+
 	@Test
-	def void testRequirementWithAuthorLengthLessThanThreeFailsParse(){}
-	
-	
+	def void testVersionWithMinorLowerThanZeroFailsParse() {
+		var model = '''
+			Model {
+			title "Gorgeous Food Application Requirements"
+			groups {
+				RequirementGroup "fivee" {
+					description "This group"
+					
+					requirements{
+						Requirement "fivee"{
+							description "The software should be able to save a meal that is served to students and non students. A meal is identified by its designation, has a type, nutritional data, list of ingredients, can also contain allergens, has a cost-price and is available at a specific location. Once a meal is saved it is only available for the next 24 hours in the specified location."
+							author EDOM
+							created 2019-10-26T18:51:52.009+0100
+							id "0"
+							version Version {
+								major 0
+								minor -1
+								service 1
+							}
+						}
+					}
+				}
+			}
+			}
+		'''
+
+		var result = parseHelper.parse(model)
+
+		var diagnostic = Diagnostician.INSTANCE.validate(result);
+		
+		var hasDiagnosticErrors = diagnostic.severity != Diagnostic.OK;
+		
+		Assertions.assertTrue(hasDiagnosticErrors)
+	}
+
 	@Test
-	def void testRequirementWithAuthorLengthGreaterOrEqualThanThreeSucceedsParse(){}
-	
-	
+	def void testVersionWithServiceLowerThanZeroFailsParse() {
+		var model = '''
+			Model {
+			title "Gorgeous Food Application Requirements"
+			groups {
+				RequirementGroup "fivee" {
+					description "This group"
+					
+					requirements{
+						Requirement "fivee"{
+							description "The software should be able to save a meal that is served to students and non students. A meal is identified by its designation, has a type, nutritional data, list of ingredients, can also contain allergens, has a cost-price and is available at a specific location. Once a meal is saved it is only available for the next 24 hours in the specified location."
+							author EDOM
+							created 2019-10-26T18:51:52.009+0100
+							id "0"
+							version Version {
+								major 0
+								minor 0
+								service -1
+							}
+						}
+					}
+				}
+			}
+			}
+		'''
+
+		var result = parseHelper.parse(model)
+
+		var diagnostic = Diagnostician.INSTANCE.validate(result);
+		
+		var hasDiagnosticErrors = diagnostic.severity != Diagnostic.OK;
+		
+		Assertions.assertTrue(hasDiagnosticErrors)
+	}
+
 	@Test
-	def void testVersionWithMajorLowerThanZeroFailsParse(){}
-	
-	
+	def void testCommentWithoutAuthorFailsParse() {
+		var model = '''
+			Model {
+			title "Gorgeous Food Application Requirements"
+			groups {
+				RequirementGroup "fivee" {
+					description "This group"
+					
+					requirements{
+						Requirement "fivee"{
+							description "The software should be able to save a meal that is served to students and non students. A meal is identified by its designation, has a type, nutritional data, list of ingredients, can also contain allergens, has a cost-price and is available at a specific location. Once a meal is saved it is only available for the next 24 hours in the specified location."
+							author EDOM
+							created 2019-10-26T18:51:52.009+0100
+							id "0"
+							version Version {
+								major 0
+								minor 0
+								service 1
+							}
+							comments {
+								Comment{
+									body "Comment for this requirement"
+									subject "Subject of the comment"
+									created 2019-10-26T18:51:52.009+0100
+								}
+							}
+						}
+					}
+				}
+			}
+			}
+		'''
+
+		var result = parseHelper.parse(model)
+
+		var diagnostic = Diagnostician.INSTANCE.validate(result);
+		
+		var hasDiagnosticErrors = diagnostic.severity != Diagnostic.OK;
+		
+		Assertions.assertTrue(hasDiagnosticErrors)
+	}
+
 	@Test
-	def void testVersionWithMinorLowerThanZeroFailsParse(){}
-	
-	
+	def void testCommentWithAuthorLengthLessThanThreeFailsParse() {
+		var model = '''
+			Model {
+			title "Gorgeous Food Application Requirements"
+			groups {
+				RequirementGroup "fivee" {
+					description "This group"
+					
+					requirements{
+						Requirement "fivee"{
+							description "The software should be able to save a meal that is served to students and non students. A meal is identified by its designation, has a type, nutritional data, list of ingredients, can also contain allergens, has a cost-price and is available at a specific location. Once a meal is saved it is only available for the next 24 hours in the specified location."
+							author EDOM
+							created 2019-10-26T18:51:52.009+0100
+							id "0"
+							version Version {
+								major 0
+								minor 0
+								service 1
+							}
+							comments {
+								Comment{
+									author "tw"
+									body "Comment for this requirement"
+									subject "Subject of the comment"
+									created 2019-10-26T18:51:52.009+0100
+								}
+							}
+						}
+					}
+				}
+			}
+			}
+		'''
+
+		var result = parseHelper.parse(model)
+
+		var diagnostic = Diagnostician.INSTANCE.validate(result);
+		
+		var hasDiagnosticErrors = diagnostic.severity != Diagnostic.OK;
+		
+		Assertions.assertTrue(hasDiagnosticErrors)
+	}
+
 	@Test
-	def void testVersionWithServiceLowerThanZeroFailsParse(){}
-	
-	
+	def void testCommentWithoutBodyFailsParse() {
+		var model = '''
+			Model {
+			title "Gorgeous Food Application Requirements"
+			groups {
+				RequirementGroup "fivee" {
+					description "This group"
+					
+					requirements{
+						Requirement "fivee"{
+							description "The software should be able to save a meal that is served to students and non students. A meal is identified by its designation, has a type, nutritional data, list of ingredients, can also contain allergens, has a cost-price and is available at a specific location. Once a meal is saved it is only available for the next 24 hours in the specified location."
+							author EDOM
+							created 2019-10-26T18:51:52.009+0100
+							id "0"
+							version Version {
+								major 0
+								minor 0
+								service 1
+							}
+							comments {
+								Comment{
+									author "EDOM"
+									subject "Subject of the comment"
+									created 2019-10-26T18:51:52.009+0100
+								}
+							}
+						}
+					}
+				}
+			}
+			}
+		'''
+
+		var result = parseHelper.parse(model)
+
+		var diagnostic = Diagnostician.INSTANCE.validate(result);
+		
+		var hasDiagnosticErrors = diagnostic.severity != Diagnostic.OK;
+		
+		Assertions.assertTrue(hasDiagnosticErrors)
+	}
+
 	@Test
-	def void testCommentWithoutAuthorFailsParse(){}
-	
-	
+	def void testCommentWithBodyLengthLessThanFifteenFailsParse() {
+		var model = '''
+			Model {
+			title "Gorgeous Food Application Requirements"
+			groups {
+				RequirementGroup "fivee" {
+					description "This group"
+					
+					requirements{
+						Requirement "fivee"{
+							description "The software should be able to save a meal that is served to students and non students. A meal is identified by its designation, has a type, nutritional data, list of ingredients, can also contain allergens, has a cost-price and is available at a specific location. Once a meal is saved it is only available for the next 24 hours in the specified location."
+							author EDOM
+							created 2019-10-26T18:51:52.009+0100
+							id "0"
+							version Version {
+								major 0
+								minor 0
+								service 1
+							}
+							comments {
+								Comment{
+									author "EDOM"
+									body "Requirement"
+									subject "Subject of the comment"
+									created 2019-10-26T18:51:52.009+0100
+								}
+							}
+						}
+					}
+				}
+			}
+			}
+		'''
+
+		var result = parseHelper.parse(model)
+
+		var diagnostic = Diagnostician.INSTANCE.validate(result);
+		
+		var hasDiagnosticErrors = diagnostic.severity != Diagnostic.OK;
+		
+		Assertions.assertTrue(hasDiagnosticErrors)
+	}
+
 	@Test
-	def void testCommentWithAuthorLengthLessThanThreeFailsParse(){}
-	
-	
+	def void testCommentWithoutSubjectFailsParse() {
+		var model = '''
+			Model {
+			title "Gorgeous Food Application Requirements"
+			groups {
+				RequirementGroup "fivee" {
+					description "This group"
+					
+					requirements{
+						Requirement "fivee"{
+							description "The software should be able to save a meal that is served to students and non students. A meal is identified by its designation, has a type, nutritional data, list of ingredients, can also contain allergens, has a cost-price and is available at a specific location. Once a meal is saved it is only available for the next 24 hours in the specified location."
+							author EDOM
+							created 2019-10-26T18:51:52.009+0100
+							id "0"
+							version Version {
+								major 0
+								minor 0
+								service 1
+							}
+							comments {
+								Comment{
+									author "EDOM"
+									body "Comment of Requirement"
+									created 2019-10-26T18:51:52.009+0100
+								}
+							}
+						}
+					}
+				}
+			}
+			}
+		'''
+
+		var result = parseHelper.parse(model)
+
+		var diagnostic = Diagnostician.INSTANCE.validate(result);
+		
+		var hasDiagnosticErrors = diagnostic.severity != Diagnostic.OK;
+		
+		Assertions.assertTrue(hasDiagnosticErrors)
+	}
+
 	@Test
-	def void testCommentWithAuthorLengthGreaterOrEqualThanThreeSucceedsParse(){}
-	
-	
+	def void testCommentWithSubjectLengthLessThanTenFailsParse() {
+		var model = '''
+			Model {
+			title "Gorgeous Food Application Requirements"
+			groups {
+				RequirementGroup "fivee" {
+					description "This group"
+					
+					requirements{
+						Requirement "fivee"{
+							description "The software should be able to save a meal that is served to students and non students. A meal is identified by its designation, has a type, nutritional data, list of ingredients, can also contain allergens, has a cost-price and is available at a specific location. Once a meal is saved it is only available for the next 24 hours in the specified location."
+							author EDOM
+							created 2019-10-26T18:51:52.009+0100
+							id "0"
+							version Version {
+								major 0
+								minor 0
+								service 1
+							}
+							comments {
+								Comment{
+									author "EDOM"
+									body "Comment of Requirement"
+									subject "Subjectt"
+									created 2019-10-26T18:51:52.009+0100
+								}
+							}
+						}
+					}
+				}
+			}
+			}
+		'''
+
+		var result = parseHelper.parse(model)
+
+		var diagnostic = Diagnostician.INSTANCE.validate(result);
+		
+		var hasDiagnosticErrors = diagnostic.severity != Diagnostic.OK;
+		
+		Assertions.assertTrue(hasDiagnosticErrors)
+	}
+
 	@Test
-	def void testCommentWithoutBodyFailsParse(){}
-	
-	
-	@Test
-	def void testCommentWithBodyLengthLessThanFifteenFailsParse(){}
-	
-	
-	@Test
-	def void testCommentWithBodyLengthGreaterOrEqualThanFifteenSucceedsParse(){}
-	
-	
-	@Test
-	def void testCommentWithoutSubjectFailsParse(){}
-	
-	
-	@Test
-	def void testCommentWithSubjectLengthLessThanTenFailsParse(){}
-	
-	
-	@Test
-	def void testCommentWithSubjectLengthGreaterOrEqualThanTenSucceedsParse(){}
-	
-	
-	@Test
-	def void testCommentWithoutCreationDateFailsParse(){}
+	def void testCommentWithoutCreationDateFailsParse() {
+		var model = '''
+			Model {
+			title "Gorgeous Food Application Requirements"
+			groups {
+				RequirementGroup "fivee" {
+					description "This group"
+					
+					requirements{
+						Requirement "fivee"{
+							description "The software should be able to save a meal that is served to students and non students. A meal is identified by its designation, has a type, nutritional data, list of ingredients, can also contain allergens, has a cost-price and is available at a specific location. Once a meal is saved it is only available for the next 24 hours in the specified location."
+							author EDOM
+							created 2019-10-26T18:51:52.009+0100
+							id "0"
+							version Version {
+								major 0
+								minor 0
+								service 1
+							}
+							comments {
+								Comment{
+									author "EDOM"
+									body "Comment of Requirement"
+									subject "Subject of the comment"
+								}
+							}
+						}
+					}
+				}
+			}
+			}
+		'''
+
+		var result = parseHelper.parse(model)
+
+		var diagnostic = Diagnostician.INSTANCE.validate(result);
+		
+		var hasDiagnosticErrors = diagnostic.severity != Diagnostic.OK;
+		
+		Assertions.assertTrue(hasDiagnosticErrors)
+	}
 }

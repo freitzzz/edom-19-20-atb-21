@@ -114,7 +114,7 @@
 							<arguments>
 								<argument>/${project.basedir}/src/requirements/dsl/ApplyValidationsFormatterToDSLAndGeneratePUMLDiagram.mwe2</argument>
 								<argument>-p</argument>
-								<argument>dslFilePath=/${project.basedir}/requirementsdsl2.rdsl</argument>
+								<argument>dslFilePath=/${project.basedir}/requirementsdsl.rdsl</argument>
 								<argument>diagramType=circles</argument>
 								<argument>diagramFilePath=/${project.basedir}/dsl_circles.puml</argument>
 							</arguments>

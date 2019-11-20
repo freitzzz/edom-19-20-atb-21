@@ -46,23 +46,19 @@ Now associations can be created with not rule collision issues, yet the requirem
 When a requirement is transformed as an actor or an use case, the output model is stored in the respective sequence and then assigned in the use case model being transformed, preventing that the output models are stored outside of the use case model.
 
 
-## Requirements Metamodel Update
-
-Previous requirements metamodel specified that a requirement could have dependencies, in which these could not be contained in the requirement. This prevented cross-reference of requirements when specifying requirement dependencies in requirements XMI and DSL instances. This imposed the update of the metamodel in order to allow the containment of the dependencies.
-
 
 ## Grouping Use Cases with Requirement Group / Subject
 
 It is possible to group use cases by following two approaches:
 
-- Develop a different use cases DSL and transformation which allows the use of requirement groups to group use cases. A new model identified as `Subject` which has a name and is mapped by a requirement group. Subject could also contain inner use cases group models the same way as a requirement group can aggregate requirement groups
+- Develop a different use cases DSL which allows the use of requirement groups to group use cases. A new model identified as `Subject` which has a name and is mapped by a requirement group. Subject could also contain inner use cases group models the same way as a requirement group can aggregate requirement groups. The introduction of a new model would require to update existing ATL transformations.
 - Map requirement group as an use case inclusion. This will allow the definition of the requirement which includes other uses cases as the requirement group.
 
 
 ## Challenge
 
 ```
-It is possible to design a grammar for the use case DSL that may result in a situation were it is not required a transformation to generate a use case diagram from the DSL (using PlantUML)
+"It is possible to design a grammar for the use case DSL that may result in a situation were it is not required a transformation to generate a use case diagram from the DSL (using PlantUML)"
 ```
 
 Transforming a textual requirements instance (DSL) to a use cases textual instance (DSL) is the same as coding a generator to create a string that represents a PlantUML diagram, as the final output is **text**. If we design a Use Cases DSL in which it uses PlantUML keywords, after applying the requirements transformation, the output should be a PlantUML string using use cases descriptors.

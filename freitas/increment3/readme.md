@@ -51,13 +51,47 @@ When a requirement is transformed as an actor or an use case, the output model i
 Previous requirements metamodel specified that a requirement could have dependencies, in which these could not be contained in the requirement. This prevented cross-reference of requirements when specifying requirement dependencies in requirements XMI and DSL instances. This imposed the update of the metamodel in order to allow the containment of the dependencies.
 
 
-## Grouping Use Cases with Requirement Group
+## Grouping Use Cases with Requirement Group / Subject
 
 It is possible to group use cases by following two approaches:
 
-- Develop a different use cases DSL and transformation which allows the use of requirement groups to group use cases. A new model (e.g. `Functionalities`), which has a name and is mapped by a requirement group. This model could also contain inner use cases group models the same way as a requirement group can aggregate requirement groups
+- Develop a different use cases DSL and transformation which allows the use of requirement groups to group use cases. A new model identified as `Subject` which has a name and is mapped by a requirement group. Subject could also contain inner use cases group models the same way as a requirement group can aggregate requirement groups
 - Map requirement group as an use case inclusion. This will allow the definition of the requirement which includes other uses cases as the requirement group.
 
 
 ## Challenge
 
+```
+It is possible to design a grammar for the use case DSL that may result in a situation were it is not required a transformation to generate a use case diagram from the DSL (using PlantUML)
+```
+
+Transforming a textual requirements instance (DSL) to a use cases textual instance (DSL) is the same as coding a generator to create a string that represents a PlantUML diagram, as the final output is **text**. If we design a Use Cases DSL in which it uses PlantUML keywords, after applying the requirements transformation, the output should be a PlantUML string using use cases descriptors.
+
+The following example describes a Use Cases DSL that represents a simple PlantUML use cases diagram:
+
+```
+UseCaseModel returns UseCaseModel:
+	{UseCaseModel}
+		('actor' '{' actor+=Actor ( "," actor+=Actor)* '}' )?
+		('association' '{' association+=Association ( "," association+=Association)* '}' )?
+		('usecase' '{' usecase+=UseCase ( "," usecase+=UseCase)* '}' )?;
+
+Actor returns Actor:
+	{Actor}
+	'actor'
+	name=EString;
+
+Association returns Association:
+		'('
+    actor=[Actor|EString]
+		') --> ('
+    usecase=[UseCase|EString]
+    ')';
+
+UseCase returns UseCase:
+	{UseCase}
+  'usecase'
+  ' ('
+	name=EString
+  ')';
+```

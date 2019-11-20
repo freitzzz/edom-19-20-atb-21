@@ -47,13 +47,6 @@ public class RequirementsDSLToUseCasesDSL {
 
 	public static void main(String[] args) {
 		
-		args = new String[] {
-				
-				"instances/gfa.rdsl",
-				"instances/gfa.usecasesdsl"
-				
-		};
-		
 		String requirementsToTranformFilePathAsString = args[0];
 
 		String usecasesTransformedFilePathAsString = args[1];

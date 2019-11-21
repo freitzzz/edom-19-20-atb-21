@@ -53,7 +53,7 @@ public class RDSLParsingTest {
   private ParseHelper<Model> parseHelper;
   
   @Test
-  public void loadModel() {
+  public void modelThatCompliesWithDSLGrammarSucceedsParse() {
     try {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("Model {");
@@ -2703,7 +2703,7 @@ public class RDSLParsingTest {
   }
   
   @Test
-  public void testModelWithTitleLengthLessThanThreeFailsParse() {
+  public void testModelWithTitleLengthLessThanThreeFailsOCLCompliance() {
     try {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("Model {");
@@ -2725,7 +2725,7 @@ public class RDSLParsingTest {
   }
   
   @Test
-  public void testModelWithTitleLengthGreaterOrEqualThanThreeSucceedsParse() {
+  public void testModelWithTitleLengthGreaterOrEqualThanThreeSucceedsOCLCompliance() {
     try {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("Model {");
@@ -2747,7 +2747,7 @@ public class RDSLParsingTest {
   }
   
   @Test
-  public void testRequirementGroupWithNameLengthLessThanFiveFailsParse() {
+  public void testRequirementGroupWithNameLengthLessThanFiveFailsOCLCompliance() {
     try {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("Model {");
@@ -2781,7 +2781,7 @@ public class RDSLParsingTest {
   }
   
   @Test
-  public void testRequirementGroupWithNameLengthGreaterOrEqualThanFiveSucceedsParse() {
+  public void testRequirementGroupWithNameLengthGreaterOrEqualThanFiveSucceedsOCLCompliance() {
     try {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("Model {");
@@ -2815,7 +2815,7 @@ public class RDSLParsingTest {
   }
   
   @Test
-  public void testRequirementGroupWithoutDescriptionFailsParse() {
+  public void testRequirementGroupWithoutDescriptionFailsOCLCompliance() {
     try {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("Model {");
@@ -2848,7 +2848,7 @@ public class RDSLParsingTest {
   }
   
   @Test
-  public void testRequirementGroupWithDescriptionLengthLessThanTenFailsParse() {
+  public void testRequirementGroupWithDescriptionLengthLessThanTenFailsOCLCompliance() {
     try {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("Model {");
@@ -2882,7 +2882,7 @@ public class RDSLParsingTest {
   }
   
   @Test
-  public void testRequirementGroupWithDescriptionLengthGreaterOrEqualThanTenSucceedsParse() {
+  public void testRequirementGroupWithDescriptionLengthGreaterOrEqualThanTenSucceedsOCLCompliance() {
     try {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("Model {");
@@ -2916,7 +2916,7 @@ public class RDSLParsingTest {
   }
   
   @Test
-  public void testRequirementGroupWithSubRequirementGroupsWithSameNameFailsParse() {
+  public void testRequirementGroupWithSubRequirementGroupsWithSameNameFailsOCLCompliance() {
     try {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("Model {");
@@ -2959,7 +2959,7 @@ public class RDSLParsingTest {
   }
   
   @Test
-  public void testRequirementWithoutTitleFailsParse() {
+  public void testRequirementWithoutNameFailsParse() {
     try {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("Model {");
@@ -3034,7 +3034,7 @@ public class RDSLParsingTest {
   }
   
   @Test
-  public void testRequirementWithTitleLengthLessThanFiveFailsParse() {
+  public void testRequirementWithNameLengthLessThanFiveFailsOCLCompliance() {
     try {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("Model {");
@@ -3109,7 +3109,7 @@ public class RDSLParsingTest {
   }
   
   @Test
-  public void testRequirementWithTitleLengthGreaterOrEqualThanFiveSucceedsParse() {
+  public void testRequirementWithNameLengthGreaterOrEqualThanFiveSucceedsOCLCompliance() {
     try {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("Model {");
@@ -3184,7 +3184,7 @@ public class RDSLParsingTest {
   }
   
   @Test
-  public void testRequirementWithoutDescriptionFailsParse() {
+  public void testRequirementWithoutDescriptionFailsOCLCompliance() {
     try {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("Model {");
@@ -3256,7 +3256,7 @@ public class RDSLParsingTest {
   }
   
   @Test
-  public void testRequirementWithDescriptionLengthLessThanTenFailsParse() {
+  public void testRequirementWithDescriptionLengthLessThanTenFailsOCLCompliance() {
     try {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("Model {");
@@ -3331,7 +3331,7 @@ public class RDSLParsingTest {
   }
   
   @Test
-  public void testRequirementWithDescriptionLengthGreaterOrEqualThanTenSucceedsParse() {
+  public void testRequirementWithDescriptionLengthGreaterOrEqualThanTenSucceedsOCLCompliance() {
     try {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("Model {");
@@ -3406,7 +3406,7 @@ public class RDSLParsingTest {
   }
   
   @Test
-  public void testRequirementWithoutCreationDateFailsParse() {
+  public void testRequirementWithoutCreationDateFailsOCLCompliance() {
     try {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("Model {");
@@ -3478,7 +3478,7 @@ public class RDSLParsingTest {
   }
   
   @Test
-  public void testRequirementWithoutAuthorFailsParse() {
+  public void testRequirementWithoutAuthorFailsOCLCompliance() {
     try {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("Model {");
@@ -3550,7 +3550,7 @@ public class RDSLParsingTest {
   }
   
   @Test
-  public void testRequirementWithAuthorLengthLessThanThreeFailsParse() {
+  public void testRequirementWithAuthorLengthLessThanThreeFailsOCLCompliance() {
     try {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("Model {");
@@ -3625,7 +3625,7 @@ public class RDSLParsingTest {
   }
   
   @Test
-  public void testRequirementWithAuthorLengthGreaterOrEqualThanThreeSucceedsParse() {
+  public void testRequirementWithAuthorLengthGreaterOrEqualThanThreeSucceedsOCLCompliance() {
     try {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("Model {");
@@ -3700,7 +3700,7 @@ public class RDSLParsingTest {
   }
   
   @Test
-  public void testVersionWithMajorLowerThanZeroFailsParse() {
+  public void testVersionWithMajorLowerThanZeroFailsOCLCompliance() {
     try {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("Model {");
@@ -3775,7 +3775,7 @@ public class RDSLParsingTest {
   }
   
   @Test
-  public void testVersionWithMinorLowerThanZeroFailsParse() {
+  public void testVersionWithMinorLowerThanZeroFailsOCLCompliance() {
     try {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("Model {");
@@ -3850,7 +3850,7 @@ public class RDSLParsingTest {
   }
   
   @Test
-  public void testVersionWithServiceLowerThanZeroFailsParse() {
+  public void testVersionWithServiceLowerThanZeroFailsOCLCompliance() {
     try {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("Model {");
@@ -3925,7 +3925,7 @@ public class RDSLParsingTest {
   }
   
   @Test
-  public void testCommentWithoutAuthorFailsParse() {
+  public void testCommentWithoutAuthorFailsOCLCompliance() {
     try {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("Model {");
@@ -4021,7 +4021,7 @@ public class RDSLParsingTest {
   }
   
   @Test
-  public void testCommentWithAuthorLengthLessThanThreeFailsParse() {
+  public void testCommentWithAuthorLengthLessThanThreeFailsOCLCompliance() {
     try {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("Model {");
@@ -4216,7 +4216,7 @@ public class RDSLParsingTest {
   }
   
   @Test
-  public void testCommentWithBodyLengthLessThanFifteenFailsParse() {
+  public void testCommentWithBodyLengthLessThanFifteenFailsOCLCompliance() {
     try {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("Model {");
@@ -4315,7 +4315,7 @@ public class RDSLParsingTest {
   }
   
   @Test
-  public void testCommentWithoutSubjectFailsParse() {
+  public void testCommentWithoutSubjectFailsOCLCompliance() {
     try {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("Model {");
@@ -4411,7 +4411,7 @@ public class RDSLParsingTest {
   }
   
   @Test
-  public void testCommentWithSubjectLengthLessThanTenFailsParse() {
+  public void testCommentWithSubjectLengthLessThanTenFailsOCLCompliance() {
     try {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("Model {");
@@ -4510,7 +4510,7 @@ public class RDSLParsingTest {
   }
   
   @Test
-  public void testCommentWithoutCreationDateFailsParse() {
+  public void testCommentWithoutCreationDateFailsOCLCompliance() {
     try {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("Model {");

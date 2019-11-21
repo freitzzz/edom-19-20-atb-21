@@ -53,7 +53,7 @@ class RDSLParsingTest {
 	ParseHelper<Model> parseHelper
 
 	@Test
-	def void loadModel() {
+	def void modelThatCompliesWithDSLGrammarSucceedsParse() {
 		val result = parseHelper.parse('''
 			Model {
 				title 'Gorgeous Food Application'
@@ -955,7 +955,7 @@ class RDSLParsingTest {
 	}
 
 	@Test
-	def void testNoModelDefinitionFailsParse() {
+	def void testNoModelDefinitionFailsParse () {
 
 		var model = ''''''
 
@@ -969,7 +969,7 @@ class RDSLParsingTest {
 	}
 
 	@Test
-	def void testModelWithNoTitleDefinitionFailsParse() {
+	def void testModelWithNoTitleDefinitionFailsParse () {
 
 		var model = '''
 			Model {}
@@ -985,7 +985,7 @@ class RDSLParsingTest {
 	}
 
 	@Test
-	def void testModelWithTitleLengthLessThanThreeFailsParse() {
+	def void testModelWithTitleLengthLessThanThreeFailsOCLCompliance () {
 
 		var model = '''
 			Model {
@@ -1003,7 +1003,7 @@ class RDSLParsingTest {
 	}
 
 	@Test
-	def void testModelWithTitleLengthGreaterOrEqualThanThreeSucceedsParse() {
+	def void testModelWithTitleLengthGreaterOrEqualThanThreeSucceedsOCLCompliance () {
 
 		var model = '''
 			Model {
@@ -1021,7 +1021,7 @@ class RDSLParsingTest {
 	}
 
 	@Test
-	def void testRequirementGroupWithNameLengthLessThanFiveFailsParse() {
+	def void testRequirementGroupWithNameLengthLessThanFiveFailsOCLCompliance () {
 		var model = '''
 			Model {
 			title "Gorgeous Food Application Requirements"
@@ -1043,7 +1043,7 @@ class RDSLParsingTest {
 	}
 
 	@Test
-	def void testRequirementGroupWithNameLengthGreaterOrEqualThanFiveSucceedsParse() {
+	def void testRequirementGroupWithNameLengthGreaterOrEqualThanFiveSucceedsOCLCompliance () {
 		var model = '''
 			Model {
 			title "Gorgeous Food Application Requirements"
@@ -1065,7 +1065,7 @@ class RDSLParsingTest {
 	}
 
 	@Test
-	def void testRequirementGroupWithoutDescriptionFailsParse() {
+	def void testRequirementGroupWithoutDescriptionFailsOCLCompliance () {
 		var model = '''
 			Model {
 			title "Gorgeous Food Application Requirements"
@@ -1087,7 +1087,7 @@ class RDSLParsingTest {
 	}
 
 	@Test
-	def void testRequirementGroupWithDescriptionLengthLessThanTenFailsParse() {
+	def void testRequirementGroupWithDescriptionLengthLessThanTenFailsOCLCompliance () {
 		var model = '''
 			Model {
 			title "Gorgeous Food Application Requirements"
@@ -1109,7 +1109,7 @@ class RDSLParsingTest {
 	}
 
 	@Test
-	def void testRequirementGroupWithDescriptionLengthGreaterOrEqualThanTenSucceedsParse() {
+	def void testRequirementGroupWithDescriptionLengthGreaterOrEqualThanTenSucceedsOCLCompliance () {
 		var model = '''
 			Model {
 			title "Gorgeous Food Application Requirements"
@@ -1131,7 +1131,7 @@ class RDSLParsingTest {
 	}
 
 	@Test
-	def void testRequirementGroupWithSubRequirementGroupsWithSameNameFailsParse() {
+	def void testRequirementGroupWithSubRequirementGroupsWithSameNameFailsOCLCompliance () {
 		var model = '''
 			Model {
 			title "Gorgeous Food Application Requirements"
@@ -1156,7 +1156,7 @@ class RDSLParsingTest {
 	}
 
 	@Test
-	def void testRequirementWithoutTitleFailsParse() {
+	def void testRequirementWithoutNameFailsParse () {
 		var model = '''
 			Model {
 			title "Gorgeous Food Application Requirements"
@@ -1192,7 +1192,7 @@ class RDSLParsingTest {
 	}
 
 	@Test
-	def void testRequirementWithTitleLengthLessThanFiveFailsParse() {
+	def void testRequirementWithNameLengthLessThanFiveFailsOCLCompliance () {
 		var model = '''
 			Model {
 			title "Gorgeous Food Application Requirements"
@@ -1228,7 +1228,7 @@ class RDSLParsingTest {
 	}
 
 	@Test
-	def void testRequirementWithTitleLengthGreaterOrEqualThanFiveSucceedsParse() {
+	def void testRequirementWithNameLengthGreaterOrEqualThanFiveSucceedsOCLCompliance () {
 		var model = '''
 			Model {
 			title "Gorgeous Food Application Requirements"
@@ -1264,7 +1264,7 @@ class RDSLParsingTest {
 	}
 
 	@Test
-	def void testRequirementWithoutDescriptionFailsParse() {
+	def void testRequirementWithoutDescriptionFailsOCLCompliance () {
 		var model = '''
 			Model {
 			title "Gorgeous Food Application Requirements"
@@ -1299,7 +1299,7 @@ class RDSLParsingTest {
 	}
 
 	@Test
-	def void testRequirementWithDescriptionLengthLessThanTenFailsParse() {
+	def void testRequirementWithDescriptionLengthLessThanTenFailsOCLCompliance () {
 		var model = '''
 			Model {
 			title "Gorgeous Food Application Requirements"
@@ -1335,7 +1335,7 @@ class RDSLParsingTest {
 	}
 
 	@Test
-	def void testRequirementWithDescriptionLengthGreaterOrEqualThanTenSucceedsParse() {
+	def void testRequirementWithDescriptionLengthGreaterOrEqualThanTenSucceedsOCLCompliance () {
 		var model = '''
 			Model {
 			title "Gorgeous Food Application Requirements"
@@ -1371,7 +1371,7 @@ class RDSLParsingTest {
 	}
 
 	@Test
-	def void testRequirementWithoutCreationDateFailsParse() {
+	def void testRequirementWithoutCreationDateFailsOCLCompliance () {
 		var model = '''
 			Model {
 			title "Gorgeous Food Application Requirements"
@@ -1406,7 +1406,7 @@ class RDSLParsingTest {
 	}
 
 	@Test
-	def void testRequirementWithoutAuthorFailsParse() {
+	def void testRequirementWithoutAuthorFailsOCLCompliance () {
 		var model = '''
 			Model {
 			title "Gorgeous Food Application Requirements"
@@ -1441,7 +1441,7 @@ class RDSLParsingTest {
 	}
 
 	@Test
-	def void testRequirementWithAuthorLengthLessThanThreeFailsParse() {
+	def void testRequirementWithAuthorLengthLessThanThreeFailsOCLCompliance () {
 		var model = '''
 			Model {
 			title "Gorgeous Food Application Requirements"
@@ -1477,7 +1477,7 @@ class RDSLParsingTest {
 	}
 
 	@Test
-	def void testRequirementWithAuthorLengthGreaterOrEqualThanThreeSucceedsParse() {
+	def void testRequirementWithAuthorLengthGreaterOrEqualThanThreeSucceedsOCLCompliance () {
 		var model = '''
 			Model {
 			title "Gorgeous Food Application Requirements"
@@ -1513,7 +1513,7 @@ class RDSLParsingTest {
 	}
 
 	@Test
-	def void testVersionWithMajorLowerThanZeroFailsParse() {
+	def void testVersionWithMajorLowerThanZeroFailsOCLCompliance () {
 		var model = '''
 			Model {
 			title "Gorgeous Food Application Requirements"
@@ -1549,7 +1549,7 @@ class RDSLParsingTest {
 	}
 
 	@Test
-	def void testVersionWithMinorLowerThanZeroFailsParse() {
+	def void testVersionWithMinorLowerThanZeroFailsOCLCompliance () {
 		var model = '''
 			Model {
 			title "Gorgeous Food Application Requirements"
@@ -1585,7 +1585,7 @@ class RDSLParsingTest {
 	}
 
 	@Test
-	def void testVersionWithServiceLowerThanZeroFailsParse() {
+	def void testVersionWithServiceLowerThanZeroFailsOCLCompliance () {
 		var model = '''
 			Model {
 			title "Gorgeous Food Application Requirements"
@@ -1621,7 +1621,7 @@ class RDSLParsingTest {
 	}
 
 	@Test
-	def void testCommentWithoutAuthorFailsParse() {
+	def void testCommentWithoutAuthorFailsOCLCompliance () {
 		var model = '''
 			Model {
 			title "Gorgeous Food Application Requirements"
@@ -1664,7 +1664,7 @@ class RDSLParsingTest {
 	}
 
 	@Test
-	def void testCommentWithAuthorLengthLessThanThreeFailsParse() {
+	def void testCommentWithAuthorLengthLessThanThreeFailsOCLCompliance () {
 		var model = '''
 			Model {
 			title "Gorgeous Food Application Requirements"
@@ -1751,7 +1751,7 @@ class RDSLParsingTest {
 	}
 
 	@Test
-	def void testCommentWithBodyLengthLessThanFifteenFailsParse() {
+	def void testCommentWithBodyLengthLessThanFifteenFailsOCLCompliance () {
 		var model = '''
 			Model {
 			title "Gorgeous Food Application Requirements"
@@ -1795,7 +1795,7 @@ class RDSLParsingTest {
 	}
 
 	@Test
-	def void testCommentWithoutSubjectFailsParse() {
+	def void testCommentWithoutSubjectFailsOCLCompliance () {
 		var model = '''
 			Model {
 			title "Gorgeous Food Application Requirements"
@@ -1838,7 +1838,7 @@ class RDSLParsingTest {
 	}
 
 	@Test
-	def void testCommentWithSubjectLengthLessThanTenFailsParse() {
+	def void testCommentWithSubjectLengthLessThanTenFailsOCLCompliance () {
 		var model = '''
 			Model {
 			title "Gorgeous Food Application Requirements"
@@ -1882,7 +1882,7 @@ class RDSLParsingTest {
 	}
 
 	@Test
-	def void testCommentWithoutCreationDateFailsParse() {
+	def void testCommentWithoutCreationDateFailsOCLCompliance () {
 		var model = '''
 			Model {
 			title "Gorgeous Food Application Requirements"

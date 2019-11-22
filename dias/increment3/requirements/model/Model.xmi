@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<requirements:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:requirements="http://www.example.org/requirements" title="GorgeousFood Requirements">
+  <groups name="Functionals" description="" id="id1">
+    <requirements title="Sell Meal" author="" id="id1">
+      <version major="1"/>
+    </requirements>
+  </groups>
+</requirements:Model>

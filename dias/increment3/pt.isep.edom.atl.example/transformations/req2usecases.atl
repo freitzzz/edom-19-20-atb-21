@@ -1,0 +1,108 @@
+-- @atlcompiler emftvm
+-- @path MM=/requirements/model/requirements.ecore
+-- @path MM1=/usecases/model/usecases.ecore
+
+module req2usecases;
+create OUT : MM1 from IN : MM;
+
+helper def: dependencies: Sequence(MM!"Requirement") = Sequence{};
+helper def: associations: Sequence(MM1!"Association") = Sequence{};
+
+
+rule Requirement2Actor {
+	from
+		m1: MM!"Requirement" (
+				m1.type = #FUNCTIONAL
+				and
+				not m1.comments->select(c|c.subject = 'Actor')->isEmpty()
+				and
+				m1.comments->select(c|c.subject = 'UseCase')->isEmpty()
+		)
+	to 
+		a2: MM1!Actor (
+			name <- m1.title	
+		)		
+	do {		
+		for(p in m1.dependencies) {
+			thisModule.associations <- thisModule.associations.append(thisModule.NewAssociation(m1.title + '_' + p.title, m1, p));
+		}
+	}
+}
+
+rule Requirement2UseCase {
+	from
+		r1: MM!"Requirement" (
+				r1.type = #FUNCTIONAL
+				and
+				(r1.comments->isEmpty() 
+					or 
+					(not r1.comments->select(c|c.subject = 'UseCase')->isEmpty()
+						and
+						r1.comments->select(c|c.subject = 'Actor')->isEmpty()
+					)
+				)
+					
+		)
+	to 
+		m2: MM1!UseCase (
+			name <- r1.title	
+		)
+		
+	do {	
+		thisModule.dependencies <- Sequence{};
+		for(d in r1.dependencies) {
+			thisModule.dependencies <- thisModule.dependencies.append(thisModule.NewInclude(r1, d));
+		}
+		m2.include <- thisModule.dependencies;
+	}
+}
+
+rule Model2UseCaseModel {
+	from
+		model: MM!"Model"
+	to 
+		usecase: MM1!UseCaseModel (
+			name <- model.title,
+			actor <- model.requirements->select(m1 | m1.type = #FUNCTIONAL
+													 and
+													 not m1.comments->select(c|c.subject = 'Actor')->isEmpty()
+													 and
+													 m1.comments->select(c|c.subject = 'UseCase')->isEmpty()),
+			usecase <- model.requirements->select(r1 | r1.type = #FUNCTIONAL
+													   and
+													   (r1.comments->isEmpty() 
+													    or 
+													   	(not r1.comments->select(c|c.subject = 'UseCase')->isEmpty()
+													     and
+														 r1.comments->select(c|c.subject = 'Actor')->isEmpty()
+														)
+													   )
+			)
+		)	
+	do {
+		usecase.association <- thisModule.associations;
+	}
+}
+
+rule NewAssociation(name : String, a : MM!Requirement, u : MM!Requirement) {
+	to
+		a1: MM1!Association (
+			name <- name,
+			actor <- a,
+			usecase <- u	
+		)
+	do {
+		a1;
+	}
+}
+
+rule NewInclude(rp : MM!Requirement, rf : MM!Requirement) {
+	to
+		i: MM1!Include (
+			name <- rp.title + '_' + rf.title,
+			usecase <- rf	
+		)
+	do {
+		i;
+	}
+}

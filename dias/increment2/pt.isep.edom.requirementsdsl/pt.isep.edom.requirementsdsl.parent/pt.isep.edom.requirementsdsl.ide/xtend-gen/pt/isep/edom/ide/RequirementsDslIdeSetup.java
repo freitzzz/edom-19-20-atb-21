@@ -3,22 +3,16 @@
  */
 package pt.isep.edom.ide;
 
-import com.google.inject.Guice;
 import com.google.inject.Injector;
-import org.eclipse.xtext.util.Modules2;
-import pt.isep.edom.RequirementsDslRuntimeModule;
-import pt.isep.edom.RequirementsDslStandaloneSetup;
-import pt.isep.edom.ide.RequirementsDslIdeModule;
 
 /**
  * Initialization support for running Xtext languages as language servers.
  */
 @SuppressWarnings("all")
-public class RequirementsDslIdeSetup extends RequirementsDslStandaloneSetup {
+public class RequirementsDslIdeSetup /* implements RequirementsDslStandaloneSetup  */{
   @Override
   public Injector createInjector() {
-    RequirementsDslRuntimeModule _requirementsDslRuntimeModule = new RequirementsDslRuntimeModule();
-    RequirementsDslIdeModule _requirementsDslIdeModule = new RequirementsDslIdeModule();
-    return Guice.createInjector(Modules2.mixin(_requirementsDslRuntimeModule, _requirementsDslIdeModule));
+    throw new Error("Unresolved compilation problems:"
+      + "\nRequirementsDslRuntimeModule cannot be resolved.");
   }
 }

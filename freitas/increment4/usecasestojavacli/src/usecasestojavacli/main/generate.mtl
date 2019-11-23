@@ -9,6 +9,10 @@
 	invoke('usecasestojavacli.main.JavaQuerier', 'GetActorAssociations(pt.isep.edom.usecases.UseCaseModel, pt.isep.edom.usecases.Actor)', Sequence{parm1, parm2})
 /]
 
+[query public isCRUDUseCase(parm1: UseCase) : Boolean =
+	invoke('usecasestojavacli.main.JavaQuerier', 'IsCRUDUseCase(pt.isep.edom.usecases.UseCase)', Sequence{parm1})
+/]
+
 [template public generateElement(anUseCaseModel : UseCaseModel)]
 [comment @main/]
 [file (anUseCaseModel.toString(), false, 'UTF-8')]
@@ -26,6 +30,17 @@
 
 [/for]
 
+[generateUseCaseInterface(anUseCaseModel)/]
+[for (useCase : UseCase | UseCase.allInstances())]
+
+	[if (not isCRUDUseCase(useCase))]
+		[generateUseCaseImpl(useCase)/]
+	[else]
+		[generateCRUDUseCaseImpl(anUseCaseModel, useCase)/]
+	[/if]
+
+[/for]
+
 [/template]
 
 
@@ -36,11 +51,25 @@
 [file ('Actor.java', false, 'UTF-8')]
 
 public interface Actor {
-	
+	public void execute();
 }
 
 [/file]
 [/template]
+
+[template public generateUseCaseInterface(aType : UseCaseModel)]
+[file ('UseCase.java', false, 'UTF-8')]
+
+public interface UseCase {
+	public void execute();
+}
+
+[/file]
+[/template]
+
+
+
+
 
 
 [template public generateActorImpl(aType : Actor)]
@@ -95,6 +124,67 @@ class [aType.name.replaceAll('\\s+', '')/] implements Actor {
 			[/let]
 			case 0:
 				exit=true;
+			}
+		}
+	}
+}
+
+[/file]
+[/template]
+
+
+
+
+
+
+[template public generateUseCaseImpl(aType : UseCase)]
+[file (aType.name.replaceAll('\\s+', '')+'.java', false, 'UTF-8')]
+
+class [aType.name.replaceAll('\\s+', '')/] implements UseCase {
+	public void execute() {
+
+		System.out.println("I currently do not provide any functional operations! Check again later");
+	}
+}
+
+[/file]
+[/template]
+
+[template public generateCRUDUseCaseImpl(useCaseModel : UseCaseModel, aType : UseCase)]
+[file (aType.name.replaceAll('\\s+', '')+'.java', false, 'UTF-8')]
+
+class [aType.name.replaceAll('\\s+', '')/] implements UseCase {
+	public void execute() {
+
+		boolean exit=false;
+
+		java.util.Scanner in = new java.util.Scanner(System.in);
+
+		String['['/][']'/] operations = new String['['/][']'/]{"1- Create", "2- Read", "3- Update", "4- Delete"};
+
+		while (!exit) {
+
+			System.out.println("I currently provide the following operations:");
+
+			for(String operation : operations){
+				System.out.println(operation);
+			}
+
+			System.out.println("0-Exit");
+
+			System.out.println(">>Please select the operation you would like to execute");
+
+			// Read an integer from the input
+			int num = in.nextInt();
+
+			if(num <= operations.length){
+				if(num == 0){
+					exit = true;
+				}else{
+					System.out.println(operations['['/]num - 1[']'/]);
+				}
+			}else{
+				System.out.println("Whoopsie... I do not recognize that operation!");
 			}
 		}
 	}

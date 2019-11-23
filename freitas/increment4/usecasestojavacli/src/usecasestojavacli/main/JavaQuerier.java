@@ -5,6 +5,8 @@ import java.util.List;
 
 import pt.isep.edom.usecases.Actor;
 import pt.isep.edom.usecases.Association;
+import pt.isep.edom.usecases.Comment;
+import pt.isep.edom.usecases.UseCase;
 import pt.isep.edom.usecases.UseCaseModel;
 
 public class JavaQuerier {
@@ -29,6 +31,19 @@ public class JavaQuerier {
 		}
 		
 		return _associations;
+	}
+	
+	public static boolean IsCRUDUseCase(UseCase useCase) {
+		
+		List<Comment> comments = useCase.getComments();
+		
+		for (Comment comment : comments) {
+			if(comment.getDescription().equals("CRUD")) {
+				return true;
+			}
+		}
+		
+		return false;
 	}
 	
 }

@@ -21,11 +21,19 @@
 	invoke('usecasestojavacli.main.JavaQuerier', 'GetIncludedUseCases(pt.isep.edom.usecases.UseCase)', Sequence{parm1})
 /]
 
+[query public isEntityUseCase(parm1: UseCase) : Boolean =
+	invoke('usecasestojavacli.main.JavaQuerier', 'IsEntityUseCase(pt.isep.edom.usecases.UseCase)', Sequence{parm1})
+/]
+
 [template public generateElement(anUseCaseModel : UseCaseModel)]
 [comment @main/]
 [file (anUseCaseModel.toString(), false, 'UTF-8')]
 
 [/file]
+
+[generateRepositoryInterface(anUseCaseModel)/]
+
+[generateEntityInterface(anUseCaseModel)/]
 
 [generateActorInterface(anUseCaseModel)/]
 [for (actor : Actor | Actor.allInstances())]
@@ -49,7 +57,17 @@
 			[generateUseCaseImpl(useCase)/]
 		[/if]
 	[else]
-		[generateCRUDUseCaseImpl(anUseCaseModel, useCase)/]
+
+		[if (isEntityUseCase(useCase))]
+
+			[generateRepositoryImpl(useCase.name)/]
+
+			[generateEntityImpl(useCase.name)/]
+
+			[generateCRUDEntityUseCaseImpl(anUseCaseModel, useCase)/]
+		[else]
+			[generateCRUDUseCaseImpl(anUseCaseModel, useCase)/]
+		[/if]
 	[/if]
 
 [/for]
@@ -59,6 +77,45 @@
 
 
 
+
+
+[template public generateRepositoryInterface(aType : UseCaseModel)]
+[file ('Repository.java', false, 'UTF-8')]
+
+public interface Repository<Entity, ID> {
+
+	public Entity save(Entity entity);
+
+	public Entity find(ID id);
+
+	public Entity update(Entity entity);
+
+	public boolean delete(ID id);
+
+}
+
+[/file]
+[/template]
+
+
+
+
+
+
+[template public generateEntityInterface(aType : UseCaseModel)]
+[file ('Entity.java', false, 'UTF-8')]
+
+public interface Entity {
+
+	public int id();
+
+	public String name();
+
+	public void changeName(String name);
+}
+
+[/file]
+[/template]
 
 [template public generateActorInterface(aType : UseCaseModel)]
 [file ('Actor.java', false, 'UTF-8')]
@@ -75,6 +132,89 @@ public interface Actor {
 
 public interface UseCase {
 	public void execute();
+}
+
+[/file]
+[/template]
+
+
+
+
+
+
+[template public generateRepositoryImpl(aType : String)]
+[file (aType.replaceAll('\\s+', '')+'RepositoryImpl.java', false, 'UTF-8')]
+
+import java.util.HashMap;
+
+class [aType.replaceAll('\\s+', '')/]RepositoryImpl<[aType.replaceAll('\\s+', '')/], int> {
+
+	private static HashMap<int, [aType.replaceAll('\\s+', '')/]> entities = new HashMap<>();
+
+	public [aType.replaceAll('\\s+', '')/] save([aType.replaceAll('\\s+', '')/] entity){
+		
+		entities.put(entity.id(), entity);
+
+		return entity;
+	}
+
+	public [aType.replaceAll('\\s+', '')/] find(int id){
+
+		return entities.get(id);
+
+	}
+
+	public [aType.replaceAll('\\s+', '')/] update([aType.replaceAll('\\s+', '')/] entity){
+
+		entities.remove(entity.id());
+
+		entities.put(entity.id(), entity);
+
+		return entity;
+
+	}
+
+	public boolean delete(ID id){
+
+		return entities.remove(entity.id()) != null;
+
+	}
+
+}
+
+[/file]
+[/template]
+
+
+
+
+
+
+[template public generateEntityImpl(aType : String)]
+[file (aType.replaceAll('\\s+', '')+'EntityImpl.java', false, 'UTF-8')]
+
+class [aType.replaceAll('\\s+', '')/]EntityImpl implements Entity {
+	
+	
+	private int _id;
+
+	private String _name;
+
+	
+	public [aType.replaceAll('\\s+', '')/]EntityImpl (String name, int id){
+
+		_id = id;
+		_name = name;
+
+	}
+
+	public String id () { return _id; }
+
+	public String name () { return _name; }
+
+	public void changeName (String name) { this._name = name; }
+
+
 }
 
 [/file]
@@ -219,6 +359,132 @@ class [aType.name.replaceAll('\\s+', '')/] implements UseCase {
 				System.out.println("Whoopsie... I do not recognize that operation!");
 			}
 		}
+	}
+}
+
+[/file]
+[/template]
+
+[template public generateCRUDEntityUseCaseImpl(useCaseModel : UseCaseModel, aType : UseCase)]
+[file (aType.name.replaceAll('\\s+', '')+'.java', false, 'UTF-8')]
+
+class [aType.name.replaceAll('\\s+', '')/] implements UseCase {
+	public void execute() {
+
+		boolean exit=false;
+
+		java.util.Scanner in = new java.util.Scanner(System.in);
+
+		[let entityName : String = aType.name]
+		String['['/][']'/] operations = new String['['/][']'/]{
+			"1- Create [entityName/]", 
+			"2- Read [entityName/]", 
+			"3- Update [entityName/]", 
+			"4- Delete [entityName/]"
+		};
+		
+
+		while (!exit) {
+
+			System.out.println("I currently provide the following operations:");
+
+			for(String operation : operations){
+				System.out.println(operation);
+			}
+
+			System.out.println("0-Exit");
+
+			System.out.println(">>Please select the operation you would like to execute");
+
+			// Read an integer from the input
+			int num = in.nextInt();
+
+			if(num <= operations.length){
+				if(num == 0){
+					exit = true;
+				}else{
+
+					[entityName.replaceAll('\\s+', '')/]Repository o = FFactory.getInstance().create[entityName.replaceAll('\\s+', '')/]Repository();
+
+					switch(num){
+						case 1:
+							System.out.println("What should be the name of the [entityName/] ?");
+
+							String cname = in.nextLine();
+
+							int cid = o.count() + 1;
+
+							[entityName.replaceAll('\\s+', '')/] centity = FFactory.getInstance().create[entityName.replaceAll('\\s+', '')/](cid, cname);
+
+							[entityName.replaceAll('\\s+', '')/] createdEntity = o.save(centity);
+
+							System.out.println("The [entityName/] was created successfully! Here's its details: " + createdEntity);
+
+							break;
+						case 2:
+							System.out.println("What is the identifier of the [entityName/] ?");
+
+							int fid = in.nextInt();
+
+							[entityName.replaceAll('\\s+', '')/] foundEntity = o.find(fid);
+
+							if(foundEntity != null){
+								System.out.println("Here's the details of the [entityName/]: " + foundEntity);
+							}else{
+								System.out.println("I couldn't find it! :(\n Maybe you inserted the wrong identifier?");
+							}
+
+							break;
+						case 3:
+							System.out.println("What is the identifier of the [entityName/] ?");
+
+							int uid = in.nextInt();
+
+							[entityName.replaceAll('\\s+', '')/] entityBeingUpdated = o.find(uid);
+
+							if(entityBeingUpdated != null){
+								
+								System.out.println("What's the new name of the [entityName/] ?");
+
+								String uname = in.nextLine();
+
+								entityBeingUpdated.changeName(uname);
+
+								[entityName.replaceAll('\\s+', '')/] updatedEntity = o.update(entityBeingUpdated);
+
+								System.out.println("The [entityName/] was updated successfully! Here's its updated details: " + updatedEntity);
+
+							}else{
+								System.out.println("I couldn't find it! :(\n Maybe you inserted the wrong identifier?");
+							}
+
+							break;
+						default:
+							System.out.println("What is the identifier of the [entityName/] ?");
+
+							int did = in.nextInt();
+
+							boolean deleted = o.delete(did);
+
+							if(deleted){
+
+								System.out.println("The [entityName/] was deleted successfully");
+
+							}else{
+								System.out.println("I couldn't find it! :(\n Maybe you inserted the wrong identifier?");
+							}
+
+							break;
+					}
+
+				}
+			}else{
+				System.out.println("Whoopsie... I do not recognize that operation!");
+			}
+		}
+
+		[/let]
+
 	}
 }
 

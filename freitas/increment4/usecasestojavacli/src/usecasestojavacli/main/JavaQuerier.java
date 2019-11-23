@@ -46,15 +46,28 @@ public class JavaQuerier {
 
 		return false;
 	}
-	
+
 	public static List<Include> GetIncludedUseCases(UseCase useCase) {
 
 		return useCase.getInclude();
 	}
-	
+
 	public static boolean IsIncludeUseCase(UseCase useCase) {
 
 		return !GetIncludedUseCases(useCase).isEmpty();
+	}
+
+	public static boolean IsEntityUseCase(UseCase useCase) {
+
+		List<Comment> comments = useCase.getComments();
+
+		for (Comment comment : comments) {
+			if (comment.getDescription().equals("Entity")) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 }

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ASCII"?>
+<requirements:Model
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:requirements="http://www.example.org/requirements"
+    title="Agenda">
+  <requirements
+      title="Administrator"
+      created="2019-11-04T00:00:00.000+0000"
+      id="R01"
+      dependencies="//@requirements.1">
+    <version/>
+    <comments
+        subject="Actor"
+        body="Algo"
+        author="Joao"
+        created="2019-11-04T00:00:00.000+0000"/>
+  </requirements>
+  <requirements
+      title="Share Meeting"
+      created="2019-11-04T00:00:00.000+0000"
+      id="R02"
+      dependencies="//@requirements.2">
+    <version/>
+    <comments
+        subject="UseCase"
+        body="Algo"
+        author="Algo"
+        created="2019-11-04T00:00:00.000+0000"/>
+  </requirements>
+  <requirements
+      title="Meeting CRUD"
+      created="2019-11-11T00:00:00.000+0000"
+      id="id3">
+    <version
+        major="1"/>
+  </requirements>
+  <requirements
+      title="os dois"
+      created="2019-11-11T00:00:00.000+0000"
+      id="id4">
+    <version
+        major="1"/>
+    <comments
+        subject="Actor"
+        body="b"
+        author="b"
+        created="2019-11-11T00:00:00.000+0000"/>
+    <comments
+        subject="UseCase"
+        body="a"
+        author="a"
+        created="2019-11-11T00:00:00.000+0000"/>
+  </requirements>
+</requirements:Model>

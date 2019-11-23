@@ -4,101 +4,26 @@
 package pt.isep.edom.tests;
 
 import com.google.inject.Inject;
-import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.testing.InjectWith;
 import org.eclipse.xtext.testing.XtextRunner;
 import org.eclipse.xtext.testing.util.ParseHelper;
-import org.eclipse.xtext.xbase.lib.Exceptions;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import pt.isep.edom.tests.RequirementsDslInjectorProvider;
-import requirements.Model;
 
 @RunWith(XtextRunner.class)
 @InjectWith(RequirementsDslInjectorProvider.class)
 @SuppressWarnings("all")
 public class RequirementsDslParsingTest {
   @Inject
-  private ParseHelper<Model> parseHelper;
+  private /* ParseHelper<Model> */Object parseHelper;
   
   @Test
   public void loadModel() {
-    try {
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("Model {");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("title ola groups {");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("RequirementGroup RG1 {");
-      _builder.newLine();
-      _builder.append("\t\t");
-      _builder.append("id id1");
-      _builder.newLine();
-      _builder.append("\t\t");
-      _builder.append("children {");
-      _builder.newLine();
-      _builder.append("\t\t");
-      _builder.append("RequirementGroup RG2 {");
-      _builder.newLine();
-      _builder.append("\t\t\t");
-      _builder.append("id id2");
-      _builder.newLine();
-      _builder.append("\t\t");
-      _builder.append("}");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("}\trequirements {");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("Requirement {");
-      _builder.newLine();
-      _builder.append("\t\t");
-      _builder.append("title ola");
-      _builder.newLine();
-      _builder.append("\t\t");
-      _builder.append("created \'26-10-2019 15:33\'");
-      _builder.newLine();
-      _builder.append("\t\t");
-      _builder.append("id id1 version Version {");
-      _builder.newLine();
-      _builder.append("\t\t\t");
-      _builder.append("major 1 minor 2 service 0");
-      _builder.newLine();
-      _builder.append("\t\t");
-      _builder.append("} comments {");
-      _builder.newLine();
-      _builder.append("\t\t");
-      _builder.append("Comment {");
-      _builder.newLine();
-      _builder.append("\t\t\t");
-      _builder.append("subject algo body \'algo no body\' author joao created \'26-10-2019 17:33\'");
-      _builder.newLine();
-      _builder.append("\t\t");
-      _builder.append("}");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("}");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("}");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("}");
-      _builder.newLine();
-      _builder.append("}");
-      _builder.newLine();
-      _builder.append("}");
-      _builder.newLine();
-      _builder.append("}");
-      _builder.newLine();
-      final Model result = this.parseHelper.parse(_builder);
-      Assert.assertNotNull(result);
-      Assert.assertTrue(result.eResource().getErrors().isEmpty());
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
-    }
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe field RequirementsDslParsingTest.parseHelper refers to the missing type Model"
+      + "\neResource cannot be resolved"
+      + "\nerrors cannot be resolved"
+      + "\nisEmpty cannot be resolved");
   }
 }

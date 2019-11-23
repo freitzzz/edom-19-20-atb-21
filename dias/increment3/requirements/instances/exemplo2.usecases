@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ASCII"?>
+<usecases:UseCaseModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:usecases="http://www.example.org/usecases" name="Agenda">
+  <actor name="Administrator"/>
+  <association name="Administrator_Share Meeting" actor="//@actor.0" usecase="//@usecase.0"/>
+  <usecase name="Share Meeting">
+    <include usecase="//@usecase.1" name="Share Meeting_Meeting CRUD"/>
+  </usecase>
+  <usecase name="Meeting CRUD"/>
+</usecases:UseCaseModel>

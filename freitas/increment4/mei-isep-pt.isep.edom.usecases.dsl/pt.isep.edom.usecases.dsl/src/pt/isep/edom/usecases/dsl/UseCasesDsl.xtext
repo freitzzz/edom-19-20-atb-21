@@ -33,6 +33,7 @@ UseCase returns UseCase:
 	'{'
 		('extend' '{' extend+=Extend ( "," extend+=Extend)* '}' )?
 		('include' '{' include+=Include ( "," include+=Include)* '}' )?
+		('comments' '{' comments+=Comment ( "," comments+=Comment)* '}' )?
 	'}';
 
 EString returns ecore::EString:
@@ -50,4 +51,11 @@ Include returns Include:
 	name=EString
 	'{'
 		'usecase' usecase=[UseCase|EString]
+	'}';
+	
+Comment returns Comment:
+	{Comment}
+	'Comment'
+	'{'
+		('description' description=EString)?
 	'}';

@@ -1,0 +1,184 @@
+UseCaseModel {
+	actor {
+		Actor Adminstrator ,
+		Actor "Kitchen Worker" ,
+		Actor Chef , 
+		Actor "Kitchen Worker Chief" 
+	}
+	association {
+		Association "Kitchen Worker_Save Meal" {
+			actor "Kitchen Worker" 
+			usecase "Save Meal" 
+		},
+		Association "Kitchen Worker_Show Meal Designation" {
+			actor "Kitchen Worker" 
+			usecase "Show Meal Designation" 
+		} , 
+		Association "Kitchen Worker_Show Meal Nutritional Data" {
+			actor "Kitchen Worker" 
+			usecase "Show Meal Nutritional Data" 
+		} , 
+		Association "Kitchen Worker_Show Meal Type" {
+		 	actor "Kitchen Worker" 
+		 	usecase "Show Meal Type" 
+		} , 
+		Association "Kitchen Worker_Show Meal Location" {
+		 	actor "Kitchen Worker" 
+		 	usecase "Show Meal Location" 
+		} , 
+		Association "Kitchen Worker_Show Meal Price" {
+		 	actor "Kitchen Worker" 
+		 	usecase "Show Meal Price" 
+		} , 
+		Association "Kitchen Worker_List Meal Ingreditens" {
+		 	actor "Kitchen Worker" 
+		 	usecase "List Meal Ingreditens" 
+		} , 
+		Association "Kitchen Worker_List Meal Allergens" {
+		 	actor "Kitchen Worker" 
+		 	usecase "List Meal Allergens" 
+		} , 
+		Association "Kitchen Worker_Check Meal Availability" {
+		 	actor "Kitchen Worker" 
+		 	usecase "Check Meal Availability" 
+		} , 
+		Association "Chef_Check Meal Availability" {
+		 	actor Chef 
+		 	usecase "Check Meal Availability" 
+		} , 
+		Association "Chef_List Meal Allergens" {
+			actor Chef 
+			usecase "List Meal Allergens" 
+		} , 
+		Association "Kitchen Worker Chief_List Meal Ingreditens" {
+		 	actor "Kitchen Worker Chief" 
+		 	usecase "List Meal Ingreditens" 
+		} , 
+		Association "Kitchen Worker Chief_List All Meals" {
+			actor "Kitchen Worker Chief" 
+			usecase "List All Meals" 
+		} , 
+		Association "Kitchen Worker_Save Unserved Meal" {
+		 	actor "Kitchen Worker" 
+		 	usecase "Save Unserved Meal" 
+		} , 
+		Association "Kitchen Worker_Show Unserved Meal Identification Number" {
+			actor "Kitchen Worker" 
+			usecase "Show Unserved Meal Identification Number" 
+		} , 
+		Association "Kitchen Worker_Show Unserved Meal Designation" {
+		 	actor "Kitchen Worker" 
+		 	usecase "Show Unserved Meal Designation" 
+		} , 
+		Association "Kitchen Worker_Show Unserved Meal Production Date" {
+		 	actor "Kitchen Worker" 
+		 	usecase "Show Unserved Meal Production Date" 
+		} , 
+		Association "Kitchen Worker_Show Unserved Meal Expiration Date" {
+		 	actor "Kitchen Worker" 
+		 	usecase "Show Unserved Meal Expiration Date" 
+		} , 
+		Association "Kitchen Worker_Show Unserved Meal State" {
+		 	actor "Kitchen Worker" 
+		 	usecase "Show Unserved Meal State" 
+		} , 
+		Association "Kitchen Worker_Add Meal Ingredients" {
+		 	actor "Kitchen Worker" 
+		 	usecase "Add Meal Ingredients" 
+		} , 
+		Association "Kitchen Worker_Add Meal Allergens" {
+		 	actor "Kitchen Worker" 
+		 	usecase "Add Meal Allergens" 
+		} , 
+		Association "Adminstrator_Remove Item from Inventory" {
+		 	actor Adminstrator 
+		 	usecase "Remove Item from Inventory" 
+		} 
+	}
+	usecase {
+		UseCase "Add Meal Ingredients" {
+			comments{
+				Comment{
+					description "CRUD"
+				}
+				Comment{
+					description "Entity"
+				}
+			}
+		},
+		UseCase "Add Meal Allergens" {
+			comments{
+				Comment{
+					description "CRUD"
+				}
+			}
+		} , 
+		UseCase "Save Meal" {
+			comments{
+				Comment{
+					description "CRUD"
+				}
+			}
+		} , 
+		UseCase "Show Meal Designation" {
+			comments{
+				Comment{
+					description "CRUD"
+				}
+			}
+		} , 
+		UseCase "Show Meal Nutritional Data" {
+			comments{
+				Comment{
+					description "CRUD"
+				}
+			}
+		} , 
+		UseCase "Show Meal Type" {
+		 
+		} , 
+		UseCase "Show Meal Location" {
+		 
+		} , 
+		UseCase "Show Meal Price" {
+		 
+		} , 
+		UseCase "List Meal Ingreditens" {
+		 
+		} , 
+		UseCase "List Meal Allergens" {
+		 
+		} , 
+		UseCase "Check Meal Availability" {
+		 
+		} , 
+		UseCase "Pay Meal" {
+		 
+		} , 
+		UseCase "List All Meals" {
+		 
+		} , 
+		UseCase "Save Unserved Meal" {
+		 
+		} , 
+		UseCase "Show Unserved Meal Identification Number" {
+		 
+		} , 
+		UseCase "Show Unserved Meal Designation" {
+		 
+		} , 
+		UseCase "Show Unserved Meal Production Date" {
+		 
+		} , 
+		UseCase "Show Unserved Meal Expiration Date" {
+		 
+		} , 
+		UseCase "Show Unserved Meal State" {
+		 
+		} , 
+		UseCase "Remove Item from Inventory" {
+		 
+		} 
+	} 
+}
+

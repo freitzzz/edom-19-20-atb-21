@@ -100,7 +100,7 @@ UseCaseModel {
 			comments{
 				Comment{
 					description "CRUD"
-				}
+				},
 				Comment{
 					description "Entity"
 				}

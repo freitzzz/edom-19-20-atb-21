@@ -1,6 +1,13 @@
 [comment encoding = UTF-8 /]
 [module generate('http://www.example.org/usecases')]
 
+[query public isActorAssociation(parm1: UseCaseModel, parm2: Actor) : Boolean =
+	invoke('usecasestojavacli.main.JavaQuerier', 'IsActorAssociation(pt.isep.edom.usecases.UseCaseModel, pt.isep.edom.usecases.Actor)', Sequence{parm1, parm2})
+/]
+
+[query public getActorAssociations(parm1: UseCaseModel, parm2: Actor) : Sequence(Association) =
+	invoke('usecasestojavacli.main.JavaQuerier', 'GetActorAssociations(pt.isep.edom.usecases.UseCaseModel, pt.isep.edom.usecases.Actor)', Sequence{parm1, parm2})
+/]
 
 [template public generateElement(anUseCaseModel : UseCaseModel)]
 [comment @main/]
@@ -11,7 +18,11 @@
 [generateActorInterface(anUseCaseModel)/]
 [for (actor : Actor | Actor.allInstances())]
 
-	[generateActor(actor)/]
+	[if (not isActorAssociation(anUseCaseModel, actor))]
+		[generateActorImpl(actor)/]
+	[else]
+		[generateActorWithAssociationsImpl(anUseCaseModel, actor)/]
+	[/if]
 
 [/for]
 
@@ -32,11 +43,61 @@ public interface Actor {
 [/template]
 
 
-[template public generateActor(aType : Actor)]
+[template public generateActorImpl(aType : Actor)]
 [file (aType.name.replaceAll('\\s+', '')+'.java', false, 'UTF-8')]
 
 class [aType.name.replaceAll('\\s+', '')/] implements Actor {
-	
+	public void execute() {
+
+		System.out.println("I'm currently not associated with any use cases :( Maybe you can talk with stakeholders to give me a task? :)");
+	}
+}
+
+[/file]
+[/template]
+
+[template public generateActorWithAssociationsImpl(useCaseModel : UseCaseModel, aType : Actor)]
+[file (aType.name.replaceAll('\\s+', '')+'.java', false, 'UTF-8')]
+
+class [aType.name.replaceAll('\\s+', '')/] implements Actor {
+	public void execute() {
+
+		boolean exit=false;
+
+		java.util.Scanner in = new java.util.Scanner(System.in);
+
+		while (!exit) {
+
+			System.out.println("Hello I'm Actor «[aType.name/]», what can I do for you today?");
+
+			[let associations : Sequence(Association) = getActorAssociations(useCaseModel, aType)]
+				[for (association: Association | associations)]
+			System.out.println("[associations->indexOf(association)/]-[association.usecase.name/]");
+				[/for]
+			[/let]
+			System.out.println("0-Exit");
+
+			System.out.println(">>Please enter you option");
+
+			// Read an integer from the input
+			int num = in.nextInt();
+
+			switch (num) {
+			[let associations : Sequence(Association) = getActorAssociations(useCaseModel, aType)]
+				[for (association: Association | associations)]
+			case [associations->indexOf(association)/]:
+				{
+					[association.usecase.name/] o=FFactory.getInstance().create[association.usecase.name/]();
+					o.execute();
+				}
+				break;
+				[/for]
+			[/let]
+			case 0:
+				exit=true;
+			}
+		}
+	}
 }
 
 [/file]

@@ -1,0 +1,10 @@
+[comment encoding = UTF-8 /]
+[module generate('http://www.example.org/usecases')]
+
+
+[template public generateElement(anUseCaseModel : UseCaseModel)]
+[comment @main/]
+[file (anUseCaseModel.name, false, 'UTF-8')]
+
+[/file]
+[/template]

@@ -4,7 +4,40 @@
 
 [template public generateElement(anUseCaseModel : UseCaseModel)]
 [comment @main/]
-[file (anUseCaseModel.name, false, 'UTF-8')]
+[file (anUseCaseModel.toString(), false, 'UTF-8')]
+
+[/file]
+
+[generateActorInterface(anUseCaseModel)/]
+[for (actor : Actor | Actor.allInstances())]
+
+	[generateActor(actor)/]
+
+[/for]
+
+[/template]
+
+
+
+
+
+[template public generateActorInterface(aType : UseCaseModel)]
+[file ('Actor.java', false, 'UTF-8')]
+
+public interface Actor {
+	
+}
+
+[/file]
+[/template]
+
+
+[template public generateActor(aType : Actor)]
+[file (aType.name.replaceAll('\\s+', '')+'.java', false, 'UTF-8')]
+
+class [aType.name.replaceAll('\\s+', '')/] implements Actor {
+	
+}
 
 [/file]
 [/template]

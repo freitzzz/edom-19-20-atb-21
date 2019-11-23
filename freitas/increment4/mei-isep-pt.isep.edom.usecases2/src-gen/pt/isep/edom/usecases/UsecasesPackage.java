@@ -241,13 +241,22 @@ public interface UsecasesPackage extends EPackage {
 	int USE_CASE__INCLUDE = 2;
 
 	/**
+	 * The feature id for the '<em><b>Comments</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE_CASE__COMMENTS = 3;
+
+	/**
 	 * The number of structural features of the '<em>Use Case</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int USE_CASE_FEATURE_COUNT = 3;
+	int USE_CASE_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Use Case</em>' class.
@@ -386,6 +395,44 @@ public interface UsecasesPackage extends EPackage {
 	 * @ordered
 	 */
 	int INCLUDE_OPERATION_COUNT = RELATIONSHIP_OPERATION_COUNT + 0;
+
+
+	/**
+	 * The meta object id for the '{@link pt.isep.edom.usecases.impl.CommentImpl <em>Comment</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see pt.isep.edom.usecases.impl.CommentImpl
+	 * @see pt.isep.edom.usecases.impl.UsecasesPackageImpl#getComment()
+	 * @generated
+	 */
+	int COMMENT = 7;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMENT__DESCRIPTION = 0;
+
+	/**
+	 * The number of structural features of the '<em>Comment</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMENT_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Comment</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMENT_OPERATION_COUNT = 0;
 
 
 	/**
@@ -539,6 +586,17 @@ public interface UsecasesPackage extends EPackage {
 	EReference getUseCase_Include();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link pt.isep.edom.usecases.UseCase#getComments <em>Comments</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Comments</em>'.
+	 * @see pt.isep.edom.usecases.UseCase#getComments()
+	 * @see #getUseCase()
+	 * @generated
+	 */
+	EReference getUseCase_Comments();
+
+	/**
 	 * Returns the meta object for class '{@link pt.isep.edom.usecases.Relationship <em>Relationship</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -600,6 +658,27 @@ public interface UsecasesPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getInclude_Usecase();
+
+	/**
+	 * Returns the meta object for class '{@link pt.isep.edom.usecases.Comment <em>Comment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Comment</em>'.
+	 * @see pt.isep.edom.usecases.Comment
+	 * @generated
+	 */
+	EClass getComment();
+
+	/**
+	 * Returns the meta object for the attribute '{@link pt.isep.edom.usecases.Comment#getDescription <em>Description</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Description</em>'.
+	 * @see pt.isep.edom.usecases.Comment#getDescription()
+	 * @see #getComment()
+	 * @generated
+	 */
+	EAttribute getComment_Description();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -745,6 +824,14 @@ public interface UsecasesPackage extends EPackage {
 		EReference USE_CASE__INCLUDE = eINSTANCE.getUseCase_Include();
 
 		/**
+		 * The meta object literal for the '<em><b>Comments</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference USE_CASE__COMMENTS = eINSTANCE.getUseCase_Comments();
+
+		/**
 		 * The meta object literal for the '{@link pt.isep.edom.usecases.impl.RelationshipImpl <em>Relationship</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -797,6 +884,24 @@ public interface UsecasesPackage extends EPackage {
 		 * @generated
 		 */
 		EReference INCLUDE__USECASE = eINSTANCE.getInclude_Usecase();
+
+		/**
+		 * The meta object literal for the '{@link pt.isep.edom.usecases.impl.CommentImpl <em>Comment</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see pt.isep.edom.usecases.impl.CommentImpl
+		 * @see pt.isep.edom.usecases.impl.UsecasesPackageImpl#getComment()
+		 * @generated
+		 */
+		EClass COMMENT = eINSTANCE.getComment();
+
+		/**
+		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COMMENT__DESCRIPTION = eINSTANCE.getComment_Description();
 
 	}
 

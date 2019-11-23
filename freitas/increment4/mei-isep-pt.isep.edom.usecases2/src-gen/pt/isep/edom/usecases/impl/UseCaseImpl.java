@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import pt.isep.edom.usecases.Comment;
 import pt.isep.edom.usecases.Extend;
 import pt.isep.edom.usecases.Include;
 import pt.isep.edom.usecases.UseCase;
@@ -34,6 +35,7 @@ import pt.isep.edom.usecases.UsecasesPackage;
  *   <li>{@link pt.isep.edom.usecases.impl.UseCaseImpl#getName <em>Name</em>}</li>
  *   <li>{@link pt.isep.edom.usecases.impl.UseCaseImpl#getExtend <em>Extend</em>}</li>
  *   <li>{@link pt.isep.edom.usecases.impl.UseCaseImpl#getInclude <em>Include</em>}</li>
+ *   <li>{@link pt.isep.edom.usecases.impl.UseCaseImpl#getComments <em>Comments</em>}</li>
  * </ul>
  *
  * @generated
@@ -80,6 +82,16 @@ public class UseCaseImpl extends MinimalEObjectImpl.Container implements UseCase
 	protected EList<Include> include;
 
 	/**
+	 * The cached value of the '{@link #getComments() <em>Comments</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getComments()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Comment> comments;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -103,6 +115,7 @@ public class UseCaseImpl extends MinimalEObjectImpl.Container implements UseCase
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -112,6 +125,7 @@ public class UseCaseImpl extends MinimalEObjectImpl.Container implements UseCase
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -124,6 +138,7 @@ public class UseCaseImpl extends MinimalEObjectImpl.Container implements UseCase
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Extend> getExtend() {
 		if (extend == null) {
 			extend = new EObjectContainmentEList<Extend>(Extend.class, this, UsecasesPackage.USE_CASE__EXTEND);
@@ -136,11 +151,25 @@ public class UseCaseImpl extends MinimalEObjectImpl.Container implements UseCase
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Include> getInclude() {
 		if (include == null) {
 			include = new EObjectContainmentEList<Include>(Include.class, this, UsecasesPackage.USE_CASE__INCLUDE);
 		}
 		return include;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EList<Comment> getComments() {
+		if (comments == null) {
+			comments = new EObjectContainmentEList<Comment>(Comment.class, this, UsecasesPackage.USE_CASE__COMMENTS);
+		}
+		return comments;
 	}
 
 	/**
@@ -155,6 +184,8 @@ public class UseCaseImpl extends MinimalEObjectImpl.Container implements UseCase
 				return ((InternalEList<?>)getExtend()).basicRemove(otherEnd, msgs);
 			case UsecasesPackage.USE_CASE__INCLUDE:
 				return ((InternalEList<?>)getInclude()).basicRemove(otherEnd, msgs);
+			case UsecasesPackage.USE_CASE__COMMENTS:
+				return ((InternalEList<?>)getComments()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -173,6 +204,8 @@ public class UseCaseImpl extends MinimalEObjectImpl.Container implements UseCase
 				return getExtend();
 			case UsecasesPackage.USE_CASE__INCLUDE:
 				return getInclude();
+			case UsecasesPackage.USE_CASE__COMMENTS:
+				return getComments();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -197,6 +230,10 @@ public class UseCaseImpl extends MinimalEObjectImpl.Container implements UseCase
 				getInclude().clear();
 				getInclude().addAll((Collection<? extends Include>)newValue);
 				return;
+			case UsecasesPackage.USE_CASE__COMMENTS:
+				getComments().clear();
+				getComments().addAll((Collection<? extends Comment>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -218,6 +255,9 @@ public class UseCaseImpl extends MinimalEObjectImpl.Container implements UseCase
 			case UsecasesPackage.USE_CASE__INCLUDE:
 				getInclude().clear();
 				return;
+			case UsecasesPackage.USE_CASE__COMMENTS:
+				getComments().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -236,6 +276,8 @@ public class UseCaseImpl extends MinimalEObjectImpl.Container implements UseCase
 				return extend != null && !extend.isEmpty();
 			case UsecasesPackage.USE_CASE__INCLUDE:
 				return include != null && !include.isEmpty();
+			case UsecasesPackage.USE_CASE__COMMENTS:
+				return comments != null && !comments.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -249,7 +291,7 @@ public class UseCaseImpl extends MinimalEObjectImpl.Container implements UseCase
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
 		result.append(name);
 		result.append(')');

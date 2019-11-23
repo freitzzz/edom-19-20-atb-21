@@ -92,6 +92,7 @@ public class UseCaseModelImpl extends MinimalEObjectImpl.Container implements Us
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Actor> getActor() {
 		if (actor == null) {
 			actor = new EObjectContainmentEList<Actor>(Actor.class, this, UsecasesPackage.USE_CASE_MODEL__ACTOR);
@@ -104,6 +105,7 @@ public class UseCaseModelImpl extends MinimalEObjectImpl.Container implements Us
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Association> getAssociation() {
 		if (association == null) {
 			association = new EObjectContainmentEList<Association>(Association.class, this, UsecasesPackage.USE_CASE_MODEL__ASSOCIATION);
@@ -116,6 +118,7 @@ public class UseCaseModelImpl extends MinimalEObjectImpl.Container implements Us
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<UseCase> getUsecase() {
 		if (usecase == null) {
 			usecase = new EObjectContainmentEList<UseCase>(UseCase.class, this, UsecasesPackage.USE_CASE_MODEL__USECASE);

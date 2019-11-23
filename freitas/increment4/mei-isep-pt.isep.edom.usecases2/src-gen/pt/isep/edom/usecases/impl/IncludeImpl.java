@@ -61,6 +61,7 @@ public class IncludeImpl extends RelationshipImpl implements Include {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public UseCase getUsecase() {
 		if (usecase != null && usecase.eIsProxy()) {
 			InternalEObject oldUsecase = (InternalEObject)usecase;
@@ -87,6 +88,7 @@ public class IncludeImpl extends RelationshipImpl implements Include {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setUsecase(UseCase newUsecase) {
 		UseCase oldUsecase = usecase;
 		usecase = newUsecase;

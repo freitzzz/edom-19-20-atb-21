@@ -62,6 +62,7 @@ public class UsecasesFactoryImpl extends EFactoryImpl implements UsecasesFactory
 			case UsecasesPackage.USE_CASE: return createUseCase();
 			case UsecasesPackage.EXTEND: return createExtend();
 			case UsecasesPackage.INCLUDE: return createInclude();
+			case UsecasesPackage.COMMENT: return createComment();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -72,6 +73,7 @@ public class UsecasesFactoryImpl extends EFactoryImpl implements UsecasesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public UseCaseModel createUseCaseModel() {
 		UseCaseModelImpl useCaseModel = new UseCaseModelImpl();
 		return useCaseModel;
@@ -82,6 +84,7 @@ public class UsecasesFactoryImpl extends EFactoryImpl implements UsecasesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Actor createActor() {
 		ActorImpl actor = new ActorImpl();
 		return actor;
@@ -92,6 +95,7 @@ public class UsecasesFactoryImpl extends EFactoryImpl implements UsecasesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Association createAssociation() {
 		AssociationImpl association = new AssociationImpl();
 		return association;
@@ -102,6 +106,7 @@ public class UsecasesFactoryImpl extends EFactoryImpl implements UsecasesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public UseCase createUseCase() {
 		UseCaseImpl useCase = new UseCaseImpl();
 		return useCase;
@@ -112,6 +117,7 @@ public class UsecasesFactoryImpl extends EFactoryImpl implements UsecasesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Extend createExtend() {
 		ExtendImpl extend = new ExtendImpl();
 		return extend;
@@ -122,6 +128,7 @@ public class UsecasesFactoryImpl extends EFactoryImpl implements UsecasesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Include createInclude() {
 		IncludeImpl include = new IncludeImpl();
 		return include;
@@ -132,6 +139,18 @@ public class UsecasesFactoryImpl extends EFactoryImpl implements UsecasesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public Comment createComment() {
+		CommentImpl comment = new CommentImpl();
+		return comment;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public UsecasesPackage getUsecasesPackage() {
 		return (UsecasesPackage)getEPackage();
 	}

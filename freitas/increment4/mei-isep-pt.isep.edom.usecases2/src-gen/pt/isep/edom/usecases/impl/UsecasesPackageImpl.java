@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import pt.isep.edom.usecases.Actor;
 import pt.isep.edom.usecases.Association;
+import pt.isep.edom.usecases.Comment;
 import pt.isep.edom.usecases.Extend;
 import pt.isep.edom.usecases.Include;
 import pt.isep.edom.usecases.Relationship;
@@ -76,6 +77,13 @@ public class UsecasesPackageImpl extends EPackageImpl implements UsecasesPackage
 	private EClass includeEClass = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass commentEClass = null;
+
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -103,7 +111,7 @@ public class UsecasesPackageImpl extends EPackageImpl implements UsecasesPackage
 
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
+	 *
 	 * <p>This method is used to initialize {@link UsecasesPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
@@ -117,7 +125,8 @@ public class UsecasesPackageImpl extends EPackageImpl implements UsecasesPackage
 		if (isInited) return (UsecasesPackage)EPackage.Registry.INSTANCE.getEPackage(UsecasesPackage.eNS_URI);
 
 		// Obtain or create and register package
-		UsecasesPackageImpl theUsecasesPackage = (UsecasesPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof UsecasesPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new UsecasesPackageImpl());
+		Object registeredUsecasesPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+		UsecasesPackageImpl theUsecasesPackage = registeredUsecasesPackage instanceof UsecasesPackageImpl ? (UsecasesPackageImpl)registeredUsecasesPackage : new UsecasesPackageImpl();
 
 		isInited = true;
 
@@ -130,7 +139,6 @@ public class UsecasesPackageImpl extends EPackageImpl implements UsecasesPackage
 		// Mark meta-data to indicate it can't be changed
 		theUsecasesPackage.freeze();
 
-  
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(UsecasesPackage.eNS_URI, theUsecasesPackage);
 		return theUsecasesPackage;
@@ -141,6 +149,7 @@ public class UsecasesPackageImpl extends EPackageImpl implements UsecasesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getUseCaseModel() {
 		return useCaseModelEClass;
 	}
@@ -150,6 +159,7 @@ public class UsecasesPackageImpl extends EPackageImpl implements UsecasesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getUseCaseModel_Actor() {
 		return (EReference)useCaseModelEClass.getEStructuralFeatures().get(0);
 	}
@@ -159,6 +169,7 @@ public class UsecasesPackageImpl extends EPackageImpl implements UsecasesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getUseCaseModel_Association() {
 		return (EReference)useCaseModelEClass.getEStructuralFeatures().get(1);
 	}
@@ -168,6 +179,7 @@ public class UsecasesPackageImpl extends EPackageImpl implements UsecasesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getUseCaseModel_Usecase() {
 		return (EReference)useCaseModelEClass.getEStructuralFeatures().get(2);
 	}
@@ -177,6 +189,7 @@ public class UsecasesPackageImpl extends EPackageImpl implements UsecasesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getActor() {
 		return actorEClass;
 	}
@@ -186,6 +199,7 @@ public class UsecasesPackageImpl extends EPackageImpl implements UsecasesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getActor_Name() {
 		return (EAttribute)actorEClass.getEStructuralFeatures().get(0);
 	}
@@ -195,6 +209,7 @@ public class UsecasesPackageImpl extends EPackageImpl implements UsecasesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getAssociation() {
 		return associationEClass;
 	}
@@ -204,6 +219,7 @@ public class UsecasesPackageImpl extends EPackageImpl implements UsecasesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getAssociation_Name() {
 		return (EAttribute)associationEClass.getEStructuralFeatures().get(0);
 	}
@@ -213,6 +229,7 @@ public class UsecasesPackageImpl extends EPackageImpl implements UsecasesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getAssociation_Actor() {
 		return (EReference)associationEClass.getEStructuralFeatures().get(1);
 	}
@@ -222,6 +239,7 @@ public class UsecasesPackageImpl extends EPackageImpl implements UsecasesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getAssociation_Usecase() {
 		return (EReference)associationEClass.getEStructuralFeatures().get(2);
 	}
@@ -231,6 +249,7 @@ public class UsecasesPackageImpl extends EPackageImpl implements UsecasesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getUseCase() {
 		return useCaseEClass;
 	}
@@ -240,6 +259,7 @@ public class UsecasesPackageImpl extends EPackageImpl implements UsecasesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getUseCase_Name() {
 		return (EAttribute)useCaseEClass.getEStructuralFeatures().get(0);
 	}
@@ -249,6 +269,7 @@ public class UsecasesPackageImpl extends EPackageImpl implements UsecasesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getUseCase_Extend() {
 		return (EReference)useCaseEClass.getEStructuralFeatures().get(1);
 	}
@@ -258,6 +279,7 @@ public class UsecasesPackageImpl extends EPackageImpl implements UsecasesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getUseCase_Include() {
 		return (EReference)useCaseEClass.getEStructuralFeatures().get(2);
 	}
@@ -267,6 +289,17 @@ public class UsecasesPackageImpl extends EPackageImpl implements UsecasesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public EReference getUseCase_Comments() {
+		return (EReference)useCaseEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getRelationship() {
 		return relationshipEClass;
 	}
@@ -276,6 +309,7 @@ public class UsecasesPackageImpl extends EPackageImpl implements UsecasesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getRelationship_Name() {
 		return (EAttribute)relationshipEClass.getEStructuralFeatures().get(0);
 	}
@@ -285,6 +319,7 @@ public class UsecasesPackageImpl extends EPackageImpl implements UsecasesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getExtend() {
 		return extendEClass;
 	}
@@ -294,6 +329,7 @@ public class UsecasesPackageImpl extends EPackageImpl implements UsecasesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getExtend_Usecase() {
 		return (EReference)extendEClass.getEStructuralFeatures().get(0);
 	}
@@ -303,6 +339,7 @@ public class UsecasesPackageImpl extends EPackageImpl implements UsecasesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getInclude() {
 		return includeEClass;
 	}
@@ -312,6 +349,7 @@ public class UsecasesPackageImpl extends EPackageImpl implements UsecasesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getInclude_Usecase() {
 		return (EReference)includeEClass.getEStructuralFeatures().get(0);
 	}
@@ -321,6 +359,27 @@ public class UsecasesPackageImpl extends EPackageImpl implements UsecasesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public EClass getComment() {
+		return commentEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getComment_Description() {
+		return (EAttribute)commentEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public UsecasesFactory getUsecasesFactory() {
 		return (UsecasesFactory)getEFactoryInstance();
 	}
@@ -361,6 +420,7 @@ public class UsecasesPackageImpl extends EPackageImpl implements UsecasesPackage
 		createEAttribute(useCaseEClass, USE_CASE__NAME);
 		createEReference(useCaseEClass, USE_CASE__EXTEND);
 		createEReference(useCaseEClass, USE_CASE__INCLUDE);
+		createEReference(useCaseEClass, USE_CASE__COMMENTS);
 
 		relationshipEClass = createEClass(RELATIONSHIP);
 		createEAttribute(relationshipEClass, RELATIONSHIP__NAME);
@@ -370,6 +430,9 @@ public class UsecasesPackageImpl extends EPackageImpl implements UsecasesPackage
 
 		includeEClass = createEClass(INCLUDE);
 		createEReference(includeEClass, INCLUDE__USECASE);
+
+		commentEClass = createEClass(COMMENT);
+		createEAttribute(commentEClass, COMMENT__DESCRIPTION);
 	}
 
 	/**
@@ -421,6 +484,7 @@ public class UsecasesPackageImpl extends EPackageImpl implements UsecasesPackage
 		initEAttribute(getUseCase_Name(), ecorePackage.getEString(), "name", null, 0, 1, UseCase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getUseCase_Extend(), this.getExtend(), null, "extend", null, 0, -1, UseCase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getUseCase_Include(), this.getInclude(), null, "include", null, 0, -1, UseCase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getUseCase_Comments(), this.getComment(), null, "comments", null, 0, -1, UseCase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(relationshipEClass, Relationship.class, "Relationship", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRelationship_Name(), ecorePackage.getEString(), "name", null, 0, 1, Relationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -430,6 +494,9 @@ public class UsecasesPackageImpl extends EPackageImpl implements UsecasesPackage
 
 		initEClass(includeEClass, Include.class, "Include", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getInclude_Usecase(), this.getUseCase(), null, "usecase", null, 1, 1, Include.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(commentEClass, Comment.class, "Comment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getComment_Description(), ecorePackage.getEString(), "description", null, 0, 1, Comment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

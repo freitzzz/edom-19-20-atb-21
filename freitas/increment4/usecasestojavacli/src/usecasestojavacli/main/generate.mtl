@@ -13,6 +13,14 @@
 	invoke('usecasestojavacli.main.JavaQuerier', 'IsCRUDUseCase(pt.isep.edom.usecases.UseCase)', Sequence{parm1})
 /]
 
+[query public isIncludeUseCase(parm1: UseCase) : Boolean =
+	invoke('usecasestojavacli.main.JavaQuerier', 'IsIncludeUseCase(pt.isep.edom.usecases.UseCase)', Sequence{parm1})
+/]
+
+[query public getIncludedUseCases(parm1: UseCase) : Sequence(Include) =
+	invoke('usecasestojavacli.main.JavaQuerier', 'GetIncludedUseCases(pt.isep.edom.usecases.UseCase)', Sequence{parm1})
+/]
+
 [template public generateElement(anUseCaseModel : UseCaseModel)]
 [comment @main/]
 [file (anUseCaseModel.toString(), false, 'UTF-8')]
@@ -34,7 +42,12 @@
 [for (useCase : UseCase | UseCase.allInstances())]
 
 	[if (not isCRUDUseCase(useCase))]
-		[generateUseCaseImpl(useCase)/]
+
+		[if (isIncludeUseCase(useCase))]
+			[generateIncludeUseCaseImpl(useCase)/]
+		[else]
+			[generateUseCaseImpl(useCase)/]
+		[/if]
 	[else]
 		[generateCRUDUseCaseImpl(anUseCaseModel, useCase)/]
 	[/if]
@@ -116,7 +129,7 @@ class [aType.name.replaceAll('\\s+', '')/] implements Actor {
 				[for (association: Association | associations)]
 			case [associations->indexOf(association)/]:
 				{
-					[association.usecase.name/] o=FFactory.getInstance().create[association.usecase.name/]();
+					[association.usecase.name.replaceAll('\\s+', '')/] o = FFactory.getInstance().create[association.usecase.name.replaceAll('\\s+', '')/]();
 					o.execute();
 				}
 				break;
@@ -144,6 +157,25 @@ class [aType.name.replaceAll('\\s+', '')/] implements UseCase {
 	public void execute() {
 
 		System.out.println("I currently do not provide any functional operations! Check again later");
+	}
+}
+
+[/file]
+[/template]
+
+[template public generateIncludeUseCaseImpl(aType : UseCase)]
+[file (aType.name.replaceAll('\\s+', '')+'.java', false, 'UTF-8')]
+
+class [aType.name.replaceAll('\\s+', '')/] implements UseCase {
+	public void execute() {
+
+		[let includedUseCases : Sequence(Include) = getIncludedUseCases(aType)]
+			[for (include : Include | includedUseCases)]
+		[include.usecase.name.replaceAll('\\s+', '')/] o = FFactory.getInstance().create[include.usecase.name.replaceAll('\\s+', '')/]();
+		o.execute();
+			[/for]
+		[/let]
+
 	}
 }
 

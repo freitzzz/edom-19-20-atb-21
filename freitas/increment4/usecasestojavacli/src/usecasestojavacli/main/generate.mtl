@@ -401,6 +401,19 @@ public class [aType.replaceAll('\\s+', '')/] implements Entity {
 
 	public void changeName (String name) { this._name = name; }
 
+	public String toString(){
+
+		return new StringBuilder()
+			.append("[aType.replaceAll('\\s+', '')/]{")
+			.append("ID: ")
+			.append(id())
+			.append(" | ")
+			.append("Name: ")
+			.append(name())
+			.append("}")
+			.toString();
+	}
+
 
 }
 

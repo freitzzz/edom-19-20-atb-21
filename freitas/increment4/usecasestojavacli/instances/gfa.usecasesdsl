@@ -3,7 +3,7 @@ UseCaseModel {
 		Actor Adminstrator ,
 		Actor "Kitchen Worker" ,
 		Actor Chef , 
-		Actor "Kitchen Worker Chief" 
+		Actor "Kitchen Worker Chief"
 	}
 	association {
 		Association "Kitchen Worker_Save Meal" {
@@ -102,7 +102,7 @@ UseCaseModel {
 					description "CRUD"
 				},
 				Comment{
-					description "Entity"
+					description "Entity: Ingredient"
 				}
 			}
 		},
@@ -110,6 +110,9 @@ UseCaseModel {
 			comments{
 				Comment{
 					description "CRUD"
+				},
+				Comment{
+					description "Entity: Allergen"
 				}
 			}
 		} , 

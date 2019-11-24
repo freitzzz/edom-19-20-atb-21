@@ -224,6 +224,10 @@ public class FactoryImpl implements Factory {
 
 [template public generateFactorySingleton(useCaseModel : UseCaseModel)]
 [file ('FFactory.java', false, 'UTF-8')]
+
+/**
+ * @generated NOT
+ */
 public class FFactory {
 
 	private static Factory instance=null;

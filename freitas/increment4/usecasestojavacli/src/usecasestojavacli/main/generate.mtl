@@ -497,6 +497,9 @@ public class [aType.name.replaceAll('\\s+', '')/] implements Actor {
 [template public generateUseCaseImpl(aType : UseCase)]
 [file (aType.name.replaceAll('\\s+', '')+'.java', false, 'UTF-8')]
 
+/**
+ * @generated NOT
+ */
 public class [aType.name.replaceAll('\\s+', '')/] implements UseCase {
 	public void execute() {
 

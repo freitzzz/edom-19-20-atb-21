@@ -29,7 +29,7 @@
 	invoke('usecasestojavacli.main.JavaQuerier', 'GetEntityUseCaseName(pt.isep.edom.usecases.UseCase)', Sequence{parm1})
 /]
 
-[template public generateElement(anUseCaseModel : UseCaseModel)]
+[template public generateJavaConsoleApplication(anUseCaseModel : UseCaseModel)]
 [comment @main/]
 [file ('Main.java', false, 'UTF-8')]
 

@@ -65,3 +65,18 @@ In order to support the manual editing of code, in some generation templates it 
 - `generateUseCaseImpl` - This was performed in order allow the extensibility of the use case behaviour.
 
 Although the mechanism applied automatically generates these javadoc comments on the first generation of the code, these comments could also be added manually after code generation.
+
+
+## Generate and Run
+
+Before generating or running the console application, make sure java and acceleo sources are compiled by executing the following command:
+
+`mvn clean install`
+
+To generate the console application sources execute the following command:
+
+`mvn exec:java@generate`
+
+To run the console application execute the following command:
+
+`mvn exec:java@console`

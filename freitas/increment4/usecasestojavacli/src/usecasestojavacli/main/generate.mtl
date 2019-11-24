@@ -25,11 +25,65 @@
 	invoke('usecasestojavacli.main.JavaQuerier', 'IsEntityUseCase(pt.isep.edom.usecases.UseCase)', Sequence{parm1})
 /]
 
+[query public getUseCaseEntityName(parm1: UseCase) : String =
+	invoke('usecasestojavacli.main.JavaQuerier', 'GetEntityUseCaseName(pt.isep.edom.usecases.UseCase)', Sequence{parm1})
+/]
+
 [template public generateElement(anUseCaseModel : UseCaseModel)]
 [comment @main/]
-[file (anUseCaseModel.toString(), false, 'UTF-8')]
+[file ('Main.java', false, 'UTF-8')]
+
+class Main {
+
+	public static void main(String['[]'/] args){
+
+		System.out.println("Welcome to Use Cases Slight CLI!\nWhich actor do you want to interact with ?");
+
+		boolean exit=false;
+
+		java.util.Scanner in = new java.util.Scanner(System.in);
+
+		while (!exit) {
+
+			[let actors : Sequence(Actor) = Actor.allInstances() -> asSequence()]
+				[for (actor: Actor | actors)]
+			System.out.println("[actors->indexOf(actor)/]-[actor.name/]");
+				[/for]
+			[/let]
+			System.out.println("0-Exit");
+
+			// Read an integer from the input
+			int num = in.nextInt();
+
+			switch (num) {
+			[let actors : Sequence(Actor) = Actor.allInstances() -> asSequence()]
+				[for (actor: Actor | actors)]
+			case [actors->indexOf(actor)/]:
+				{
+					[actor.name.replaceAll('\\s+', '')/] o = FFactory.getInstance().create[actor.name.replaceAll('\\s+', '')/]();
+					o.execute();
+				}
+				break;
+				[/for]
+			[/let]
+			case 0:
+				exit=true;
+			}
+		}
+
+	}
+
+}
 
 [/file]
+
+[generateFactoryInterface(anUseCaseModel)/]
+
+[generateFactoryImpl(anUseCaseModel)/]
+
+[generateFactorySingleton(anUseCaseModel)/]
+
+
 
 [generateRepositoryInterface(anUseCaseModel)/]
 
@@ -60,9 +114,9 @@
 
 		[if (isEntityUseCase(useCase))]
 
-			[generateRepositoryImpl(useCase.name)/]
+			[generateRepositoryImpl(getUseCaseEntityName(useCase))/]
 
-			[generateEntityImpl(useCase.name)/]
+			[generateEntityImpl(getUseCaseEntityName(useCase))/]
 
 			[generateCRUDEntityUseCaseImpl(anUseCaseModel, useCase)/]
 		[else]
@@ -72,6 +126,94 @@
 
 [/for]
 
+[/template]
+
+
+
+
+
+
+[template public generateFactoryInterface(useCaseModel : UseCaseModel)]
+[file ('Factory.java', false, 'UTF-8')]
+
+public interface Factory {
+
+	[for (actor: Actor | useCaseModel.actor)]
+	public Actor create[actor.name.replaceAll('\\s+', '')/]();
+
+	[/for]
+
+	[for (useCase: UseCase | useCaseModel.usecase)]
+	public UseCase create[useCase.name.replaceAll('\\s+', '')/]();
+
+	[/for]
+
+	[for (useCase: UseCase | useCaseModel.usecase)]
+		[if (isEntityUseCase(useCase))]
+			[let entityName : String = getUseCaseEntityName(useCase)]
+	public Entity create[entityName.replaceAll('\\s+', '')/](int id, String name);
+
+			[/let]
+		[/if]
+	[/for]
+	
+}
+[/file]
+[/template]
+
+[template public generateFactoryImpl(useCaseModel : UseCaseModel)]
+[file ('FactoryImpl.java', false, 'UTF-8')]
+
+class FactoryImpl implements Factory {
+
+	[for (actor: Actor | useCaseModel.actor)]
+	public Actor create[actor.name.replaceAll('\\s+', '')/](){
+		return new [actor.name.replaceAll('\\s+', '')/]();
+	}
+
+	[/for]
+
+	[for (useCase: UseCase | useCaseModel.usecase)]
+	public UseCase create[useCase.name.replaceAll('\\s+', '')/](){
+		return new [useCase.name.replaceAll('\\s+', '')/]();
+	}
+
+	[/for]
+
+	[for (useCase: UseCase | useCaseModel.usecase)]
+		[if (isEntityUseCase(useCase))]
+			[let entityName : String = getUseCaseEntityName(useCase)]
+	public Entity create[entityName.replaceAll('\\s+', '')/](int id, String name){
+		return new [entityName.replaceAll('\\s+', '')/](id, name);
+	}
+
+			[/let]
+		[/if]
+	[/for]
+	
+}
+[/file]
+[/template]
+
+
+
+
+
+
+[template public generateFactorySingleton(useCaseModel : UseCaseModel)]
+[file ('FFactory.java', false, 'UTF-8')]
+class FFactory {
+
+	private static Factory instance=null;
+
+	public static Factory getInstance() {
+		if (instance==null) {
+			instance=new FactoryImpl();
+		}
+		return instance;
+	}
+}
+[/file]
 [/template]
 
 
@@ -191,9 +333,9 @@ class [aType.replaceAll('\\s+', '')/]RepositoryImpl<[aType.replaceAll('\\s+', ''
 
 
 [template public generateEntityImpl(aType : String)]
-[file (aType.replaceAll('\\s+', '')+'EntityImpl.java', false, 'UTF-8')]
+[file (aType.replaceAll('\\s+', '')+'.java', false, 'UTF-8')]
 
-class [aType.replaceAll('\\s+', '')/]EntityImpl implements Entity {
+class [aType.replaceAll('\\s+', '')/] implements Entity {
 	
 	
 	private int _id;
@@ -201,7 +343,7 @@ class [aType.replaceAll('\\s+', '')/]EntityImpl implements Entity {
 	private String _name;
 
 	
-	public [aType.replaceAll('\\s+', '')/]EntityImpl (String name, int id){
+	public [aType.replaceAll('\\s+', '')/] (String name, int id){
 
 		_id = id;
 		_name = name;
@@ -375,7 +517,7 @@ class [aType.name.replaceAll('\\s+', '')/] implements UseCase {
 
 		java.util.Scanner in = new java.util.Scanner(System.in);
 
-		[let entityName : String = aType.name]
+		[let entityName : String = getUseCaseEntityName(aType)]
 		String['['/][']'/] operations = new String['['/][']'/]{
 			"1- Create [entityName/]", 
 			"2- Read [entityName/]", 

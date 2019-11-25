@@ -46,6 +46,11 @@ The following tables summarizes the transformations that were taken in account:
 |`generateCRUDUseCaseImpl`|Generates a file that represents the use case interface implementation for an use case that provides CRUD operations. The `execute` method implementation presents a menu for interacting with these operations|
 |`generateCRUDEntityUseCaseImpl`|Generates a file that represents the use case interface implementation for an use case that provides CRUD operations for a specific entity. The `execute` method implementation presents a menu for interacting with these operations for the specific entity|
 
+One thing to notice on this generation strategy is that **all java source files** are generated in the same folder that was indicated in Acceleo as the output folder.
+The strategy could be refactored in order to generate the source files in approriated folders as a way to separate responsibilities (e.g. `entities` would contain all entities files, `usecases` would contain all use cases files).
+
+In order to perform such generation, each template path should include the relative path to the respective folder and there should be import statements of all file dependencies.
+
 
 ## Use Case Metamodel and DSL Update
 

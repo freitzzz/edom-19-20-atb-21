@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ASCII"?>
+<usecases:UseCaseModel
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:usecases="http://www.example.org/usecases"
+    name="Agenda">
+  <actor name="Administrator"/>
+  <association
+      name="Administrator_ShareMeeting"
+      actor="//@actor.0"
+      usecase="//@usecase.0"/>
+  <association
+      name="Administrator_ManageContacts"
+      actor="//@actor.0"
+      usecase="//@usecase.2"/>
+  <usecase name="ShareMeeting">
+    <include
+        name="ShareMeeting_MeetingCRUD"
+        usecase="//@usecase.1"/>
+  </usecase>
+  <usecase name="MeetingCRUD">
+    <comments
+        description="CRUD"/>
+  </usecase>
+  <usecase name="ManageContacts"/>
+</usecases:UseCaseModel>

@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: pt.isep.edom.usecases2.dsl.ide
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: pt.isep.edom.usecases2.dsl.ide; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: pt.isep.edom.usecases2.dsl,
+ pt.isep.edom.usecases2,
+ org.eclipse.xtext.ide,
+ org.eclipse.xtext.xbase.ide
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8

@@ -1,0 +1,391 @@
+[comment encoding = UTF-8 /]
+[module generate('http://www.example.org/usecases')]
+
+
+[**query public getReqModelTitle(parm: Map) : String =
+	invoke('pt.isep.edom.acceleo.example.main.ReqModelQuery', 'getReqModelTitle(pt.isep.edom.mindmap.mindmap.Map)', Sequence{parm})
+/]
+
+[**query public getReqModel(parm: Map) : Model =
+	invoke('pt.isep.edom.acceleo.example.main.ReqModelQuery', 'getReqModel(pt.isep.edom.mindmap.mindmap.Map)', Sequence{parm})
+/]
+
+[**
+ * The documentation of the template generateElement.
+ * @param aType
+ */]
+
+
+[template public generateUseCaseModel(anUseCaseModel : UseCaseModel)]
+[comment @main/]
+[file (anUseCaseModel.name +'.java', false, 'UTF-8')]
+
+class [anUseCaseModel.name/] {
+	public void execute() {
+
+		boolean exit=false;
+
+		java.util.Scanner in = new java.util.Scanner(System.in);
+
+		while (!exit) {
+
+			System.out.println("UseCaseModel [anUseCaseModel.name/]");
+
+			[if(anUseCaseModel.actor->isEmpty())]
+			System.out.println("I do not have actors.");
+			[else]
+			System.out.println("My actors are:");
+			[/if]
+
+			[let actors : OrderedSet(Actor) = anUseCaseModel.actor]
+			[for (a: Actor | anUseCaseModel.actor)]
+			System.out.println("[actors->indexOf(a)/]-[a.name/]");
+			[/for]
+			[/let]
+			System.out.println("0-Exit");
+
+			System.out.println(">>Please enter you option");
+
+			// Read an integer from the input
+			int num = in.nextInt();
+
+			switch (num) {
+			[let actors : OrderedSet(Actor) = anUseCaseModel.actor]
+			[for (a: Actor | anUseCaseModel.actor)]
+				case [actors->indexOf(a)/]:
+					{
+						[a.name/] o=FFactory.getInstance().create[a.name/]();
+						o.execute();
+					}
+					break;
+			[/for]
+			[/let]
+				case 0:
+					exit=true;
+			}
+		}
+	}
+}
+[/file]
+[for (a: Actor | anUseCaseModel.actor)]
+	[generateActor(a, anUseCaseModel.association)/]
+[/for]
+[generateActorInterface(anUseCaseModel)/]
+[for (a: UseCase | anUseCaseModel.usecase)]
+	[generateUseCase(a)/]
+[/for]
+[generateEntity(anUseCaseModel)/]
+[generateNoCRUDUseCase(anUseCaseModel)/]
+[generateUseCaseInterface(anUseCaseModel)/]
+[generateFactoryInterface(anUseCaseModel)/]
+[generateFactoryImpl(anUseCaseModel)/]
+[generateFFactory(anUseCaseModel)/]
+[generateMain(anUseCaseModel)/]
+[/template]
+
+[template public generateActorInterface(anUseCaseModel : UseCaseModel)]
+[file ('Actor.java', false, 'UTF-8')]
+
+public interface Actor {
+	public void execute();
+}
+
+[/file]
+[/template]
+
+[template public generateActor(aType : Actor, associations: OrderedSet(Association))]
+[file (aType.name+'.java', false, 'UTF-8')]
+
+class [aType.name/] implements Actor {
+
+	public void execute() {
+
+		boolean exit=false;
+
+		java.util.Scanner in = new java.util.Scanner(System.in);
+
+		while (!exit) {
+
+			System.out.println("Actor [aType.name/]");
+
+
+			[if(associations->isEmpty())]
+			System.out.println("I do not have use cases.");
+			[else]
+			System.out.println("My use cases are:");
+			[/if]
+
+			[let i : Integer = 0]
+			[for (a: Association | associations)]
+				[if(a.actor.name = aType.name)]
+			System.out.println("[i/]-[a.usecase.name/]");
+				[/if]
+			[/for]
+			[/let]
+
+			System.out.println("0-Exit");
+
+			System.out.println(">>Please enter you option");
+
+			// Read an integer from the input
+			int num = in.nextInt();
+
+			switch (num) {
+			[let i : Integer = 1]
+			[for (a: Association | associations)]
+				[if(a.actor.name = aType.name)]
+				case [i/]:
+					{
+						[a.usecase.name/] o=FFactory.getInstance().create[a.usecase.name/]();
+						o.execute();
+					}
+					break;
+				[/if]
+			[/for]
+			[/let]
+				case 0:
+					exit=true;
+			}
+		}
+	}
+}
+
+[/file]
+[/template]
+
+[template public generateUseCaseInterface(anUseCaseModel : UseCaseModel)]
+[file ('UseCase.java', false, 'UTF-8')]
+
+public interface UseCase {
+	public void execute();
+}
+
+[/file]
+[/template]
+
+[template public generateUseCase(aType : UseCase)]
+[file (aType.name+'.java', false, 'UTF-8')]
+
+class [aType.name/] implements UseCase {
+	Entity entity;
+		
+	public [aType.name/]() {
+		entity = new Entity();
+	}
+	
+	public void execute() {
+
+		boolean exit=false;
+
+		java.util.Scanner in = new java.util.Scanner(System.in);
+
+		while (!exit) {
+
+			System.out.println("UseCase [aType.name/]");
+
+			[if(not aType.comments->select(c | c.description = 'CRUD')->isEmpty())]
+				System.out.println("1-Read");
+				System.out.println("2-Create");
+				System.out.println("3-Update");
+				System.out.println("4-Delete");
+			[else]
+				[if(not aType.include->isEmpty())]
+					System.out.println("My included use cases are:");
+					[let incl : OrderedSet(Include) = aType.include]
+					[for (i: Include | aType.include)]
+						System.out.println("[incl->indexOf(i)/]-[i.usecase.name/]");
+					[/for]
+					[/let]
+				[else]	
+					noCRUDUseCase x = new noCRUDUseCase();
+				[/if]
+			[/if]
+
+			System.out.println("0-Exit");
+
+			System.out.println(">>Please enter you option");
+
+			// Read an integer from the input
+			int num = in.nextInt();
+
+			switch (num) {
+			[if(not aType.comments->select(c | c.description = 'CRUD')->isEmpty())]
+				case 1: {
+					entity.readAll();
+				}
+				break;
+				case 2: {
+					entity.create();
+				}
+				break;
+				case 3: {
+					entity.update();
+				}
+				break;
+				case 4: {
+					entity.delete();
+				}
+				break;
+			[else]
+				[if(not aType.include->isEmpty())]
+					[let incl : OrderedSet(Include) = aType.include]
+					[for (i: Include | aType.include)]
+						case [incl->indexOf(i)/]:
+						{
+							[i.usecase.name/] o=FFactory.getInstance().create[i.usecase.name/]();
+							o.execute();
+						}
+						break;
+					[/for]
+					[/let]	
+				[/if]
+			[/if]
+				case 0:
+					exit=true;
+			}
+		}
+	}
+}
+
+[/file]
+[/template]
+
+[template public generateEntity(anUseCaseModel : UseCaseModel)]
+[file ('Entity.java', false, 'UTF-8')]
+import java.util.HashMap;
+
+public class Entity {
+	HashMap<Integer, String> entities;
+	int mykey = 0;
+	java.util.Scanner in = new java.util.Scanner(System.in);
+
+	public Entity() {
+    	entities = new HashMap<Integer, String>();
+  	}
+
+
+	public void readAll() {
+		System.out.println("The entities:");
+		System.out.println(entities);
+	}
+
+	public void create() {
+		System.out.println(">>Please enter the name");
+		String name = in.next();
+		entities.put(mykey++, name);
+	}
+
+	public void update() {
+		System.out.println(">>Please enter the key");
+		int key = in.nextInt();
+		if(entities.get(key) == null){
+			System.out.println("The entity doesn't exist.");
+			return;
+		}
+		System.out.println("Updating the entity " + entities.get(key));
+		System.out.println(">>Please enter the new name");
+		String name = in.next();
+		entities.put(key, name);
+	}
+
+	public void delete() {
+		System.out.println(">>Please enter the key");
+		int key = in.nextInt();
+		if(entities.get(key) == null){
+			System.out.println("The entity doesn't exist.");
+			return;
+		}
+		System.out.println("The entity " + entities.get(key) + " has been deleted.");
+		entities.remove(key);
+	}
+}
+
+[/file]
+[/template]
+
+[template public generateNoCRUDUseCase(anUseCaseModel : UseCaseModel)]
+[file ('noCRUDUseCase.java', false, 'UTF-8')]
+
+/**
+* @generated NOT 
+*/
+
+public class noCRUDUseCase {
+	
+	public noCRUDUseCase() {
+		System.out.println("Nothing to do");
+	}
+}
+
+[/file]
+[/template]
+
+
+[template public generateMain(anUseCaseModel : UseCaseModel)]
+[file ('Main.java', false, 'UTF-8')]
+public class Main {
+	public static void main(String['['/][']'/]  args) {
+
+		[anUseCaseModel.name/] c=FFactory.getInstance().create[anUseCaseModel.name/]();
+		c.execute();
+	}
+}
+[/file]
+[/template]
+
+[template public generateFactoryInterface(useCaseModel: UseCaseModel)]
+[file ('Factory.java', false, 'UTF-8')]
+
+public interface Factory {
+
+	public [useCaseModel.name/] create[useCaseModel.name/]();
+	[for (a: Actor | useCaseModel.actor)]
+	public [a.name/] create[a.name/]();
+	[/for]
+
+	[for (a: UseCase | useCaseModel.usecase)]
+	public [a.name/] create[a.name/]();
+	[/for]
+}
+[/file]
+[/template]
+
+[template public generateFactoryImpl(useCaseModel: UseCaseModel)]
+[file ('FactoryImpl.java', false, 'UTF-8')]
+
+public class FactoryImpl implements Factory {
+
+	public [useCaseModel.name/] create[useCaseModel.name/]() {
+		return new [useCaseModel.name/]();
+	}
+
+	[for (a: Actor | useCaseModel.actor)]
+	public [a.name/] create[a.name/]() {
+		return new [a.name/]();
+	}
+	[/for]
+
+	[for (a: UseCase | useCaseModel.usecase)]
+	public [a.name/] create[a.name/]() {
+		return new [a.name/]();
+	}
+	[/for]
+}
+[/file]
+[/template]
+
+[template public generateFFactory(useCaseModel: UseCaseModel)]
+[file ('FFactory.java', false, 'UTF-8')]
+public class FFactory {
+
+	private static Factory instance=null;
+
+	public static Factory getInstance() {
+		if (instance==null) {
+			instance=new FactoryImpl();
+		}
+		return instance;
+	}
+}
+[/file]
+[/template]

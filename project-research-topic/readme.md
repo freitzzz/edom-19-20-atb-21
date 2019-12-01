@@ -3,7 +3,7 @@
 
 ## Introduction
 
-This document, written in the context of EDOM (Engenharia de Dominio) curricular unit of MEI (Mestrado em Engenharia Informática) course at ISEP (Instituto Superior de Engenharia do Porto), presents an analysis of **MoDisco**. Firstly an introduction of MoDisco and MDRE will be detailed as well as how these two relate with each other. Then the benefits of using MoDisco and a pratical use case will be elaborated, expliciting how the domain and application engineering are applied. Lastly MoDisco alternatives will be presented.
+This document, written in the context of EDOM (Engenharia de Dominio) curricular unit of MEI (Mestrado em Engenharia Informática) course at ISEP (Instituto Superior de Engenharia do Porto), presents an analysis of **MoDisco**. Firstly an introduction of MoDisco and MDRE will be detailed as well as how these two relate with each other. Then the benefits of using MoDisco and a pratical use case will be elaborated. Lastly MoDisco alternatives will be presented.
 
 ## MoDisco
 

@@ -17,6 +17,11 @@ Being a fully open source framework that relies only on generic components and t
 
 ### What is MDRE ?
 
+MDRE (Model Driven Reverse Engineering) is the process of applying MDE (Model Driven Engineering) principles and techniques to reverse engineering in order to generate relevant model-based views of a system whose architecture is unknown (e.g. legacy systems). Reverse Engineering in software is the process of recreating the design of the software based on its artifacts (executables, code, documentation) [2].
+It differs from *forward engineering* in the sense that forward engineering intends to use software design to create software implementations. MDRE aims to build and use models from the system implementation (using MDE), creating high-level views such as domain and object models, in order to improve maintenance and evolution processes [1].
+Thus it is possible to benefit from MDRE in MDSE (Model Driven Software Evolution) processes.
+As an example, imagine that a consulting company hires a team of developers to maintain a really old software (legacy system) that has no documentation, doesn't follow common language conventions and does not apply any design patterns. At first this might look like an impossible job, yet if the team applies MDRE processes, it will be able to generate proper views of the software, which will be useful to analyze this one and to mark a starting point of the maintenance.
+
 ### What are MoDisco goals ?
 
 ### How MoDisco and MDRE relate with each other
@@ -33,3 +38,4 @@ Being a fully open source framework that relies only on generic components and t
 #### References
 
 1 - https://www.researchgate.net/publication/261599648_MoDisco_a_Model_Driven_Reverse_Engineering_Framework, 27/11/2019
+2- https://www.geeksforgeeks.org/software-engineering-reverse-engineering/

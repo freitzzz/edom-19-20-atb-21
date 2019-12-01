@@ -1,10 +1,5 @@
 # EDOM - Project Research Topic
 
-In this folder you should add **all** artifacts developed for the investigative topic of the project.
-
-There is only one folder for this task because it is a team task and, as such, usually there will be no need to create individual folders.
-
-**Note:** If for some reason you need to bypass these guidelines please ask for directions with your teacher and **always** state the exceptions in your commits and issues in bitbucket.
 
 ## Introduction
 
@@ -16,8 +11,7 @@ This document, written in the context of EDOM (Engenharia de Dominio) curricular
 
 MoDisco (Model Discovery) is a generic, extensible and global *MDRE* approach that provides a ready-to-use framework implemented on top of the Eclipse Platform as an official Eclipse Project [1].
 It aims at supporting the reverse engineering of IT legacy systems which are to be updated by new developers who don't know its architecture.
-Being a fully open source framework that relies only on generic components and thus providing extensibility for new technologies support, MoDisco differentiates from other MDRE technologies as these are built with specific language parsers, grammars and metamodels that are licensed as properietary. One of the biggest issues when working with legacy systems for organizations is the financial costs that it brings (passar esta parte dos custos para benefits of MoDisco)
-**talvez mais algo aqui**
+Being a fully open source framework that relies only on generic components and thus providing extensibility for new technologies support, MoDisco differentiates from other MDRE technologies as these are built with specific language parsers, grammars and metamodels that are licensed as properietary.
 
 ### What is MDRE ?
 
@@ -51,23 +45,63 @@ MoDisco does not provide a complete solution for all specific reverse engineerin
 
 These characteristics are achieved by focusing on a homogeneous world of models instead than a heterogeneous world of legacy system, as the first principle to immediately get initial models that represent the artifacts of the legacy system. These models are sufficiently accurate to be used as a starting point of the MDRE scenario which MoDisco is being used as they are the input for any MDE operation.
 
+In Figure 1 it is possible to observe the proposed architectural stack for MDRE that MoDisco implements. It consists in three layers, that have separate responsibilities, in which the Infrastructure and Technologies layers represent the domain engineering and the Use Cases Layer represents the application engineering. 
+
+![modisco_mdre_architectural_stack](images/modisco_mdre_architectural_stack.png)
+<center>Figure 1 - MDRE Framework Architectural Stack</center>
+
+Starting from the bottom we have the **Infrastructure Layer** that provides genericity and automation that are completely independent from the technology or reverse engineering scenario which the MDRE process is being used for. The implementation of this layer consists of generic metamodels (e.g. OMG KDM), viewpoints and model transformations.
+
+In the middle it is possible to find the **Technologies** Layer, that consists in a set of technology-dedicated components that are agnostic of the reverse engineering scenarios (e.g. Java metamodel).
+
+Finally in the **Use Cases Layer** it can be found the components that are related to reverse engineering scenarios (e.g. Java source code refactoring).
+
+An implementation example of the framework can be found below in Figure 2.
+
+![modisco_mdre_architectural_stack_implementation](images/modisco_mdre_architectural_stack_implementation.png)
+<center>Figure 1 - MDRE Framework Architectural Stack</center>
+
 ### Benefits of using MoDisco
 
 MoDisco facilitates the creation of reverse engineering solutions for software understanding, evolution, and modernization by providing an extensible, reusable model-based framework that makes it easy to understand legacy systems [3].
+
 The metamodel-driven approach followed in MoDisco enables covering different levels of abstraction and satisfying several degrees of detail depending on the needs of the reverse engineering scenario. 
+
 The use of MDE techniques allows the decomposition and automation of the reverse processes. They can be divided in smaller steps focusing on speciﬁc tasks, and be largely automated thanks to the appropriate chaining of corresponding MDE operations (notably model transformations). 
-With MoDisco, the treatment of the potentially huge amount of concerned data can be simplified because the models of the systems are the elements actually processed rather than directly the systems themselves. The performance observed on the key MoDisco components are already acceptable for an industrial use in several concrete scenarios. 
+
+With MoDisco, the treatment of the potentially huge amount of concerned data can be simplified because the models of the systems are the elements actually processed rather than directly the systems themselves. The performance observed on the key MoDisco components are already acceptable for an industrial use in several concrete scenarios.
+
+One of the biggest issues when working with legacy systems reverse engineering for organizations is the financial costs that it brings due to acquisition of specific technology MDRE licenses. MoDisco removes this problem as it is a completely open-source solution that allows the extensibility of the supported technologies by either:
+- Complementing the **Use Cases Layer** with other MoDisco components combination, in order to support different MDRE processes;
+- Complementing the **Technologies Layer** in order to add support for a specific technology; 
+- Directly work on the **Infrastructure Layer**.
 
 ### A pratical use case of MoDisco
 
 MoDisco can be used to automate massive refactoring tasks on a large Java application in order to improve both performances or code readability.
-To perform this refactoring, there is first reverse engineering from the input Java application by using the MoDisco Java metamodel and correspondig model discoverer. After that, exists a restructuring of the obtained application model thanks to model transformations in Java, and lastly, there is a forward engineering of the output Java application from this modified model by running the MoDisco Java generator.
+To perform this refactoring, there is first reverse engineering from the input Java application by using the MoDisco Java metamodel and correspondig model discoverer. After that, exists a restructuring of the obtained application model thanks to model transformations in Java as seen below in Figure 3.
+
+![model_browser_refactoring](images/model_browser_refactoring.png)
+<center>Figure 3 - Discovered and restructured model</center>
+
+Lastly, there is a forward engineering of the output Java application from this modified model by running the MoDisco Java generator as seen in Figure 4.
+
+![code_refactoring](images/code_refactoring.png)
+<center>Figure 4 - Before and After code refactoring</center>
+
 
 ### MoDisco alternatives
 
+Although that MoDisco authors have mentioned that there are licensed and proprietary MDRE approaches [1], we were only able to find one alternative which is:
+
+- XIS-Reverse: A Model-Driven Reverse Engineering Approach for Legacy Information Systems [4]
 
 #### References
 
 1 - https://www.researchgate.net/publication/261599648_MoDisco_a_Model_Driven_Reverse_Engineering_Framework, 27/11/2019
-2- https://www.geeksforgeeks.org/software-engineering-reverse-engineering/, 29/11/2019
+
+2- https://www.geeksforgeeks.org/software-engineering-reverse-engineering/, 01/11/2019
+
 3 - https://ercim-news.ercim.eu/images/stories/EN88/EN88-web.pdf, 30/11/2019
+
+4 - https://fenix.tecnico.ulisboa.pt/downloadFile/1407770020545952/dissertation%20-%20Final2.pdf, 01/12/2019

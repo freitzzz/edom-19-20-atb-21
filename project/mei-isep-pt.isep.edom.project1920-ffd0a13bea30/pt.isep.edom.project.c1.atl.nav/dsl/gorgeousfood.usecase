@@ -1,0 +1,6 @@
+UseCaseModel GorgeousFoodUseCases { 
+	usecase { 
+		UseCase ManageUser {
+		}
+	}
+}

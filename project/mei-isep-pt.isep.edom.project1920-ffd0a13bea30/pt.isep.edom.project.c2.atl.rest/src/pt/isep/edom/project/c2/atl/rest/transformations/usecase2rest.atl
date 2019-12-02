@@ -1,0 +1,16 @@
+-- @atlcompiler emftvm
+-- @path MMUseCase=/pt.isep.edom.project.c0.mm.usecase/model/usecase.ecore
+-- @path MMRest=/pt.isep.edom.project.c2.mm.rest/model/rest.ecore
+  
+module usecase2rest;
+create OUT : MMRest from IN : MMUseCase;
+ 
+rule UseCaseModel2RestModel {
+	from
+		m1: MMUseCase!UseCaseModel
+	to 
+		m2: MMRest!RestModel (
+			name <- m1.name
+		)
+}
+

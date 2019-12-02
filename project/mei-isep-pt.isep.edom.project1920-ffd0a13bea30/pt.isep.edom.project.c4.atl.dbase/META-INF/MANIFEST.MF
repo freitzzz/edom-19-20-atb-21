@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Dbase
+Bundle-SymbolicName: pt.isep.edom.project.c4.atl.dbase
+Bundle-Version: 1.0.0.qualifier
+Export-Package: pt.isep.edom.project.c4.atl.dbase
+Require-Bundle: org.eclipse.ocl.common,
+ org.eclipse.ocl.ecore,
+ org.eclipse.ocl.pivot,
+ org.eclipse.ocl.xtext.essentialocl,
+ pt.isep.edom.project.c0.dsl.usecase,
+ pt.isep.edom.project.c4.dsl.dbase,
+ pt.isep.edom.project.c0.mm.usecase,
+ pt.isep.edom.project.c4.mm.dbase,
+ org.eclipse.m2m.atl.emftvm

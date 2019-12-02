@@ -1,0 +1,13 @@
+[comment encoding = UTF-8 /]
+[module generate('http://www.example.org/nav')]
+
+
+[template public generateNavModel(aNavModel : NavModel)]
+[comment @main/]
+[file ('presentation/'+aNavModel.name+'.java', false, 'UTF-8')]
+package presentation;
+
+class [aNavModel.name/] {
+}
+[/file]
+[/template]

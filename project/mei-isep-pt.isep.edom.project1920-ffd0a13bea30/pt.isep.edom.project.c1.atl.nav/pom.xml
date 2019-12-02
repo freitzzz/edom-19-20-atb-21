@@ -1,0 +1,187 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>pt.isep.edom.project.c1.atl.nav</groupId>
+  <artifactId>pt.isep.edom.project.c1.atl.nav</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+	<packaging>eclipse-plugin</packaging>
+
+  <parent>
+		<groupId>pt.isep.edom.project</groupId>
+		<version>1.0.0-SNAPSHOT</version>
+		<artifactId>pt.isep.edom.project.parent</artifactId>
+	</parent>
+
+	<properties>
+		<tycho-version>1.0.0</tycho-version>
+		<xtextVersion>2.12.0</xtextVersion>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<atl.version>4.0.0</atl.version>
+		<emf.version>2.13.0</emf.version>
+		<target-version>0.0.1-SNAPSHOT</target-version>
+	</properties>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>repo.eclipse.org</id>
+			<name>ATL Repository</name>
+			<url>https://repo.eclipse.org/content/groups/atl/</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<extensions>true</extensions>
+			</plugin>
+
+			<!-- For automatically building emftvm files See: https://github.com/dwagelaar/emftvm.maven.example/blob/master/pom.xml -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<!-- Test EMFTVM stand-alone Ant/Maven integration -->
+						<id>Compile.atl</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<taskdef
+									resource="org/eclipse/m2m/atl/emftvm/ant/antlib.xml"
+									classpathref="maven.plugin.classpath" />
+								<mkdir dir="${project.build.directory}" />
+								<emftvm.compile module="usecase2nav"
+									modulepath="${project.basedir}/src/pt/isep/edom/project/c1/atl/nav/transformations/"
+									outputpath="${project.basedir}/src/pt/isep/edom/project/c1/atl/nav/transformations/"
+									charset="UTF-8" />
+								<!-- outputpath="${project.build.directory}/" charset="UTF-8" /> -->
+							</tasks>
+						</configuration>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>org.eclipse.m2m.atl</groupId>
+						<artifactId>org.eclipse.m2m.atl.emftvm.ant.standalone</artifactId>
+						<version>${atl.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.4.0</version>
+				<executions>
+					<execution>
+						<id>usecase2nav</id>
+						<goals>
+							<goal>java</goal>
+						</goals>
+						<configuration>
+							<executable>java</executable>
+							<mainClass>pt.isep.edom.project.c1.atl.nav.UseCase2Nav</mainClass>
+							<arguments>
+								<argument>transformations::usecase2nav</argument>
+								<argument>dsl/gorgeousfood.usecase</argument>
+								<argument>dsl/gorgeousfood.nav</argument>
+							</arguments>
+							<classpathScope>compile</classpathScope>
+							<includeProjectDependencies>true</includeProjectDependencies>
+							<includePluginDependencies>true</includePluginDependencies>
+							<cleanupDaemonThreads>false</cleanupDaemonThreads><!-- see https://bugs.eclipse.org/bugs/show_bug.cgi?id=475098#c3 -->
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.codehaus.mojo
+										</groupId>
+										<artifactId>
+											exec-maven-plugin
+										</artifactId>
+										<versionRange>
+											[1.2.1,)
+										</versionRange>
+										<goals>
+											<goal>java</goal>
+										</goals>
+									</pluginExecutionFilter>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.apache.maven.plugins
+										</groupId>
+										<artifactId>
+											maven-antrun-plugin
+										</artifactId>
+										<versionRange>
+											[1.3,)
+										</versionRange>
+										<goals>
+											<goal>run</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<!-- If no repositories are specified Tycho should use the active eclipse
+		"target platform" <repositories> configure p2 repository to resolve against
+		<repository> <id>eclipse-project-oxygen</id> <layout>p2</layout> <url>http://download.eclipse.org/releases/oxygen/</url>
+		</repository> <repository> <id>xtext-update-site</id> <layout>p2</layout>
+		<url>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/</url>
+		</repository> <repository> <id>eclipse-modeling-update-site</id> <layout>p2</layout>
+		<url>http://www.eclipse.org/modeling/amalgam/downloads/package/modeling/oxygen/</url>
+		</repository> </repositories> -->
+
+	<repositories>
+		<!-- configure p2 repository to resolve against -->
+		<repository>
+			<id>eclipse-project-oxygen</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/releases/oxygen/201804111000/</url>
+		</repository>
+		<repository>
+			<id>eclipse-mmt-atl</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/mmt/atl/updates/releases/4.0</url>
+		</repository>
+		<!-- <repository>
+			<id>xtext</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.12.0/</url>
+		</repository>
+		-->
+	</repositories>
+
+</project>

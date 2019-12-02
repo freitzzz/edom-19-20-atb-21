@@ -1,0 +1,36 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>pt.isep.edom.project</groupId>
+	<version>1.0.0-SNAPSHOT</version>
+	<artifactId>pt.isep.edom.project.parent</artifactId>
+	<packaging>pom</packaging>
+
+  <modules>
+		<module>pt.isep.edom.project.c0.dsl.usecase.parent</module>
+    <module>pt.isep.edom.project.c0.mm.usecase</module>
+
+    <module>pt.isep.edom.project.c1.mm.nav</module>
+    <module>pt.isep.edom.project.c1.dsl.nav.parent</module>
+    <module>pt.isep.edom.project.c1.atl.nav</module>
+    <module>pt.isep.edom.project.c1.mtl.nav</module>
+
+    <module>pt.isep.edom.project.c2.mm.rest</module>
+    <module>pt.isep.edom.project.c2.dsl.rest.parent</module>
+    <module>pt.isep.edom.project.c2.atl.rest</module>
+    <module>pt.isep.edom.project.c2.mtl.rest</module>
+
+    <module>pt.isep.edom.project.c3.mm.domain</module>
+    <module>pt.isep.edom.project.c3.dsl.domain.parent</module>
+    <module>pt.isep.edom.project.c3.atl.domain</module>
+    <module>pt.isep.edom.project.c3.mtl.domain</module>
+
+    <module>pt.isep.edom.project.c4.mm.dbase</module>
+    <module>pt.isep.edom.project.c4.dsl.dbase.parent</module>
+    <module>pt.isep.edom.project.c4.atl.dbase</module>
+    <module>pt.isep.edom.project.c4.mtl.dbase</module>
+
+    <module>pt.isep.edom.project.gorgeousfood</module>
+	</modules>
+
+</project>

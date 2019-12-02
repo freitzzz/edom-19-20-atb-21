@@ -1,0 +1,5 @@
+@startuml
+digraph xpto {
+GorgeousFood
+}
+@enduml

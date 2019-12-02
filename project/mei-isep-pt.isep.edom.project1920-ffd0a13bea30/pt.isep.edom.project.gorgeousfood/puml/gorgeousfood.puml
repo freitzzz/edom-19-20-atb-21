@@ -1,0 +1,35 @@
+@startuml
+
+actor Staff
+actor Manager
+
+rectangle GorgeousFood {
+
+Staff --> (Manage MealItem)
+
+(Manage MealItem) <. (Manage Meal) : extends 
+
+Manager --> (Manage Meal)
+
+(Manage Meal) .> (Manage Ingredients) : include
+}
+ 
+note right of (Manage Meal)
+CRUD
+entity
+Meal
+end note
+  
+note right of (Manage MealItem)
+CRUD
+entity
+MealItem
+end note
+
+note right of (Manage Ingredients)
+CRUD
+local entity
+Ingredient
+end note
+
+@end

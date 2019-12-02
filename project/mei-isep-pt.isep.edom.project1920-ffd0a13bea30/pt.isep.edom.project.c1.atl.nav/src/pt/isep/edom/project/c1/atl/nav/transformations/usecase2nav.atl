@@ -1,0 +1,16 @@
+-- @atlcompiler emftvm
+-- @path MMUseCase=/pt.isep.edom.project.c0.mm.usecase/model/usecase.ecore
+-- @path MMNav=/pt.isep.edom.project.c1.mm.nav/model/nav.ecore
+  
+module usecase2nav;
+create OUT : MMNav from IN : MMUseCase;
+ 
+rule UseCaseModel2NavModel {
+	from
+		m1: MMUseCase!UseCaseModel
+	to 
+		m2: MMNav!NavModel (
+			name <- m1.name
+		)
+}
+

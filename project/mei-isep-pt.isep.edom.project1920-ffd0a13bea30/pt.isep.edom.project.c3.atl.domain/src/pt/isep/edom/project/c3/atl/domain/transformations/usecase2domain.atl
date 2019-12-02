@@ -1,0 +1,16 @@
+-- @atlcompiler emftvm
+-- @path MMUseCase=/pt.isep.edom.project.c0.mm.usecase/model/usecase.ecore
+-- @path MMDomain=/pt.isep.edom.project.c3.mm.domain/model/domain.ecore
+  
+module usecase2domain;
+create OUT : MMDomain from IN : MMUseCase;
+ 
+rule UseCaseModel2DomainModel {
+	from
+		m1: MMUseCase!UseCaseModel
+	to 
+		m2: MMDomain!DomainModel (
+			name <- m1.name
+		)
+}
+

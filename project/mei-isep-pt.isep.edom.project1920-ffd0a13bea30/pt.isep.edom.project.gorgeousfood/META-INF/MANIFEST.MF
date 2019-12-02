@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Gorgeousfood
+Bundle-SymbolicName: pt.isep.edom.project.gorgeousfood
+Bundle-Version: 0.1.0.qualifier
+Require-Bundle: pt.isep.edom.project.c1.atl.nav,
+ pt.isep.edom.project.c1.mtl.nav,
+ pt.isep.edom.project.c2.atl.rest,
+ pt.isep.edom.project.c2.mtl.rest,
+ pt.isep.edom.project.c3.atl.domain,
+ pt.isep.edom.project.c3.mtl.domain,
+ pt.isep.edom.project.c4.atl.dbase,
+ pt.isep.edom.project.c4.mtl.dbase,
+ org.junit

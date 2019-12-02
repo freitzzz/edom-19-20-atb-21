@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/pt.isep.edom.project.c2.mm.rest/src-gen" creationIcons="false"
+    editDirectory="/pt.isep.edom.project.c2.mm.rest.edit/src-gen" editorDirectory="/pt.isep.edom.project.c2.mm.rest.editor/src-gen"
+    modelPluginID="pt.isep.edom.project.c2.mm.rest" modelName="Rest" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    codeFormatting="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0"
+    copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>rest.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="Rest" basePackage="pt.isep.edom.project.c2.mm" disposableProviderFactory="true"
+      ecorePackage="rest.ecore#/"/>
+</genmodel:GenModel>

@@ -1,0 +1,9 @@
+DomainModel Ola2 { 
+	entities {
+		Entity Meal {
+			fields {
+				Field id { type STRING }
+			}
+		}
+	}
+}

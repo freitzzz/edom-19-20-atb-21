@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/pt.isep.edom.project.c1.mm.nav/src-gen" creationIcons="false"
+    editDirectory="/pt.isep.edom.project.c1.mm.nav.edit/src-gen" editorDirectory="/pt.isep.edom.project.c1.mm.nav.editor/src-gen"
+    modelPluginID="pt.isep.edom.project.c1.mm.nav" modelName="Nav" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    codeFormatting="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0"
+    copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>nav.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="Nav" basePackage="pt.isep.edom.project.c1.mm" disposableProviderFactory="true"
+      ecorePackage="nav.ecore#/">
+    <genClasses ecoreClass="nav.ecore#//NavModel">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nav.ecore#//NavModel/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nav.ecore#//NavModel/menu"/>
+    </genClasses>
+    <genClasses ecoreClass="nav.ecore#//Menu">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nav.ecore#//Menu/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nav.ecore#//Menu/pages"/>
+    </genClasses>
+    <genClasses ecoreClass="nav.ecore#//Page">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nav.ecore#//Page/name"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

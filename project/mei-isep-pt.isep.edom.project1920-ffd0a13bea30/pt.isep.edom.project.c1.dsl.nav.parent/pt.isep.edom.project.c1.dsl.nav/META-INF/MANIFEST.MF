@@ -1,0 +1,30 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: pt.isep.edom.project.c1.dsl.nav
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: pt.isep.edom.project.c1.dsl.nav; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: pt.isep.edom.project.c1.mm.nav,
+ org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.xtext.xbase.lib,
+ org.antlr.runtime,
+ org.eclipse.xtext.util,
+ org.eclipse.xtend.lib,
+ org.eclipse.ocl.common,
+ org.eclipse.ocl.ecore,
+ org.eclipse.ocl.pivot,
+ org.eclipse.ocl.xtext.essentialocl
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: pt.isep.edom.project.c1.dsl.nav.parser.antlr,
+ pt.isep.edom.project.c1.dsl.nav.formatting2,
+ pt.isep.edom.project.c1.dsl.nav.services,
+ pt.isep.edom.project.c1.dsl.nav.parser.antlr.internal,
+ pt.isep.edom.project.c1.dsl.nav.validation,
+ pt.isep.edom.project.c1.dsl.nav.generator,
+ pt.isep.edom.project.c1.dsl.nav,
+ pt.isep.edom.project.c1.dsl.nav.serializer,
+ pt.isep.edom.project.c1.dsl.nav.scoping
+Import-Package: org.apache.log4j

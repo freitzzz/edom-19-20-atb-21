@@ -1,0 +1,13 @@
+[comment encoding = UTF-8 /]
+[module generate('http://www.example.org/rest')]
+
+
+[template public generateRestModel(aRestModel : RestModel)]
+[comment @main/]
+[file ('services/'+aRestModel.name+'.java', false, 'UTF-8')]
+package services;
+
+class [aRestModel.name/] {
+}
+[/file]
+[/template]

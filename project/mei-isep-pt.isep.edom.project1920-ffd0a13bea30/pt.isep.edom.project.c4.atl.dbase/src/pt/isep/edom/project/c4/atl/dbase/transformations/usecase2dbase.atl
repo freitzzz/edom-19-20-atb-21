@@ -1,0 +1,16 @@
+-- @atlcompiler emftvm
+-- @path MMUseCase=/pt.isep.edom.project.c0.mm.usecase/model/usecase.ecore
+-- @path MMDbase=/pt.isep.edom.project.c4.mm.dbase/model/dbase.ecore
+  
+module usecase2dbase;
+create OUT : MMDbase from IN : MMUseCase;
+ 
+rule UseCaseModel2DbaseModel {
+	from
+		m1: MMUseCase!UseCaseModel
+	to 
+		m2: MMDbase!DbaseModel (
+			name <- m1.name
+		)
+}
+

@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Nav
+Bundle-SymbolicName: pt.isep.edom.project.c1.atl.nav
+Bundle-Version: 1.0.0.qualifier
+Require-Bundle: org.eclipse.ocl.common,
+ org.eclipse.ocl.ecore,
+ org.eclipse.ocl.pivot,
+ org.eclipse.ocl.xtext.essentialocl,
+ pt.isep.edom.project.c0.dsl.usecase,
+ pt.isep.edom.project.c1.dsl.nav,
+ pt.isep.edom.project.c0.mm.usecase,
+ pt.isep.edom.project.c1.mm.nav,
+ org.eclipse.m2m.atl.emftvm

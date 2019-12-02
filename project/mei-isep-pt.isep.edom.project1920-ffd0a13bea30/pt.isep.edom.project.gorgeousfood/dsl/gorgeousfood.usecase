@@ -1,0 +1,19 @@
+UseCaseModel GorgeousFoodApp { 
+	actor {
+		Actor Staff, Actor Manager
+	}
+	association {
+		Association staff2ManageMealItem { actor Staff usecase ManageMealItem },
+		Association manager2ManageMeal { actor Manager usecase ManageMeal }
+	}
+	usecase {  
+		UseCase ManageMeal {
+			extend { Extend ext1 { usecase ManageMealItem } } 
+			include { Include inc1 { usecase ManageIngredients }  }
+		},
+		UseCase ManageMealItem {
+		},
+		UseCase ManageIngredients {
+		}
+	}
+}

@@ -1,0 +1,26 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: pt.isep.edom.project.c2.dsl.rest.ui
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: pt.isep.edom.project.c2.dsl.rest.ui; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: pt.isep.edom.project.c2.dsl.rest,
+ pt.isep.edom.project.c2.dsl.rest.ide,
+ pt.isep.edom.project.c2.mm.rest,
+ org.eclipse.xtext.ui,
+ org.eclipse.xtext.ui.shared,
+ org.eclipse.xtext.ui.codetemplates.ui,
+ org.eclipse.ui.editors;bundle-version="3.5.0",
+ org.eclipse.ui.ide;bundle-version="3.5.0",
+ org.eclipse.ui,
+ org.eclipse.compare,
+ org.eclipse.xtext.builder,
+ org.eclipse.xtend.lib;resolution:=optional,
+ org.eclipse.xtext.xbase.lib
+Import-Package: org.apache.log4j
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: pt.isep.edom.project.c2.dsl.rest.ui.quickfix,
+ pt.isep.edom.project.c2.dsl.rest.ui.contentassist,
+ pt.isep.edom.project.c2.dsl.rest.ui.internal
+Bundle-Activator: pt.isep.edom.project.c2.dsl.rest.ui.internal.RestActivator

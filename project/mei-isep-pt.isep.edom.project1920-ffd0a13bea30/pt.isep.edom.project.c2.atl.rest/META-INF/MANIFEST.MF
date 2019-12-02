@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Rest
+Bundle-SymbolicName: pt.isep.edom.project.c2.atl.rest
+Bundle-Version: 1.0.0.qualifier
+Export-Package: pt.isep.edom.project.c2.atl.rest
+Require-Bundle: org.eclipse.ocl.common,
+ org.eclipse.ocl.ecore,
+ org.eclipse.ocl.pivot,
+ org.eclipse.ocl.xtext.essentialocl,
+ pt.isep.edom.project.c0.dsl.usecase,
+ pt.isep.edom.project.c2.dsl.rest,
+ pt.isep.edom.project.c0.mm.usecase,
+ pt.isep.edom.project.c2.mm.rest,
+ org.eclipse.m2m.atl.emftvm

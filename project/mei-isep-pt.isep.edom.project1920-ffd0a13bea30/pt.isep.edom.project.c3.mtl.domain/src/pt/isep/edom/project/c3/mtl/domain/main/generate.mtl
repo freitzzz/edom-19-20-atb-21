@@ -1,0 +1,13 @@
+[comment encoding = UTF-8 /]
+[module generate('http://www.example.org/domain')]
+
+
+[template public generateDomainModel(aDomainModel : DomainModel)]
+[comment @main/]
+[file ('domain/'+aDomainModel.name+'.java', false, 'UTF-8')]
+package domain;
+
+class [aDomainModel.name/] {
+}
+[/file]
+[/template]

@@ -1,12 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="domain" nsURI="http://www.example.org/domain" nsPrefix="domain">
+  <eAnnotations source="http://www.eclipse.org/OCL/Import">
+    <details key="ecore" value="http://www.eclipse.org/emf/2002/Ecore"/>
+  </eAnnotations>
+  <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+    <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+  </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="DomainModel">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="NameCannotBeNull NameLengthMustBeEqualOrGreaterThanThree MustHaveAtLeastOneEntity CannotHaveEntitiesThatDoNotReferenceOrAreNotReferenced CannotHaveMoreThanOneEntityWithTheSameName"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="NameCannotBeNull" value="not self.name.oclIsUndefined()"/>
+      <details key="NameLengthMustBeEqualOrGreaterThanThree" value="self.name.size() >= 3"/>
+      <details key="MustHaveAtLeastOneEntity" value="not self.entities -> isEmpty()"/>
+      <details key="CannotHaveEntitiesThatDoNotReferenceOrAreNotReferenced" value="&#xA;&#x9;&#x9;&#x9;if self.entities -> size() = 1 then &#xA;&#x9;&#x9;&#x9;&#x9;true&#xA;&#x9;&#x9;&#x9;else &#xA;&#x9;&#x9;&#x9;&#x9;not self.entities &#xA;&#x9;&#x9;&#x9;&#x9;-> select(&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;entity : Entity &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;| entity.subentities -> isEmpty() &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;and entity.references -> isEmpty()&#xA;&#x9;&#x9;&#x9;&#x9;) -> isEmpty()&#xA;&#x9;&#x9;&#x9;endif&#xA;&#x9;&#x9;"/>
+      <details key="CannotHaveMoreThanOneEntityWithTheSameName" value="&#xA;&#x9;&#x9;&#x9;self.entities -> collect(entity| self.name) -> asSet() -> size() = self.entities -> size()&#xA;&#x9;&#x9;"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="entities" upperBound="-1"
         eType="#//Entity" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Entity">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="NameCannotBeNull NameLengthMustBeEqualOrGreaterThanThree MustHaveAtLeastIdAndNameFields CannotHaveDuplicatedFields CannotHaveSubEntityWithSameNameAsAnEntityName CannotHaveSubEntityWithSameName"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="NameCannotBeNull" value="not self.name.oclIsUndefined()"/>
+      <details key="NameLengthMustBeEqualOrGreaterThanThree" value="self.name.size() >= 3"/>
+      <details key="MustHaveAtLeastIdAndNameFields" value="&#xA;&#x9;&#x9;&#x9;self.fields -> select(field : Field | field.name = 'id' or field.name = 'name') -> size() = 2&#xA;&#x9;&#x9;"/>
+      <details key="CannotHaveDuplicatedFields" value="&#xA;&#x9;&#x9;&#x9;self.fields -> collect(field : Field | field.name) -> asSet() -> size() = self.fields -> size()&#xA;&#x9;&#x9;"/>
+      <details key="CannotHaveSubEntityWithSameNameAsAnEntityName" value="&#xA;&#x9;&#x9;&#x9;self.subentities -> collect(subentity: SubEntity | subentity.name)&#xA;&#x9;&#x9;&#x9;-> intersection(Entity.allInstances() -> collect(entity: Entity | entity.name))&#xA;&#x9;&#x9;&#x9;-> isEmpty()&#xA;&#x9;&#x9;"/>
+      <details key="CannotHaveSubEntityWithSameName" value="&#xA;&#x9;&#x9;&#x9;self.subentities -> collect(subentity: SubEntity | subentity.name)&#xA;&#x9;&#x9;&#x9;-> asSet() -> size()&#xA;&#x9;&#x9;&#x9;=&#xA;&#x9;&#x9;&#x9;self.subentities -> size()&#xA;&#x9;&#x9;"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="fields" upperBound="-1"
         eType="#//Field" containment="true"/>
@@ -16,6 +45,12 @@
         eType="#//Reference" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Field">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="NameCannotBeNull"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="NameCannotBeNull" value="not self.name.oclIsUndefined()"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//FieldType"
         defaultValueLiteral="INTEGER"/>
@@ -26,13 +61,35 @@
     <eLiterals name="REAL" value="3" literal="REAL"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SubEntity">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="NameCannotBeNull UpperBoundMustBeGreaterOrEqualThanMinusOne EntityReferenceCannotBeNull EntityReferenceMustBeTheSameAsTheEntityThatContainsTheSubEntity"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="NameCannotBeNull" value="not self.name.oclIsUndefined()"/>
+      <details key="UpperBoundMustBeGreaterOrEqualThanMinusOne" value="self.upperBound >= 1"/>
+      <details key="EntityReferenceCannotBeNull" value="not self.entity.oclIsUndefined()"/>
+      <details key="EntityReferenceMustBeTheSameAsTheEntityThatContainsTheSubEntity"
+          value="&#xA;&#x9;&#x9;&#x9;self.entity.subentities -> includes(self)&#xA;&#x9;&#x9;"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="entity" eType="#//Entity"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="upperBound" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="upperBound" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Reference">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="NameCannotBeNull UpperBoundMustBeGreaterOrEqualThanMinusOne EntityReferenceCannotBeNull EntityReferenceMustBeTheSameAsTheEntityThatContainsTheReference"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="NameCannotBeNull" value="not self.name.oclIsUndefined()"/>
+      <details key="UpperBoundMustBeGreaterOrEqualThanMinusOne" value="self.upperBound >= 1"/>
+      <details key="EntityReferenceCannotBeNull" value="not self.entity.oclIsUndefined()"/>
+      <details key="EntityReferenceMustBeTheSameAsTheEntityThatContainsTheReference"
+          value="&#xA;&#x9;&#x9;&#x9;self.entity.subentities -> includes(self)&#xA;&#x9;&#x9;"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="entity" eType="#//Entity"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="upperBound" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="upperBound" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
 </ecore:EPackage>

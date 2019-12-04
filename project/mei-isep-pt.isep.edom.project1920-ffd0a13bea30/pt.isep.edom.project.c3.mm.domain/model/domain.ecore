@@ -11,11 +11,12 @@
   </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="DomainModel">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="NameCannotBeNull NameLengthMustBeEqualOrGreaterThanThree MustHaveAtLeastOneEntity CannotHaveEntitiesThatDoNotReferenceOrAreNotReferenced CannotHaveMoreThanOneEntityWithTheSameName"/>
+      <details key="constraints" value="NameCannotBeNull NameLengthMustBeEqualOrGreaterThanThree NameCanOnlyContainAlphaNumericCharactersAndSpaces MustHaveAtLeastOneEntity CannotHaveEntitiesThatDoNotReferenceOrAreNotReferenced CannotHaveMoreThanOneEntityWithTheSameName"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
       <details key="NameCannotBeNull" value="not self.name.oclIsUndefined()"/>
       <details key="NameLengthMustBeEqualOrGreaterThanThree" value="self.name.size() >= 3"/>
+      <details key="NameCanOnlyContainAlphaNumericCharactersAndSpaces" value="self.name.matches('^[a-Z0-9 ]+$')"/>
       <details key="MustHaveAtLeastOneEntity" value="not self.entities -> isEmpty()"/>
       <details key="CannotHaveEntitiesThatDoNotReferenceOrAreNotReferenced" value="&#xA;&#x9;&#x9;&#x9;if self.entities -> size() = 1 then &#xA;&#x9;&#x9;&#x9;&#x9;true&#xA;&#x9;&#x9;&#x9;else &#xA;&#x9;&#x9;&#x9;&#x9;not self.entities &#xA;&#x9;&#x9;&#x9;&#x9;-> select(&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;entity : Entity &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;| entity.subentities -> isEmpty() &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;and entity.references -> isEmpty()&#xA;&#x9;&#x9;&#x9;&#x9;) -> isEmpty()&#xA;&#x9;&#x9;&#x9;endif&#xA;&#x9;&#x9;"/>
       <details key="CannotHaveMoreThanOneEntityWithTheSameName" value="&#xA;&#x9;&#x9;&#x9;self.entities -> collect(entity| self.name) -> asSet() -> size() = self.entities -> size()&#xA;&#x9;&#x9;"/>
@@ -46,10 +47,11 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Field">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="NameCannotBeNull"/>
+      <details key="constraints" value="NameCannotBeNull NameCanOnlyContainAlphaCharacters"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
       <details key="NameCannotBeNull" value="not self.name.oclIsUndefined()"/>
+      <details key="NameCanOnlyContainAlphaCharacters" value="self.name.matches('^[a-Z]+$')"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//FieldType"

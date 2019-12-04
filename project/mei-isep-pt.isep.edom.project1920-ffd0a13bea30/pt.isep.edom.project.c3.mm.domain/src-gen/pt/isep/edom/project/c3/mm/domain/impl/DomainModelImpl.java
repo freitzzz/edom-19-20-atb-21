@@ -91,6 +91,7 @@ public class DomainModelImpl extends MinimalEObjectImpl.Container implements Dom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -100,6 +101,7 @@ public class DomainModelImpl extends MinimalEObjectImpl.Container implements Dom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -112,6 +114,7 @@ public class DomainModelImpl extends MinimalEObjectImpl.Container implements Dom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Entity> getEntities() {
 		if (entities == null) {
 			entities = new EObjectContainmentEList<Entity>(Entity.class, this, DomainPackage.DOMAIN_MODEL__ENTITIES);
@@ -213,7 +216,7 @@ public class DomainModelImpl extends MinimalEObjectImpl.Container implements Dom
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
 		result.append(name);
 		result.append(')');

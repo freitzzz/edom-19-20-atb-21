@@ -19,7 +19,8 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see pt.isep.edom.project.c3.mm.domain.DomainPackage#getSubEntity()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='NameCannotBeNull UpperBoundMustBeGreaterOrEqualThanMinusOne EntityReferenceCannotBeNull'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot NameCannotBeNull='not self.name.oclIsUndefined()' UpperBoundMustBeGreaterOrEqualThanMinusOne='self.upperBound &gt;= 1' EntityReferenceCannotBeNull='not self.entity.oclIsUndefined()'"
  * @generated
  */
 public interface SubEntity extends EObject {
@@ -86,7 +87,7 @@ public interface SubEntity extends EObject {
 	 * @return the value of the '<em>Upper Bound</em>' attribute.
 	 * @see #setUpperBound(int)
 	 * @see pt.isep.edom.project.c3.mm.domain.DomainPackage#getSubEntity_UpperBound()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	int getUpperBound();

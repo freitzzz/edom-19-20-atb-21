@@ -107,6 +107,7 @@ public class DomainFactoryImpl extends EFactoryImpl implements DomainFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DomainModel createDomainModel() {
 		DomainModelImpl domainModel = new DomainModelImpl();
 		return domainModel;
@@ -117,6 +118,7 @@ public class DomainFactoryImpl extends EFactoryImpl implements DomainFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Entity createEntity() {
 		EntityImpl entity = new EntityImpl();
 		return entity;
@@ -127,6 +129,7 @@ public class DomainFactoryImpl extends EFactoryImpl implements DomainFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Field createField() {
 		FieldImpl field = new FieldImpl();
 		return field;
@@ -137,6 +140,7 @@ public class DomainFactoryImpl extends EFactoryImpl implements DomainFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SubEntity createSubEntity() {
 		SubEntityImpl subEntity = new SubEntityImpl();
 		return subEntity;
@@ -147,6 +151,7 @@ public class DomainFactoryImpl extends EFactoryImpl implements DomainFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Reference createReference() {
 		ReferenceImpl reference = new ReferenceImpl();
 		return reference;
@@ -179,6 +184,7 @@ public class DomainFactoryImpl extends EFactoryImpl implements DomainFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DomainPackage getDomainPackage() {
 		return (DomainPackage) getEPackage();
 	}

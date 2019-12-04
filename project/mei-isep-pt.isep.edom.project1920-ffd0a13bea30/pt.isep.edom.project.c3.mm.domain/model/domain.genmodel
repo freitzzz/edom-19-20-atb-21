@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/pt.isep.edom.project.c3.mm.domain/src-gen" creationIcons="false"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/pt.isep.edom.project.c3.mm.domain/src-gen" creationIcons="false"
     editDirectory="/pt.isep.edom.project.c3.mm.domain.edit/src-gen" editorDirectory="/pt.isep.edom.project.c3.mm.domain.editor/src-gen"
     modelPluginID="pt.isep.edom.project.c3.mm.domain" modelName="Domain" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     codeFormatting="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0"
@@ -8,5 +9,35 @@
   <foreignModel>domain.ecore</foreignModel>
   <testsDirectory xsi:nil="true"/>
   <genPackages prefix="Domain" basePackage="pt.isep.edom.project.c3.mm" disposableProviderFactory="true"
-      ecorePackage="domain.ecore#/"/>
+      ecorePackage="domain.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="domain.ecore#//FieldType">
+      <genEnumLiterals ecoreEnumLiteral="domain.ecore#//FieldType/STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="domain.ecore#//FieldType/INTEGER"/>
+      <genEnumLiterals ecoreEnumLiteral="domain.ecore#//FieldType/REAL"/>
+    </genEnums>
+    <genClasses ecoreClass="domain.ecore#//DomainModel">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute domain.ecore#//DomainModel/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference domain.ecore#//DomainModel/entities"/>
+    </genClasses>
+    <genClasses ecoreClass="domain.ecore#//Entity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute domain.ecore#//Entity/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference domain.ecore#//Entity/fields"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference domain.ecore#//Entity/subentities"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference domain.ecore#//Entity/references"/>
+    </genClasses>
+    <genClasses ecoreClass="domain.ecore#//Field">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute domain.ecore#//Field/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute domain.ecore#//Field/type"/>
+    </genClasses>
+    <genClasses ecoreClass="domain.ecore#//SubEntity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute domain.ecore#//SubEntity/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference domain.ecore#//SubEntity/entity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute domain.ecore#//SubEntity/upperBound"/>
+    </genClasses>
+    <genClasses ecoreClass="domain.ecore#//Reference">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute domain.ecore#//Reference/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference domain.ecore#//Reference/entity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute domain.ecore#//Reference/upperBound"/>
+    </genClasses>
+  </genPackages>
 </genmodel:GenModel>

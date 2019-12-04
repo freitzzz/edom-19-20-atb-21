@@ -8,6 +8,7 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
+import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import pt.isep.edom.project.c3.mm.domain.DomainFactory;
@@ -18,6 +19,7 @@ import pt.isep.edom.project.c3.mm.domain.Field;
 import pt.isep.edom.project.c3.mm.domain.FieldType;
 import pt.isep.edom.project.c3.mm.domain.Reference;
 import pt.isep.edom.project.c3.mm.domain.SubEntity;
+import pt.isep.edom.project.c3.mm.domain.util.DomainValidator;
 
 /**
  * <!-- begin-user-doc -->
@@ -96,7 +98,7 @@ public class DomainPackageImpl extends EPackageImpl implements DomainPackage {
 
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
+	 *
 	 * <p>This method is used to initialize {@link DomainPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
@@ -111,9 +113,10 @@ public class DomainPackageImpl extends EPackageImpl implements DomainPackage {
 			return (DomainPackage) EPackage.Registry.INSTANCE.getEPackage(DomainPackage.eNS_URI);
 
 		// Obtain or create and register package
-		DomainPackageImpl theDomainPackage = (DomainPackageImpl) (EPackage.Registry.INSTANCE
-				.get(eNS_URI) instanceof DomainPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI)
-						: new DomainPackageImpl());
+		Object registeredDomainPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+		DomainPackageImpl theDomainPackage = registeredDomainPackage instanceof DomainPackageImpl
+				? (DomainPackageImpl) registeredDomainPackage
+				: new DomainPackageImpl();
 
 		isInited = true;
 
@@ -122,6 +125,14 @@ public class DomainPackageImpl extends EPackageImpl implements DomainPackage {
 
 		// Initialize created meta-data
 		theDomainPackage.initializePackageContents();
+
+		// Register package validator
+		EValidator.Registry.INSTANCE.put(theDomainPackage, new EValidator.Descriptor() {
+			@Override
+			public EValidator getEValidator() {
+				return DomainValidator.INSTANCE;
+			}
+		});
 
 		// Mark meta-data to indicate it can't be changed
 		theDomainPackage.freeze();
@@ -136,6 +147,7 @@ public class DomainPackageImpl extends EPackageImpl implements DomainPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDomainModel() {
 		return domainModelEClass;
 	}
@@ -145,6 +157,7 @@ public class DomainPackageImpl extends EPackageImpl implements DomainPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDomainModel_Name() {
 		return (EAttribute) domainModelEClass.getEStructuralFeatures().get(0);
 	}
@@ -154,6 +167,7 @@ public class DomainPackageImpl extends EPackageImpl implements DomainPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getDomainModel_Entities() {
 		return (EReference) domainModelEClass.getEStructuralFeatures().get(1);
 	}
@@ -163,6 +177,7 @@ public class DomainPackageImpl extends EPackageImpl implements DomainPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getEntity() {
 		return entityEClass;
 	}
@@ -172,6 +187,7 @@ public class DomainPackageImpl extends EPackageImpl implements DomainPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getEntity_Name() {
 		return (EAttribute) entityEClass.getEStructuralFeatures().get(0);
 	}
@@ -181,6 +197,7 @@ public class DomainPackageImpl extends EPackageImpl implements DomainPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getEntity_Fields() {
 		return (EReference) entityEClass.getEStructuralFeatures().get(1);
 	}
@@ -190,6 +207,7 @@ public class DomainPackageImpl extends EPackageImpl implements DomainPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getEntity_Subentities() {
 		return (EReference) entityEClass.getEStructuralFeatures().get(2);
 	}
@@ -199,6 +217,7 @@ public class DomainPackageImpl extends EPackageImpl implements DomainPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getEntity_References() {
 		return (EReference) entityEClass.getEStructuralFeatures().get(3);
 	}
@@ -208,6 +227,7 @@ public class DomainPackageImpl extends EPackageImpl implements DomainPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getField() {
 		return fieldEClass;
 	}
@@ -217,6 +237,7 @@ public class DomainPackageImpl extends EPackageImpl implements DomainPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getField_Name() {
 		return (EAttribute) fieldEClass.getEStructuralFeatures().get(0);
 	}
@@ -226,6 +247,7 @@ public class DomainPackageImpl extends EPackageImpl implements DomainPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getField_Type() {
 		return (EAttribute) fieldEClass.getEStructuralFeatures().get(1);
 	}
@@ -235,6 +257,7 @@ public class DomainPackageImpl extends EPackageImpl implements DomainPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getSubEntity() {
 		return subEntityEClass;
 	}
@@ -244,6 +267,7 @@ public class DomainPackageImpl extends EPackageImpl implements DomainPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getSubEntity_Name() {
 		return (EAttribute) subEntityEClass.getEStructuralFeatures().get(0);
 	}
@@ -253,6 +277,7 @@ public class DomainPackageImpl extends EPackageImpl implements DomainPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getSubEntity_Entity() {
 		return (EReference) subEntityEClass.getEStructuralFeatures().get(1);
 	}
@@ -262,6 +287,7 @@ public class DomainPackageImpl extends EPackageImpl implements DomainPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getSubEntity_UpperBound() {
 		return (EAttribute) subEntityEClass.getEStructuralFeatures().get(2);
 	}
@@ -271,6 +297,7 @@ public class DomainPackageImpl extends EPackageImpl implements DomainPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getReference() {
 		return referenceEClass;
 	}
@@ -280,6 +307,7 @@ public class DomainPackageImpl extends EPackageImpl implements DomainPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getReference_Name() {
 		return (EAttribute) referenceEClass.getEStructuralFeatures().get(0);
 	}
@@ -289,6 +317,7 @@ public class DomainPackageImpl extends EPackageImpl implements DomainPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getReference_Entity() {
 		return (EReference) referenceEClass.getEStructuralFeatures().get(1);
 	}
@@ -298,6 +327,7 @@ public class DomainPackageImpl extends EPackageImpl implements DomainPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getReference_UpperBound() {
 		return (EAttribute) referenceEClass.getEStructuralFeatures().get(2);
 	}
@@ -307,6 +337,7 @@ public class DomainPackageImpl extends EPackageImpl implements DomainPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getFieldType() {
 		return fieldTypeEEnum;
 	}
@@ -316,6 +347,7 @@ public class DomainPackageImpl extends EPackageImpl implements DomainPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DomainFactory getDomainFactory() {
 		return (DomainFactory) getEFactoryInstance();
 	}
@@ -433,7 +465,7 @@ public class DomainPackageImpl extends EPackageImpl implements DomainPackage {
 		initEReference(getSubEntity_Entity(), this.getEntity(), null, "entity", null, 0, 1, SubEntity.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSubEntity_UpperBound(), ecorePackage.getEInt(), "upperBound", null, 0, 1, SubEntity.class,
+		initEAttribute(getSubEntity_UpperBound(), ecorePackage.getEInt(), "upperBound", null, 1, 1, SubEntity.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(referenceEClass, Reference.class, "Reference", !IS_ABSTRACT, !IS_INTERFACE,
@@ -443,7 +475,7 @@ public class DomainPackageImpl extends EPackageImpl implements DomainPackage {
 		initEReference(getReference_Entity(), this.getEntity(), null, "entity", null, 0, 1, Reference.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getReference_UpperBound(), ecorePackage.getEInt(), "upperBound", null, 0, 1, Reference.class,
+		initEAttribute(getReference_UpperBound(), ecorePackage.getEInt(), "upperBound", null, 1, 1, Reference.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
@@ -454,6 +486,86 @@ public class DomainPackageImpl extends EPackageImpl implements DomainPackage {
 
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// http://www.eclipse.org/OCL/Import
+		createImportAnnotations();
+		// http://www.eclipse.org/emf/2002/Ecore
+		createEcoreAnnotations();
+		// http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot
+		createPivotAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/OCL/Import</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createImportAnnotations() {
+		String source = "http://www.eclipse.org/OCL/Import";
+		addAnnotation(this, source, new String[] { "ecore", "http://www.eclipse.org/emf/2002/Ecore" });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createEcoreAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/Ecore";
+		addAnnotation(this, source,
+				new String[] { "invocationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+						"settingDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "validationDelegates",
+						"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot" });
+		addAnnotation(domainModelEClass, source, new String[] { "constraints",
+				"NameCannotBeNull NameLengthMustBeEqualOrGreaterThanThree NameCanOnlyContainAlphaNumericCharactersAndSpaces MustHaveAtLeastOneEntity CannotHaveEntitiesThatDoNotReferenceOrAreNotReferenced CannotHaveMoreThanOneEntityWithTheSameName" });
+		addAnnotation(entityEClass, source, new String[] { "constraints",
+				"NameCannotBeNull NameLengthMustBeEqualOrGreaterThanThree MustHaveAtLeastIdAndNameFields CannotHaveDuplicatedFields CannotHaveSubEntityWithSameNameAsAnEntityName CannotHaveSubEntityWithSameName" });
+		addAnnotation(fieldEClass, source,
+				new String[] { "constraints", "NameCannotBeNull NameCanOnlyContainAlphaCharacters" });
+		addAnnotation(subEntityEClass, source, new String[] { "constraints",
+				"NameCannotBeNull UpperBoundMustBeGreaterOrEqualThanMinusOne EntityReferenceCannotBeNull" });
+		addAnnotation(referenceEClass, source, new String[] { "constraints",
+				"NameCannotBeNull UpperBoundMustBeGreaterOrEqualThanMinusOne EntityReferenceCannotBeNull" });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createPivotAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot";
+		addAnnotation(domainModelEClass, source, new String[] { "NameCannotBeNull", "not self.name.oclIsUndefined()",
+				"NameLengthMustBeEqualOrGreaterThanThree", "self.name.size() >= 3",
+				"NameCanOnlyContainAlphaNumericCharactersAndSpaces", "self.name.matches(\'^[a-Z0-9 ]+$\')",
+				"MustHaveAtLeastOneEntity", "not self.entities -> isEmpty()",
+				"CannotHaveEntitiesThatDoNotReferenceOrAreNotReferenced",
+				"\n\t\t\tif self.entities -> size() = 1 then \n\t\t\t\ttrue\n\t\t\telse \n\t\t\t\tnot self.entities \n\t\t\t\t-> select(\n\t\t\t\t\tentity : Entity \n\t\t\t\t\t| entity.subentities -> isEmpty() \n\t\t\t\t\tand entity.references -> isEmpty()\n\t\t\t\t) -> isEmpty()\n\t\t\tendif\n\t\t",
+				"CannotHaveMoreThanOneEntityWithTheSameName",
+				"\n\t\t\tself.entities -> collect(entity| self.name) -> asSet() -> size() = self.entities -> size()\n\t\t" });
+		addAnnotation(entityEClass, source, new String[] { "NameCannotBeNull", "not self.name.oclIsUndefined()",
+				"NameLengthMustBeEqualOrGreaterThanThree", "self.name.size() >= 3", "MustHaveAtLeastIdAndNameFields",
+				"\n\t\t\tself.fields -> select(field : Field | field.name = \'id\' or field.name = \'name\') -> size() = 2\n\t\t",
+				"CannotHaveDuplicatedFields",
+				"\n\t\t\tself.fields -> collect(field : Field | field.name) -> asSet() -> size() = self.fields -> size()\n\t\t",
+				"CannotHaveSubEntityWithSameNameAsAnEntityName",
+				"\n\t\t\tself.subentities -> collect(subentity: SubEntity | subentity.name)\n\t\t\t-> intersection(Entity.allInstances() -> collect(entity: Entity | entity.name))\n\t\t\t-> isEmpty()\n\t\t",
+				"CannotHaveSubEntityWithSameName",
+				"\n\t\t\tself.subentities -> collect(subentity: SubEntity | subentity.name)\n\t\t\t-> asSet() -> size()\n\t\t\t=\n\t\t\tself.subentities -> size()\n\t\t" });
+		addAnnotation(fieldEClass, source, new String[] { "NameCannotBeNull", "not self.name.oclIsUndefined()",
+				"NameCanOnlyContainAlphaCharacters", "self.name.matches(\'^[a-Z]+$\')" });
+		addAnnotation(subEntityEClass, source,
+				new String[] { "NameCannotBeNull", "not self.name.oclIsUndefined()",
+						"UpperBoundMustBeGreaterOrEqualThanMinusOne", "self.upperBound >= 1",
+						"EntityReferenceCannotBeNull", "not self.entity.oclIsUndefined()" });
+		addAnnotation(referenceEClass, source,
+				new String[] { "NameCannotBeNull", "not self.name.oclIsUndefined()",
+						"UpperBoundMustBeGreaterOrEqualThanMinusOne", "self.upperBound >= 1",
+						"EntityReferenceCannotBeNull", "not self.entity.oclIsUndefined()" });
 	}
 
 } //DomainPackageImpl

@@ -92,6 +92,7 @@ public class FieldImpl extends MinimalEObjectImpl.Container implements Field {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -101,6 +102,7 @@ public class FieldImpl extends MinimalEObjectImpl.Container implements Field {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -113,6 +115,7 @@ public class FieldImpl extends MinimalEObjectImpl.Container implements Field {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FieldType getType() {
 		return type;
 	}
@@ -122,6 +125,7 @@ public class FieldImpl extends MinimalEObjectImpl.Container implements Field {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setType(FieldType newType) {
 		FieldType oldType = type;
 		type = newType == null ? TYPE_EDEFAULT : newType;
@@ -207,7 +211,7 @@ public class FieldImpl extends MinimalEObjectImpl.Container implements Field {
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
 		result.append(name);
 		result.append(", type: ");

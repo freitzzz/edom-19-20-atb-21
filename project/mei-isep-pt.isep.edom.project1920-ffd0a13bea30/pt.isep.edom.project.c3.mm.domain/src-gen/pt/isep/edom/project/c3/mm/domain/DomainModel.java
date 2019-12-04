@@ -20,7 +20,8 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see pt.isep.edom.project.c3.mm.domain.DomainPackage#getDomainModel()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='NameCannotBeNull NameLengthMustBeEqualOrGreaterThanThree NameCanOnlyContainAlphaNumericCharactersAndSpaces MustHaveAtLeastOneEntity CannotHaveEntitiesThatDoNotReferenceOrAreNotReferenced CannotHaveMoreThanOneEntityWithTheSameName'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot NameCannotBeNull='not self.name.oclIsUndefined()' NameLengthMustBeEqualOrGreaterThanThree='self.name.size() &gt;= 3' NameCanOnlyContainAlphaNumericCharactersAndSpaces='self.name.matches(\'^[a-Z0-9 ]+$\')' MustHaveAtLeastOneEntity='not self.entities -&gt; isEmpty()' CannotHaveEntitiesThatDoNotReferenceOrAreNotReferenced='\n\t\t\tif self.entities -&gt; size() = 1 then \n\t\t\t\ttrue\n\t\t\telse \n\t\t\t\tnot self.entities \n\t\t\t\t-&gt; select(\n\t\t\t\t\tentity : Entity \n\t\t\t\t\t| entity.subentities -&gt; isEmpty() \n\t\t\t\t\tand entity.references -&gt; isEmpty()\n\t\t\t\t) -&gt; isEmpty()\n\t\t\tendif\n\t\t' CannotHaveMoreThanOneEntityWithTheSameName='\n\t\t\tself.entities -&gt; collect(entity| self.name) -&gt; asSet() -&gt; size() = self.entities -&gt; size()\n\t\t'"
  * @generated
  */
 public interface DomainModel extends EObject {

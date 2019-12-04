@@ -62,14 +62,12 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SubEntity">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="NameCannotBeNull UpperBoundMustBeGreaterOrEqualThanMinusOne EntityReferenceCannotBeNull EntityReferenceMustBeTheSameAsTheEntityThatContainsTheSubEntity"/>
+      <details key="constraints" value="NameCannotBeNull UpperBoundMustBeGreaterOrEqualThanMinusOne EntityReferenceCannotBeNull"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
       <details key="NameCannotBeNull" value="not self.name.oclIsUndefined()"/>
       <details key="UpperBoundMustBeGreaterOrEqualThanMinusOne" value="self.upperBound >= 1"/>
       <details key="EntityReferenceCannotBeNull" value="not self.entity.oclIsUndefined()"/>
-      <details key="EntityReferenceMustBeTheSameAsTheEntityThatContainsTheSubEntity"
-          value="&#xA;&#x9;&#x9;&#x9;self.entity.subentities -> includes(self)&#xA;&#x9;&#x9;"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="entity" eType="#//Entity"/>
@@ -78,14 +76,12 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Reference">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="NameCannotBeNull UpperBoundMustBeGreaterOrEqualThanMinusOne EntityReferenceCannotBeNull EntityReferenceMustBeTheSameAsTheEntityThatContainsTheReference"/>
+      <details key="constraints" value="NameCannotBeNull UpperBoundMustBeGreaterOrEqualThanMinusOne EntityReferenceCannotBeNull"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
       <details key="NameCannotBeNull" value="not self.name.oclIsUndefined()"/>
       <details key="UpperBoundMustBeGreaterOrEqualThanMinusOne" value="self.upperBound >= 1"/>
       <details key="EntityReferenceCannotBeNull" value="not self.entity.oclIsUndefined()"/>
-      <details key="EntityReferenceMustBeTheSameAsTheEntityThatContainsTheReference"
-          value="&#xA;&#x9;&#x9;&#x9;self.entity.subentities -> includes(self)&#xA;&#x9;&#x9;"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="entity" eType="#//Entity"/>

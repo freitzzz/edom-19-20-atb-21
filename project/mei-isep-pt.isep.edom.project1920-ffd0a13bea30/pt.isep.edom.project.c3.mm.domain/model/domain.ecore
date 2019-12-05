@@ -26,7 +26,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Entity">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="NameCannotBeNull NameCanOnlyContainAlphaNumericCharactersAndSpaces NameLengthMustBeEqualOrGreaterThanThree MustHaveAtLeastIdAndNameFields CannotHaveDuplicatedFields"/>
+      <details key="constraints" value="NameCannotBeNull NameCanOnlyContainAlphaNumericCharactersAndSpaces NameLengthMustBeEqualOrGreaterThanThree MustHaveAtLeastIdAndNameFields CannotHaveDuplicatedFields CannotHaveSubEntityThatReferenceTheEntityThatContainsTheSubEntity"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
       <details key="NameCannotBeNull" value="not self.name.oclIsUndefined()"/>
@@ -34,6 +34,8 @@
       <details key="NameLengthMustBeEqualOrGreaterThanThree" value="self.name.size() >= 3"/>
       <details key="MustHaveAtLeastIdAndNameFields" value="&#xA;&#x9;&#x9;&#x9;self.fields -> select(field : Field | field.name = 'id' or field.name = 'name') -> size() = 2&#xA;&#x9;&#x9;"/>
       <details key="CannotHaveDuplicatedFields" value="&#xA;&#x9;&#x9;&#x9;self.fields -> collect(field : Field | field.name) -> asSet() -> size() = self.fields -> size()&#xA;&#x9;&#x9;"/>
+      <details key="CannotHaveSubEntityThatReferenceTheEntityThatContainsTheSubEntity"
+          value="&#xA;&#x9;&#x9;&#x9;self.subentities -> select(subEntity : SubEntity | subEntity.entity = self) -> isEmpty()&#xA;&#x9;&#x9;"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="fields" upperBound="-1"

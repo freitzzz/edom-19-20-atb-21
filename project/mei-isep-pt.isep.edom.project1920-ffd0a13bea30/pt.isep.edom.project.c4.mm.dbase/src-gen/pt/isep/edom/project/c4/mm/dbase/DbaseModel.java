@@ -19,7 +19,8 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see pt.isep.edom.project.c4.mm.dbase.DbasePackage#getDbaseModel()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='mustHaveName nameMustBeUnique mustHaveTables'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot mustHaveName='not name.oclIsUndefined()' nameMustBeUnique='DbaseModel.allInstances()-&gt;isUnique(name)' mustHaveTables='not tables-&gt;isEmpty()'"
  * @generated
  */
 public interface DbaseModel extends EObject {

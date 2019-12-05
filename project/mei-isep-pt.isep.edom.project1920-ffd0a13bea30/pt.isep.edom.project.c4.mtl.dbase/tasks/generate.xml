@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project default="generate" name="pt.isep.edom.project.c4.mtl.dbase">
-    <property name="ECLIPSE_HOME" value="../../../../../../../../../Applications/Eclipse Oxygen.app/Contents/Eclipse"/>
-    <property name="ECLIPSE_WORKSPACE" value="../../../pt.isep.edom.project1920.workspace"/>
+    <property name="ECLIPSE_HOME" value="../../../../../../../../../../Program Files/eclipse"/>
+    <property name="ECLIPSE_WORKSPACE" value="../../../../../../../../eclipse-workspace-5"/>
 
     <!-- The classpath with only the dependencies used by the project -->
     <path id="pt.isep.edom.project.c4.mtl.dbase.libraryclasspath">

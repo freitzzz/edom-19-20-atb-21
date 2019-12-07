@@ -92,7 +92,13 @@ public class GenerateClassDiagramAsPlantUML {
 			Diagnostic diag=Diagnostician.INSTANCE.validate(loadedModel);
 	        if (diag.getSeverity() == Diagnostic.ERROR) {
 	        	
-	        	diag.getException().printStackTrace();
+	        	System.out.println(diag.getMessage());
+	        	
+	        	List<Diagnostic> l=diag.getChildren();
+	        	
+	        	for (Diagnostic d: l) {
+	        		System.out.println(d.getMessage());
+	        	}
 	        	
 	        	throw new IllegalStateException("Domain Model has failed OCL validations");
 	        }
@@ -113,7 +119,9 @@ public class GenerateClassDiagramAsPlantUML {
 			e.printStackTrace();
 		}
 		finally {
-			writer.close();
+			if(writer != null) {
+				writer.close();
+			}
 		}
 	}
 	

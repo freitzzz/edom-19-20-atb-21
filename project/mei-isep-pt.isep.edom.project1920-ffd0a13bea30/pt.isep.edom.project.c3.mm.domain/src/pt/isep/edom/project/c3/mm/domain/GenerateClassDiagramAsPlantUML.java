@@ -164,9 +164,13 @@ public class GenerateClassDiagramAsPlantUML {
 			
 			String composedEntityNameWithQuotes = quoteString(subEntity.getEntity().getName());
 			
+			int upperBound = subEntity.getUpperBound();
+			
+			String upperBoundString = upperBound == -1 ? "*" : ""+upperBound;
+			
 			builder
 			.append(entityNameWithQuotes) // Meal
-			.append(" \"1\" ").append(" *-- ").append('"').append(subEntity.getUpperBound()).append('"') // Meal "1" *-- "*"
+			.append(" \"1\" ").append(" *-- ").append('"').append(upperBoundString).append('"') // Meal "1" *-- "*"
 			.append(composedEntityNameWithQuotes) // Meal "1" *-- "*" Ingredient
 			.append(" : ").append(subEntity.getName()).append(" >").append('\n'); // Meal "1" *-- "*" Ingredient : composed by >
 			
@@ -178,9 +182,13 @@ public class GenerateClassDiagramAsPlantUML {
 			
 			String referencedEntityNameWithQuotes = quoteString(reference.getEntity().getName());
 			
+			int upperBound = reference.getUpperBound();
+			
+			String upperBoundString = upperBound == -1 ? "*" : ""+upperBound;
+			
 			builder
 			.append(entityNameWithQuotes) // Meal
-			.append(" \"1\" ").append(" -- ").append('"').append(reference.getUpperBound()).append('"') // Meal "1" -- "1"
+			.append(" \"1\" ").append(" -- ").append('"').append(upperBoundString).append('"') // Meal "1" -- "1"
 			.append(referencedEntityNameWithQuotes) // Meal "1" -- "1" MealType
 			.append(" : ").append(reference.getName()).append(" >").append('\n'); // Meal "1" -- "1" MealType: has a >
 			

@@ -14,7 +14,7 @@ helper context MMUseCase!UseCase def : hasEntityComment() : Boolean =
 helper context MMUseCase!UseCase def : hasLocalEntityComment() : Boolean = 
 	not self.comment ->  select(comment | comment.description.toLower() = 'local entity') -> isEmpty();
 
-helper context MMUseCase!UseCase def : hasUpperBoundComment() : Boolean = 
+helper context MMUseCase!Relationship def : hasUpperBoundComment() : Boolean = 
 	not self.comment ->  select(comment | comment.description.toLower().startsWith('upper bound:')) -> isEmpty();
 
 helper context MMUseCase!UseCase def : hasFieldComment() : Boolean = 
@@ -23,8 +23,8 @@ helper context MMUseCase!UseCase def : hasFieldComment() : Boolean =
 helper context MMUseCase!UseCase def : getFieldComments() : Sequence(MMUseCase!Comment) = 
 	self.comment ->  select(comment | comment.description.toLower().startsWith('field:'));
 
-helper context MMUseCase!UseCase def : getUpperBoundComment() : MMUseCase!Comment = 
-	self.comment ->  select(comment | comment.description.toLower().startsWith('upper bound:'));
+helper context MMUseCase!Relationship def : getUpperBoundComment() : MMUseCase!Comment = 
+	self.comment ->  select(comment | comment.description.toLower().startsWith('upper bound:')).first();
 
 helper context MMUseCase!UseCase def : isLastUseCaseBeingTransformed() : Boolean =
 	thisModule.transformedUseCases = MMUseCase!UseCase.allInstances() -> select(use_case | use_case.hasCRUDComment()).size();
@@ -97,8 +97,8 @@ rule EntityUseCaseTransformations {
 				if(not thisModule.useCases.get(use_case_name).extend.isEmpty()){
 					for(extend in thisModule.useCases.get(use_case_name).extend){
 					
-						if (extend.usecase.hasUpperBoundComment()) {
-							upperBound <- extend.use_case.getUpperBoundComment().description.replaceAll('upper bound:','').replaceAll('\\s+', '').toInteger();
+						if (extend.hasUpperBoundComment()) {
+							upperBound <- extend.getUpperBoundComment().description.toLower().replaceAll('upper bound:','').replaceAll('\\s+', '').toInteger();
 						}else{
 							upperBound <- -1;
 						}
@@ -167,9 +167,9 @@ rule SubEntityUseCaseTransformations {
 				
 				if(not thisModule.useCases.get(use_case_name).extend.isEmpty()){
 					for(extend in thisModule.useCases.get(use_case_name).extend){
-					
-						if (extend.usecase.hasUpperBoundComment()) {
-							upperBound <- extend.use_case.getUpperBoundComment().description.replaceAll('upper bound:','').replaceAll('\\s+', '').toInteger();
+						
+						if (extend.hasUpperBoundComment()) {
+							upperBound <- extend.getUpperBoundComment().description.toLower().replaceAll('upper bound:','').replaceAll('\\s+', '').toInteger();
 						}else{
 							upperBound <- -1;
 						}
@@ -202,11 +202,11 @@ rule SubEntityUseCaseTransformations {
 			
 		}
 		
-		if (use_case.hasUpperBoundComment()) {
-			upperBound <- use_case.getUpperBoundComment().description.replaceAll('upper bound:','').replaceAll('\\s+', '').toInteger();
-		}
-		
 		for (include in use_case.include) {
+			
+			if (include.hasUpperBoundComment()) {
+				upperBound <- include.getUpperBoundComment().description.toLower().replaceAll('upper bound:','').replaceAll('\\s+', '').toInteger();
+			}
 			
 			name <- include.name;
 			

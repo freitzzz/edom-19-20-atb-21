@@ -5,12 +5,112 @@
 module usecase2domain;
 create OUT : MMDomain from IN : MMUseCase;
  
+helper context MMUseCase!UseCase def : hasCRUDComment() : Boolean = 
+	not self.comment ->  select(comment | comment.description.toLower() = 'crud') -> isEmpty();
+
+helper context MMUseCase!UseCase def : hasEntityComment() : Boolean = 
+	not self.comment ->  select(comment | comment.description.toLower() = 'entity') -> isEmpty();
+
+helper context MMUseCase!UseCase def : hasFieldComment() : Boolean = 
+	not self.comment ->  select(comment | comment.description.toLower().startsWith('field: ')) -> isEmpty();
+
+helper context MMUseCase!UseCase def : getFieldComments() : Sequence(MMUseCase!Comment) = 
+	self.comment ->  select(comment | comment.description.toLower().startsWith('field: '));
+
+-- Allows the store of field models
+helper def : fields : Sequence(MMDomain!Field) = Sequence{};
+
 rule UseCaseModel2DomainModel {
 	from
 		m1: MMUseCase!UseCaseModel
 	to 
 		m2: MMDomain!DomainModel (
-			name <- m1.name
+			name <- m1.name,
+			entities <- m1.usecase
 		)
 }
 
+rule EntityUseCaseTransformations {
+	from
+		use_case : MMUseCase!UseCase(
+			use_case.hasCRUDComment()
+			and use_case.hasEntityComment()
+		)
+		
+	to 
+		entity : MMDomain!Entity (
+			name <- use_case.name
+		)
+	do{
+		
+		if(use_case.hasFieldComment()){
+			
+			thisModule.fields <- Sequence{};
+			
+			for (field_comment in use_case.getFieldComments()) {
+				
+				thisModule.CalledCommentToField(field_comment);
+				
+			}
+			
+			entity.fields <- thisModule.fields;
+			
+			thisModule.fields <- Sequence{};
+			
+		}
+		
+	}
+}
+
+rule CalledCommentToField(comment : MMUseCase!Comment) {
+	
+	using
+	{
+		split_string : Sequence(String) = Sequence{};
+	}
+	
+	to 
+		field : MMDomain!Field (
+			
+		)
+	do {
+		
+		split_string <- comment
+			.description
+			.replaceAll('\\s+', '')
+			.split(':')
+			.last()
+			.split('\\|');
+		
+		field.name <- split_string.first();
+		
+		if (split_string.last().toLower() = 'string') {
+			
+			field.type <- #STRING;
+			
+		} else {
+			
+			if (split_string.last().toLower() = 'integer') {
+			
+				field.type <- #INTEGER;
+				
+			} else {
+				
+				if (split_string.last().toLower() = 'real') {
+			
+					field.type <- #REAL;
+					
+				} else {
+					
+					field.type <- OclUndefined;
+					
+				}
+				
+			}
+			
+		}
+		
+		thisModule.fields <- thisModule.fields.including(field);
+		
+	}
+}

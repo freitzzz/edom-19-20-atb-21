@@ -11,23 +11,49 @@ helper context MMUseCase!UseCase def : hasCRUDComment() : Boolean =
 helper context MMUseCase!UseCase def : hasEntityComment() : Boolean = 
 	not self.comment ->  select(comment | comment.description.toLower() = 'entity') -> isEmpty();
 
+helper context MMUseCase!UseCase def : hasLocalEntityComment() : Boolean = 
+	not self.comment ->  select(comment | comment.description.toLower() = 'local entity') -> isEmpty();
+
+helper context MMUseCase!UseCase def : hasUpperBoundComment() : Boolean = 
+	not self.comment ->  select(comment | comment.description.toLower().startsWith('upper bound:')) -> isEmpty();
+
 helper context MMUseCase!UseCase def : hasFieldComment() : Boolean = 
-	not self.comment ->  select(comment | comment.description.toLower().startsWith('field: ')) -> isEmpty();
+	not self.comment ->  select(comment | comment.description.toLower().startsWith('field:')) -> isEmpty();
 
 helper context MMUseCase!UseCase def : getFieldComments() : Sequence(MMUseCase!Comment) = 
-	self.comment ->  select(comment | comment.description.toLower().startsWith('field: '));
+	self.comment ->  select(comment | comment.description.toLower().startsWith('field:'));
+
+helper context MMUseCase!UseCase def : getUpperBoundComment() : MMUseCase!Comment = 
+	self.comment ->  select(comment | comment.description.toLower().startsWith('upper bound:'));
 
 -- Allows the store of field models
 helper def : fields : Sequence(MMDomain!Field) = Sequence{};
 
+helper def : entities : Map(String, MMDomain!Entity) = Map{};
+
+helper def : subEntities : Map(String, Sequence(MMDomain!SubEntity)) = Map{};
+
+helper def : domainModel : MMDomain!DomainModel = OclUndefined;
+
 rule UseCaseModel2DomainModel {
 	from
 		m1: MMUseCase!UseCaseModel
+		
+	using
+	{
+			entity : MMDomain!Entity = OclUndefined;
+			entities : Sequence(MMDomain!Entity) = Sequence{};
+	}
+		
 	to 
 		m2: MMDomain!DomainModel (
 			name <- m1.name,
 			entities <- m1.usecase
 		)
+		
+	do {
+		thisModule.domainModel <- m2;
+	}
 }
 
 rule EntityUseCaseTransformations {
@@ -36,6 +62,12 @@ rule EntityUseCaseTransformations {
 			use_case.hasCRUDComment()
 			and use_case.hasEntityComment()
 		)
+	
+	using
+	{
+			_entity : MMDomain!Entity = OclUndefined;
+			entities : Sequence(MMDomain!Entity) = Sequence{};
+	}
 		
 	to 
 		entity : MMDomain!Entity (
@@ -58,6 +90,65 @@ rule EntityUseCaseTransformations {
 			thisModule.fields <- Sequence{};
 			
 		}
+		
+		thisModule.entities <- thisModule.entities.including(use_case.name, entity);
+		
+	}
+}
+
+rule SubEntityUseCaseTransformations {
+	from
+		use_case : MMUseCase!UseCase(
+			use_case.hasCRUDComment()
+			and use_case.hasLocalEntityComment()
+			and not use_case.include.isEmpty()
+		)
+		
+	using{
+			upperBound : Integer = -1;
+			name : String = '';
+
+	}
+		
+	to 
+		entity : MMDomain!Entity (
+			name <- use_case.name
+		)
+	do{
+		
+		if(use_case.hasFieldComment()){
+			
+			thisModule.fields <- Sequence{};
+			
+			for (field_comment in use_case.getFieldComments()) {
+				
+				thisModule.CalledCommentToField(field_comment);
+				
+			}
+			
+			entity.fields <- thisModule.fields;
+			
+			thisModule.fields <- Sequence{};
+			
+		}
+		
+		if (use_case.hasUpperBoundComment()) {
+			upperBound <- use_case.getUpperBoundComment().description.replaceAll('upper bound:','').replaceAll('\\s+', '').toInteger();
+		}
+		
+		for (include in use_case.include) {
+			
+			-- name problem
+			
+			thisModule.CalledToSubEntity(name, upperBound, entity, include.usecase.name);
+			
+			thisModule.subEntities.debug();
+			
+			thisModule.entities.get(include.usecase.name).subentities <- thisModule.subEntities.get(include.usecase.name);
+			
+		}
+		
+		thisModule.entities <- thisModule.entities.including(use_case.name, entity);
 		
 	}
 }
@@ -112,5 +203,47 @@ rule CalledCommentToField(comment : MMUseCase!Comment) {
 		
 		thisModule.fields <- thisModule.fields.including(field);
 		
+	}
+}
+
+rule CalledToSubEntity(name : String, upperBound : Integer, entity : MMDomain!Entity, entityName : String) {
+	
+	using
+	{
+		subEntities : Sequence(MMDomain!SubEntity) = Sequence{};
+		
+		mapCopy : Map(String, Sequence(MMDomain!SubEntity)) = Map{};
+	}
+	
+	to 
+		subEntity : MMDomain!SubEntity (
+			name <- name,
+			upperBound <- upperBound,
+			entity <- entity
+		)
+		
+	do{
+		
+		if(thisModule.subEntities.get(entityName) <> OclUndefined){
+			subEntities <- thisModule.subEntities.get(entityName);
+		}
+		
+		subEntities <- subEntities.including(subEntity);
+		
+		for (key in thisModule.subEntities.getKeys()) {
+			if(key <> entityName){
+				mapCopy <- mapCopy.including(key, thisModule.subEntities.get(key));
+			}
+		}
+		
+		mapCopy <- mapCopy.including(entityName, subEntities);
+		
+		thisModule.subEntities <- mapCopy;
+		
+		mapCopy.debug();
+		
+		thisModule.subEntities.debug();
+		
+		1.debug();
 	}
 }

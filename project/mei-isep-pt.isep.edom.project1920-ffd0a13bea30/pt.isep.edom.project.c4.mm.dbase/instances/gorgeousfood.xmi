@@ -1,2 +1,15 @@
 <?xml version="1.0" encoding="ASCII"?>
-<dbase:DbaseModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:dbase="http://www.example.org/dbase" name="GorgeousFood"/>
+<dbase:DbaseModel
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:dbase="http://www.example.org/dbase"
+    name="GorgeousFood">
+  <tables name="Meal"
+      entity="Meal">
+    <columns
+        name="Nome"/>
+    <columns
+        name="Tipo"
+        type="INTEGER"/>
+  </tables>
+</dbase:DbaseModel>

@@ -8,6 +8,7 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import pt.isep.edom.project.c4.mm.dbase.Column;
@@ -16,6 +17,7 @@ import pt.isep.edom.project.c4.mm.dbase.DbaseFactory;
 import pt.isep.edom.project.c4.mm.dbase.DbaseModel;
 import pt.isep.edom.project.c4.mm.dbase.DbasePackage;
 import pt.isep.edom.project.c4.mm.dbase.Table;
+import pt.isep.edom.project.c4.mm.dbase.util.DbaseValidator;
 
 /**
  * <!-- begin-user-doc -->
@@ -104,6 +106,13 @@ public class DbasePackageImpl extends EPackageImpl implements DbasePackage {
 
 		// Initialize created meta-data
 		theDbasePackage.initializePackageContents();
+
+		// Register package validator
+		EValidator.Registry.INSTANCE.put(theDbasePackage, new EValidator.Descriptor() {
+			public EValidator getEValidator() {
+				return DbaseValidator.INSTANCE;
+			}
+		});
 
 		// Mark meta-data to indicate it can't be changed
 		theDbasePackage.freeze();
@@ -331,7 +340,7 @@ public class DbasePackageImpl extends EPackageImpl implements DbasePackage {
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getColumn_Type(), this.getColumnType(), "type", null, 0, 1, Column.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getColumn_Key(), ecorePackage.getEBoolean(), "key", null, 0, 1, Column.class, !IS_TRANSIENT,
+		initEAttribute(getColumn_Key(), ecorePackage.getEBoolean(), "key", null, 1, 1, Column.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getColumn_ForeignKey(), this.getColumn(), null, "foreignKey", null, 0, -1, Column.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
@@ -345,6 +354,51 @@ public class DbasePackageImpl extends EPackageImpl implements DbasePackage {
 
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// http://www.eclipse.org/emf/2002/Ecore
+		createEcoreAnnotations();
+		// http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot
+		createPivotAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createEcoreAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/Ecore";
+		addAnnotation(this, source,
+				new String[] { "invocationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+						"settingDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "validationDelegates",
+						"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot" });
+		addAnnotation(dbaseModelEClass, source,
+				new String[] { "constraints", "mustHaveName nameMustBeUnique mustHaveTables" });
+		addAnnotation(tableEClass, source,
+				new String[] { "constraints", "mustHaveName mustHaveEntity nameMustBeUnique mustHaveColumns" });
+		addAnnotation(columnEClass, source,
+				new String[] { "constraints", "mustHaveName mustHaveType nameMustBeUnique" });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createPivotAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot";
+		addAnnotation(dbaseModelEClass, source,
+				new String[] { "mustHaveName", "not name.oclIsUndefined()", "nameMustBeUnique",
+						"DbaseModel.allInstances()->isUnique(name)", "mustHaveTables", "not tables->isEmpty()" });
+		addAnnotation(tableEClass, source,
+				new String[] { "mustHaveName", "not name.oclIsUndefined()", "mustHaveEntity",
+						"not entity.oclIsUndefined()", "nameMustBeUnique", "Table.allInstances()->isUnique(name)",
+						"mustHaveColumns", "not columns->isEmpty()" });
+		addAnnotation(columnEClass, source, new String[] { "mustHaveName", "not name.oclIsUndefined()", "mustHaveType",
+				"not type.oclIsUndefined()", "nameMustBeUnique", "Column.allInstances()->isUnique(name)" });
 	}
 
 } //DbasePackageImpl

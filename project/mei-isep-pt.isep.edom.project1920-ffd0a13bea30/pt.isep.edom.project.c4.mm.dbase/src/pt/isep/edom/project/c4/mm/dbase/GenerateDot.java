@@ -49,27 +49,27 @@ public class GenerateDot {
 	        writer = new PrintWriter(w);
 	        
 	        writer.println("@startuml");
-	        writer.println("digraph xpto {");
+	        writer.println("digraph GorgeousFood {");
 	        
 	        writer.println(myNav.getName());
 	        
-			// For the Topics
-//			for (MapElement e: myMap.getElements()) {
-//				if (e instanceof Topic) {
-//					Topic t=(Topic)e;
-//					writer.println(t.getName());
-//				}
-//			} 
+
+			for (Table e: myNav.getTables()) {
+				if (e instanceof Table) {
+					Table t=(Table)e;
+					writer.println(myNav.getName()+ " -> "+ t.getName());
+				}
+			} 
 			
 			// For the hierarchy
-//			for (MapElement e: myMap.getElements()) {
-//				if (e instanceof Topic) {
-//					Topic t=(Topic)e;
-//					for (Topic t2: t.getSubtopics()) {
-//						writer.println(t.getName()+ " -> "+t2.getName());
-//					}
-//				}
-//			}
+			for (Table e: myNav.getTables()) {
+				if (e instanceof Table) {
+					Table t=(Table)e;
+					for (Column t2: t.getColumns()) {
+						writer.println(t.getName()+ " -> "+t2.getName());
+					}
+				}
+			}
 			
 			writer.println("}");
 	        writer.println("@enduml");		

@@ -22,7 +22,8 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see pt.isep.edom.project.c4.mm.dbase.DbasePackage#getColumn()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='mustHaveName mustHaveType nameMustBeUnique'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot mustHaveName='not name.oclIsUndefined()' mustHaveType='not type.oclIsUndefined()' nameMustBeUnique='Column.allInstances()-&gt;isUnique(name)'"
  * @generated
  */
 public interface Column extends EObject {
@@ -92,7 +93,7 @@ public interface Column extends EObject {
 	 * @return the value of the '<em>Key</em>' attribute.
 	 * @see #setKey(boolean)
 	 * @see pt.isep.edom.project.c4.mm.dbase.DbasePackage#getColumn_Key()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	boolean isKey();

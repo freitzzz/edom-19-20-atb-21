@@ -21,7 +21,8 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see pt.isep.edom.project.c4.mm.dbase.DbasePackage#getTable()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='mustHaveName mustHaveEntity nameMustBeUnique mustHaveColumns'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot mustHaveName='not name.oclIsUndefined()' mustHaveEntity='not entity.oclIsUndefined()' nameMustBeUnique='Table.allInstances()-&gt;isUnique(name)' mustHaveColumns='not columns-&gt;isEmpty()'"
  * @generated
  */
 public interface Table extends EObject {

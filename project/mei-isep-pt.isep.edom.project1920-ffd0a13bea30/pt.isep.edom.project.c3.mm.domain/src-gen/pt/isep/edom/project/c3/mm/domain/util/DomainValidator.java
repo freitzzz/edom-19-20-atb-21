@@ -133,9 +133,6 @@ public class DomainValidator extends EObjectValidator {
 		if (result || diagnostics != null)
 			result &= validateDomainModel_NameLengthMustBeEqualOrGreaterThanThree(domainModel, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateDomainModel_NameCanOnlyContainAlphaNumericCharactersAndSpaces(domainModel, diagnostics,
-					context);
-		if (result || diagnostics != null)
 			result &= validateDomainModel_MustHaveAtLeastOneEntity(domainModel, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateDomainModel_CannotHaveEntitiesThatDoNotReferenceOrAreNotReferenced(domainModel,
@@ -189,28 +186,6 @@ public class DomainValidator extends EObjectValidator {
 	}
 
 	/**
-	 * The cached validation expression for the NameCanOnlyContainAlphaNumericCharactersAndSpaces constraint of '<em>Model</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected static final String DOMAIN_MODEL__NAME_CAN_ONLY_CONTAIN_ALPHA_NUMERIC_CHARACTERS_AND_SPACES__EEXPRESSION = "self.name.matches('^[a-Z0-9 ]+$')";
-
-	/**
-	 * Validates the NameCanOnlyContainAlphaNumericCharactersAndSpaces constraint of '<em>Model</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateDomainModel_NameCanOnlyContainAlphaNumericCharactersAndSpaces(DomainModel domainModel,
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate(DomainPackage.Literals.DOMAIN_MODEL, domainModel, diagnostics, context,
-				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "NameCanOnlyContainAlphaNumericCharactersAndSpaces",
-				DOMAIN_MODEL__NAME_CAN_ONLY_CONTAIN_ALPHA_NUMERIC_CHARACTERS_AND_SPACES__EEXPRESSION, Diagnostic.ERROR,
-				DIAGNOSTIC_SOURCE, 0);
-	}
-
-	/**
 	 * The cached validation expression for the MustHaveAtLeastOneEntity constraint of '<em>Model</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -238,10 +213,15 @@ public class DomainValidator extends EObjectValidator {
 	 * @generated
 	 */
 	protected static final String DOMAIN_MODEL__CANNOT_HAVE_ENTITIES_THAT_DO_NOT_REFERENCE_OR_ARE_NOT_REFERENCED__EEXPRESSION = "\n"
-			+ "\t\t\tif self.entities -> size() = 1 then \n" + "\t\t\t\ttrue\n" + "\t\t\telse \n"
-			+ "\t\t\t\tnot self.entities \n" + "\t\t\t\t-> select(\n" + "\t\t\t\t\tentity : Entity \n"
-			+ "\t\t\t\t\t| entity.subentities -> isEmpty() \n" + "\t\t\t\t\tand entity.references -> isEmpty()\n"
-			+ "\t\t\t\t) -> isEmpty()\n" + "\t\t\tendif\n" + "\t\t";
+			+ "\t\t\tif self.entities -> size() = 1 then \n" + "\t\t\t\ttrue\n" + "\t\t\telse\n"
+			+ "\t\t\t\tself.entities -> select(entity : Entity | entity.references -> isEmpty() and entity.subentities -> isEmpty())\n"
+			+ "\t\t\t\t-> includesAll(\n"
+			+ "\t\t\t\t\tReference.allInstances() -> collect(referenced : Reference| referenced.entity) -> asSet()\n"
+			+ "\t\t\t\t)\n" + "\t\t\t\tand\n"
+			+ "\t\t\t\tself.entities -> select(entity : Entity | entity.references -> isEmpty() and entity.subentities -> isEmpty())\n"
+			+ "\t\t\t\t-> includesAll(\n"
+			+ "\t\t\t\t\tSubEntity.allInstances() -> collect(subEntity : SubEntity| subEntity.entity) -> asSet()\n"
+			+ "\t\t\t\t)\n" + "\t\t\t\tendif\n" + "\t\t";
 
 	/**
 	 * Validates the CannotHaveEntitiesThatDoNotReferenceOrAreNotReferenced constraint of '<em>Model</em>'.
@@ -265,7 +245,7 @@ public class DomainValidator extends EObjectValidator {
 	 * @generated
 	 */
 	protected static final String DOMAIN_MODEL__CANNOT_HAVE_MORE_THAN_ONE_ENTITY_WITH_THE_SAME_NAME__EEXPRESSION = "\n"
-			+ "\t\t\tself.entities -> collect(entity| self.name) -> asSet() -> size() = self.entities -> size()\n"
+			+ "\t\t\tself.entities -> collect(entity| entity.name.toLowerCase()) -> asSet() -> size() = self.entities -> size()\n"
 			+ "\t\t";
 
 	/**
@@ -308,15 +288,16 @@ public class DomainValidator extends EObjectValidator {
 		if (result || diagnostics != null)
 			result &= validateEntity_NameCannotBeNull(entity, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validateEntity_NameCanOnlyContainAlphaNumericCharactersAndSpaces(entity, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateEntity_NameLengthMustBeEqualOrGreaterThanThree(entity, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateEntity_MustHaveAtLeastIdAndNameFields(entity, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateEntity_CannotHaveDuplicatedFields(entity, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateEntity_CannotHaveSubEntityWithSameNameAsAnEntityName(entity, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateEntity_CannotHaveSubEntityWithSameName(entity, diagnostics, context);
+			result &= validateEntity_CannotHaveSubEntityThatReferenceTheEntityThatContainsTheSubEntity(entity,
+					diagnostics, context);
 		return result;
 	}
 
@@ -339,6 +320,28 @@ public class DomainValidator extends EObjectValidator {
 		return validate(DomainPackage.Literals.ENTITY, entity, diagnostics, context,
 				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "NameCannotBeNull",
 				ENTITY__NAME_CANNOT_BE_NULL__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
+	}
+
+	/**
+	 * The cached validation expression for the NameCanOnlyContainAlphaNumericCharactersAndSpaces constraint of '<em>Entity</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String ENTITY__NAME_CAN_ONLY_CONTAIN_ALPHA_NUMERIC_CHARACTERS_AND_SPACES__EEXPRESSION = "self.name.matches('^[A-Za-z ]+$')";
+
+	/**
+	 * Validates the NameCanOnlyContainAlphaNumericCharactersAndSpaces constraint of '<em>Entity</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateEntity_NameCanOnlyContainAlphaNumericCharactersAndSpaces(Entity entity,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate(DomainPackage.Literals.ENTITY, entity, diagnostics, context,
+				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "NameCanOnlyContainAlphaNumericCharactersAndSpaces",
+				ENTITY__NAME_CAN_ONLY_CONTAIN_ALPHA_NUMERIC_CHARACTERS_AND_SPACES__EEXPRESSION, Diagnostic.ERROR,
+				DIAGNOSTIC_SOURCE, 0);
 	}
 
 	/**
@@ -410,51 +413,28 @@ public class DomainValidator extends EObjectValidator {
 	}
 
 	/**
-	 * The cached validation expression for the CannotHaveSubEntityWithSameNameAsAnEntityName constraint of '<em>Entity</em>'.
+	 * The cached validation expression for the CannotHaveSubEntityThatReferenceTheEntityThatContainsTheSubEntity constraint of '<em>Entity</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static final String ENTITY__CANNOT_HAVE_SUB_ENTITY_WITH_SAME_NAME_AS_AN_ENTITY_NAME__EEXPRESSION = "\n"
-			+ "\t\t\tself.subentities -> collect(subentity: SubEntity | subentity.name)\n"
-			+ "\t\t\t-> intersection(Entity.allInstances() -> collect(entity: Entity | entity.name))\n"
-			+ "\t\t\t-> isEmpty()\n" + "\t\t";
+	protected static final String ENTITY__CANNOT_HAVE_SUB_ENTITY_THAT_REFERENCE_THE_ENTITY_THAT_CONTAINS_THE_SUB_ENTITY__EEXPRESSION = "\n"
+			+ "\t\t\tself.subentities -> select(subEntity : SubEntity | subEntity.entity = self) -> isEmpty()\n"
+			+ "\t\t";
 
 	/**
-	 * Validates the CannotHaveSubEntityWithSameNameAsAnEntityName constraint of '<em>Entity</em>'.
+	 * Validates the CannotHaveSubEntityThatReferenceTheEntityThatContainsTheSubEntity constraint of '<em>Entity</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateEntity_CannotHaveSubEntityWithSameNameAsAnEntityName(Entity entity,
+	public boolean validateEntity_CannotHaveSubEntityThatReferenceTheEntityThatContainsTheSubEntity(Entity entity,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate(DomainPackage.Literals.ENTITY, entity, diagnostics, context,
-				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "CannotHaveSubEntityWithSameNameAsAnEntityName",
-				ENTITY__CANNOT_HAVE_SUB_ENTITY_WITH_SAME_NAME_AS_AN_ENTITY_NAME__EEXPRESSION, Diagnostic.ERROR,
-				DIAGNOSTIC_SOURCE, 0);
-	}
-
-	/**
-	 * The cached validation expression for the CannotHaveSubEntityWithSameName constraint of '<em>Entity</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected static final String ENTITY__CANNOT_HAVE_SUB_ENTITY_WITH_SAME_NAME__EEXPRESSION = "\n"
-			+ "\t\t\tself.subentities -> collect(subentity: SubEntity | subentity.name)\n"
-			+ "\t\t\t-> asSet() -> size()\n" + "\t\t\t=\n" + "\t\t\tself.subentities -> size()\n" + "\t\t";
-
-	/**
-	 * Validates the CannotHaveSubEntityWithSameName constraint of '<em>Entity</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateEntity_CannotHaveSubEntityWithSameName(Entity entity, DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		return validate(DomainPackage.Literals.ENTITY, entity, diagnostics, context,
-				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "CannotHaveSubEntityWithSameName",
-				ENTITY__CANNOT_HAVE_SUB_ENTITY_WITH_SAME_NAME__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
+				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+				"CannotHaveSubEntityThatReferenceTheEntityThatContainsTheSubEntity",
+				ENTITY__CANNOT_HAVE_SUB_ENTITY_THAT_REFERENCE_THE_ENTITY_THAT_CONTAINS_THE_SUB_ENTITY__EEXPRESSION,
+				Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
 	}
 
 	/**
@@ -514,7 +494,7 @@ public class DomainValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static final String FIELD__NAME_CAN_ONLY_CONTAIN_ALPHA_CHARACTERS__EEXPRESSION = "self.name.matches('^[a-Z]+$')";
+	protected static final String FIELD__NAME_CAN_ONLY_CONTAIN_ALPHA_CHARACTERS__EEXPRESSION = "self.name.matches('^[A-Za-z]+$')";
 
 	/**
 	 * Validates the NameCanOnlyContainAlphaCharacters constraint of '<em>Field</em>'.
@@ -588,7 +568,7 @@ public class DomainValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static final String SUB_ENTITY__UPPER_BOUND_MUST_BE_GREATER_OR_EQUAL_THAN_MINUS_ONE__EEXPRESSION = "self.upperBound >= 1";
+	protected static final String SUB_ENTITY__UPPER_BOUND_MUST_BE_GREATER_OR_EQUAL_THAN_MINUS_ONE__EEXPRESSION = "self.upperBound >= -1";
 
 	/**
 	 * Validates the UpperBoundMustBeGreaterOrEqualThanMinusOne constraint of '<em>Sub Entity</em>'.

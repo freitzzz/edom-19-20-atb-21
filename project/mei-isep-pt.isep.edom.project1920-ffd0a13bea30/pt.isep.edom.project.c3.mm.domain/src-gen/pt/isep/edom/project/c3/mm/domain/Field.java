@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see pt.isep.edom.project.c3.mm.domain.DomainPackage#getField()
  * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='NameCannotBeNull NameCanOnlyContainAlphaCharacters'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot NameCannotBeNull='not self.name.oclIsUndefined()' NameCanOnlyContainAlphaCharacters='self.name.matches(\'^[a-Z]+$\')'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot NameCannotBeNull='not self.name.oclIsUndefined()' NameCanOnlyContainAlphaCharacters='self.name.matches(\'^[A-Za-z]+$\')'"
  * @generated
  */
 public interface Field extends EObject {

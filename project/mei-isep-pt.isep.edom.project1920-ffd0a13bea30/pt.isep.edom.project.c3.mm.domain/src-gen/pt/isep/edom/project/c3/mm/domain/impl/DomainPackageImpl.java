@@ -520,9 +520,9 @@ public class DomainPackageImpl extends EPackageImpl implements DomainPackage {
 						"settingDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "validationDelegates",
 						"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot" });
 		addAnnotation(domainModelEClass, source, new String[] { "constraints",
-				"NameCannotBeNull NameLengthMustBeEqualOrGreaterThanThree NameCanOnlyContainAlphaNumericCharactersAndSpaces MustHaveAtLeastOneEntity CannotHaveEntitiesThatDoNotReferenceOrAreNotReferenced CannotHaveMoreThanOneEntityWithTheSameName" });
+				"NameCannotBeNull NameLengthMustBeEqualOrGreaterThanThree MustHaveAtLeastOneEntity CannotHaveEntitiesThatDoNotReferenceOrAreNotReferenced CannotHaveMoreThanOneEntityWithTheSameName" });
 		addAnnotation(entityEClass, source, new String[] { "constraints",
-				"NameCannotBeNull NameLengthMustBeEqualOrGreaterThanThree MustHaveAtLeastIdAndNameFields CannotHaveDuplicatedFields CannotHaveSubEntityWithSameNameAsAnEntityName CannotHaveSubEntityWithSameName" });
+				"NameCannotBeNull NameCanOnlyContainAlphaNumericCharactersAndSpaces NameLengthMustBeEqualOrGreaterThanThree MustHaveAtLeastIdAndNameFields CannotHaveDuplicatedFields CannotHaveSubEntityThatReferenceTheEntityThatContainsTheSubEntity" });
 		addAnnotation(fieldEClass, source,
 				new String[] { "constraints", "NameCannotBeNull NameCanOnlyContainAlphaCharacters" });
 		addAnnotation(subEntityEClass, source, new String[] { "constraints",
@@ -540,27 +540,24 @@ public class DomainPackageImpl extends EPackageImpl implements DomainPackage {
 	protected void createPivotAnnotations() {
 		String source = "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot";
 		addAnnotation(domainModelEClass, source, new String[] { "NameCannotBeNull", "not self.name.oclIsUndefined()",
-				"NameLengthMustBeEqualOrGreaterThanThree", "self.name.size() >= 3",
-				"NameCanOnlyContainAlphaNumericCharactersAndSpaces", "self.name.matches(\'^[a-Z0-9 ]+$\')",
-				"MustHaveAtLeastOneEntity", "not self.entities -> isEmpty()",
-				"CannotHaveEntitiesThatDoNotReferenceOrAreNotReferenced",
-				"\n\t\t\tif self.entities -> size() = 1 then \n\t\t\t\ttrue\n\t\t\telse \n\t\t\t\tnot self.entities \n\t\t\t\t-> select(\n\t\t\t\t\tentity : Entity \n\t\t\t\t\t| entity.subentities -> isEmpty() \n\t\t\t\t\tand entity.references -> isEmpty()\n\t\t\t\t) -> isEmpty()\n\t\t\tendif\n\t\t",
+				"NameLengthMustBeEqualOrGreaterThanThree", "self.name.size() >= 3", "MustHaveAtLeastOneEntity",
+				"not self.entities -> isEmpty()", "CannotHaveEntitiesThatDoNotReferenceOrAreNotReferenced",
+				"\n\t\t\tif self.entities -> size() = 1 then \n\t\t\t\ttrue\n\t\t\telse\n\t\t\t\tself.entities -> select(entity : Entity | entity.references -> isEmpty() and entity.subentities -> isEmpty())\n\t\t\t\t-> includesAll(\n\t\t\t\t\tReference.allInstances() -> collect(referenced : Reference| referenced.entity) -> asSet()\n\t\t\t\t)\n\t\t\t\tand\n\t\t\t\tself.entities -> select(entity : Entity | entity.references -> isEmpty() and entity.subentities -> isEmpty())\n\t\t\t\t-> includesAll(\n\t\t\t\t\tSubEntity.allInstances() -> collect(subEntity : SubEntity| subEntity.entity) -> asSet()\n\t\t\t\t)\n\t\t\t\tendif\n\t\t",
 				"CannotHaveMoreThanOneEntityWithTheSameName",
-				"\n\t\t\tself.entities -> collect(entity| self.name) -> asSet() -> size() = self.entities -> size()\n\t\t" });
+				"\n\t\t\tself.entities -> collect(entity| entity.name.toLowerCase()) -> asSet() -> size() = self.entities -> size()\n\t\t" });
 		addAnnotation(entityEClass, source, new String[] { "NameCannotBeNull", "not self.name.oclIsUndefined()",
+				"NameCanOnlyContainAlphaNumericCharactersAndSpaces", "self.name.matches(\'^[A-Za-z ]+$\')",
 				"NameLengthMustBeEqualOrGreaterThanThree", "self.name.size() >= 3", "MustHaveAtLeastIdAndNameFields",
 				"\n\t\t\tself.fields -> select(field : Field | field.name = \'id\' or field.name = \'name\') -> size() = 2\n\t\t",
 				"CannotHaveDuplicatedFields",
 				"\n\t\t\tself.fields -> collect(field : Field | field.name) -> asSet() -> size() = self.fields -> size()\n\t\t",
-				"CannotHaveSubEntityWithSameNameAsAnEntityName",
-				"\n\t\t\tself.subentities -> collect(subentity: SubEntity | subentity.name)\n\t\t\t-> intersection(Entity.allInstances() -> collect(entity: Entity | entity.name))\n\t\t\t-> isEmpty()\n\t\t",
-				"CannotHaveSubEntityWithSameName",
-				"\n\t\t\tself.subentities -> collect(subentity: SubEntity | subentity.name)\n\t\t\t-> asSet() -> size()\n\t\t\t=\n\t\t\tself.subentities -> size()\n\t\t" });
+				"CannotHaveSubEntityThatReferenceTheEntityThatContainsTheSubEntity",
+				"\n\t\t\tself.subentities -> select(subEntity : SubEntity | subEntity.entity = self) -> isEmpty()\n\t\t" });
 		addAnnotation(fieldEClass, source, new String[] { "NameCannotBeNull", "not self.name.oclIsUndefined()",
-				"NameCanOnlyContainAlphaCharacters", "self.name.matches(\'^[a-Z]+$\')" });
+				"NameCanOnlyContainAlphaCharacters", "self.name.matches(\'^[A-Za-z]+$\')" });
 		addAnnotation(subEntityEClass, source,
 				new String[] { "NameCannotBeNull", "not self.name.oclIsUndefined()",
-						"UpperBoundMustBeGreaterOrEqualThanMinusOne", "self.upperBound >= 1",
+						"UpperBoundMustBeGreaterOrEqualThanMinusOne", "self.upperBound >= -1",
 						"EntityReferenceCannotBeNull", "not self.entity.oclIsUndefined()" });
 		addAnnotation(referenceEClass, source,
 				new String[] { "NameCannotBeNull", "not self.name.oclIsUndefined()",

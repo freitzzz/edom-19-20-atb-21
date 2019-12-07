@@ -314,6 +314,48 @@ public class DomainModelOCLUnitTests {
 	}
 	
 	@Test
+	public void GrantThatOCLFailsValidationIfEntityHasSubEntityThatReferenceTheEntityThatContainsTheSubEntity() {
+
+		DomainFactory factory = DomainFactory.eINSTANCE;
+		
+		Entity meal = factory.createEntity();
+		
+		meal.setName("Meal");
+		
+		
+		Field nameField = factory.createField();
+		
+		nameField.setName("name");
+		
+		nameField.setType(FieldType.STRING);
+		
+		Field idField = factory.createField();
+		
+		idField.setName("id");
+		
+		idField.setType(FieldType.INTEGER);
+		
+		
+		meal.getFields().add(nameField);
+		
+		meal.getFields().add(idField);
+		
+		SubEntity subEntity = factory.createSubEntity();
+		
+		subEntity.setEntity(meal);
+		
+		subEntity.setName("contains");
+		
+		subEntity.setUpperBound(-1);
+
+		Diagnostic diag = Diagnostician.INSTANCE.validate(meal);
+		
+		boolean failedOCLValidation = diag.getSeverity() == Diagnostic.ERROR;
+		
+		Assert.assertTrue(failedOCLValidation);
+	}
+	
+	@Test
 	public void GrantThatOCLFailsValidationIfFieldNameIsNull() {
 
 		DomainFactory factory = DomainFactory.eINSTANCE;

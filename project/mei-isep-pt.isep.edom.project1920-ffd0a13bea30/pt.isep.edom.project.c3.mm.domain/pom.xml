@@ -49,13 +49,13 @@
 						</configuration>
 					</execution>
 					<execution>
-						<id>generateDot</id>
+						<id>generateClassDiagram</id>
 						<goals>
 							<goal>java</goal>
 						</goals>
 						<configuration>
 							<executable>java</executable>
-							<mainClass>pt.isep.edom.project.c3.mm.domain.GenerateDot</mainClass>
+							<mainClass>pt.isep.edom.project.c3.mm.domain.GenerateClassDiagramAsPlantUML</mainClass>
 							<!-- <arguments> <argument>foo</argument> <argument>bar</argument>
 								</arguments> -->
 							<classpathScope>compile</classpathScope>

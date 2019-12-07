@@ -26,34 +26,38 @@ helper context MMUseCase!UseCase def : getFieldComments() : Sequence(MMUseCase!C
 helper context MMUseCase!UseCase def : getUpperBoundComment() : MMUseCase!Comment = 
 	self.comment ->  select(comment | comment.description.toLower().startsWith('upper bound:'));
 
+helper context MMUseCase!UseCase def : isLastUseCaseBeingTransformed() : Boolean =
+	thisModule.transformedUseCases = MMUseCase!UseCase.allInstances() -> select(use_case | use_case.hasCRUDComment()).size();
+
 -- Allows the store of field models
 helper def : fields : Sequence(MMDomain!Field) = Sequence{};
 
+-- Allows the store of entity models by its name
 helper def : entities : Map(String, MMDomain!Entity) = Map{};
 
+-- Allows the store of sub entities by the entity that contains them name
 helper def : subEntities : Map(String, Sequence(MMDomain!SubEntity)) = Map{};
 
-helper def : domainModel : MMDomain!DomainModel = OclUndefined;
+-- Allows the store of reference models by the entity that references it name
+helper def : references : Map(String, Sequence(MMDomain!Reference)) = Map{};
+
+-- Allows the store of use case models by its name
+helper def : useCases : Map(String, Sequence(MMUseCase!UseCase)) = Map{};
+
+helper context Integer def : inc : Integer = self + 1;
+
+-- Counts the number of use cases transformed as entities
+helper def : transformedUseCases : Integer = 0;
 
 rule UseCaseModel2DomainModel {
 	from
 		m1: MMUseCase!UseCaseModel
-		
-	using
-	{
-			entity : MMDomain!Entity = OclUndefined;
-			entities : Sequence(MMDomain!Entity) = Sequence{};
-	}
 		
 	to 
 		m2: MMDomain!DomainModel (
 			name <- m1.name,
 			entities <- m1.usecase
 		)
-		
-	do {
-		thisModule.domainModel <- m2;
-	}
 }
 
 rule EntityUseCaseTransformations {
@@ -67,6 +71,9 @@ rule EntityUseCaseTransformations {
 	{
 			_entity : MMDomain!Entity = OclUndefined;
 			entities : Sequence(MMDomain!Entity) = Sequence{};
+			upperBound : Integer = -1;
+			name : String = '';
+			final_use_case : MMUseCase!UseCase = OclUndefined;
 	}
 		
 	to 
@@ -74,6 +81,38 @@ rule EntityUseCaseTransformations {
 			name <- use_case.name
 		)
 	do{
+		
+		thisModule.entities <- thisModule.entities.including(use_case.name, entity);
+		
+		thisModule.useCases <- thisModule.useCases.including(use_case.name, use_case);
+		
+		thisModule.transformedUseCases <- thisModule.transformedUseCases.inc;
+		
+		if(use_case.isLastUseCaseBeingTransformed()){
+			use_case.name.debug();
+			
+			for(use_case_name in thisModule.useCases.getKeys()){
+				
+				if(not thisModule.useCases.get(use_case_name).extend.isEmpty()){
+					for(extend in thisModule.useCases.get(use_case_name).extend){
+					
+						if (extend.usecase.hasUpperBoundComment()) {
+							upperBound <- extend.use_case.getUpperBoundComment().description.replaceAll('upper bound:','').replaceAll('\\s+', '').toInteger();
+						}else{
+							upperBound <- -1;
+						}
+						
+						-- name problem
+						
+						thisModule.CalledToReference(name, upperBound, thisModule.entities.get(extend.usecase.name), extend.usecase.name);
+						
+						thisModule.entities.get(use_case_name).references <- thisModule.references.get(extend.usecase.name);
+						
+					}	
+				}
+			}
+			
+		}
 		
 		if(use_case.hasFieldComment()){
 			
@@ -90,8 +129,6 @@ rule EntityUseCaseTransformations {
 			thisModule.fields <- Sequence{};
 			
 		}
-		
-		thisModule.entities <- thisModule.entities.including(use_case.name, entity);
 		
 	}
 }
@@ -115,6 +152,38 @@ rule SubEntityUseCaseTransformations {
 			name <- use_case.name
 		)
 	do{
+		
+		thisModule.entities <- thisModule.entities.including(use_case.name, entity);
+		
+		thisModule.useCases <- thisModule.useCases.including(use_case.name, use_case);
+		
+		thisModule.transformedUseCases <- thisModule.transformedUseCases.inc;
+		
+		if(use_case.isLastUseCaseBeingTransformed()){
+			use_case.name.debug();
+			
+			for(use_case_name in thisModule.useCases.getKeys()){
+				
+				if(not thisModule.useCases.get(use_case_name).extend.isEmpty()){
+					for(extend in thisModule.useCases.get(use_case_name).extend){
+					
+						if (extend.usecase.hasUpperBoundComment()) {
+							upperBound <- extend.use_case.getUpperBoundComment().description.replaceAll('upper bound:','').replaceAll('\\s+', '').toInteger();
+						}else{
+							upperBound <- -1;
+						}
+						
+						-- name problem
+						
+						thisModule.CalledToReference(name, upperBound, thisModule.entities.get(extend.usecase.name), extend.usecase.name);
+						
+						thisModule.entities.get(use_case_name).references <- thisModule.references.get(extend.usecase.name);
+						
+					}	
+				}
+			}
+			
+		}
 		
 		if(use_case.hasFieldComment()){
 			
@@ -142,13 +211,9 @@ rule SubEntityUseCaseTransformations {
 			
 			thisModule.CalledToSubEntity(name, upperBound, entity, include.usecase.name);
 			
-			thisModule.subEntities.debug();
-			
 			thisModule.entities.get(include.usecase.name).subentities <- thisModule.subEntities.get(include.usecase.name);
 			
 		}
-		
-		thisModule.entities <- thisModule.entities.including(use_case.name, entity);
 		
 	}
 }
@@ -239,11 +304,41 @@ rule CalledToSubEntity(name : String, upperBound : Integer, entity : MMDomain!En
 		mapCopy <- mapCopy.including(entityName, subEntities);
 		
 		thisModule.subEntities <- mapCopy;
+	}
+}
+
+rule CalledToReference(name : String, upperBound : Integer, entity : MMDomain!Entity, entityName : String) {
+	
+	using
+	{
+		references : Sequence(MMDomain!Reference) = Sequence{};
 		
-		mapCopy.debug();
+		mapCopy : Map(String, Sequence(MMDomain!Reference)) = Map{};
+	}
+	
+	to 
+		reference : MMDomain!Reference (
+			name <- name,
+			upperBound <- upperBound,
+			entity <- entity
+		)
 		
-		thisModule.subEntities.debug();
+	do{
 		
-		1.debug();
+		if(thisModule.references.get(entityName) <> OclUndefined){
+			references <- thisModule.references.get(entityName);
+		}
+		
+		references <- references.including(reference);
+		
+		for (key in thisModule.references.getKeys()) {
+			if(key <> entityName){
+				mapCopy <- mapCopy.including(key, thisModule.references.get(key));
+			}
+		}
+		
+		mapCopy <- mapCopy.including(entityName, references);
+		
+		thisModule.references <- mapCopy;
 	}
 }

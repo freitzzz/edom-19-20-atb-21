@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import pt.isep.edom.project.c0.mm.usecase.Comment;
 import pt.isep.edom.project.c0.mm.usecase.Extend;
 import pt.isep.edom.project.c0.mm.usecase.Include;
 import pt.isep.edom.project.c0.mm.usecase.UseCase;
@@ -34,6 +35,7 @@ import pt.isep.edom.project.c0.mm.usecase.UsecasePackage;
  *   <li>{@link pt.isep.edom.project.c0.mm.usecase.impl.UseCaseImpl#getName <em>Name</em>}</li>
  *   <li>{@link pt.isep.edom.project.c0.mm.usecase.impl.UseCaseImpl#getExtend <em>Extend</em>}</li>
  *   <li>{@link pt.isep.edom.project.c0.mm.usecase.impl.UseCaseImpl#getInclude <em>Include</em>}</li>
+ *   <li>{@link pt.isep.edom.project.c0.mm.usecase.impl.UseCaseImpl#getComment <em>Comment</em>}</li>
  * </ul>
  *
  * @generated
@@ -78,6 +80,16 @@ public class UseCaseImpl extends MinimalEObjectImpl.Container implements UseCase
 	 * @ordered
 	 */
 	protected EList<Include> include;
+
+	/**
+	 * The cached value of the '{@link #getComment() <em>Comment</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getComment()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Comment> comment;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -148,6 +160,18 @@ public class UseCaseImpl extends MinimalEObjectImpl.Container implements UseCase
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Comment> getComment() {
+		if (comment == null) {
+			comment = new EObjectContainmentEList<Comment>(Comment.class, this, UsecasePackage.USE_CASE__COMMENT);
+		}
+		return comment;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -155,6 +179,8 @@ public class UseCaseImpl extends MinimalEObjectImpl.Container implements UseCase
 			return ((InternalEList<?>) getExtend()).basicRemove(otherEnd, msgs);
 		case UsecasePackage.USE_CASE__INCLUDE:
 			return ((InternalEList<?>) getInclude()).basicRemove(otherEnd, msgs);
+		case UsecasePackage.USE_CASE__COMMENT:
+			return ((InternalEList<?>) getComment()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -173,6 +199,8 @@ public class UseCaseImpl extends MinimalEObjectImpl.Container implements UseCase
 			return getExtend();
 		case UsecasePackage.USE_CASE__INCLUDE:
 			return getInclude();
+		case UsecasePackage.USE_CASE__COMMENT:
+			return getComment();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -197,6 +225,10 @@ public class UseCaseImpl extends MinimalEObjectImpl.Container implements UseCase
 			getInclude().clear();
 			getInclude().addAll((Collection<? extends Include>) newValue);
 			return;
+		case UsecasePackage.USE_CASE__COMMENT:
+			getComment().clear();
+			getComment().addAll((Collection<? extends Comment>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -218,6 +250,9 @@ public class UseCaseImpl extends MinimalEObjectImpl.Container implements UseCase
 		case UsecasePackage.USE_CASE__INCLUDE:
 			getInclude().clear();
 			return;
+		case UsecasePackage.USE_CASE__COMMENT:
+			getComment().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -236,6 +271,8 @@ public class UseCaseImpl extends MinimalEObjectImpl.Container implements UseCase
 			return extend != null && !extend.isEmpty();
 		case UsecasePackage.USE_CASE__INCLUDE:
 			return include != null && !include.isEmpty();
+		case UsecasePackage.USE_CASE__COMMENT:
+			return comment != null && !comment.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

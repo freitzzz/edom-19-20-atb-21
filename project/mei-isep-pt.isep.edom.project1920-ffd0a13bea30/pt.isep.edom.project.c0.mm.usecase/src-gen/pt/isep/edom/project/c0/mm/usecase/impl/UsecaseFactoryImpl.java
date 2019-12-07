@@ -68,6 +68,8 @@ public class UsecaseFactoryImpl extends EFactoryImpl implements UsecaseFactory {
 			return createExtend();
 		case UsecasePackage.INCLUDE:
 			return createInclude();
+		case UsecasePackage.COMMENT:
+			return createComment();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -131,6 +133,16 @@ public class UsecaseFactoryImpl extends EFactoryImpl implements UsecaseFactory {
 	public Include createInclude() {
 		IncludeImpl include = new IncludeImpl();
 		return include;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Comment createComment() {
+		CommentImpl comment = new CommentImpl();
+		return comment;
 	}
 
 	/**

@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import pt.isep.edom.project.c0.mm.usecase.Actor;
 import pt.isep.edom.project.c0.mm.usecase.Association;
+import pt.isep.edom.project.c0.mm.usecase.Comment;
 import pt.isep.edom.project.c0.mm.usecase.Extend;
 import pt.isep.edom.project.c0.mm.usecase.Include;
 import pt.isep.edom.project.c0.mm.usecase.Relationship;
@@ -74,6 +75,13 @@ public class UsecasePackageImpl extends EPackageImpl implements UsecasePackage {
 	 * @generated
 	 */
 	private EClass includeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass commentEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -278,6 +286,15 @@ public class UsecasePackageImpl extends EPackageImpl implements UsecasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getUseCase_Comment() {
+		return (EReference) useCaseEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getRelationship() {
 		return relationshipEClass;
 	}
@@ -332,6 +349,24 @@ public class UsecasePackageImpl extends EPackageImpl implements UsecasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getComment() {
+		return commentEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getComment_Description() {
+		return (EAttribute) commentEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public UsecaseFactory getUsecaseFactory() {
 		return (UsecaseFactory) getEFactoryInstance();
 	}
@@ -374,6 +409,7 @@ public class UsecasePackageImpl extends EPackageImpl implements UsecasePackage {
 		createEAttribute(useCaseEClass, USE_CASE__NAME);
 		createEReference(useCaseEClass, USE_CASE__EXTEND);
 		createEReference(useCaseEClass, USE_CASE__INCLUDE);
+		createEReference(useCaseEClass, USE_CASE__COMMENT);
 
 		relationshipEClass = createEClass(RELATIONSHIP);
 		createEAttribute(relationshipEClass, RELATIONSHIP__NAME);
@@ -383,6 +419,9 @@ public class UsecasePackageImpl extends EPackageImpl implements UsecasePackage {
 
 		includeEClass = createEClass(INCLUDE);
 		createEReference(includeEClass, INCLUDE__USECASE);
+
+		commentEClass = createEClass(COMMENT);
+		createEAttribute(commentEClass, COMMENT__DESCRIPTION);
 	}
 
 	/**
@@ -456,6 +495,9 @@ public class UsecasePackageImpl extends EPackageImpl implements UsecasePackage {
 		initEReference(getUseCase_Include(), this.getInclude(), null, "include", null, 0, -1, UseCase.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getUseCase_Comment(), this.getComment(), null, "comment", null, 0, -1, UseCase.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(relationshipEClass, Relationship.class, "Relationship", IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -471,6 +513,10 @@ public class UsecasePackageImpl extends EPackageImpl implements UsecasePackage {
 		initEReference(getInclude_Usecase(), this.getUseCase(), null, "usecase", null, 1, 1, Include.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(commentEClass, Comment.class, "Comment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getComment_Description(), ecorePackage.getEString(), "description", null, 0, 1, Comment.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

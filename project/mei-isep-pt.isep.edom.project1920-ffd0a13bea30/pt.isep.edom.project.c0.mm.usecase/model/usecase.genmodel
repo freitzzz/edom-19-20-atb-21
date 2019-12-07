@@ -28,6 +28,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute usecase.ecore#//UseCase/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference usecase.ecore#//UseCase/extend"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference usecase.ecore#//UseCase/include"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference usecase.ecore#//UseCase/comment"/>
     </genClasses>
     <genClasses image="false" ecoreClass="usecase.ecore#//Relationship">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute usecase.ecore#//Relationship/name"/>
@@ -37,6 +38,9 @@
     </genClasses>
     <genClasses ecoreClass="usecase.ecore#//Include">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference usecase.ecore#//Include/usecase"/>
+    </genClasses>
+    <genClasses ecoreClass="usecase.ecore#//Comment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute usecase.ecore#//Comment/description"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link pt.isep.edom.project.c0.mm.usecase.UseCase#getName <em>Name</em>}</li>
  *   <li>{@link pt.isep.edom.project.c0.mm.usecase.UseCase#getExtend <em>Extend</em>}</li>
  *   <li>{@link pt.isep.edom.project.c0.mm.usecase.UseCase#getInclude <em>Include</em>}</li>
+ *   <li>{@link pt.isep.edom.project.c0.mm.usecase.UseCase#getComment <em>Comment</em>}</li>
  * </ul>
  *
  * @see pt.isep.edom.project.c0.mm.usecase.UsecasePackage#getUseCase()
@@ -82,5 +83,21 @@ public interface UseCase extends EObject {
 	 * @generated
 	 */
 	EList<Include> getInclude();
+
+	/**
+	 * Returns the value of the '<em><b>Comment</b></em>' containment reference list.
+	 * The list contents are of type {@link pt.isep.edom.project.c0.mm.usecase.Comment}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Comment</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Comment</em>' containment reference list.
+	 * @see pt.isep.edom.project.c0.mm.usecase.UsecasePackage#getUseCase_Comment()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Comment> getComment();
 
 } // UseCase

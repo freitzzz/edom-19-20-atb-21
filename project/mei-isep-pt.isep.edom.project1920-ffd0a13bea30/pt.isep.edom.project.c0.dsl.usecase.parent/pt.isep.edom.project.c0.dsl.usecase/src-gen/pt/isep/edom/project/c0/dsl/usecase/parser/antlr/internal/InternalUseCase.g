@@ -758,9 +758,67 @@ ruleExtend returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_5='}'
+		(
+			otherlv_5='comment'
+			{
+				newLeafNode(otherlv_5, grammarAccess.getExtendAccess().getCommentKeyword_5_0());
+			}
+			otherlv_6='{'
+			{
+				newLeafNode(otherlv_6, grammarAccess.getExtendAccess().getLeftCurlyBracketKeyword_5_1());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getExtendAccess().getCommentCommentParserRuleCall_5_2_0());
+					}
+					lv_comment_7_0=ruleComment
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getExtendRule());
+						}
+						add(
+							$current,
+							"comment",
+							lv_comment_7_0,
+							"pt.isep.edom.project.c0.dsl.usecase.UseCase.Comment");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			(
+				otherlv_8=','
+				{
+					newLeafNode(otherlv_8, grammarAccess.getExtendAccess().getCommaKeyword_5_3_0());
+				}
+				(
+					(
+						{
+							newCompositeNode(grammarAccess.getExtendAccess().getCommentCommentParserRuleCall_5_3_1_0());
+						}
+						lv_comment_9_0=ruleComment
+						{
+							if ($current==null) {
+								$current = createModelElementForParent(grammarAccess.getExtendRule());
+							}
+							add(
+								$current,
+								"comment",
+								lv_comment_9_0,
+								"pt.isep.edom.project.c0.dsl.usecase.UseCase.Comment");
+							afterParserOrEnumRuleCall();
+						}
+					)
+				)
+			)*
+			otherlv_10='}'
+			{
+				newLeafNode(otherlv_10, grammarAccess.getExtendAccess().getRightCurlyBracketKeyword_5_4());
+			}
+		)?
+		otherlv_11='}'
 		{
-			newLeafNode(otherlv_5, grammarAccess.getExtendAccess().getRightCurlyBracketKeyword_5());
+			newLeafNode(otherlv_11, grammarAccess.getExtendAccess().getRightCurlyBracketKeyword_6());
 		}
 	)
 ;
@@ -828,9 +886,67 @@ ruleInclude returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_5='}'
+		(
+			otherlv_5='comment'
+			{
+				newLeafNode(otherlv_5, grammarAccess.getIncludeAccess().getCommentKeyword_5_0());
+			}
+			otherlv_6='{'
+			{
+				newLeafNode(otherlv_6, grammarAccess.getIncludeAccess().getLeftCurlyBracketKeyword_5_1());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getIncludeAccess().getCommentCommentParserRuleCall_5_2_0());
+					}
+					lv_comment_7_0=ruleComment
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getIncludeRule());
+						}
+						add(
+							$current,
+							"comment",
+							lv_comment_7_0,
+							"pt.isep.edom.project.c0.dsl.usecase.UseCase.Comment");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			(
+				otherlv_8=','
+				{
+					newLeafNode(otherlv_8, grammarAccess.getIncludeAccess().getCommaKeyword_5_3_0());
+				}
+				(
+					(
+						{
+							newCompositeNode(grammarAccess.getIncludeAccess().getCommentCommentParserRuleCall_5_3_1_0());
+						}
+						lv_comment_9_0=ruleComment
+						{
+							if ($current==null) {
+								$current = createModelElementForParent(grammarAccess.getIncludeRule());
+							}
+							add(
+								$current,
+								"comment",
+								lv_comment_9_0,
+								"pt.isep.edom.project.c0.dsl.usecase.UseCase.Comment");
+							afterParserOrEnumRuleCall();
+						}
+					)
+				)
+			)*
+			otherlv_10='}'
+			{
+				newLeafNode(otherlv_10, grammarAccess.getIncludeAccess().getRightCurlyBracketKeyword_5_4());
+			}
+		)?
+		otherlv_11='}'
 		{
-			newLeafNode(otherlv_5, grammarAccess.getIncludeAccess().getRightCurlyBracketKeyword_5());
+			newLeafNode(otherlv_11, grammarAccess.getIncludeAccess().getRightCurlyBracketKeyword_6());
 		}
 	)
 ;

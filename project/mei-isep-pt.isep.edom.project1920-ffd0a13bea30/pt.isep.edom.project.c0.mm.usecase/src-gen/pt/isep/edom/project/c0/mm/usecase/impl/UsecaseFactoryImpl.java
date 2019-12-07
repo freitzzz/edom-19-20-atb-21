@@ -80,6 +80,7 @@ public class UsecaseFactoryImpl extends EFactoryImpl implements UsecaseFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public UseCaseModel createUseCaseModel() {
 		UseCaseModelImpl useCaseModel = new UseCaseModelImpl();
 		return useCaseModel;
@@ -90,6 +91,7 @@ public class UsecaseFactoryImpl extends EFactoryImpl implements UsecaseFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Actor createActor() {
 		ActorImpl actor = new ActorImpl();
 		return actor;
@@ -100,6 +102,7 @@ public class UsecaseFactoryImpl extends EFactoryImpl implements UsecaseFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Association createAssociation() {
 		AssociationImpl association = new AssociationImpl();
 		return association;
@@ -110,6 +113,7 @@ public class UsecaseFactoryImpl extends EFactoryImpl implements UsecaseFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public UseCase createUseCase() {
 		UseCaseImpl useCase = new UseCaseImpl();
 		return useCase;
@@ -120,6 +124,7 @@ public class UsecaseFactoryImpl extends EFactoryImpl implements UsecaseFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Extend createExtend() {
 		ExtendImpl extend = new ExtendImpl();
 		return extend;
@@ -130,6 +135,7 @@ public class UsecaseFactoryImpl extends EFactoryImpl implements UsecaseFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Include createInclude() {
 		IncludeImpl include = new IncludeImpl();
 		return include;
@@ -140,6 +146,7 @@ public class UsecaseFactoryImpl extends EFactoryImpl implements UsecaseFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Comment createComment() {
 		CommentImpl comment = new CommentImpl();
 		return comment;
@@ -150,6 +157,7 @@ public class UsecaseFactoryImpl extends EFactoryImpl implements UsecaseFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public UsecasePackage getUsecasePackage() {
 		return (UsecasePackage) getEPackage();
 	}

@@ -51,6 +51,7 @@ Extend returns Extend:
 	name=EString
 	'{'
 		'usecase' usecase=[UseCase|EString]
+		('comment' '{' comment+=Comment ( "," comment+=Comment)* '}' )?
 	'}';
 
 Include returns Include:
@@ -58,6 +59,7 @@ Include returns Include:
 	name=EString
 	'{'
 		'usecase' usecase=[UseCase|EString]
+		('comment' '{' comment+=Comment ( "," comment+=Comment)* '}' )?
 	'}';
 
 Comment returns Comment:

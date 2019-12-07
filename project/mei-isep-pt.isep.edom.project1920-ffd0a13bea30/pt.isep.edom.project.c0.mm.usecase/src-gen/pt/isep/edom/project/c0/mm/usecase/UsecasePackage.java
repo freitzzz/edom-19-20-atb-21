@@ -296,13 +296,22 @@ public interface UsecasePackage extends EPackage {
 	int RELATIONSHIP__NAME = 0;
 
 	/**
+	 * The feature id for the '<em><b>Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELATIONSHIP__COMMENT = 1;
+
+	/**
 	 * The number of structural features of the '<em>Relationship</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RELATIONSHIP_FEATURE_COUNT = 1;
+	int RELATIONSHIP_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Relationship</em>' class.
@@ -331,6 +340,15 @@ public interface UsecasePackage extends EPackage {
 	 * @ordered
 	 */
 	int EXTEND__NAME = RELATIONSHIP__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTEND__COMMENT = RELATIONSHIP__COMMENT;
 
 	/**
 	 * The feature id for the '<em><b>Usecase</b></em>' reference.
@@ -377,6 +395,15 @@ public interface UsecasePackage extends EPackage {
 	 * @ordered
 	 */
 	int INCLUDE__NAME = RELATIONSHIP__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INCLUDE__COMMENT = RELATIONSHIP__COMMENT;
 
 	/**
 	 * The feature id for the '<em><b>Usecase</b></em>' reference.
@@ -636,6 +663,17 @@ public interface UsecasePackage extends EPackage {
 	EAttribute getRelationship_Name();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link pt.isep.edom.project.c0.mm.usecase.Relationship#getComment <em>Comment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Comment</em>'.
+	 * @see pt.isep.edom.project.c0.mm.usecase.Relationship#getComment()
+	 * @see #getRelationship()
+	 * @generated
+	 */
+	EReference getRelationship_Comment();
+
+	/**
 	 * Returns the meta object for class '{@link pt.isep.edom.project.c0.mm.usecase.Extend <em>Extend</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -874,6 +912,14 @@ public interface UsecasePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute RELATIONSHIP__NAME = eINSTANCE.getRelationship_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Comment</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RELATIONSHIP__COMMENT = eINSTANCE.getRelationship_Comment();
 
 		/**
 		 * The meta object literal for the '{@link pt.isep.edom.project.c0.mm.usecase.impl.ExtendImpl <em>Extend</em>}' class.

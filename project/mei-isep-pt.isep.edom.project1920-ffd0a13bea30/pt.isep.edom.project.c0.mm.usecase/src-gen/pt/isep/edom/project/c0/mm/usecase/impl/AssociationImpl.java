@@ -95,6 +95,7 @@ public class AssociationImpl extends MinimalEObjectImpl.Container implements Ass
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -104,6 +105,7 @@ public class AssociationImpl extends MinimalEObjectImpl.Container implements Ass
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -116,6 +118,7 @@ public class AssociationImpl extends MinimalEObjectImpl.Container implements Ass
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Actor getActor() {
 		if (actor != null && actor.eIsProxy()) {
 			InternalEObject oldActor = (InternalEObject) actor;
@@ -143,6 +146,7 @@ public class AssociationImpl extends MinimalEObjectImpl.Container implements Ass
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setActor(Actor newActor) {
 		Actor oldActor = actor;
 		actor = newActor;
@@ -155,6 +159,7 @@ public class AssociationImpl extends MinimalEObjectImpl.Container implements Ass
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public UseCase getUsecase() {
 		if (usecase != null && usecase.eIsProxy()) {
 			InternalEObject oldUsecase = (InternalEObject) usecase;
@@ -182,6 +187,7 @@ public class AssociationImpl extends MinimalEObjectImpl.Container implements Ass
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setUsecase(UseCase newUsecase) {
 		UseCase oldUsecase = usecase;
 		usecase = newUsecase;
@@ -282,7 +288,7 @@ public class AssociationImpl extends MinimalEObjectImpl.Container implements Ass
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
 		result.append(name);
 		result.append(')');

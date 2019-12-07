@@ -49,7 +49,11 @@ public class UseCaseParser extends AbstractContentAssistParser {
 					put(grammarAccess.getUseCaseAccess().getGroup_6(), "rule__UseCase__Group_6__0");
 					put(grammarAccess.getUseCaseAccess().getGroup_6_3(), "rule__UseCase__Group_6_3__0");
 					put(grammarAccess.getExtendAccess().getGroup(), "rule__Extend__Group__0");
+					put(grammarAccess.getExtendAccess().getGroup_5(), "rule__Extend__Group_5__0");
+					put(grammarAccess.getExtendAccess().getGroup_5_3(), "rule__Extend__Group_5_3__0");
 					put(grammarAccess.getIncludeAccess().getGroup(), "rule__Include__Group__0");
+					put(grammarAccess.getIncludeAccess().getGroup_5(), "rule__Include__Group_5__0");
+					put(grammarAccess.getIncludeAccess().getGroup_5_3(), "rule__Include__Group_5_3__0");
 					put(grammarAccess.getCommentAccess().getGroup(), "rule__Comment__Group__0");
 					put(grammarAccess.getCommentAccess().getGroup_3(), "rule__Comment__Group_3__0");
 					put(grammarAccess.getUseCaseModelAccess().getNameAssignment_2(), "rule__UseCaseModel__NameAssignment_2");
@@ -72,8 +76,12 @@ public class UseCaseParser extends AbstractContentAssistParser {
 					put(grammarAccess.getUseCaseAccess().getCommentAssignment_6_3_1(), "rule__UseCase__CommentAssignment_6_3_1");
 					put(grammarAccess.getExtendAccess().getNameAssignment_1(), "rule__Extend__NameAssignment_1");
 					put(grammarAccess.getExtendAccess().getUsecaseAssignment_4(), "rule__Extend__UsecaseAssignment_4");
+					put(grammarAccess.getExtendAccess().getCommentAssignment_5_2(), "rule__Extend__CommentAssignment_5_2");
+					put(grammarAccess.getExtendAccess().getCommentAssignment_5_3_1(), "rule__Extend__CommentAssignment_5_3_1");
 					put(grammarAccess.getIncludeAccess().getNameAssignment_1(), "rule__Include__NameAssignment_1");
 					put(grammarAccess.getIncludeAccess().getUsecaseAssignment_4(), "rule__Include__UsecaseAssignment_4");
+					put(grammarAccess.getIncludeAccess().getCommentAssignment_5_2(), "rule__Include__CommentAssignment_5_2");
+					put(grammarAccess.getIncludeAccess().getCommentAssignment_5_3_1(), "rule__Include__CommentAssignment_5_3_1");
 					put(grammarAccess.getCommentAccess().getDescriptionAssignment_3_1(), "rule__Comment__DescriptionAssignment_3_1");
 				}
 			};

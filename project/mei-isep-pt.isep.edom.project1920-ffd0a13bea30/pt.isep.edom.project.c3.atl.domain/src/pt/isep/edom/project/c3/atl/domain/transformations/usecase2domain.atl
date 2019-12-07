@@ -89,6 +89,7 @@ rule EntityUseCaseTransformations {
 		thisModule.transformedUseCases <- thisModule.transformedUseCases.inc;
 		
 		if(use_case.isLastUseCaseBeingTransformed()){
+			
 			use_case.name.debug();
 			
 			for(use_case_name in thisModule.useCases.getKeys()){
@@ -102,7 +103,7 @@ rule EntityUseCaseTransformations {
 							upperBound <- -1;
 						}
 						
-						-- name problem
+						name <- extend.name;
 						
 						thisModule.CalledToReference(name, upperBound, thisModule.entities.get(extend.usecase.name), extend.usecase.name);
 						
@@ -173,7 +174,7 @@ rule SubEntityUseCaseTransformations {
 							upperBound <- -1;
 						}
 						
-						-- name problem
+						name <- extend.name;
 						
 						thisModule.CalledToReference(name, upperBound, thisModule.entities.get(extend.usecase.name), extend.usecase.name);
 						
@@ -207,7 +208,7 @@ rule SubEntityUseCaseTransformations {
 		
 		for (include in use_case.include) {
 			
-			-- name problem
+			name <- include.name;
 			
 			thisModule.CalledToSubEntity(name, upperBound, entity, include.usecase.name);
 			

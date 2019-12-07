@@ -1,2 +1,59 @@
 <?xml version="1.0" encoding="ASCII"?>
-<domain:DomainModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:domain="http://www.example.org/domain" name="GorgeousFood"/>
+<domain:DomainModel
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:domain="http://www.example.org/domain"
+    name="GorgeousFood">
+  <entities
+      name="Meal">
+    <fields
+        name="name"
+        type="STRING"/>
+    <fields
+        name="id"/>
+    <subentities
+        name="contains"
+        entity="//@entities.2"
+        upperBound="-1"/>
+    <references
+        name="has a"
+        entity="//@entities.1"
+        upperBound="1"/>
+  </entities>
+  <entities
+      name="Meal Type">
+    <fields
+        name="name"
+        type="STRING"/>
+    <fields
+        name="id"/>
+  </entities>
+  <entities
+      name="Ingredient">
+    <fields
+        name="name"
+        type="STRING"/>
+    <fields
+        name="id"/>
+  </entities>
+  <entities
+      name="Item">
+    <fields
+        name="name"
+        type="STRING"/>
+    <fields
+        name="id"/>
+    <subentities
+        name="contains"
+        entity="//@entities.2"
+        upperBound="-1"/>
+    <references
+        name="has a"
+        entity="//@entities.1"
+        upperBound="1"/>
+    <references
+        name="something"
+        entity="//@entities.1"
+        upperBound="1"/>
+  </entities>
+</domain:DomainModel>

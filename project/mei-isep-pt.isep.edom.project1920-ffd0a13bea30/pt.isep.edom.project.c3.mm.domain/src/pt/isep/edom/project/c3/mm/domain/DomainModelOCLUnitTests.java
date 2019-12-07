@@ -1,8 +1,6 @@
 package pt.isep.edom.project.c3.mm.domain;
 
-import static org.junit.Assert.*;
 
-import java.util.List;
 
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EOperation;
@@ -316,7 +314,7 @@ public class DomainModelOCLUnitTests {
 	}
 	
 	@Test
-	public void GrantThatOCLFailsValidationIfEntityContainsSubEntityWithTheNameOfTheEntity() {
+	public void GrantThatOCLFailsValidationIfEntityHasSubEntityThatReferenceTheEntityThatContainsTheSubEntity() {
 
 		DomainFactory factory = DomainFactory.eINSTANCE;
 		
@@ -337,134 +335,20 @@ public class DomainModelOCLUnitTests {
 		
 		idField.setType(FieldType.INTEGER);
 		
-		meal.getFields().add(nameField);
-		
-		meal.getFields().add(idField);
-		
-		
-		Entity ingredient = factory.createEntity();
-		
-		ingredient.setName("Meal");
-		
-		
-		Field nameFieldd = factory.createField();
-		
-		nameFieldd.setName("name");
-		
-		nameFieldd.setType(FieldType.STRING);
-		
-		Field idFieldd = factory.createField();
-		
-		idFieldd.setName("id");
-		
-		idFieldd.setType(FieldType.INTEGER);
-		
-		ingredient.getFields().add(nameFieldd);
-		
-		ingredient.getFields().add(idFieldd);
-		
-		SubEntity containsIngredient = factory.createSubEntity();
-		
-		containsIngredient.setName("contains");
-		
-		containsIngredient.setEntity(ingredient);
-		
-		containsIngredient.setUpperBound(-1);
-
-		Diagnostic diag = Diagnostician.INSTANCE.validate(ingredient);
-		
-		boolean failedOCLValidation = diag.getSeverity() == Diagnostic.ERROR;
-		
-		Assert.assertTrue(failedOCLValidation);
-	}
-	
-	@Test
-	public void GrantThatOCLFailsValidationIfEntityContainsSubEntitiesWithTheSameName() {
-
-		DomainFactory factory = DomainFactory.eINSTANCE;
-		
-		Entity meal = factory.createEntity();
-		
-		meal.setName("Meal");
-		
-		
-		Field nameField = factory.createField();
-		
-		nameField.setName("name");
-		
-		nameField.setType(FieldType.STRING);
-		
-		Field idField = factory.createField();
-		
-		idField.setName("id");
-		
-		idField.setType(FieldType.INTEGER);
 		
 		meal.getFields().add(nameField);
 		
 		meal.getFields().add(idField);
 		
+		SubEntity subEntity = factory.createSubEntity();
 		
-		Entity ingredient = factory.createEntity();
+		subEntity.setEntity(meal);
 		
-		ingredient.setName("Ingredient");
+		subEntity.setName("contains");
 		
-		
-		Field nameFieldd = factory.createField();
-		
-		nameFieldd.setName("name");
-		
-		nameFieldd.setType(FieldType.STRING);
-		
-		Field idFieldd = factory.createField();
-		
-		idFieldd.setName("id");
-		
-		idFieldd.setType(FieldType.INTEGER);
-		
-		ingredient.getFields().add(nameFieldd);
-		
-		ingredient.getFields().add(idFieldd);
-		
-		SubEntity containsIngredient = factory.createSubEntity();
-		
-		containsIngredient.setName("contains");
-		
-		containsIngredient.setEntity(ingredient);
-		
-		containsIngredient.setUpperBound(-1);
-		
-		
-		Entity allergen = factory.createEntity();
-		
-		allergen.setName("Ingredient");
-		
-		
-		Field nameFielddd = factory.createField();
-		
-		nameFielddd.setName("name");
-		
-		nameFielddd.setType(FieldType.STRING);
-		
-		Field idFielddd = factory.createField();
-		
-		idFielddd.setName("id");
-		
-		idFielddd.setType(FieldType.INTEGER);
-		
-		allergen.getFields().add(nameFielddd);
-		
-		allergen.getFields().add(idFielddd);
-		
-		SubEntity containsAllergen = factory.createSubEntity();
-		
-		containsAllergen.setName("contains");
-		
-		containsAllergen.setEntity(allergen);
-		
-		containsAllergen.setUpperBound(-1);
+		subEntity.setUpperBound(-1);
 
-		Diagnostic diag = Diagnostician.INSTANCE.validate(allergen);
+		Diagnostic diag = Diagnostician.INSTANCE.validate(meal);
 		
 		boolean failedOCLValidation = diag.getSeverity() == Diagnostic.ERROR;
 		

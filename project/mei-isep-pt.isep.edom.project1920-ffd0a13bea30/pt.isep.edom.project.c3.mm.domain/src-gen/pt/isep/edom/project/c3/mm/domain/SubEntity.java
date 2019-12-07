@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see pt.isep.edom.project.c3.mm.domain.DomainPackage#getSubEntity()
  * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='NameCannotBeNull UpperBoundMustBeGreaterOrEqualThanMinusOne EntityReferenceCannotBeNull'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot NameCannotBeNull='not self.name.oclIsUndefined()' UpperBoundMustBeGreaterOrEqualThanMinusOne='self.upperBound &gt;= 1' EntityReferenceCannotBeNull='not self.entity.oclIsUndefined()'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot NameCannotBeNull='not self.name.oclIsUndefined()' UpperBoundMustBeGreaterOrEqualThanMinusOne='self.upperBound &gt;= -1' EntityReferenceCannotBeNull='not self.entity.oclIsUndefined()'"
  * @generated
  */
 public interface SubEntity extends EObject {

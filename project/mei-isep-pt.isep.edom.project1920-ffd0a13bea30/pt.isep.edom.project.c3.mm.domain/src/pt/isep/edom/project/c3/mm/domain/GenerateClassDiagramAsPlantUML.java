@@ -7,12 +7,24 @@ import java.io.PrintWriter;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EOperation;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.eclipse.ocl.common.OCLConstants;
+import org.eclipse.ocl.pivot.internal.delegate.OCLDelegateDomain;
+import org.eclipse.ocl.pivot.internal.delegate.OCLInvocationDelegateFactory;
+import org.eclipse.ocl.pivot.internal.delegate.OCLSettingDelegateFactory;
+import org.eclipse.ocl.pivot.internal.delegate.OCLValidationDelegateFactory;
+import org.eclipse.ocl.pivot.model.OCLstdlib;
+import org.eclipse.ocl.xtext.essentialocl.EssentialOCLStandaloneSetup;
 
 //This class will generate a PlantUML file with the representation of a domain model instance as a class diagram
 //The instance file path should be defined as the first argument
@@ -29,8 +41,31 @@ public class GenerateClassDiagramAsPlantUML {
 		
 		loadModel(instanceAsFile, generatedPUMLAsFile);
 	}
+	
+	public static void initOCL() {
+		//-----------------------------------------
+		// Initialize Stand alone OCLInEcore
+		// The first thing to do before using any code of the model
+		String oclDelegateURI = OCLConstants.OCL_DELEGATE_URI;
+		EOperation.Internal.InvocationDelegate.Factory.Registry.INSTANCE.put(oclDelegateURI,
+			new OCLInvocationDelegateFactory.Global());
+		EStructuralFeature.Internal.SettingDelegate.Factory.Registry.INSTANCE.put(oclDelegateURI,
+			new OCLSettingDelegateFactory.Global());
+		EValidator.ValidationDelegate.Registry.INSTANCE.put(oclDelegateURI,
+			new OCLValidationDelegateFactory.Global());
+		
+		OCLDelegateDomain.initialize(null);
+		
+		EssentialOCLStandaloneSetup.doSetup();
+
+		OCLstdlib.install();
+		//-------------		
+	}
 
 	public static void loadModel(File requirementsInstanceAsFile, File generatedPUMLAsFile) {
+		
+		initOCL();
+		
 		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("xmi", new XMIResourceFactoryImpl());
 
 		// Initialize the model
@@ -53,6 +88,14 @@ public class GenerateClassDiagramAsPlantUML {
 			DomainModel loadedModel=(DomainModel)root;
 			
 			System.out.println(root.toString());
+			
+			Diagnostic diag=Diagnostician.INSTANCE.validate(loadedModel);
+	        if (diag.getSeverity() == Diagnostic.ERROR) {
+	        	
+	        	diag.getException().printStackTrace();
+	        	
+	        	throw new IllegalStateException("Domain Model has failed OCL validations");
+	        }
 			
 			FileWriter w = new FileWriter(generatedPUMLAsFile);
 			

@@ -111,6 +111,9 @@ package domain;
 import java.util.List;
 [/if]
 
+/**
+ * @generated NOT
+ */
 public interface [aType.name.replaceAll('\\s+', '')/] extends Entity {
 
 	[for (field : Field | aType.fields)]
@@ -159,6 +162,9 @@ import java.util.List;
 import java.util.ArrayList;
 [/if]
 
+/**
+ * @generated NOT
+ */
 public class [aType.name.replaceAll('\\s+', '')/]Impl implements [aType.name.replaceAll('\\s+', '')/] {
 
 	[for (field : Field | aType.fields)]
@@ -187,6 +193,147 @@ public class [aType.name.replaceAll('\\s+', '')/]Impl implements [aType.name.rep
 		[/if]
 		
 	[/for]
+
+	public [aType.name.replaceAll('\\s+', '')/]Impl
+		(
+			[for (field : Field | aType.fields)]
+				[if (field.type = FieldType::REAL)]
+		Double [field.name/]
+					[if (aType.fields -> last() <> field)]
+		,
+					[/if]
+				[else]
+		[field.type.toString().toLower().toUpperFirst()/] [field.name/]
+					[if (aType.fields -> last() <> field)]
+		,
+					[/if]
+				[/if]
+			[/for]
+		[if (aType.subentities -> notEmpty())]
+			[for (subEntity : SubEntity | aType.subentities)]
+
+			[if (subEntity.upperBound = 1)]
+		,[subEntity.entity.name.replaceAll('\\s+', '')/] [subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/]
+				[else]
+		,List<[subEntity.entity.name.replaceAll('\\s+', '')/]> [subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/]s
+				[/if]
+			[/for]
+		[/if]
+		[if (aType.references -> notEmpty())]
+			[for (reference : Reference | aType.references)]
+			[if (reference.upperBound = 1)]
+		,[reference.entity.name.replaceAll('\\s+', '')/] [reference.entity.name.replaceAll('\\s+', '').toLowerCase()/]
+				[else]
+		,List<[reference.entity.name.replaceAll('\\s+', '')/]> [reference.entity.name.replaceAll('\\s+', '').toLowerCase()/]s
+				[/if]
+			[/for]
+		[/if]
+		)
+		{
+			[for (field : Field | aType.fields)]
+			this.[field.name/] = [field.name/];
+			[/for]
+		
+			[for (subEntity : SubEntity | aType.subentities)]
+		
+			[if (subEntity.upperBound = 1)]
+			this.[subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/] = [subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/];
+			[else]
+			this.[subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/]s = new ArrayList<>([subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/]s);	
+			[/if]
+				
+			[/for]
+		
+			[for (reference : Reference | aType.references)]
+		
+			[if (reference.upperBound = 1)]
+			this.[reference.entity.name.replaceAll('\\s+', '').toLowerCase()/] = [reference.entity.name.replaceAll('\\s+', '').toLowerCase()/];
+			[else]
+			this.[reference.entity.name.replaceAll('\\s+', '').toLowerCase()/]s = new ArrayList<>([reference.entity.name.replaceAll('\\s+', '').toLowerCase()/]s);	
+			[/if]
+				
+			[/for]
+		}
+
+
+	[if (aType.references -> notEmpty() or aType.subentities -> notEmpty())]
+	public [aType.name.replaceAll('\\s+', '')/]Impl
+		(
+			[for (field : Field | aType.fields)]
+				[if (field.type = FieldType::REAL)]
+		Double [field.name/]
+					[if (aType.fields -> last() <> field)]
+		,
+					[/if]
+				[else]
+		[field.type.toString().toLower().toUpperFirst()/] [field.name/]
+					[if (aType.fields -> last() <> field)]
+		,
+					[/if]
+				[/if]
+			[/for]
+		[if (aType.subentities -> notEmpty())]
+			[for (subEntity : SubEntity | aType.subentities)]
+			[if (subEntity.upperBound = 1)]
+		,[subEntity.entity.name.replaceAll('\\s+', '')/] [subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/]
+				[else]
+	
+					[if (subEntity.upperBound <> -1)]
+
+		,List<[subEntity.entity.name.replaceAll('\\s+', '')/]> [subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/]s
+					[/if]
+			[/if]
+			[/for]
+		[/if]
+		[if (aType.references -> notEmpty())]
+			[for (reference : Reference | aType.references)]
+			[if (reference.upperBound = 1)]
+		,[reference.entity.name.replaceAll('\\s+', '')/] [reference.entity.name.replaceAll('\\s+', '').toLowerCase()/]
+				[else]
+	
+					[if (reference.upperBound <> -1)]
+
+		,List<[reference.entity.name.replaceAll('\\s+', '')/]> [reference.entity.name.replaceAll('\\s+', '').toLowerCase()/]s
+					[/if]
+			[/if]
+			[/for]
+		[/if]
+		)
+		{
+			[for (field : Field | aType.fields)]
+			this.[field.name/] = [field.name/];
+			[/for]
+		
+			[for (subEntity : SubEntity | aType.subentities)]
+		
+			[if (subEntity.upperBound = 1)]
+			this.[subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/] = [subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/];
+			[else]
+
+				[if (subEntity.upperBound <> -1)]
+			this.[subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/]s = new ArrayList<>([subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/]s);
+				[/if]
+	
+			[/if]
+				
+			[/for]
+		
+			[for (reference : Reference | aType.references)]
+		
+			[if (reference.upperBound = 1)]
+			this.[reference.entity.name.replaceAll('\\s+', '').toLowerCase()/] = [reference.entity.name.replaceAll('\\s+', '').toLowerCase()/];
+			[else]
+
+				[if (reference.upperBound <> -1)]
+			this.[reference.entity.name.replaceAll('\\s+', '').toLowerCase()/]s = new ArrayList<>([reference.entity.name.replaceAll('\\s+', '').toLowerCase()/]s);
+				[/if]
+	
+			[/if]
+				
+			[/for]
+		}
+	[/if]
+
 
 	[for (field : Field | aType.fields)]
 		[if (field.type = FieldType::REAL)]

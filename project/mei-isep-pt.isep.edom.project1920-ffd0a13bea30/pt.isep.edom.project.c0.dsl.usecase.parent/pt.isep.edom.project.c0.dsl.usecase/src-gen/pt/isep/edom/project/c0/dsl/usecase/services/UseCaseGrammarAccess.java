@@ -474,9 +474,6 @@ public class UseCaseGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cUsecaseAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final CrossReference cUsecaseUseCaseCrossReference_4_0 = (CrossReference)cUsecaseAssignment_4.eContents().get(0);
 		private final RuleCall cUsecaseUseCaseEStringParserRuleCall_4_0_1 = (RuleCall)cUsecaseUseCaseCrossReference_4_0.eContents().get(1);
-<<<<<<< HEAD
-		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
-=======
 		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
 		private final Keyword cCommentKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_5_1 = (Keyword)cGroup_5.eContents().get(1);
@@ -488,26 +485,17 @@ public class UseCaseGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cCommentCommentParserRuleCall_5_3_1_0 = (RuleCall)cCommentAssignment_5_3_1.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_5_4 = (Keyword)cGroup_5.eContents().get(4);
 		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
->>>>>>> 6ba51290ef074f452a9501b6e0535b5b1dd23617
 		
 		//Extend:
 		//	'Extend'
 		//	name=EString
 		//	'{'
-<<<<<<< HEAD
-		//	'usecase' usecase=[UseCase|EString]
-		//	'}';
-		@Override public ParserRule getRule() { return rule; }
-		
-		//'Extend' name=EString '{' 'usecase' usecase=[UseCase|EString] '}'
-=======
 		//	'usecase' usecase=[UseCase|EString] ('comment' '{' comment+=Comment ("," comment+=Comment)* '}')?
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'Extend' name=EString '{' 'usecase' usecase=[UseCase|EString] ('comment' '{' comment+=Comment ("," comment+=Comment)*
 		//'}')? '}'
->>>>>>> 6ba51290ef074f452a9501b6e0535b5b1dd23617
 		public Group getGroup() { return cGroup; }
 		
 		//'Extend'
@@ -534,10 +522,6 @@ public class UseCaseGrammarAccess extends AbstractGrammarElementFinder {
 		//EString
 		public RuleCall getUsecaseUseCaseEStringParserRuleCall_4_0_1() { return cUsecaseUseCaseEStringParserRuleCall_4_0_1; }
 		
-<<<<<<< HEAD
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
-=======
 		//('comment' '{' comment+=Comment ("," comment+=Comment)* '}')?
 		public Group getGroup_5() { return cGroup_5; }
 		
@@ -570,7 +554,6 @@ public class UseCaseGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
->>>>>>> 6ba51290ef074f452a9501b6e0535b5b1dd23617
 	}
 	public class IncludeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "pt.isep.edom.project.c0.dsl.usecase.UseCase.Include");
@@ -583,9 +566,6 @@ public class UseCaseGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cUsecaseAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final CrossReference cUsecaseUseCaseCrossReference_4_0 = (CrossReference)cUsecaseAssignment_4.eContents().get(0);
 		private final RuleCall cUsecaseUseCaseEStringParserRuleCall_4_0_1 = (RuleCall)cUsecaseUseCaseCrossReference_4_0.eContents().get(1);
-<<<<<<< HEAD
-		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
-=======
 		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
 		private final Keyword cCommentKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_5_1 = (Keyword)cGroup_5.eContents().get(1);
@@ -597,26 +577,17 @@ public class UseCaseGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cCommentCommentParserRuleCall_5_3_1_0 = (RuleCall)cCommentAssignment_5_3_1.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_5_4 = (Keyword)cGroup_5.eContents().get(4);
 		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
->>>>>>> 6ba51290ef074f452a9501b6e0535b5b1dd23617
 		
 		//Include:
 		//	'Include'
 		//	name=EString
 		//	'{'
-<<<<<<< HEAD
-		//	'usecase' usecase=[UseCase|EString]
-		//	'}';
-		@Override public ParserRule getRule() { return rule; }
-		
-		//'Include' name=EString '{' 'usecase' usecase=[UseCase|EString] '}'
-=======
 		//	'usecase' usecase=[UseCase|EString] ('comment' '{' comment+=Comment ("," comment+=Comment)* '}')?
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'Include' name=EString '{' 'usecase' usecase=[UseCase|EString] ('comment' '{' comment+=Comment ("," comment+=Comment)*
 		//'}')? '}'
->>>>>>> 6ba51290ef074f452a9501b6e0535b5b1dd23617
 		public Group getGroup() { return cGroup; }
 		
 		//'Include'
@@ -643,10 +614,6 @@ public class UseCaseGrammarAccess extends AbstractGrammarElementFinder {
 		//EString
 		public RuleCall getUsecaseUseCaseEStringParserRuleCall_4_0_1() { return cUsecaseUseCaseEStringParserRuleCall_4_0_1; }
 		
-<<<<<<< HEAD
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
-=======
 		//('comment' '{' comment+=Comment ("," comment+=Comment)* '}')?
 		public Group getGroup_5() { return cGroup_5; }
 		
@@ -679,7 +646,6 @@ public class UseCaseGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
->>>>>>> 6ba51290ef074f452a9501b6e0535b5b1dd23617
 	}
 	public class CommentElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "pt.isep.edom.project.c0.dsl.usecase.UseCase.Comment");
@@ -855,11 +821,7 @@ public class UseCaseGrammarAccess extends AbstractGrammarElementFinder {
 	//	'Extend'
 	//	name=EString
 	//	'{'
-<<<<<<< HEAD
-	//	'usecase' usecase=[UseCase|EString]
-=======
 	//	'usecase' usecase=[UseCase|EString] ('comment' '{' comment+=Comment ("," comment+=Comment)* '}')?
->>>>>>> 6ba51290ef074f452a9501b6e0535b5b1dd23617
 	//	'}';
 	public ExtendElements getExtendAccess() {
 		return pExtend;
@@ -873,11 +835,7 @@ public class UseCaseGrammarAccess extends AbstractGrammarElementFinder {
 	//	'Include'
 	//	name=EString
 	//	'{'
-<<<<<<< HEAD
-	//	'usecase' usecase=[UseCase|EString]
-=======
 	//	'usecase' usecase=[UseCase|EString] ('comment' '{' comment+=Comment ("," comment+=Comment)* '}')?
->>>>>>> 6ba51290ef074f452a9501b6e0535b5b1dd23617
 	//	'}';
 	public IncludeElements getIncludeAccess() {
 		return pInclude;

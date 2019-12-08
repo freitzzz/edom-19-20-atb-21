@@ -758,11 +758,6 @@ ruleExtend returns [EObject current=null]
 				}
 			)
 		)
-<<<<<<< HEAD
-		otherlv_5='}'
-		{
-			newLeafNode(otherlv_5, grammarAccess.getExtendAccess().getRightCurlyBracketKeyword_5());
-=======
 		(
 			otherlv_5='comment'
 			{
@@ -824,7 +819,6 @@ ruleExtend returns [EObject current=null]
 		otherlv_11='}'
 		{
 			newLeafNode(otherlv_11, grammarAccess.getExtendAccess().getRightCurlyBracketKeyword_6());
->>>>>>> 6ba51290ef074f452a9501b6e0535b5b1dd23617
 		}
 	)
 ;
@@ -892,11 +886,6 @@ ruleInclude returns [EObject current=null]
 				}
 			)
 		)
-<<<<<<< HEAD
-		otherlv_5='}'
-		{
-			newLeafNode(otherlv_5, grammarAccess.getIncludeAccess().getRightCurlyBracketKeyword_5());
-=======
 		(
 			otherlv_5='comment'
 			{
@@ -958,7 +947,6 @@ ruleInclude returns [EObject current=null]
 		otherlv_11='}'
 		{
 			newLeafNode(otherlv_11, grammarAccess.getIncludeAccess().getRightCurlyBracketKeyword_6());
->>>>>>> 6ba51290ef074f452a9501b6e0535b5b1dd23617
 		}
 	)
 ;

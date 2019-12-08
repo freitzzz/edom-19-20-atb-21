@@ -1580,11 +1580,7 @@ public class InternalUseCaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleExtend"
-<<<<<<< HEAD
-    // InternalUseCase.g:706:1: ruleExtend returns [EObject current=null] : (otherlv_0= 'Extend' ( (lv_name_1_0= ruleEString ) ) otherlv_2= '{' otherlv_3= 'usecase' ( ( ruleEString ) ) otherlv_5= '}' ) ;
-=======
     // InternalUseCase.g:706:1: ruleExtend returns [EObject current=null] : (otherlv_0= 'Extend' ( (lv_name_1_0= ruleEString ) ) otherlv_2= '{' otherlv_3= 'usecase' ( ( ruleEString ) ) (otherlv_5= 'comment' otherlv_6= '{' ( (lv_comment_7_0= ruleComment ) ) (otherlv_8= ',' ( (lv_comment_9_0= ruleComment ) ) )* otherlv_10= '}' )? otherlv_11= '}' ) ;
->>>>>>> 6ba51290ef074f452a9501b6e0535b5b1dd23617
     public final EObject ruleExtend() throws RecognitionException {
         EObject current = null;
 
@@ -1592,10 +1588,6 @@ public class InternalUseCaseParser extends AbstractInternalAntlrParser {
         Token otherlv_2=null;
         Token otherlv_3=null;
         Token otherlv_5=null;
-<<<<<<< HEAD
-        AntlrDatatypeRuleToken lv_name_1_0 = null;
-
-=======
         Token otherlv_6=null;
         Token otherlv_8=null;
         Token otherlv_10=null;
@@ -1606,25 +1598,16 @@ public class InternalUseCaseParser extends AbstractInternalAntlrParser {
 
         EObject lv_comment_9_0 = null;
 
->>>>>>> 6ba51290ef074f452a9501b6e0535b5b1dd23617
 
 
         	enterRule();
 
         try {
-<<<<<<< HEAD
-            // InternalUseCase.g:712:2: ( (otherlv_0= 'Extend' ( (lv_name_1_0= ruleEString ) ) otherlv_2= '{' otherlv_3= 'usecase' ( ( ruleEString ) ) otherlv_5= '}' ) )
-            // InternalUseCase.g:713:2: (otherlv_0= 'Extend' ( (lv_name_1_0= ruleEString ) ) otherlv_2= '{' otherlv_3= 'usecase' ( ( ruleEString ) ) otherlv_5= '}' )
-            {
-            // InternalUseCase.g:713:2: (otherlv_0= 'Extend' ( (lv_name_1_0= ruleEString ) ) otherlv_2= '{' otherlv_3= 'usecase' ( ( ruleEString ) ) otherlv_5= '}' )
-            // InternalUseCase.g:714:3: otherlv_0= 'Extend' ( (lv_name_1_0= ruleEString ) ) otherlv_2= '{' otherlv_3= 'usecase' ( ( ruleEString ) ) otherlv_5= '}'
-=======
             // InternalUseCase.g:712:2: ( (otherlv_0= 'Extend' ( (lv_name_1_0= ruleEString ) ) otherlv_2= '{' otherlv_3= 'usecase' ( ( ruleEString ) ) (otherlv_5= 'comment' otherlv_6= '{' ( (lv_comment_7_0= ruleComment ) ) (otherlv_8= ',' ( (lv_comment_9_0= ruleComment ) ) )* otherlv_10= '}' )? otherlv_11= '}' ) )
             // InternalUseCase.g:713:2: (otherlv_0= 'Extend' ( (lv_name_1_0= ruleEString ) ) otherlv_2= '{' otherlv_3= 'usecase' ( ( ruleEString ) ) (otherlv_5= 'comment' otherlv_6= '{' ( (lv_comment_7_0= ruleComment ) ) (otherlv_8= ',' ( (lv_comment_9_0= ruleComment ) ) )* otherlv_10= '}' )? otherlv_11= '}' )
             {
             // InternalUseCase.g:713:2: (otherlv_0= 'Extend' ( (lv_name_1_0= ruleEString ) ) otherlv_2= '{' otherlv_3= 'usecase' ( ( ruleEString ) ) (otherlv_5= 'comment' otherlv_6= '{' ( (lv_comment_7_0= ruleComment ) ) (otherlv_8= ',' ( (lv_comment_9_0= ruleComment ) ) )* otherlv_10= '}' )? otherlv_11= '}' )
             // InternalUseCase.g:714:3: otherlv_0= 'Extend' ( (lv_name_1_0= ruleEString ) ) otherlv_2= '{' otherlv_3= 'usecase' ( ( ruleEString ) ) (otherlv_5= 'comment' otherlv_6= '{' ( (lv_comment_7_0= ruleComment ) ) (otherlv_8= ',' ( (lv_comment_9_0= ruleComment ) ) )* otherlv_10= '}' )? otherlv_11= '}'
->>>>>>> 6ba51290ef074f452a9501b6e0535b5b1dd23617
             {
             otherlv_0=(Token)match(input,24,FOLLOW_3); 
 
@@ -1683,11 +1666,7 @@ public class InternalUseCaseParser extends AbstractInternalAntlrParser {
 
             					newCompositeNode(grammarAccess.getExtendAccess().getUsecaseUseCaseCrossReference_4_0());
             				
-<<<<<<< HEAD
-            pushFollow(FOLLOW_12);
-=======
             pushFollow(FOLLOW_19);
->>>>>>> 6ba51290ef074f452a9501b6e0535b5b1dd23617
             ruleEString();
 
             state._fsp--;
@@ -1701,11 +1680,6 @@ public class InternalUseCaseParser extends AbstractInternalAntlrParser {
 
             }
 
-<<<<<<< HEAD
-            otherlv_5=(Token)match(input,15,FOLLOW_2); 
-
-            			newLeafNode(otherlv_5, grammarAccess.getExtendAccess().getRightCurlyBracketKeyword_5());
-=======
             // InternalUseCase.g:761:3: (otherlv_5= 'comment' otherlv_6= '{' ( (lv_comment_7_0= ruleComment ) ) (otherlv_8= ',' ( (lv_comment_9_0= ruleComment ) ) )* otherlv_10= '}' )?
             int alt15=2;
             int LA15_0 = input.LA(1);
@@ -1828,7 +1802,6 @@ public class InternalUseCaseParser extends AbstractInternalAntlrParser {
             otherlv_11=(Token)match(input,15,FOLLOW_2); 
 
             			newLeafNode(otherlv_11, grammarAccess.getExtendAccess().getRightCurlyBracketKeyword_6());
->>>>>>> 6ba51290ef074f452a9501b6e0535b5b1dd23617
             		
 
             }
@@ -1853,11 +1826,7 @@ public class InternalUseCaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleInclude"
-<<<<<<< HEAD
-    // InternalUseCase.g:769:1: entryRuleInclude returns [EObject current=null] : iv_ruleInclude= ruleInclude EOF ;
-=======
     // InternalUseCase.g:827:1: entryRuleInclude returns [EObject current=null] : iv_ruleInclude= ruleInclude EOF ;
->>>>>>> 6ba51290ef074f452a9501b6e0535b5b1dd23617
     public final EObject entryRuleInclude() throws RecognitionException {
         EObject current = null;
 
@@ -1865,13 +1834,8 @@ public class InternalUseCaseParser extends AbstractInternalAntlrParser {
 
 
         try {
-<<<<<<< HEAD
-            // InternalUseCase.g:769:48: (iv_ruleInclude= ruleInclude EOF )
-            // InternalUseCase.g:770:2: iv_ruleInclude= ruleInclude EOF
-=======
             // InternalUseCase.g:827:48: (iv_ruleInclude= ruleInclude EOF )
             // InternalUseCase.g:828:2: iv_ruleInclude= ruleInclude EOF
->>>>>>> 6ba51290ef074f452a9501b6e0535b5b1dd23617
             {
              newCompositeNode(grammarAccess.getIncludeRule()); 
             pushFollow(FOLLOW_1);
@@ -1898,11 +1862,7 @@ public class InternalUseCaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleInclude"
-<<<<<<< HEAD
-    // InternalUseCase.g:776:1: ruleInclude returns [EObject current=null] : (otherlv_0= 'Include' ( (lv_name_1_0= ruleEString ) ) otherlv_2= '{' otherlv_3= 'usecase' ( ( ruleEString ) ) otherlv_5= '}' ) ;
-=======
     // InternalUseCase.g:834:1: ruleInclude returns [EObject current=null] : (otherlv_0= 'Include' ( (lv_name_1_0= ruleEString ) ) otherlv_2= '{' otherlv_3= 'usecase' ( ( ruleEString ) ) (otherlv_5= 'comment' otherlv_6= '{' ( (lv_comment_7_0= ruleComment ) ) (otherlv_8= ',' ( (lv_comment_9_0= ruleComment ) ) )* otherlv_10= '}' )? otherlv_11= '}' ) ;
->>>>>>> 6ba51290ef074f452a9501b6e0535b5b1dd23617
     public final EObject ruleInclude() throws RecognitionException {
         EObject current = null;
 
@@ -1910,10 +1870,6 @@ public class InternalUseCaseParser extends AbstractInternalAntlrParser {
         Token otherlv_2=null;
         Token otherlv_3=null;
         Token otherlv_5=null;
-<<<<<<< HEAD
-        AntlrDatatypeRuleToken lv_name_1_0 = null;
-
-=======
         Token otherlv_6=null;
         Token otherlv_8=null;
         Token otherlv_10=null;
@@ -1924,43 +1880,26 @@ public class InternalUseCaseParser extends AbstractInternalAntlrParser {
 
         EObject lv_comment_9_0 = null;
 
->>>>>>> 6ba51290ef074f452a9501b6e0535b5b1dd23617
 
 
         	enterRule();
 
         try {
-<<<<<<< HEAD
-            // InternalUseCase.g:782:2: ( (otherlv_0= 'Include' ( (lv_name_1_0= ruleEString ) ) otherlv_2= '{' otherlv_3= 'usecase' ( ( ruleEString ) ) otherlv_5= '}' ) )
-            // InternalUseCase.g:783:2: (otherlv_0= 'Include' ( (lv_name_1_0= ruleEString ) ) otherlv_2= '{' otherlv_3= 'usecase' ( ( ruleEString ) ) otherlv_5= '}' )
-            {
-            // InternalUseCase.g:783:2: (otherlv_0= 'Include' ( (lv_name_1_0= ruleEString ) ) otherlv_2= '{' otherlv_3= 'usecase' ( ( ruleEString ) ) otherlv_5= '}' )
-            // InternalUseCase.g:784:3: otherlv_0= 'Include' ( (lv_name_1_0= ruleEString ) ) otherlv_2= '{' otherlv_3= 'usecase' ( ( ruleEString ) ) otherlv_5= '}'
-=======
             // InternalUseCase.g:840:2: ( (otherlv_0= 'Include' ( (lv_name_1_0= ruleEString ) ) otherlv_2= '{' otherlv_3= 'usecase' ( ( ruleEString ) ) (otherlv_5= 'comment' otherlv_6= '{' ( (lv_comment_7_0= ruleComment ) ) (otherlv_8= ',' ( (lv_comment_9_0= ruleComment ) ) )* otherlv_10= '}' )? otherlv_11= '}' ) )
             // InternalUseCase.g:841:2: (otherlv_0= 'Include' ( (lv_name_1_0= ruleEString ) ) otherlv_2= '{' otherlv_3= 'usecase' ( ( ruleEString ) ) (otherlv_5= 'comment' otherlv_6= '{' ( (lv_comment_7_0= ruleComment ) ) (otherlv_8= ',' ( (lv_comment_9_0= ruleComment ) ) )* otherlv_10= '}' )? otherlv_11= '}' )
             {
             // InternalUseCase.g:841:2: (otherlv_0= 'Include' ( (lv_name_1_0= ruleEString ) ) otherlv_2= '{' otherlv_3= 'usecase' ( ( ruleEString ) ) (otherlv_5= 'comment' otherlv_6= '{' ( (lv_comment_7_0= ruleComment ) ) (otherlv_8= ',' ( (lv_comment_9_0= ruleComment ) ) )* otherlv_10= '}' )? otherlv_11= '}' )
             // InternalUseCase.g:842:3: otherlv_0= 'Include' ( (lv_name_1_0= ruleEString ) ) otherlv_2= '{' otherlv_3= 'usecase' ( ( ruleEString ) ) (otherlv_5= 'comment' otherlv_6= '{' ( (lv_comment_7_0= ruleComment ) ) (otherlv_8= ',' ( (lv_comment_9_0= ruleComment ) ) )* otherlv_10= '}' )? otherlv_11= '}'
->>>>>>> 6ba51290ef074f452a9501b6e0535b5b1dd23617
             {
             otherlv_0=(Token)match(input,25,FOLLOW_3); 
 
             			newLeafNode(otherlv_0, grammarAccess.getIncludeAccess().getIncludeKeyword_0());
             		
-<<<<<<< HEAD
-            // InternalUseCase.g:788:3: ( (lv_name_1_0= ruleEString ) )
-            // InternalUseCase.g:789:4: (lv_name_1_0= ruleEString )
-            {
-            // InternalUseCase.g:789:4: (lv_name_1_0= ruleEString )
-            // InternalUseCase.g:790:5: lv_name_1_0= ruleEString
-=======
             // InternalUseCase.g:846:3: ( (lv_name_1_0= ruleEString ) )
             // InternalUseCase.g:847:4: (lv_name_1_0= ruleEString )
             {
             // InternalUseCase.g:847:4: (lv_name_1_0= ruleEString )
             // InternalUseCase.g:848:5: lv_name_1_0= ruleEString
->>>>>>> 6ba51290ef074f452a9501b6e0535b5b1dd23617
             {
 
             					newCompositeNode(grammarAccess.getIncludeAccess().getNameEStringParserRuleCall_1_0());
@@ -1995,19 +1934,11 @@ public class InternalUseCaseParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_3, grammarAccess.getIncludeAccess().getUsecaseKeyword_3());
             		
-<<<<<<< HEAD
-            // InternalUseCase.g:815:3: ( ( ruleEString ) )
-            // InternalUseCase.g:816:4: ( ruleEString )
-            {
-            // InternalUseCase.g:816:4: ( ruleEString )
-            // InternalUseCase.g:817:5: ruleEString
-=======
             // InternalUseCase.g:873:3: ( ( ruleEString ) )
             // InternalUseCase.g:874:4: ( ruleEString )
             {
             // InternalUseCase.g:874:4: ( ruleEString )
             // InternalUseCase.g:875:5: ruleEString
->>>>>>> 6ba51290ef074f452a9501b6e0535b5b1dd23617
             {
 
             					if (current==null) {
@@ -2017,11 +1948,7 @@ public class InternalUseCaseParser extends AbstractInternalAntlrParser {
 
             					newCompositeNode(grammarAccess.getIncludeAccess().getUsecaseUseCaseCrossReference_4_0());
             				
-<<<<<<< HEAD
-            pushFollow(FOLLOW_12);
-=======
             pushFollow(FOLLOW_19);
->>>>>>> 6ba51290ef074f452a9501b6e0535b5b1dd23617
             ruleEString();
 
             state._fsp--;
@@ -2035,11 +1962,6 @@ public class InternalUseCaseParser extends AbstractInternalAntlrParser {
 
             }
 
-<<<<<<< HEAD
-            otherlv_5=(Token)match(input,15,FOLLOW_2); 
-
-            			newLeafNode(otherlv_5, grammarAccess.getIncludeAccess().getRightCurlyBracketKeyword_5());
-=======
             // InternalUseCase.g:889:3: (otherlv_5= 'comment' otherlv_6= '{' ( (lv_comment_7_0= ruleComment ) ) (otherlv_8= ',' ( (lv_comment_9_0= ruleComment ) ) )* otherlv_10= '}' )?
             int alt17=2;
             int LA17_0 = input.LA(1);
@@ -2162,7 +2084,6 @@ public class InternalUseCaseParser extends AbstractInternalAntlrParser {
             otherlv_11=(Token)match(input,15,FOLLOW_2); 
 
             			newLeafNode(otherlv_11, grammarAccess.getIncludeAccess().getRightCurlyBracketKeyword_6());
->>>>>>> 6ba51290ef074f452a9501b6e0535b5b1dd23617
             		
 
             }
@@ -2187,11 +2108,7 @@ public class InternalUseCaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleComment"
-<<<<<<< HEAD
-    // InternalUseCase.g:839:1: entryRuleComment returns [EObject current=null] : iv_ruleComment= ruleComment EOF ;
-=======
     // InternalUseCase.g:955:1: entryRuleComment returns [EObject current=null] : iv_ruleComment= ruleComment EOF ;
->>>>>>> 6ba51290ef074f452a9501b6e0535b5b1dd23617
     public final EObject entryRuleComment() throws RecognitionException {
         EObject current = null;
 
@@ -2199,13 +2116,8 @@ public class InternalUseCaseParser extends AbstractInternalAntlrParser {
 
 
         try {
-<<<<<<< HEAD
-            // InternalUseCase.g:839:48: (iv_ruleComment= ruleComment EOF )
-            // InternalUseCase.g:840:2: iv_ruleComment= ruleComment EOF
-=======
             // InternalUseCase.g:955:48: (iv_ruleComment= ruleComment EOF )
             // InternalUseCase.g:956:2: iv_ruleComment= ruleComment EOF
->>>>>>> 6ba51290ef074f452a9501b6e0535b5b1dd23617
             {
              newCompositeNode(grammarAccess.getCommentRule()); 
             pushFollow(FOLLOW_1);
@@ -2232,11 +2144,7 @@ public class InternalUseCaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleComment"
-<<<<<<< HEAD
-    // InternalUseCase.g:846:1: ruleComment returns [EObject current=null] : ( () otherlv_1= 'Comment' otherlv_2= '{' (otherlv_3= 'description' ( (lv_description_4_0= ruleEString ) ) )? otherlv_5= '}' ) ;
-=======
     // InternalUseCase.g:962:1: ruleComment returns [EObject current=null] : ( () otherlv_1= 'Comment' otherlv_2= '{' (otherlv_3= 'description' ( (lv_description_4_0= ruleEString ) ) )? otherlv_5= '}' ) ;
->>>>>>> 6ba51290ef074f452a9501b6e0535b5b1dd23617
     public final EObject ruleComment() throws RecognitionException {
         EObject current = null;
 
@@ -2251,16 +2159,6 @@ public class InternalUseCaseParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-<<<<<<< HEAD
-            // InternalUseCase.g:852:2: ( ( () otherlv_1= 'Comment' otherlv_2= '{' (otherlv_3= 'description' ( (lv_description_4_0= ruleEString ) ) )? otherlv_5= '}' ) )
-            // InternalUseCase.g:853:2: ( () otherlv_1= 'Comment' otherlv_2= '{' (otherlv_3= 'description' ( (lv_description_4_0= ruleEString ) ) )? otherlv_5= '}' )
-            {
-            // InternalUseCase.g:853:2: ( () otherlv_1= 'Comment' otherlv_2= '{' (otherlv_3= 'description' ( (lv_description_4_0= ruleEString ) ) )? otherlv_5= '}' )
-            // InternalUseCase.g:854:3: () otherlv_1= 'Comment' otherlv_2= '{' (otherlv_3= 'description' ( (lv_description_4_0= ruleEString ) ) )? otherlv_5= '}'
-            {
-            // InternalUseCase.g:854:3: ()
-            // InternalUseCase.g:855:4: 
-=======
             // InternalUseCase.g:968:2: ( ( () otherlv_1= 'Comment' otherlv_2= '{' (otherlv_3= 'description' ( (lv_description_4_0= ruleEString ) ) )? otherlv_5= '}' ) )
             // InternalUseCase.g:969:2: ( () otherlv_1= 'Comment' otherlv_2= '{' (otherlv_3= 'description' ( (lv_description_4_0= ruleEString ) ) )? otherlv_5= '}' )
             {
@@ -2269,7 +2167,6 @@ public class InternalUseCaseParser extends AbstractInternalAntlrParser {
             {
             // InternalUseCase.g:970:3: ()
             // InternalUseCase.g:971:4: 
->>>>>>> 6ba51290ef074f452a9501b6e0535b5b1dd23617
             {
 
             				current = forceCreateModelElement(
@@ -2287,18 +2184,6 @@ public class InternalUseCaseParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_2, grammarAccess.getCommentAccess().getLeftCurlyBracketKeyword_2());
             		
-<<<<<<< HEAD
-            // InternalUseCase.g:869:3: (otherlv_3= 'description' ( (lv_description_4_0= ruleEString ) ) )?
-            int alt14=2;
-            int LA14_0 = input.LA(1);
-
-            if ( (LA14_0==27) ) {
-                alt14=1;
-            }
-            switch (alt14) {
-                case 1 :
-                    // InternalUseCase.g:870:4: otherlv_3= 'description' ( (lv_description_4_0= ruleEString ) )
-=======
             // InternalUseCase.g:985:3: (otherlv_3= 'description' ( (lv_description_4_0= ruleEString ) ) )?
             int alt18=2;
             int LA18_0 = input.LA(1);
@@ -2309,25 +2194,16 @@ public class InternalUseCaseParser extends AbstractInternalAntlrParser {
             switch (alt18) {
                 case 1 :
                     // InternalUseCase.g:986:4: otherlv_3= 'description' ( (lv_description_4_0= ruleEString ) )
->>>>>>> 6ba51290ef074f452a9501b6e0535b5b1dd23617
                     {
                     otherlv_3=(Token)match(input,27,FOLLOW_3); 
 
                     				newLeafNode(otherlv_3, grammarAccess.getCommentAccess().getDescriptionKeyword_3_0());
                     			
-<<<<<<< HEAD
-                    // InternalUseCase.g:874:4: ( (lv_description_4_0= ruleEString ) )
-                    // InternalUseCase.g:875:5: (lv_description_4_0= ruleEString )
-                    {
-                    // InternalUseCase.g:875:5: (lv_description_4_0= ruleEString )
-                    // InternalUseCase.g:876:6: lv_description_4_0= ruleEString
-=======
                     // InternalUseCase.g:990:4: ( (lv_description_4_0= ruleEString ) )
                     // InternalUseCase.g:991:5: (lv_description_4_0= ruleEString )
                     {
                     // InternalUseCase.g:991:5: (lv_description_4_0= ruleEString )
                     // InternalUseCase.g:992:6: lv_description_4_0= ruleEString
->>>>>>> 6ba51290ef074f452a9501b6e0535b5b1dd23617
                     {
 
                     						newCompositeNode(grammarAccess.getCommentAccess().getDescriptionEStringParserRuleCall_3_1_0());

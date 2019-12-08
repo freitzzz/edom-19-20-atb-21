@@ -123,26 +123,10 @@ public class UseCaseSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *     Extend returns Extend
 	 *
 	 * Constraint:
-<<<<<<< HEAD
-	 *     (name=EString usecase=[UseCase|EString])
-	 */
-	protected void sequence_Extend(ISerializationContext context, Extend semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, UsecasePackage.Literals.RELATIONSHIP__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, UsecasePackage.Literals.RELATIONSHIP__NAME));
-			if (transientValues.isValueTransient(semanticObject, UsecasePackage.Literals.EXTEND__USECASE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, UsecasePackage.Literals.EXTEND__USECASE));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getExtendAccess().getNameEStringParserRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getExtendAccess().getUsecaseUseCaseEStringParserRuleCall_4_0_1(), semanticObject.eGet(UsecasePackage.Literals.EXTEND__USECASE, false));
-		feeder.finish();
-=======
 	 *     (name=EString usecase=[UseCase|EString] (comment+=Comment comment+=Comment*)?)
 	 */
 	protected void sequence_Extend(ISerializationContext context, Extend semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
->>>>>>> 6ba51290ef074f452a9501b6e0535b5b1dd23617
 	}
 	
 	
@@ -151,26 +135,10 @@ public class UseCaseSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *     Include returns Include
 	 *
 	 * Constraint:
-<<<<<<< HEAD
-	 *     (name=EString usecase=[UseCase|EString])
-	 */
-	protected void sequence_Include(ISerializationContext context, Include semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, UsecasePackage.Literals.RELATIONSHIP__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, UsecasePackage.Literals.RELATIONSHIP__NAME));
-			if (transientValues.isValueTransient(semanticObject, UsecasePackage.Literals.INCLUDE__USECASE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, UsecasePackage.Literals.INCLUDE__USECASE));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getIncludeAccess().getNameEStringParserRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getIncludeAccess().getUsecaseUseCaseEStringParserRuleCall_4_0_1(), semanticObject.eGet(UsecasePackage.Literals.INCLUDE__USECASE, false));
-		feeder.finish();
-=======
 	 *     (name=EString usecase=[UseCase|EString] (comment+=Comment comment+=Comment*)?)
 	 */
 	protected void sequence_Include(ISerializationContext context, Include semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
->>>>>>> 6ba51290ef074f452a9501b6e0535b5b1dd23617
 	}
 	
 	

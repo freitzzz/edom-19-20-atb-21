@@ -32,6 +32,22 @@
 							<includePluginDependencies>true</includePluginDependencies>
 							<cleanupDaemonThreads>false</cleanupDaemonThreads><!-- see https://bugs.eclipse.org/bugs/show_bug.cgi?id=475098#c3 -->
 						</configuration>
+					</execution>
+					
+					<execution>
+						<id>generateClassDiagram</id>
+						<goals>
+							<goal>java</goal>
+						</goals>
+						<configuration>
+							<executable>java</executable>
+							<mainClass>pt.isep.edom.project.c3.dsl.domain.GenerateClassDiagramAsPlantUML</mainClass>
+							<!-- <arguments> <argument>foo</argument> <argument>bar</argument>
+								</arguments> -->
+							<classpathScope>compile</classpathScope>
+							<includeProjectDependencies>true</includeProjectDependencies>
+							<includePluginDependencies>true</includePluginDependencies>
+						</configuration>
 					</execution>				
 				
 					<execution>

@@ -9,11 +9,53 @@ UseCaseModel GorgeousFoodApp {
 	usecase {  
 		UseCase ManageMeal {
 			extend { Extend ext1 { usecase ManageMealItem } } 
-			include { Include inc1 { usecase ManageIngredients }  }
+			comment {
+				Comment {
+					description "CRUD"
+				},
+				Comment {
+					description "Entity"
+				},
+				Comment {
+					description "Field: name|String"
+				},
+				Comment {
+					description "Field: name|Integer"
+				}
+			}
 		},
 		UseCase ManageMealItem {
+			comment {
+				Comment {
+					description "CRUD"
+				},
+				Comment {
+					description "Entity"
+				},
+				Comment {
+					description "Field: name|String"
+				},
+				Comment {
+					description "Field: name|Integer"
+				}
+			}
 		},
 		UseCase ManageIngredients {
+			include { Include inc1 { usecase ManageIngredients }  }
+			comment {
+				Comment {
+					description "CRUD"
+				},
+				Comment {
+					description "Local Entity"
+				},
+				Comment {
+					description "Field: name|String"
+				},
+				Comment {
+					description "Field: name|Integer"
+				}
+			}
 		}
 	}
 }

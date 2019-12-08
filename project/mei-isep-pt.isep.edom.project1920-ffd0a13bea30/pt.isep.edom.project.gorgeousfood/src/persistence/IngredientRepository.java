@@ -1,65 +1,63 @@
-package demo.persistence;
+package persistence;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
 
-import demo.domain.MealItem;
+import domain.*;
 
-public class MealItemRepository {
-
-    public MealItem mealItemOfId(int aMealItemId) {
+public class IngredientRepository {
+	public Ingredient IngredientOfId(int id) {
 		Statement stmt = null;
-		MealItem mealItem=null;
+		Ingredient ingredient=null;
+
 		try {
 			Connection conn=Database.getConnection();
-			
-			String sql = "SELECT mealItemId, name, mealId, prodDate, expDate FROM MEALITEM WHERE mealItemId="
-					+ aMealItemId;
+	
+			String sql = "SELECT * FROM Ingredient WHERE id="
+					+ id;
 			stmt = conn.createStatement();
 
 			stmt.executeQuery(sql);
 			ResultSet res = stmt.getResultSet();
 			if (res.next()) { 
-				mealItem=new MealItem(res.getInt(1),
-							res.getString(2),
-							res.getInt(3),
-							res.getString(4),
-							res.getString(5)
-						);
-			} else {
-			    // Throw exception?
+
+				IngredientDTO dto = new IngredientDTO();
+
+				dto.name = res.getString(1);
+				dto.id = res.getInt(2);
+
+				
+
+				ingredient = (Ingredient)FFactory.getInstance().createIngredient(dto);
 			}
 
-			// Clean-up environment
 			stmt.close();
 		} catch (SQLException se) {
-			// Handle errors for JDBC
 			se.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			// finally block used to close resources
 			try {
 				if (stmt != null)
 					stmt.close();
 			} catch (SQLException se2) {
 				se2.printStackTrace();
-			} // nothing we can do
-		} // end try      	
-    	return mealItem;
+			}
+		}     	
+    	return ingredient;
     }
 
-    public int remove(int mealItemId) {
+	public int remove(int id) {
 		Statement stmt = null;
 		try {
 			Connection conn=Database.getConnection();
 			
-			String sql = "DELETE FROM MEALITEM WHERE mealItemId="
-					+ mealItemId;
+			String sql = "DELETE FROM Ingredient WHERE id="
+					+ id;
 			stmt = conn.createStatement();
 
 			stmt.execute(sql);
@@ -87,21 +85,23 @@ public class MealItemRepository {
     	
     }
     
-    public int remove(MealItem aMealItem) {
-    	return remove(aMealItem.getMealItemId());
+    public int remove(Ingredient aIngredient) {
+    	return remove(aIngredient.id());
     }
     
-    private int sqlInsert(MealItem aMealItem) {
+    private int sqlInsert(Ingredient aIngredient) {
 		Statement stmt = null;
 		int id=0;
 		try {
 			Connection conn=Database.getConnection();
+
+			String sql = "INSERT INTO Ingredient ( ";
+
+				sql += "id, ";
+			sql += " ) VALUES ( ";
+				sql += aIngredient.id() + ", ";
+			sql += ")";
 			
-			String sql = "INSERT INTO MEALITEM (name, mealId, prodDate, expDate) VALUES("
-					+"'"+aMealItem.getName()+"'"
-					+", "+aMealItem.getMealId()
-					+", '"+aMealItem.getProdDate()+"'"
-					+", '"+aMealItem.getExpDate()+"')";
 			stmt = conn.createStatement();
 			
 			stmt.execute(sql, Statement.RETURN_GENERATED_KEYS);
@@ -109,7 +109,6 @@ public class MealItemRepository {
 			if (generatedKeys.next()) {
 			    id = generatedKeys.getInt(1);
 			} else {
-			    // Throw exception?
 				id=0;
 			}
 
@@ -132,18 +131,18 @@ public class MealItemRepository {
 		return id;
     }
 
-    private boolean sqlUpdate(MealItem aMealItem) {
+    private boolean sqlUpdate(Ingredient aIngredient) {
 		Statement stmt = null;
 		try {
 			Connection conn=Database.getConnection();
 			
 			stmt = conn.createStatement();
-			String sql = "UPDATE MEALITEM SET "
-						+ "name='"+ aMealItem.getName() +"', "
-						+ "mealId="+ aMealItem.getMealId() + ", " 
-						+ "prodDate='"+ aMealItem.getProdDate() +"', "
-						+ "expDate='"+ aMealItem.getExpDate() +"' "
-						+ "WHERE mealItemId="+aMealItem.getMealItemId();
+
+			String sql = "UPDATE Ingredient SET ";
+
+				sql += "id=" + aIngredient.id() + ", ";
+			sql += "WHERE id="+aIngredient.id();
+
 			stmt.executeUpdate(sql);
 
 			// Clean-up environment
@@ -168,40 +167,45 @@ public class MealItemRepository {
 		return true;
     }
     
-    public MealItem save(MealItem aMealItem) {
-    	if (aMealItem.getMealItemId()==0) {
+    public Ingredient save(Ingredient aIngredient) {
+    	if (aIngredient.id()==0) {
     		// Insert
-    		int newId=sqlInsert(aMealItem);
-    		return mealItemOfId(newId);
+    		int newId=sqlInsert(aIngredient);
+    		return IngredientOfId(newId);
     	}
     	else
     	{
     		// Update
-    		sqlUpdate(aMealItem);
-    		return aMealItem;
+    		sqlUpdate(aIngredient);
+    		return aIngredient;
     	}
     }
     
-    public List<MealItem> allMealItems() {
+    public List<Ingredient> all() {
 		Statement stmt = null;
-		MealItem mealItem=null;
-		ArrayList<MealItem> mealItemList=new ArrayList<MealItem>();
+		Ingredient ingredient=null;
+		ArrayList<Ingredient> list=new ArrayList<Ingredient>();
 		try {
 			Connection conn=Database.getConnection();
 			
-			String sql = "SELECT mealItemId, name, mealId, prodDate, expDate FROM MEALITEM";
+			String sql = "SELECT * FROM Ingredient";
 			stmt = conn.createStatement();
 
 			stmt.executeQuery(sql);
 			ResultSet res = stmt.getResultSet();
-			while (res.next()) { 
-				mealItem=new MealItem(res.getInt(1),
-							res.getString(2),
-							res.getInt(3),
-							res.getString(4),
-							res.getString(5)
-						);
-				mealItemList.add(mealItem);
+			while (res.next()) {
+
+				IngredientDTO dto = new IngredientDTO();
+
+				dto.name = res.getString(1);
+				dto.id = res.getInt(2);
+
+				
+
+				ingredient = (Ingredient)FFactory.getInstance().createIngredient(dto);
+ 
+				
+				list.add(ingredient );
 			} 
 
 			// Clean-up environment
@@ -220,6 +224,6 @@ public class MealItemRepository {
 				se2.printStackTrace();
 			} // nothing we can do
 		} // end try      	
-    	return mealItemList;
+    	return list;
     }
- }
+}

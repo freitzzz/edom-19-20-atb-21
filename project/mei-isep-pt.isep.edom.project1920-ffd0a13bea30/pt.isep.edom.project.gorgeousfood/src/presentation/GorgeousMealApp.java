@@ -1,4 +1,4 @@
-package demo.presentation;
+package presentation;
 
 public class GorgeousMealApp {
 

@@ -1,4 +1,4 @@
-package demo.presentation;
+package presentation;
 
 public class StaffMenu {
 	
@@ -17,7 +17,7 @@ public class StaffMenu {
 
 			System.out.println("0-Exit");
 			
-			System.out.println("1-Manage MealItem");
+			System.out.println("1-Manage Meal");
 
 			System.out.println(">>Please enter you option");
 
@@ -29,7 +29,7 @@ public class StaffMenu {
 					exit=true;
 					break;
 				case 1:
-					ManageMealItem.execute();
+					ManageMeal.execute();
 					break;
 			}
 		}		

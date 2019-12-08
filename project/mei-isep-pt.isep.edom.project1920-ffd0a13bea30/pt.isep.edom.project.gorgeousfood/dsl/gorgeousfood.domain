@@ -1,9 +1,1 @@
-DomainModel Ola2 { 
-	entities {
-		Entity Meal {
-			fields {
-				Field id { type STRING }
-			}
-		}
-	}
-}
+DomainModel GorgeousFoodApp { entities { Entity ManageMeal { fields { Field name { type STRING } , Field name { } } references { Reference ext1 { upperBound -1 entity ManageMealItem } } } , Entity ManageMealItem { fields { Field name { type STRING } , Field name { } } } , Entity ManageIngredients { fields { Field name { type STRING } , Field name { } } subentities { SubEntity inc1 { upperBound -1 entity ManageIngredients } } } } }

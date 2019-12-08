@@ -1,4 +1,4 @@
-package demo.persistence;
+package persistence;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -21,14 +21,28 @@ public class Database {
 		Statement stmt = null;
 		try {
 			stmt = conn.createStatement();
-			String sql = "CREATE TABLE IF NOT EXISTS MEALITEM " 
-						+ "(mealItemId INTEGER auto_increment, " 
-						+ " name VARCHAR(255), "
-						+ " mealId INTEGER not NULL, "
-						+ " prodDate VARCHAR(255), "
-						+ " expDate VARCHAR(255), "
-						+ " PRIMARY KEY ( mealItemId ))";
-			stmt.executeUpdate(sql);
+			String sql;
+				sql = "CREATE TABLE IF NOT EXISTS MealItem ( ";
+
+					sql += "id INTEGER, ";
+				sql += " PRIMARY KEY ( ";
+						sql += "id ,";
+				sql += ")";
+				stmt.executeUpdate(sql);
+				sql = "CREATE TABLE IF NOT EXISTS Meal ( ";
+
+					sql += "id INTEGER, ";
+				sql += " PRIMARY KEY ( ";
+						sql += "id ,";
+				sql += ")";
+				stmt.executeUpdate(sql);
+				sql = "CREATE TABLE IF NOT EXISTS Ingredient ( ";
+
+					sql += "id INTEGER, ";
+				sql += " PRIMARY KEY ( ";
+						sql += "id ,";
+				sql += ")";
+				stmt.executeUpdate(sql);
 
 			// Clean-up environment
 			stmt.close();

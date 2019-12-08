@@ -7,24 +7,24 @@ import java.sql.Statement;
 import java.util.List;
 import java.util.ArrayList;
 
-import domain.MealItemImpl;
+import domain.IngredientImpl;
 
-public class MealItemRepository {
-	public MealItemImpl MealItemOfId(int id) {
+public class IngredientRepository {
+	public IngredientImpl IngredientOfId(int id) {
 		Statement stmt = null;
-		MealItemImpl MealItem=null;
+		IngredientImpl Ingredient=null;
 
 		try {
 			Connection conn=Database.getConnection();
 	
-			String sql = "SELECT * FROM MealItem WHERE id="
+			String sql = "SELECT * FROM Ingredient WHERE id="
 					+ id;
 			stmt = conn.createStatement();
 
 			stmt.executeQuery(sql);
 			ResultSet res = stmt.getResultSet();
 			if (res.next()) { 
-				MealItem=new MealItemImpl(res.getString(1),
+				Ingredient=new IngredientImpl(res.getString(1),
 							res.getInt(2)
 						);
 			}
@@ -42,7 +42,7 @@ public class MealItemRepository {
 				se2.printStackTrace();
 			}
 		}     	
-    	return MealItem;
+    	return Ingredient;
     }
 
 	public int remove(int id) {
@@ -50,7 +50,7 @@ public class MealItemRepository {
 		try {
 			Connection conn=Database.getConnection();
 			
-			String sql = "DELETE FROM MealItem WHERE id="
+			String sql = "DELETE FROM Ingredient WHERE id="
 					+ id;
 			stmt = conn.createStatement();
 
@@ -79,21 +79,21 @@ public class MealItemRepository {
     	
     }
     
-    public int remove(MealItemImpl aMealItem) {
-    	return remove(aMealItem.id());
+    public int remove(IngredientImpl aIngredient) {
+    	return remove(aIngredient.id());
     }
     
-    private int sqlInsert(MealItemImpl aMealItem) {
+    private int sqlInsert(IngredientImpl aIngredient) {
 		Statement stmt = null;
 		int id=0;
 		try {
 			Connection conn=Database.getConnection();
 
-			String sql = "INSERT INTO MealItem ( ";
+			String sql = "INSERT INTO Ingredient ( ";
 
 				sql += "id, ";
 			sql += " ) VALUES ( ";
-				sql += aMealItem.id() + ", ";
+				sql += aIngredient.id() + ", ";
 			sql += ")";
 			
 			stmt = conn.createStatement();
@@ -125,17 +125,17 @@ public class MealItemRepository {
 		return id;
     }
 
-    private boolean sqlUpdate(MealItemImpl aMealItem) {
+    private boolean sqlUpdate(IngredientImpl aIngredient) {
 		Statement stmt = null;
 		try {
 			Connection conn=Database.getConnection();
 			
 			stmt = conn.createStatement();
 
-			String sql = "UPDATE MealItem SET ";
+			String sql = "UPDATE Ingredient SET ";
 
-				sql += "id=" + aMealItem.id() + ", ";
-			sql += "WHERE id="+aMealItem.id();
+				sql += "id=" + aIngredient.id() + ", ";
+			sql += "WHERE id="+aIngredient.id();
 
 			stmt.executeUpdate(sql);
 
@@ -161,34 +161,34 @@ public class MealItemRepository {
 		return true;
     }
     
-    public MealItemImpl save(MealItemImpl aMealItem) {
-    	if (aMealItem.id()==0) {
+    public IngredientImpl save(IngredientImpl aIngredient) {
+    	if (aIngredient.id()==0) {
     		// Insert
-    		int newId=sqlInsert(aMealItem);
-    		return MealItemOfId(newId);
+    		int newId=sqlInsert(aIngredient);
+    		return IngredientOfId(newId);
     	}
     	else
     	{
     		// Update
-    		sqlUpdate(aMealItem);
-    		return aMealItem;
+    		sqlUpdate(aIngredient);
+    		return aIngredient;
     	}
     }
     
-    public List<MealItemImpl> all() {
+    public List<IngredientImpl> all() {
 		Statement stmt = null;
-		MealItemImpl MealItem=null;
-		ArrayList<MealItemImpl> list=new ArrayList<MealItemImpl>();
+		IngredientImpl Ingredient=null;
+		ArrayList<IngredientImpl> list=new ArrayList<IngredientImpl>();
 		try {
 			Connection conn=Database.getConnection();
 			
-			String sql = "SELECT * FROM MealItem";
+			String sql = "SELECT * FROM Ingredient";
 			stmt = conn.createStatement();
 
 			stmt.executeQuery(sql);
 			ResultSet res = stmt.getResultSet();
 			while (res.next()) { 
-				MealItemImpl element=new MealItemImpl(res.getString(1),
+				IngredientImpl element=new IngredientImpl(res.getString(1),
 							res.getInt(2)
 						);
 				list.add(element);

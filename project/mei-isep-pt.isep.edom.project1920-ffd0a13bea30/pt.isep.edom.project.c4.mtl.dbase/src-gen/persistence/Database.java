@@ -22,23 +22,23 @@ public class Database {
 		try {
 			stmt = conn.createStatement();
 			String sql;
-				sql = "CREATE TABLE IF NOT EXISTS MealItem ";
+				sql = "CREATE TABLE IF NOT EXISTS MealItem ( ";
 
-					sql += "(id INTEGER ";
+					sql += "id INTEGER, ";
 				sql += " PRIMARY KEY ( ";
 						sql += "id ,";
 				sql += ")";
 				stmt.executeUpdate(sql);
-				sql = "CREATE TABLE IF NOT EXISTS Meal ";
+				sql = "CREATE TABLE IF NOT EXISTS Meal ( ";
 
-					sql += "(id INTEGER ";
+					sql += "id INTEGER, ";
 				sql += " PRIMARY KEY ( ";
 						sql += "id ,";
 				sql += ")";
 				stmt.executeUpdate(sql);
-				sql = "CREATE TABLE IF NOT EXISTS Ingredients ";
+				sql = "CREATE TABLE IF NOT EXISTS Ingredient ( ";
 
-					sql += "(id INTEGER ";
+					sql += "id INTEGER, ";
 				sql += " PRIMARY KEY ( ";
 						sql += "id ,";
 				sql += ")";

@@ -32,6 +32,7 @@
     </genClasses>
     <genClasses image="false" ecoreClass="usecase.ecore#//Relationship">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute usecase.ecore#//Relationship/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference usecase.ecore#//Relationship/comment"/>
     </genClasses>
     <genClasses ecoreClass="usecase.ecore#//Extend">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference usecase.ecore#//Extend/usecase"/>

@@ -2,6 +2,7 @@
  */
 package pt.isep.edom.project.c0.mm.usecase;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -14,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link pt.isep.edom.project.c0.mm.usecase.Relationship#getName <em>Name</em>}</li>
+ *   <li>{@link pt.isep.edom.project.c0.mm.usecase.Relationship#getComment <em>Comment</em>}</li>
  * </ul>
  *
  * @see pt.isep.edom.project.c0.mm.usecase.UsecasePackage#getRelationship()
@@ -46,5 +48,17 @@ public interface Relationship extends EObject {
 	 * @generated
 	 */
 	void setName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Comment</b></em>' containment reference list.
+	 * The list contents are of type {@link pt.isep.edom.project.c0.mm.usecase.Comment}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Comment</em>' containment reference list.
+	 * @see pt.isep.edom.project.c0.mm.usecase.UsecasePackage#getRelationship_Comment()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Comment> getComment();
 
 } // Relationship

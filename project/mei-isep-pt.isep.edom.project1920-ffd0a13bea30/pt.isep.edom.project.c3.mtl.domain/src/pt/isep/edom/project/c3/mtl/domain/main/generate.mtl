@@ -10,4 +10,501 @@ package domain;
 class [aDomainModel.name/] {
 }
 [/file]
+
+[generateFactoryInterface(aDomainModel)/]
+
+[generateFactoryImpl(aDomainModel)/]
+
+[generateFactorySingleton(aDomainModel)/]
+
+[generateEntityInterface(aDomainModel)/]
+
+[generateDTOInterface(aDomainModel)/]
+
+[for (entity : Entity | aDomainModel.entities)]
+	[generateSpecificEntityInterface(entity)/]
+	[generateSpecificEntityInterfaceImpl(entity)/]
+	[generateSpecificEntityDTO(entity)/]
+[/for]
+
+[/template]
+
+
+[template public generateFactoryInterface(domainModel : DomainModel)]
+[file ('domain/Factory.java', false, 'UTF-8')]
+
+package domain;
+
+public interface Factory {
+
+	[for (entity: Entity | domainModel.entities)]
+	public Entity create[entity.name.replaceAll('\\s+', '')/]([entity.name.replaceAll('\\s+', '')/]DTO [entity.name.replaceAll('\\s+', '').toLowerCase()/]);
+
+	[/for]
+	
+}
+[/file]
+[/template]
+
+
+[template public generateFactoryImpl(domainModel : DomainModel)]
+[file ('domain/FactoryImpl.java', false, 'UTF-8')]
+
+package domain;
+
+public class FactoryImpl implements Factory {
+
+	[for (entity: Entity | domainModel.entities)]
+	public Entity create[entity.name.replaceAll('\\s+', '')/]([entity.name.replaceAll('\\s+', '')/]DTO [entity.name.replaceAll('\\s+', '').toLowerCase()/]){
+		return [entity.name.replaceAll('\\s+', '')/]Impl.fromDTO([entity.name.replaceAll('\\s+', '').toLowerCase()/]);
+	}
+
+	[/for]
+	
+}
+[/file]
+[/template]
+
+
+[template public generateFactorySingleton(domainModel : DomainModel)]
+[file ('domain/FFactory.java', false, 'UTF-8')]
+
+package domain;
+
+/**
+ * @generated NOT
+ */
+public class FFactory {
+
+	private static Factory instance=null;
+
+	public static Factory getInstance() {
+		if (instance==null) {
+			instance=new FactoryImpl();
+		}
+		return instance;
+	}
+}
+[/file]
+[/template]
+
+
+[template public generateEntityInterface(aType : DomainModel)]
+[file ('domain/Entity.java', false, 'UTF-8')]
+
+package domain;
+
+public interface Entity {
+
+	public Integer id();
+
+	public String name();
+}
+
+[/file]
+[/template]
+
+
+[template public generateDTOInterface(aType : DomainModel)]
+[file ('domain/DTO.java', false, 'UTF-8')]
+
+package domain;
+
+public interface DTO {
+	
+}
+
+[/file]
+[/template]
+
+
+[template public generateSpecificEntityInterface(aType : Entity)]
+[file ('domain/' + aType.name.replaceAll('\\s+', '') + '.java', false, 'UTF-8')]
+
+package domain;
+
+[if (aType.references -> notEmpty() or aType.subentities -> notEmpty())]
+import java.util.List;
+[/if]
+
+/**
+ * @generated NOT
+ */
+public interface [aType.name.replaceAll('\\s+', '')/] extends Entity {
+
+	[for (field : Field | aType.fields)]
+
+	[if (field.type = FieldType::REAL)]
+	public Double [field.name/]();
+	[else]
+	public [field.type.toString().toLower().toUpperFirst()/] [field.name/]();		
+	[/if]
+
+	[/for]
+
+	[for (subEntity : SubEntity | aType.subentities)]
+
+	[if (subEntity.upperBound = 1)]
+	public [subEntity.entity.name.replaceAll('\\s+', '')/] [subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/]();
+	[else]
+	public List<[subEntity.entity.name.replaceAll('\\s+', '')/]> [subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/]s();	
+	[/if]
+		
+	[/for]
+
+	[for (reference : Reference | aType.references)]
+
+	[if (reference.upperBound = 1)]
+	public [reference.entity.name.replaceAll('\\s+', '')/] [reference.entity.name.replaceAll('\\s+', '').toLowerCase()/]();
+	[else]
+	public List<[reference.entity.name.replaceAll('\\s+', '')/]> [reference.entity.name.replaceAll('\\s+', '').toLowerCase()/]s();	
+	[/if]
+		
+	[/for]
+
+}
+
+[/file]
+[/template]
+
+
+[template public generateSpecificEntityInterfaceImpl(aType : Entity)]
+[file ('domain/' + aType.name.replaceAll('\\s+', '') + 'Impl.java', false, 'UTF-8')]
+
+package domain;
+
+[if (aType.references -> notEmpty() or aType.subentities -> notEmpty())]
+import java.util.List;
+import java.util.ArrayList;
+[/if]
+
+/**
+ * @generated NOT
+ */
+public class [aType.name.replaceAll('\\s+', '')/]Impl implements [aType.name.replaceAll('\\s+', '')/] {
+
+	[for (field : Field | aType.fields)]
+		[if (field.type = FieldType::REAL)]
+	private Double [field.name/];
+		[else]
+	private [field.type.toString().toLower().toUpperFirst()/] [field.name/];
+		[/if]
+	[/for]
+
+	[for (subEntity : SubEntity | aType.subentities)]
+
+	[if (subEntity.upperBound = 1)]
+	private [subEntity.entity.name.replaceAll('\\s+', '')/] [subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/];
+	[else]
+	private List<[subEntity.entity.name.replaceAll('\\s+', '')/]> [subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/]s;	
+	[/if]
+		
+	[/for]
+
+	[for (reference : Reference | aType.references)]
+		[if (reference.upperBound = 1)]
+	private [reference.entity.name.replaceAll('\\s+', '')/] [reference.entity.name.replaceAll('\\s+', '').toLowerCase()/];
+		[else]
+	private List<[reference.entity.name.replaceAll('\\s+', '')/]> [reference.entity.name.replaceAll('\\s+', '').toLowerCase()/]s;	
+		[/if]
+		
+	[/for]
+
+	public static [aType.name.replaceAll('\\s+', '')/]Impl fromDTO([aType.name.replaceAll('\\s+', '')/]DTO dto)
+	{
+		[for (field : Field | aType.fields)]
+				[if (field.type = FieldType::REAL)]
+		Double _[field.name/] = dto.[field.name/];
+				[else]
+		[field.type.toString().toLower().toUpperFirst()/] _[field.name/] = dto.[field.name/];
+				[/if]
+			[/for]
+		
+			[for (subEntity : SubEntity | aType.subentities)]
+				[if (subEntity.upperBound = 1)]
+		[subEntity.entity.name.replaceAll('\\s+', '')/] _[subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/] = [subEntity.entity.name.replaceAll('\\s+', '')/]Impl.fromDTO(dto.[subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/]);
+				[else]
+		List<[subEntity.entity.name.replaceAll('\\s+', '')/]DTO> _[subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/]DTO = dto.[subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/]s;
+		List<[subEntity.entity.name.replaceAll('\\s+', '')/]> _[subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/]s = new ArrayList<>();
+		
+		if(_[subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/]DTO != null){
+			for(int i = 0; i < _[subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/]DTO.size(); i++){
+				_[subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/]s.add([subEntity.entity.name.replaceAll('\\s+', '')/]Impl.fromDTO(_[subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/]DTO.get(i)));
+			}
+		}
+				[/if]
+			[/for]
+		
+			[for (reference : Reference | aType.references)]
+				[if (reference.upperBound = 1)]
+		[reference.entity.name.replaceAll('\\s+', '')/] _[reference.entity.name.replaceAll('\\s+', '').toLowerCase()/] = [reference.entity.name.replaceAll('\\s+', '')/]Impl.fromDTO(dto.[reference.entity.name.replaceAll('\\s+', '').toLowerCase()/]);
+				[else]
+		List<[reference.entity.name.replaceAll('\\s+', '')/]DTO> _[reference.entity.name.replaceAll('\\s+', '').toLowerCase()/]DTO = dto.[reference.entity.name.replaceAll('\\s+', '').toLowerCase()/]s;
+		List<[reference.entity.name.replaceAll('\\s+', '')/]> _[reference.entity.name.replaceAll('\\s+', '').toLowerCase()/]s = new ArrayList<>();
+		
+		if(_[reference.entity.name.replaceAll('\\s+', '').toLowerCase()/]DTO != null){
+			for(int i = 0; i < _[reference.entity.name.replaceAll('\\s+', '').toLowerCase()/]DTO.size(); i++){
+				_[reference.entity.name.replaceAll('\\s+', '').toLowerCase()/]s.add([reference.entity.name.replaceAll('\\s+', '')/]Impl.fromDTO(_[reference.entity.name.replaceAll('\\s+', '').toLowerCase()/]DTO.get(i)));
+			}
+		}
+				[/if]
+			[/for]
+
+		return new [aType.name.replaceAll('\\s+', '')/]Impl
+				(
+					
+					[for (field : Field | aType.fields)]
+				
+						[if (aType.fields -> first() = field)]
+					_[field.name/]
+						[else]
+					,_[field.name/]
+						[/if]
+					[/for]
+				
+					[for (subEntity : SubEntity | aType.subentities)]
+				
+					[if (subEntity.upperBound = 1)]
+					,_[subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/]
+					[else]
+					,_[subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/]s
+					[/if]
+						
+					[/for]
+				
+					[for (reference : Reference | aType.references)]
+						[if (reference.upperBound = 1)]
+					,_[reference.entity.name.replaceAll('\\s+', '').toLowerCase()/]
+						[else]
+					,_[reference.entity.name.replaceAll('\\s+', '').toLowerCase()/]s	
+						[/if]
+						
+					[/for]
+
+				);
+
+	}
+
+	public [aType.name.replaceAll('\\s+', '')/]Impl
+		(
+			[for (field : Field | aType.fields)]
+				[if (field.type = FieldType::REAL)]
+		Double [field.name/]
+					[if (aType.fields -> last() <> field)]
+		,
+					[/if]
+				[else]
+		[field.type.toString().toLower().toUpperFirst()/] [field.name/]
+					[if (aType.fields -> last() <> field)]
+		,
+					[/if]
+				[/if]
+			[/for]
+		[if (aType.subentities -> notEmpty())]
+			[for (subEntity : SubEntity | aType.subentities)]
+
+			[if (subEntity.upperBound = 1)]
+		,[subEntity.entity.name.replaceAll('\\s+', '')/] [subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/]
+				[else]
+		,List<[subEntity.entity.name.replaceAll('\\s+', '')/]> [subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/]s
+				[/if]
+			[/for]
+		[/if]
+		[if (aType.references -> notEmpty())]
+			[for (reference : Reference | aType.references)]
+			[if (reference.upperBound = 1)]
+		,[reference.entity.name.replaceAll('\\s+', '')/] [reference.entity.name.replaceAll('\\s+', '').toLowerCase()/]
+				[else]
+		,List<[reference.entity.name.replaceAll('\\s+', '')/]> [reference.entity.name.replaceAll('\\s+', '').toLowerCase()/]s
+				[/if]
+			[/for]
+		[/if]
+		)
+		{
+			[for (field : Field | aType.fields)]
+			this.[field.name/] = [field.name/];
+			[/for]
+		
+			[for (subEntity : SubEntity | aType.subentities)]
+		
+			[if (subEntity.upperBound = 1)]
+			this.[subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/] = [subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/];
+			[else]
+			this.[subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/]s = new ArrayList<>([subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/]s);	
+			[/if]
+				
+			[/for]
+		
+			[for (reference : Reference | aType.references)]
+		
+			[if (reference.upperBound = 1)]
+			this.[reference.entity.name.replaceAll('\\s+', '').toLowerCase()/] = [reference.entity.name.replaceAll('\\s+', '').toLowerCase()/];
+			[else]
+			this.[reference.entity.name.replaceAll('\\s+', '').toLowerCase()/]s = new ArrayList<>([reference.entity.name.replaceAll('\\s+', '').toLowerCase()/]s);	
+			[/if]
+				
+			[/for]
+		}
+
+
+	[if (aType.references -> notEmpty() or aType.subentities -> notEmpty())]
+	public [aType.name.replaceAll('\\s+', '')/]Impl
+		(
+			[for (field : Field | aType.fields)]
+				[if (field.type = FieldType::REAL)]
+		Double [field.name/]
+					[if (aType.fields -> last() <> field)]
+		,
+					[/if]
+				[else]
+		[field.type.toString().toLower().toUpperFirst()/] [field.name/]
+					[if (aType.fields -> last() <> field)]
+		,
+					[/if]
+				[/if]
+			[/for]
+		[if (aType.subentities -> notEmpty())]
+			[for (subEntity : SubEntity | aType.subentities)]
+			[if (subEntity.upperBound = 1)]
+		,[subEntity.entity.name.replaceAll('\\s+', '')/] [subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/]
+				[else]
+	
+					[if (subEntity.upperBound <> -1)]
+
+		,List<[subEntity.entity.name.replaceAll('\\s+', '')/]> [subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/]s
+					[/if]
+			[/if]
+			[/for]
+		[/if]
+		[if (aType.references -> notEmpty())]
+			[for (reference : Reference | aType.references)]
+			[if (reference.upperBound = 1)]
+		,[reference.entity.name.replaceAll('\\s+', '')/] [reference.entity.name.replaceAll('\\s+', '').toLowerCase()/]
+				[else]
+	
+					[if (reference.upperBound <> -1)]
+
+		,List<[reference.entity.name.replaceAll('\\s+', '')/]> [reference.entity.name.replaceAll('\\s+', '').toLowerCase()/]s
+					[/if]
+			[/if]
+			[/for]
+		[/if]
+		)
+		{
+			[for (field : Field | aType.fields)]
+			this.[field.name/] = [field.name/];
+			[/for]
+		
+			[for (subEntity : SubEntity | aType.subentities)]
+		
+			[if (subEntity.upperBound = 1)]
+			this.[subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/] = [subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/];
+			[else]
+
+				[if (subEntity.upperBound <> -1)]
+			this.[subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/]s = new ArrayList<>([subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/]s);
+				[/if]
+	
+			[/if]
+				
+			[/for]
+		
+			[for (reference : Reference | aType.references)]
+		
+			[if (reference.upperBound = 1)]
+			this.[reference.entity.name.replaceAll('\\s+', '').toLowerCase()/] = [reference.entity.name.replaceAll('\\s+', '').toLowerCase()/];
+			[else]
+
+				[if (reference.upperBound <> -1)]
+			this.[reference.entity.name.replaceAll('\\s+', '').toLowerCase()/]s = new ArrayList<>([reference.entity.name.replaceAll('\\s+', '').toLowerCase()/]s);
+				[/if]
+	
+			[/if]
+				
+			[/for]
+		}
+	[/if]
+
+
+	[for (field : Field | aType.fields)]
+		[if (field.type = FieldType::REAL)]
+	public Double [field.name/](){return [field.name/];}
+		[else]
+	public [field.type.toString().toLower().toUpperFirst()/] [field.name/](){return [field.name/];}
+		[/if]
+	[/for]
+
+	[for (subEntity : SubEntity | aType.subentities)]
+
+	[if (subEntity.upperBound = 1)]
+	public [subEntity.entity.name.replaceAll('\\s+', '')/] [subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/](){return [subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/];}
+	[else]
+	public List<[subEntity.entity.name.replaceAll('\\s+', '')/]> [subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/]s(){return new ArrayList<[subEntity.entity.name.replaceAll('\\s+', '')/]>([subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/]s);}
+	[/if]
+		
+	[/for]
+
+	[for (reference : Reference | aType.references)]
+
+	[if (reference.upperBound = 1)]
+	public [reference.entity.name.replaceAll('\\s+', '')/] [reference.entity.name.replaceAll('\\s+', '').toLowerCase()/](){return [reference.entity.name.replaceAll('\\s+', '').toLowerCase()/];}
+	[else]
+	public List<[reference.entity.name.replaceAll('\\s+', '')/]> [reference.entity.name.replaceAll('\\s+', '').toLowerCase()/]s(){return new ArrayList<[reference.entity.name.replaceAll('\\s+', '')/]>([reference.entity.name.replaceAll('\\s+', '').toLowerCase()/]s);}
+	[/if]
+		
+	[/for]
+
+}
+
+[/file]
+[/template]
+
+
+[template public generateSpecificEntityDTO(aType : Entity)]
+[file ('domain/' + aType.name.replaceAll('\\s+', '') + 'DTO.java', false, 'UTF-8')]
+
+package domain;
+
+[if (aType.references -> notEmpty() or aType.subentities -> notEmpty())]
+import java.util.List;
+[/if]
+
+/**
+ * @generated NOT
+ */
+public class [aType.name.replaceAll('\\s+', '')/]DTO implements DTO {
+
+	[for (field : Field | aType.fields)]
+		[if (field.type = FieldType::REAL)]
+	public Double [field.name/];
+		[else]
+	public [field.type.toString().toLower().toUpperFirst()/] [field.name/];
+		[/if]
+	[/for]
+
+	[for (subEntity : SubEntity | aType.subentities)]
+
+	[if (subEntity.upperBound = 1)]
+	public [subEntity.entity.name.replaceAll('\\s+', '')/]DTO [subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/];
+	[else]
+	public List<[subEntity.entity.name.replaceAll('\\s+', '')/]DTO> [subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/]s;	
+	[/if]
+		
+	[/for]
+
+	[for (reference : Reference | aType.references)]
+		[if (reference.upperBound = 1)]
+	public [reference.entity.name.replaceAll('\\s+', '')/]DTO [reference.entity.name.replaceAll('\\s+', '').toLowerCase()/];
+		[else]
+	public List<[reference.entity.name.replaceAll('\\s+', '')/]DTO> [reference.entity.name.replaceAll('\\s+', '').toLowerCase()/]s;	
+		[/if]
+		
+	[/for]
+
+
+	public [aType.name.replaceAll('\\s+', '')/]DTO(){}
+
+}
+
+[/file]
 [/template]

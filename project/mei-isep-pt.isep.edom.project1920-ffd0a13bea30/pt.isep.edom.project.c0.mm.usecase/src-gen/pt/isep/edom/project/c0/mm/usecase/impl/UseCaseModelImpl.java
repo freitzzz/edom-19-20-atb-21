@@ -115,6 +115,7 @@ public class UseCaseModelImpl extends MinimalEObjectImpl.Container implements Us
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -124,6 +125,7 @@ public class UseCaseModelImpl extends MinimalEObjectImpl.Container implements Us
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -136,6 +138,7 @@ public class UseCaseModelImpl extends MinimalEObjectImpl.Container implements Us
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Actor> getActor() {
 		if (actor == null) {
 			actor = new EObjectContainmentEList<Actor>(Actor.class, this, UsecasePackage.USE_CASE_MODEL__ACTOR);
@@ -148,6 +151,7 @@ public class UseCaseModelImpl extends MinimalEObjectImpl.Container implements Us
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Association> getAssociation() {
 		if (association == null) {
 			association = new EObjectContainmentEList<Association>(Association.class, this,
@@ -161,6 +165,7 @@ public class UseCaseModelImpl extends MinimalEObjectImpl.Container implements Us
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<UseCase> getUsecase() {
 		if (usecase == null) {
 			usecase = new EObjectContainmentEList<UseCase>(UseCase.class, this, UsecasePackage.USE_CASE_MODEL__USECASE);
@@ -288,7 +293,7 @@ public class UseCaseModelImpl extends MinimalEObjectImpl.Container implements Us
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
 		result.append(name);
 		result.append(')');

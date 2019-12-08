@@ -66,6 +66,8 @@ public class UseCase2Domain {
 		
 		// obtain a resourceset from the injector
 		XtextResourceSet resSet = injector.getInstance(XtextResourceSet.class);
+		
+		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("xmi", new XMIResourceFactoryImpl());
 
 		// Associate the "mindmap" extension with the XMI resource format
 		//Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("requirements", new XMIResourceFactoryImpl());

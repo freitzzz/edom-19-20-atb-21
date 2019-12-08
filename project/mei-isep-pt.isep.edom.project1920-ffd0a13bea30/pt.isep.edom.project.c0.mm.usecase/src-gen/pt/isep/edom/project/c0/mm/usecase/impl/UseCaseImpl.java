@@ -115,6 +115,7 @@ public class UseCaseImpl extends MinimalEObjectImpl.Container implements UseCase
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -124,6 +125,7 @@ public class UseCaseImpl extends MinimalEObjectImpl.Container implements UseCase
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -136,6 +138,7 @@ public class UseCaseImpl extends MinimalEObjectImpl.Container implements UseCase
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Extend> getExtend() {
 		if (extend == null) {
 			extend = new EObjectContainmentEList<Extend>(Extend.class, this, UsecasePackage.USE_CASE__EXTEND);
@@ -148,6 +151,7 @@ public class UseCaseImpl extends MinimalEObjectImpl.Container implements UseCase
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Include> getInclude() {
 		if (include == null) {
 			include = new EObjectContainmentEList<Include>(Include.class, this, UsecasePackage.USE_CASE__INCLUDE);
@@ -160,6 +164,7 @@ public class UseCaseImpl extends MinimalEObjectImpl.Container implements UseCase
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Comment> getComment() {
 		if (comment == null) {
 			comment = new EObjectContainmentEList<Comment>(Comment.class, this, UsecasePackage.USE_CASE__COMMENT);
@@ -287,7 +292,7 @@ public class UseCaseImpl extends MinimalEObjectImpl.Container implements UseCase
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
 		result.append(name);
 		result.append(')');

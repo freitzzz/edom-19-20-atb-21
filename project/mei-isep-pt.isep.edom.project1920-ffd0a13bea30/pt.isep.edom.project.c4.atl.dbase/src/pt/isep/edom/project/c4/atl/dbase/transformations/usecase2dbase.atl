@@ -5,12 +5,52 @@
 module usecase2dbase;
 create OUT : MMDbase from IN : MMUseCase;
  
+helper def: col:  MMDbase!Column = MMDbase!Column;
+
 rule UseCaseModel2DbaseModel {
 	from
 		m1: MMUseCase!UseCaseModel
 	to 
 		m2: MMDbase!DbaseModel (
-			name <- m1.name
+			name <- m1.name,
+			tables <- m1.usecase->select(u |
+				not u.comment->select(c|c.description = 'CRUD')->isEmpty()
+				and (
+					not u.comment->select(c|c.description = 'entity')->isEmpty()
+					or
+					not u.comment->select(c|c.description = 'local_entity')->isEmpty()
+				)
+			)
 		)
 }
 
+
+rule UseCase2Table {
+	from
+		m1: MMUseCase!UseCase (
+			not m1.comment->select(c|c.description = 'CRUD')->isEmpty()
+			and (
+				not m1.comment->select(c|c.description = 'entity')->isEmpty()
+				or
+				not m1.comment->select(c|c.description = 'local_entity')->isEmpty()
+			)
+		)
+	to 
+		m2: MMDbase!Table (
+			name <- m1.name,
+			entity <- m1.name,
+			columns <- Sequence{thisModule.NewColumn()}
+		)
+}
+
+rule NewColumn() {
+	to
+		c1: MMDbase!Column (
+			key <- true,
+			type <- #INTEGER,
+			name <- 'id'
+		)
+	do {
+		c1;
+	}
+}

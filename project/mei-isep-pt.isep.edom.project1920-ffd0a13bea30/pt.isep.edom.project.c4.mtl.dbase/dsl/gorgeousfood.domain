@@ -1,0 +1,1 @@
+DomainModel GorgeousFood { entities { Entity MealItem { } , Entity Meal { } , Entity Ingredients { } } } }

@@ -1,13 +1,180 @@
 [comment encoding = UTF-8 /]
-[module generate('http://www.example.org/dbase')]
+[module generate('http://www.example.org/dbase', 'http://www.example.org/domain')]
 
 
-[template public generateDbaseModel(aDbaseModel : DbaseModel)]
+[query public getDomainEntity(table: Table) : Entity =
+	invoke('pt.isep.edom.project.c4.mtl.dbase.main.DomainModelQuery', 'getDomainEntity(pt.isep.edom.project.c4.mm.dbase.Table)', Sequence{table})
+/]
+
+
+[template public generateDbaseModel(aDbaseModel : DbaseModel) ? (true)]
 [comment @main/]
-[file ('persistence/'+aDbaseModel.name+'.java', false, 'UTF-8')]
+[file ('persistence/Database.java', false, 'UTF-8')]
 package persistence;
 
-class [aDbaseModel.name/] {
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class Database {
+
+	// JDBC driver name and database URL
+	static final String JDBC_DRIVER = "org.h2.Driver";
+	static final String DB_URL = "jdbc:h2:~/test-gorgeous-food";
+
+	// Database credentials
+	static final String USER = "sa";
+	static final String PASS = "";
+
+	static Connection conn = null;
+
+	private static void initDatabase() {
+		Statement stmt = null;
+		try {
+			stmt = conn.createStatement();
+			String sql;
+			[for (t: Table | aDbaseModel.tables)]
+				sql = "CREATE TABLE IF NOT EXISTS [t.name/] ";
+
+				[for (c: Column | t.columns)]
+					sql += "([c.name + ' ' + c.type/] ";
+				[/for]
+				sql += " PRIMARY KEY ( ";
+				[for (c: Column | t.columns)]
+					[if (c.key)]
+						sql += "[c.name/] ,";
+					[/if]
+				[/for]
+				sql += ")";
+				stmt.executeUpdate(sql);
+			[/for]
+
+			// Clean-up environment
+			stmt.close();
+		} catch (SQLException se) {
+			// Handle errors for JDBC
+			se.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// finally block used to close resources
+			try {
+				if (stmt != null)
+					stmt.close();
+			} catch (SQLException se2) {
+				se2.printStackTrace();
+			} // nothing we can do
+		} // end try
+	}
+
+	private static Connection initConnection() {
+		try {
+			// Register JDBC driver
+			Class.forName(JDBC_DRIVER);
+
+			// Open a connection
+			conn = DriverManager.getConnection(DB_URL, USER, PASS);
+			
+			initDatabase();
+
+		} catch (SQLException se) {
+			// Handle errors for JDBC
+			se.printStackTrace();
+			return null;
+		} catch (Exception e) {
+			// Handle errors for Class.forName
+			e.printStackTrace();
+			return null;
+		}
+
+		return conn;
+	}
+
+	public static Connection getConnection() {
+		if (conn == null) {
+			conn = initConnection();
+		}
+		return conn;
+	}
+
+	public static void closeConnection() {
+		if (conn != null) {
+			try {
+				conn.close();
+			} catch (SQLException se) {
+				// Handle errors for JDBC
+				se.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				conn = null;
+			}
+		}
+	}
+}
+[/file]
+[for (t: Table | aDbaseModel.tables)]
+	[generateTable(t, aDbaseModel)/]
+[/for]
+[/template]
+
+
+[template public generateTable(aTable : Table, aDbaseModel : DbaseModel)]
+[comment @main/]
+[file ('persistence/'+aTable.name+'Repository.java', false, 'UTF-8')]
+package persistence;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import domain.[aTable.name/];
+
+public class [aTable.name + 'Repository'/] {
+	public [aTable.name/] mealItemOfId(int aMealItemId) {
+		Statement stmt = null;
+		[aTable.name/] [aTable.name/]=null;
+
+		try {
+			Connection conn=Database.getConnection();
+	
+			String sql = "SELECT mealItemId, name, mealId, prodDate, expDate FROM [aTable.name/] WHERE mealItemId="
+					+ aMealItemId;
+			stmt = conn.createStatement();
+
+			stmt.executeQuery(sql);
+			ResultSet res = stmt.getResultSet();
+			if (res.next()) { 
+				[aTable.name/]=new [aTable.name/](res.getInt(1),
+							res.getString(2),
+							res.getInt(3),
+							res.getString(4),
+							res.getString(5)
+						);
+			} else {
+			    // Throw exception?
+			}
+
+			// Clean-up environment
+			stmt.close();
+		} catch (SQLException se) {
+			// Handle errors for JDBC
+			se.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// finally block used to close resources
+			try {
+				if (stmt != null)
+					stmt.close();
+			} catch (SQLException se2) {
+				se2.printStackTrace();
+			} // nothing we can do
+		} // end try      	
+    	return [aTable.name/];
+    }
 }
 [/file]
 [/template]

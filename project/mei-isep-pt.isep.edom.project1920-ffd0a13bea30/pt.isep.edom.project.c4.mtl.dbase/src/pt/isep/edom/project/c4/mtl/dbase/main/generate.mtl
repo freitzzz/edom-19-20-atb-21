@@ -132,12 +132,12 @@ import java.sql.Statement;
 import java.util.List;
 import java.util.ArrayList;
 
-import domain.[aTable.name/]Impl;
+import domain.*;
 
 public class [aTable.name + 'Repository'/] {
-	public [aTable.name/]Impl [aTable.name/]OfId(int id) {
+	public [aTable.name/] [aTable.name/]OfId(int id) {
 		Statement stmt = null;
-		[aTable.name/]Impl [aTable.name/]=null;
+		[aTable.name/] [aTable.name.toLowerCase()/]=null;
 
 		try {
 			Connection conn=Database.getConnection();
@@ -149,9 +149,15 @@ public class [aTable.name + 'Repository'/] {
 			stmt.executeQuery(sql);
 			ResultSet res = stmt.getResultSet();
 			if (res.next()) { 
-				[aTable.name/]=new [aTable.name/]Impl(res.getString(1),
-							res.getInt(2)
-						);
+
+				[aTable.name/]DTO dto = new [aTable.name/]DTO();
+
+				dto.name = res.getString(1);
+				dto.id = res.getInt(2);
+
+				
+
+				[aTable.name.toLowerCase()/] = ([aTable.name/])FFactory.getInstance().create[aTable.name/](dto);
 			}
 
 			stmt.close();
@@ -167,7 +173,7 @@ public class [aTable.name + 'Repository'/] {
 				se2.printStackTrace();
 			}
 		}     	
-    	return [aTable.name/];
+    	return [aTable.name.toLowerCase()/];
     }
 
 	public int remove(int id) {
@@ -204,11 +210,11 @@ public class [aTable.name + 'Repository'/] {
     	
     }
     
-    public int remove([aTable.name/]Impl a[aTable.name/]) {
+    public int remove([aTable.name/] a[aTable.name/]) {
     	return remove(a[aTable.name/].id());
     }
     
-    private int sqlInsert([aTable.name/]Impl a[aTable.name/]) {
+    private int sqlInsert([aTable.name/] a[aTable.name/]) {
 		Statement stmt = null;
 		int id=0;
 		try {
@@ -254,7 +260,7 @@ public class [aTable.name + 'Repository'/] {
 		return id;
     }
 
-    private boolean sqlUpdate([aTable.name/]Impl a[aTable.name/]) {
+    private boolean sqlUpdate([aTable.name/] a[aTable.name/]) {
 		Statement stmt = null;
 		try {
 			Connection conn=Database.getConnection();
@@ -292,7 +298,7 @@ public class [aTable.name + 'Repository'/] {
 		return true;
     }
     
-    public [aTable.name/]Impl save([aTable.name/]Impl a[aTable.name/]) {
+    public [aTable.name/] save([aTable.name/] a[aTable.name/]) {
     	if (a[aTable.name/].id()==0) {
     		// Insert
     		int newId=sqlInsert(a[aTable.name/]);
@@ -306,10 +312,10 @@ public class [aTable.name + 'Repository'/] {
     	}
     }
     
-    public List<[aTable.name/]Impl> all() {
+    public List<[aTable.name/]> all() {
 		Statement stmt = null;
-		[aTable.name/]Impl [aTable.name/]=null;
-		ArrayList<[aTable.name/]Impl> list=new ArrayList<[aTable.name/]Impl>();
+		[aTable.name/] [aTable.name.toLowerCase()/]=null;
+		ArrayList<[aTable.name/]> list=new ArrayList<[aTable.name/]>();
 		try {
 			Connection conn=Database.getConnection();
 			
@@ -318,11 +324,19 @@ public class [aTable.name + 'Repository'/] {
 
 			stmt.executeQuery(sql);
 			ResultSet res = stmt.getResultSet();
-			while (res.next()) { 
-				[aTable.name/]Impl element=new [aTable.name/]Impl(res.getString(1),
-							res.getInt(2)
-						);
-				list.add(element);
+			while (res.next()) {
+
+				[aTable.name/]DTO dto = new [aTable.name/]DTO();
+
+				dto.name = res.getString(1);
+				dto.id = res.getInt(2);
+
+				
+
+				[aTable.name.toLowerCase()/] = ([aTable.name/])FFactory.getInstance().create[aTable.name/](dto);
+ 
+				
+				list.add([aTable.name.toLowerCase()/] );
 			} 
 
 			// Clean-up environment

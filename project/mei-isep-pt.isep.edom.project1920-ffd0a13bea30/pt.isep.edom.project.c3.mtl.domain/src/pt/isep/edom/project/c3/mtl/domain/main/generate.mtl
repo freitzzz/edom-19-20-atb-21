@@ -19,9 +19,12 @@ class [aDomainModel.name/] {
 
 [generateEntityInterface(aDomainModel)/]
 
+[generateDTOInterface(aDomainModel)/]
+
 [for (entity : Entity | aDomainModel.entities)]
 	[generateSpecificEntityInterface(entity)/]
 	[generateSpecificEntityInterfaceImpl(entity)/]
+	[generateSpecificEntityDTO(entity)/]
 [/for]
 
 [/template]
@@ -35,7 +38,7 @@ package domain;
 public interface Factory {
 
 	[for (entity: Entity | domainModel.entities)]
-	public Entity create[entity.name.replaceAll('\\s+', '')/]();
+	public Entity create[entity.name.replaceAll('\\s+', '')/]([entity.name.replaceAll('\\s+', '')/]DTO [entity.name.replaceAll('\\s+', '').toLowerCase()/]);
 
 	[/for]
 	
@@ -52,8 +55,8 @@ package domain;
 public class FactoryImpl implements Factory {
 
 	[for (entity: Entity | domainModel.entities)]
-	public Entity create[entity.name.replaceAll('\\s+', '')/](){
-		return new [entity.name.replaceAll('\\s+', '')/]Impl();
+	public Entity create[entity.name.replaceAll('\\s+', '')/]([entity.name.replaceAll('\\s+', '')/]DTO [entity.name.replaceAll('\\s+', '').toLowerCase()/]){
+		return [entity.name.replaceAll('\\s+', '')/]Impl.fromDTO([entity.name.replaceAll('\\s+', '').toLowerCase()/]);
 	}
 
 	[/for]
@@ -96,6 +99,19 @@ public interface Entity {
 	public Integer id();
 
 	public String name();
+}
+
+[/file]
+[/template]
+
+
+[template public generateDTOInterface(aType : DomainModel)]
+[file ('domain/DTO.java', false, 'UTF-8')]
+
+package domain;
+
+public interface DTO {
+	
 }
 
 [/file]
@@ -193,6 +209,81 @@ public class [aType.name.replaceAll('\\s+', '')/]Impl implements [aType.name.rep
 		[/if]
 		
 	[/for]
+
+	public static [aType.name.replaceAll('\\s+', '')/]Impl fromDTO([aType.name.replaceAll('\\s+', '')/]DTO dto)
+	{
+		[for (field : Field | aType.fields)]
+				[if (field.type = FieldType::REAL)]
+		Double _[field.name/] = dto.[field.name/];
+				[else]
+		[field.type.toString().toLower().toUpperFirst()/] _[field.name/] = dto.[field.name/];
+				[/if]
+			[/for]
+		
+			[for (subEntity : SubEntity | aType.subentities)]
+				[if (subEntity.upperBound = 1)]
+		[subEntity.entity.name.replaceAll('\\s+', '')/] _[subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/] = [subEntity.entity.name.replaceAll('\\s+', '')/]Impl.fromDTO(dto.[subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/]);
+				[else]
+		List<[subEntity.entity.name.replaceAll('\\s+', '')/]DTO> _[subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/]DTO = dto.[subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/]s;
+		List<[subEntity.entity.name.replaceAll('\\s+', '')/]> _[subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/]s = new ArrayList<>();
+		
+		if(_[subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/]DTO != null){
+			for(int i = 0; i < _[subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/]DTO.size(); i++){
+				_[subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/]s.add([subEntity.entity.name.replaceAll('\\s+', '')/]Impl.fromDTO(_[subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/]DTO.get(i)));
+			}
+		}
+				[/if]
+			[/for]
+		
+			[for (reference : Reference | aType.references)]
+				[if (reference.upperBound = 1)]
+		[reference.entity.name.replaceAll('\\s+', '')/] _[reference.entity.name.replaceAll('\\s+', '').toLowerCase()/] = [reference.entity.name.replaceAll('\\s+', '')/]Impl.fromDTO(dto.[reference.entity.name.replaceAll('\\s+', '').toLowerCase()/]);
+				[else]
+		List<[reference.entity.name.replaceAll('\\s+', '')/]DTO> _[reference.entity.name.replaceAll('\\s+', '').toLowerCase()/]DTO = dto.[reference.entity.name.replaceAll('\\s+', '').toLowerCase()/]s;
+		List<[reference.entity.name.replaceAll('\\s+', '')/]> _[reference.entity.name.replaceAll('\\s+', '').toLowerCase()/]s = new ArrayList<>();
+		
+		if(_[reference.entity.name.replaceAll('\\s+', '').toLowerCase()/]DTO != null){
+			for(int i = 0; i < _[reference.entity.name.replaceAll('\\s+', '').toLowerCase()/]DTO.size(); i++){
+				_[reference.entity.name.replaceAll('\\s+', '').toLowerCase()/]s.add([reference.entity.name.replaceAll('\\s+', '')/]Impl.fromDTO(_[reference.entity.name.replaceAll('\\s+', '').toLowerCase()/]DTO.get(i)));
+			}
+		}
+				[/if]
+			[/for]
+
+		return new [aType.name.replaceAll('\\s+', '')/]Impl
+				(
+					
+					[for (field : Field | aType.fields)]
+				
+						[if (aType.fields -> first() = field)]
+					_[field.name/]
+						[else]
+					,_[field.name/]
+						[/if]
+					[/for]
+				
+					[for (subEntity : SubEntity | aType.subentities)]
+				
+					[if (subEntity.upperBound = 1)]
+					,_[subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/]
+					[else]
+					,_[subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/]s
+					[/if]
+						
+					[/for]
+				
+					[for (reference : Reference | aType.references)]
+						[if (reference.upperBound = 1)]
+					,_[reference.entity.name.replaceAll('\\s+', '').toLowerCase()/]
+						[else]
+					,_[reference.entity.name.replaceAll('\\s+', '').toLowerCase()/]s	
+						[/if]
+						
+					[/for]
+
+				);
+
+	}
 
 	public [aType.name.replaceAll('\\s+', '')/]Impl
 		(
@@ -362,6 +453,56 @@ public class [aType.name.replaceAll('\\s+', '')/]Impl implements [aType.name.rep
 	[/if]
 		
 	[/for]
+
+}
+
+[/file]
+[/template]
+
+
+[template public generateSpecificEntityDTO(aType : Entity)]
+[file ('domain/' + aType.name.replaceAll('\\s+', '') + 'DTO.java', false, 'UTF-8')]
+
+package domain;
+
+[if (aType.references -> notEmpty() or aType.subentities -> notEmpty())]
+import java.util.List;
+[/if]
+
+/**
+ * @generated NOT
+ */
+public class [aType.name.replaceAll('\\s+', '')/]DTO implements DTO {
+
+	[for (field : Field | aType.fields)]
+		[if (field.type = FieldType::REAL)]
+	public Double [field.name/];
+		[else]
+	public [field.type.toString().toLower().toUpperFirst()/] [field.name/];
+		[/if]
+	[/for]
+
+	[for (subEntity : SubEntity | aType.subentities)]
+
+	[if (subEntity.upperBound = 1)]
+	public [subEntity.entity.name.replaceAll('\\s+', '')/]DTO [subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/];
+	[else]
+	public List<[subEntity.entity.name.replaceAll('\\s+', '')/]DTO> [subEntity.entity.name.replaceAll('\\s+', '').toLowerCase()/]s;	
+	[/if]
+		
+	[/for]
+
+	[for (reference : Reference | aType.references)]
+		[if (reference.upperBound = 1)]
+	public [reference.entity.name.replaceAll('\\s+', '')/]DTO [reference.entity.name.replaceAll('\\s+', '').toLowerCase()/];
+		[else]
+	public List<[reference.entity.name.replaceAll('\\s+', '')/]DTO> [reference.entity.name.replaceAll('\\s+', '').toLowerCase()/]s;	
+		[/if]
+		
+	[/for]
+
+
+	public [aType.name.replaceAll('\\s+', '')/]DTO(){}
 
 }
 

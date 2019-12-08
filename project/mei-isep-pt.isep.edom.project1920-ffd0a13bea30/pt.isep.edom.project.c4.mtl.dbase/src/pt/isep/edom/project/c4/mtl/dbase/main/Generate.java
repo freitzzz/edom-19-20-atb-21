@@ -25,7 +25,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 
 import com.google.inject.Injector;
-
+import pt.isep.edom.project.c3.dsl.domain.DomainStandaloneSetup;
+import pt.isep.edom.project.c3.mm.domain.DomainPackage;
 import pt.isep.edom.project.c4.dsl.dbase.DbaseStandaloneSetup;
 import pt.isep.edom.project.c4.mm.dbase.DbasePackage;
 
@@ -45,7 +46,7 @@ public class Generate extends AbstractAcceleoGenerator {
     /**
      * The name of the templates that are to be generated.
      *
-     * @generated
+     * @generated NOT
      */
     public static final String[] TEMPLATE_NAMES = { "generateDbaseModel" };
     
@@ -121,53 +122,62 @@ public class Generate extends AbstractAcceleoGenerator {
      * 
      * @param args
      *            Arguments of the generation.
-     * @generated
+     * @generated NOT
      */
     public static void main(String[] args) {
-        try {
-            if (args.length < 2) {
-                System.out.println("Arguments not valid : {model, folder}.");
-            } else {
-                URI modelURI = URI.createFileURI(args[0]);
-                File folder = new File(args[1]);
-                
-                List<String> arguments = new ArrayList<String>();
-                
-                /*
-                 * If you want to change the content of this method, do NOT forget to change the "@generated"
-                 * tag in the Javadoc of this method to "@generated NOT". Without this new tag, any compilation
-                 * of the Acceleo module with the main template that has caused the creation of this class will
-                 * revert your modifications.
-                 */
+    	try {
+			if (args.length < 2) {
+				System.out.println("Arguments not valid : {model, folder}.");
+			} else {
+				URI modelURI = URI.createFileURI(args[0]);
+				File folder = new File(args[1]);
 
-                /*
-                 * Add in this list all the arguments used by the starting point of the generation
-                 * If your main template is called on an element of your model and a String, you can
-                 * add in "arguments" this "String" attribute.
-                 */
-                
-                Generate generator = new Generate(modelURI, folder, arguments);
-                
-                /*
-                 * Add the properties from the launch arguments.
-                 * If you want to programmatically add new properties, add them in "propertiesFiles"
-                 * You can add the absolute path of a properties files, or even a project relative path.
-                 * If you want to add another "protocol" for your properties files, please override 
-                 * "getPropertiesLoaderService(AcceleoService)" in order to return a new property loader.
-                 * The behavior of the properties loader service is explained in the Acceleo documentation
-                 * (Help -> Help Contents).
-                 */
-                 
-                for (int i = 2; i < args.length; i++) {
-                    generator.addPropertiesFile(args[i]);
-                }
-                
-                generator.doGenerate(new BasicMonitor());
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+				// The third argument, if exists, is the requirements model path...
+				if (args.length >= 3) {
+					DomainModelQuery.setModelPath(args[2]);
+				} else {
+					// Set a default value...
+					DomainModelQuery.setModelPath("dsl/gorgeousfood.domain");
+				}
+
+				List<String> arguments = new ArrayList<String>();
+
+				/*
+				 * If you want to change the content of this method, do NOT forget to change the
+				 * "@generated" tag in the Javadoc of this method to "@generated NOT". Without
+				 * this new tag, any compilation of the Acceleo module with the main template
+				 * that has caused the creation of this class will revert your modifications.
+				 */
+
+				/*
+				 * Add in this list all the arguments used by the starting point of the
+				 * generation If your main template is called on an element of your model and a
+				 * String, you can add in "arguments" this "String" attribute.
+				 */
+
+				Generate generator = new Generate(modelURI, folder, arguments);
+
+				/*
+				 * Add the properties from the launch arguments. If you want to programmatically
+				 * add new properties, add them in "propertiesFiles" You can add the absolute
+				 * path of a properties files, or even a project relative path. If you want to
+				 * add another "protocol" for your properties files, please override
+				 * "getPropertiesLoaderService(AcceleoService)" in order to return a new
+				 * property loader. The behavior of the properties loader service is explained
+				 * in the Acceleo documentation (Help -> Help Contents).
+				 */
+
+				for (int i = 2; i < args.length; i++) {
+					generator.addPropertiesFile(args[i]);
+				}
+
+				generator.doGenerate(new BasicMonitor());
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     }
+               
 
     /**
      * Launches the generation described by this instance.
@@ -381,6 +391,13 @@ public class Generate extends AbstractAcceleoGenerator {
             // The normal package registration if your metamodel is in a plugin.
             resourceSet.getPackageRegistry().put(DbasePackage.eNS_URI, DbasePackage.eINSTANCE);
         }         
+       
+
+		// For the domain
+		if (!isInWorkspace(DomainPackage.class)) {
+			// The normal package registration if your metamodel is in a plugin.
+			resourceSet.getPackageRegistry().put(DomainPackage.eNS_URI, DomainPackage.eINSTANCE);
+		}
         
     }
 
@@ -411,7 +428,9 @@ public class Generate extends AbstractAcceleoGenerator {
          */ 
         
         // resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(UMLResource.FILE_EXTENSION, UMLResource.Factory.INSTANCE);
-        Injector injector2 = new DbaseStandaloneSetup().createInjectorAndDoEMFRegistration();   
+        Injector injector2 = new DbaseStandaloneSetup().createInjectorAndDoEMFRegistration();  
+        
+        Injector injector3 = new DomainStandaloneSetup().createInjectorAndDoEMFRegistration();   
     }
     
 }

@@ -1,6 +1,29 @@
-UseCaseModel GorgeousFoodUseCases { 
-	usecase { 
-		UseCase ManageUser {
+UseCaseModel GorgeousFood { 
+	actor {
+		Actor Staff,
+		Actor Manager
+	}
+	association { 
+		Association Staff_Manage_MealItem { actor Staff usecase Manage_MealItem },
+		Association Manager_Manage_Meal { actor Manager usecase Manage_Meal }	
+	}
+	usecase {
+		UseCase Manage_MealItem {
+			comment {
+				Comment { description CRUD } , Comment { description entity} , Comment { description MealItem }
+			}
+		},
+		UseCase Manage_Meal {
+			extend { Extend Manage_Meal_Manage_MealItem { usecase Manage_MealItem } }
+			include { Include Manage_Meal_Manage_Ingredients { usecase Manage_Ingredients } }
+			comment {
+				Comment { description CRUD } , Comment { description entity } , Comment { description Meal}
+			}
+		},
+		UseCase Manage_Ingredients {
+			comment {
+				Comment { description CRUD }, Comment { description local_entity } , Comment { description Ingredient }
+			}
 		}
 	}
 }

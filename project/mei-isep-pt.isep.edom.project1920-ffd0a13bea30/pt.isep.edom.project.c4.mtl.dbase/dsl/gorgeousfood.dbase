@@ -1,1 +1,1 @@
-DbaseModel GorgeousFood { }
+DbaseModel GorgeousFood { tables { Table MealItem { entity Manage_MealItem columns { key Column id { type INTEGER } } } , Table Meal { entity Manage_Meal columns { key Column id { type INTEGER } } } , Table Ingredients { entity Manage_Ingredients columns { key Column id { type INTEGER } } } } }

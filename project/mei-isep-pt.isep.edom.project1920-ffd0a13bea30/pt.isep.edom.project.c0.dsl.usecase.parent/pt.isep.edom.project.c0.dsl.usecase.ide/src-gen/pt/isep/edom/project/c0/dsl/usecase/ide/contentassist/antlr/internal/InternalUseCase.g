@@ -2274,7 +2274,10 @@ rule__Extend__Group__5
 	}
 :
 	rule__Extend__Group__5__Impl
+<<<<<<< HEAD
+=======
 	rule__Extend__Group__6
+>>>>>>> 6ba51290ef074f452a9501b6e0535b5b1dd23617
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -2286,6 +2289,11 @@ rule__Extend__Group__5__Impl
 	}
 :
 (
+<<<<<<< HEAD
+	{ before(grammarAccess.getExtendAccess().getRightCurlyBracketKeyword_5()); }
+	'}'
+	{ after(grammarAccess.getExtendAccess().getRightCurlyBracketKeyword_5()); }
+=======
 	{ before(grammarAccess.getExtendAccess().getGroup_5()); }
 	(rule__Extend__Group_5__0)?
 	{ after(grammarAccess.getExtendAccess().getGroup_5()); }
@@ -2504,6 +2512,7 @@ rule__Extend__Group_5_3__1__Impl
 	{ before(grammarAccess.getExtendAccess().getCommentAssignment_5_3_1()); }
 	(rule__Extend__CommentAssignment_5_3_1)
 	{ after(grammarAccess.getExtendAccess().getCommentAssignment_5_3_1()); }
+>>>>>>> 6ba51290ef074f452a9501b6e0535b5b1dd23617
 )
 ;
 finally {
@@ -2652,7 +2661,10 @@ rule__Include__Group__5
 	}
 :
 	rule__Include__Group__5__Impl
+<<<<<<< HEAD
+=======
 	rule__Include__Group__6
+>>>>>>> 6ba51290ef074f452a9501b6e0535b5b1dd23617
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -2664,6 +2676,11 @@ rule__Include__Group__5__Impl
 	}
 :
 (
+<<<<<<< HEAD
+	{ before(grammarAccess.getIncludeAccess().getRightCurlyBracketKeyword_5()); }
+	'}'
+	{ after(grammarAccess.getIncludeAccess().getRightCurlyBracketKeyword_5()); }
+=======
 	{ before(grammarAccess.getIncludeAccess().getGroup_5()); }
 	(rule__Include__Group_5__0)?
 	{ after(grammarAccess.getIncludeAccess().getGroup_5()); }
@@ -2882,6 +2899,7 @@ rule__Include__Group_5_3__1__Impl
 	{ before(grammarAccess.getIncludeAccess().getCommentAssignment_5_3_1()); }
 	(rule__Include__CommentAssignment_5_3_1)
 	{ after(grammarAccess.getIncludeAccess().getCommentAssignment_5_3_1()); }
+>>>>>>> 6ba51290ef074f452a9501b6e0535b5b1dd23617
 )
 ;
 finally {
@@ -3390,6 +3408,8 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+<<<<<<< HEAD
+=======
 rule__Extend__CommentAssignment_5_2
 	@init {
 		int stackSize = keepStackSize();
@@ -3420,6 +3440,7 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+>>>>>>> 6ba51290ef074f452a9501b6e0535b5b1dd23617
 rule__Include__NameAssignment_1
 	@init {
 		int stackSize = keepStackSize();
@@ -3454,6 +3475,8 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+<<<<<<< HEAD
+=======
 rule__Include__CommentAssignment_5_2
 	@init {
 		int stackSize = keepStackSize();
@@ -3484,6 +3507,7 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+>>>>>>> 6ba51290ef074f452a9501b6e0535b5b1dd23617
 rule__Comment__DescriptionAssignment_3_1
 	@init {
 		int stackSize = keepStackSize();

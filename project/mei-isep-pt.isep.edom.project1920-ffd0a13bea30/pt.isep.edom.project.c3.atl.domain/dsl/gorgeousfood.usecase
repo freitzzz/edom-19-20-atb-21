@@ -1,6 +1,133 @@
 UseCaseModel GorgeousFoodUseCases { 
-	usecase { 
-		UseCase ManageUser {
+	usecase {
+		UseCase Meal {
+			extend {
+				 Extend 'has a ' {
+					usecase MealType
+					comment {
+						Comment {
+							description "Upper Bound: 1"
+						}
+					}
+				}
+			}
+			comment {
+				Comment {
+					description "CRUD"
+				},
+				Comment {
+					description "Entity"
+				},
+				Comment {
+					description "Field: name|String"
+				},
+				Comment {
+					description "Field: id|Integer"
+				},
+				Comment {
+					description "Field: description|String"
+				}
+			}
+		},
+		UseCase Ingredient {
+			include {
+				Include 'is composed by' {
+					usecase Meal
+					comment {
+						Comment {
+							description "Upper Bound: 9999999"
+						}
+					}
+				}
+			}
+			comment {
+				Comment {
+					description "CRUD"
+				},
+				Comment {
+					description "Local Entity"
+				},
+				Comment {
+					description "Field: name|String"
+				},
+				Comment {
+					description "Field: id|Integer"
+				}
+			}
+		},
+		UseCase Allergen {
+			include {
+				Include 'may contain' {
+					usecase Meal
+					comment {
+						Comment {
+							description "Upper Bound: -1"
+						}
+					}
+				}
+			}
+			comment {
+				Comment {
+					description "CRUD"
+				},
+				Comment {
+					description "Local Entity"
+				},
+				Comment {
+					description "Field: name|String"
+				},
+				Comment {
+					description "Field: id|Integer"
+				}
+			}
+		},
+		UseCase Descriptor {
+			include {
+				Include 'described by nutritional data' {
+					usecase Meal
+					comment {
+						Comment {
+							description "Upper Bound: 9999999"
+						}
+					}
+				}
+			}
+			comment {
+				Comment {
+					description "CRUD"
+				},
+				Comment {
+					description "Local Entity"
+				},
+				Comment {
+					description "Field: name|String"
+				},
+				Comment {
+					description "Field: id|Integer"
+				},
+				Comment {
+					description "Field: quantity|Real"
+				},
+				Comment {
+					description "Field: quantityUnit|String"
+				}
+			}
+		},
+		UseCase MealType {
+			comment {
+				Comment {
+					description "CRUD"
+				},
+				Comment {
+					description "Entity"
+				},
+				Comment {
+					description "Field: name|String"
+				},
+				Comment {
+					description "Field: id|Integer"
+				}
+			}
 		}
 	}
 }

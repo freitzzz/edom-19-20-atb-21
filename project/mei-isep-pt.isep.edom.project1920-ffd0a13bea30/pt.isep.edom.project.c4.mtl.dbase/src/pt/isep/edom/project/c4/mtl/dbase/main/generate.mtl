@@ -35,10 +35,10 @@ public class Database {
 			stmt = conn.createStatement();
 			String sql;
 			[for (t: Table | aDbaseModel.tables)]
-				sql = "CREATE TABLE IF NOT EXISTS [t.name/] ";
+				sql = "CREATE TABLE IF NOT EXISTS [t.name/] ( ";
 
 				[for (c: Column | t.columns)]
-					sql += "([c.name + ' ' + c.type/] ";
+					sql += "[c.name + ' ' + c.type/], ";
 				[/for]
 				sql += " PRIMARY KEY ( ";
 				[for (c: Column | t.columns)]
@@ -129,32 +129,110 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
+import java.util.ArrayList;
 
-import domain.[aTable.name/];
+import domain.[aTable.name/]Impl;
 
 public class [aTable.name + 'Repository'/] {
-	public [aTable.name/] mealItemOfId(int aMealItemId) {
+	public [aTable.name/]Impl [aTable.name/]OfId(int id) {
 		Statement stmt = null;
-		[aTable.name/] [aTable.name/]=null;
+		[aTable.name/]Impl [aTable.name/]=null;
 
 		try {
 			Connection conn=Database.getConnection();
 	
-			String sql = "SELECT mealItemId, name, mealId, prodDate, expDate FROM [aTable.name/] WHERE mealItemId="
-					+ aMealItemId;
+			String sql = "SELECT * FROM [aTable.name/] WHERE id="
+					+ id;
 			stmt = conn.createStatement();
 
 			stmt.executeQuery(sql);
 			ResultSet res = stmt.getResultSet();
 			if (res.next()) { 
-				[aTable.name/]=new [aTable.name/](res.getInt(1),
-							res.getString(2),
-							res.getInt(3),
-							res.getString(4),
-							res.getString(5)
+				[aTable.name/]=new [aTable.name/]Impl(res.getString(1),
+							res.getInt(2)
 						);
+			}
+
+			stmt.close();
+		} catch (SQLException se) {
+			se.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (stmt != null)
+					stmt.close();
+			} catch (SQLException se2) {
+				se2.printStackTrace();
+			}
+		}     	
+    	return [aTable.name/];
+    }
+
+	public int remove(int id) {
+		Statement stmt = null;
+		try {
+			Connection conn=Database.getConnection();
+			
+			String sql = "DELETE FROM [aTable.name/] WHERE id="
+					+ id;
+			stmt = conn.createStatement();
+
+			stmt.execute(sql);
+
+			// Clean-up environment
+			stmt.close();
+		} catch (SQLException se) {
+			// Handle errors for JDBC
+			se.printStackTrace();
+			return -1;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		} finally {
+			// finally block used to close resources
+			try {
+				if (stmt != null)
+					stmt.close();
+			} catch (SQLException se2) {
+				se2.printStackTrace();
+				return -1;
+			} // nothing we can do
+		} // end try      
+		return 0;
+    	
+    }
+    
+    public int remove([aTable.name/]Impl a[aTable.name/]) {
+    	return remove(a[aTable.name/].id());
+    }
+    
+    private int sqlInsert([aTable.name/]Impl a[aTable.name/]) {
+		Statement stmt = null;
+		int id=0;
+		try {
+			Connection conn=Database.getConnection();
+
+			String sql = "INSERT INTO [aTable.name/] ( ";
+
+			[for (c: Column | aTable.columns)]
+				sql += "[c.name/], ";
+			[/for]
+			sql += " ) VALUES ( ";
+			[for (c: Column | aTable.columns)]
+				sql += a[aTable.name/].[c.name/]() + ", ";
+			[/for]
+			sql += ")";
+			
+			stmt = conn.createStatement();
+			
+			stmt.execute(sql, Statement.RETURN_GENERATED_KEYS);
+			ResultSet generatedKeys = stmt.getGeneratedKeys();
+			if (generatedKeys.next()) {
+			    id = generatedKeys.getInt(1);
 			} else {
-			    // Throw exception?
+				id=0;
 			}
 
 			// Clean-up environment
@@ -172,8 +250,98 @@ public class [aTable.name + 'Repository'/] {
 			} catch (SQLException se2) {
 				se2.printStackTrace();
 			} // nothing we can do
+		} // end try   	
+		return id;
+    }
+
+    private boolean sqlUpdate([aTable.name/]Impl a[aTable.name/]) {
+		Statement stmt = null;
+		try {
+			Connection conn=Database.getConnection();
+			
+			stmt = conn.createStatement();
+
+			String sql = "UPDATE [aTable.name/] SET ";
+
+			[for (c: Column | aTable.columns)]
+				sql += "[c.name/]=" + a[aTable.name/].[c.name/]() + ", ";
+			[/for]
+			sql += "WHERE id="+a[aTable.name/].id();
+
+			stmt.executeUpdate(sql);
+
+			// Clean-up environment
+			stmt.close();
+		} catch (SQLException se) {
+			// Handle errors for JDBC
+			se.printStackTrace();
+			return false;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			// finally block used to close resources
+			try {
+				if (stmt != null)
+					stmt.close();
+			} catch (SQLException se2) {
+				se2.printStackTrace();
+				return false;
+			} // nothing we can do
+		} // end try   	
+		return true;
+    }
+    
+    public [aTable.name/]Impl save([aTable.name/]Impl a[aTable.name/]) {
+    	if (a[aTable.name/].id()==0) {
+    		// Insert
+    		int newId=sqlInsert(a[aTable.name/]);
+    		return [aTable.name/]OfId(newId);
+    	}
+    	else
+    	{
+    		// Update
+    		sqlUpdate(a[aTable.name/]);
+    		return a[aTable.name/];
+    	}
+    }
+    
+    public List<[aTable.name/]Impl> all() {
+		Statement stmt = null;
+		[aTable.name/]Impl [aTable.name/]=null;
+		ArrayList<[aTable.name/]Impl> list=new ArrayList<[aTable.name/]Impl>();
+		try {
+			Connection conn=Database.getConnection();
+			
+			String sql = "SELECT * FROM [aTable.name/]";
+			stmt = conn.createStatement();
+
+			stmt.executeQuery(sql);
+			ResultSet res = stmt.getResultSet();
+			while (res.next()) { 
+				[aTable.name/]Impl element=new [aTable.name/]Impl(res.getString(1),
+							res.getInt(2)
+						);
+				list.add(element);
+			} 
+
+			// Clean-up environment
+			stmt.close();
+		} catch (SQLException se) {
+			// Handle errors for JDBC
+			se.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// finally block used to close resources
+			try {
+				if (stmt != null)
+					stmt.close();
+			} catch (SQLException se2) {
+				se2.printStackTrace();
+			} // nothing we can do
 		} // end try      	
-    	return [aTable.name/];
+    	return list;
     }
 }
 [/file]

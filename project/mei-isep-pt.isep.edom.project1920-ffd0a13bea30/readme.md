@@ -202,6 +202,8 @@ To do this, when a table is created, a column is also created, which will be the
 To represent the dbase model with Java Code, first created a class that allows connection to the database using JDBC driver and that allows the creation of tables in the database.
 
 After that, a class was created for each table in the dbase model. These classes have functions that allow CRUD operations on the corresponding tables:
+
+
 - There is a function that allows to get the row with the corresponding id
 - There is a function that removes the row of the table with the corresponding id
 - There is a function that inserts a new row in the table

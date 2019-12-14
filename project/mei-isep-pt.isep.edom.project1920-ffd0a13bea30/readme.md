@@ -151,3 +151,59 @@ The following tables summarizes the transformations that were taken in account:
 |`generateSpecificEntityInterface`|Generates a file that describes an interface of a specific entity (e.g. Meal)|
 |`generateSpecificEntityInterfaceImpl`|Generates a file that describes a concrete class implementation of an entity|
 |`generateSpecificEntityDTO`|Generates a file that describes a concrete class implementation of an entity DTO (e.g. MealDTO)|
+
+
+
+### Component 4 (Persistence)
+
+#### Metamodel OCL Validations
+
+To validate the models of persistence component, the following OCL invariants have been added.
+
+**DbaseModel**
+
+|Validation|Explanation|
+|----------|-----------|
+|Must have name |The name identifies the dbase model, so cannot be undefined|
+|Name must be unique|This validation have been added to grant that don't exists dbase models with the same name |
+|Must have at least one table|A dbase model cannot be exist without the existence of at least one table|
+
+**Table**
+
+|Validation|Explanation|
+|----------|-----------|
+|Must have name |The name identifies the table, so cannot be undefined|
+|Must have entity |The entity cannot be undefined|
+|Name must be unique|This validation have been added to grant that don't exists tables with the same name because the name identifies the table |
+|Must have at least one column|A table cannot be exist without the existence of at least one column|
+
+**Column**
+
+|Validation|Explanation|
+|----------|-----------|
+|Must have name |The name identifies the column, so cannot be undefined|
+|Must have type |The type cannot be undefined. Its a very important property in a column|
+|Name must be unique|This validation have been added to grant that don't exists columns with the same name because the name identifies the column |
+
+
+### ATL Transformation
+
+To transform a Use Cases Model in a Dbase Model, the follow ATL transformations were implemented:
+
+
+- An UseCaseModel should result in a DbaseModel
+- Each UseCase with comments CRUD and entity or local entity should result in a Table with one column for its key
+
+To do this, when a table is created, a column is also created, which will be the key of the table.
+
+
+### Code Generation
+
+To represent the dbase model with Java Code, first created a class that allows connection to the database using JDBC driver and that allows the creation of tables in the database.
+
+After that, a class was created for each table in the dbase model. These classes have functions that allow CRUD operations on the corresponding tables:
+- There is a function that allows to get the row with the corresponding id
+- There is a function that removes the row of the table with the corresponding id
+- There is a function that inserts a new row in the table
+- There is a function that updates a row in the table with the corresponding id
+- There is also a function that allows to get all rows in the table
